@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.+'
+        classpath 'droidkit:gradle-plugins:2.0.+'
+    }
+
+    if (!project.hasProperty("buildNumber")) {
+        project.ext.buildNumber = 1
+    }
+    if (!project.hasProperty("keystore")) {
+        project.ext.keystore = "${project.projectDir}/release.jks"
+    }
+    if (!project.hasProperty("storepass")) {
+        project.ext.storepass = '******'
+    }
+    if (!project.hasProperty("keyalias")) {
+        project.ext.keyalias = '******'
+    }
+    if (!project.hasProperty("keypass")) {
+        project.ext.keypass = '******'
+    }
+    if (!project.hasProperty("hockeyAppId")) {
+        project.ext.hockeyAppId = ''
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
