@@ -83,6 +83,7 @@ redmine {
 
 imagemagic {
     flavors 'hockey'
+    versionName "${project.buildNumber}"
 }
 
 hockeyapp {
