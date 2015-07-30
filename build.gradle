@@ -1,35 +1,69 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.+'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.+'
-        classpath 'droidkit:gradle-plugins:2.0.+'
-    }
-
-    if (!project.hasProperty("buildNumber")) {
-        project.ext.buildNumber = 1
-    }
-    if (!project.hasProperty("keystore")) {
-        project.ext.keystore = "${project.projectDir}/release.jks"
-    }
-    if (!project.hasProperty("storepass")) {
-        project.ext.storepass = '******'
-    }
-    if (!project.hasProperty("keyalias")) {
-        project.ext.keyalias = '******'
-    }
-    if (!project.hasProperty("keypass")) {
-        project.ext.keypass = '******'
-    }
-    if (!project.hasProperty("hockeyAppId")) {
-        project.ext.hockeyAppId = ''
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.2'
+        classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+version = file('VERSION').text.trim()
+
+// Add project variants.
+apply from: 'variants.gradle'
+
+ext {
+    versionCode = calculateVersionCode()
+    versionName = version
+}
+
+int calculateVersionCode() {
+    def versionCode = 1
+    (version =~ /(\d+)/).collect {
+        Integer.parseInt(it[0])
+    }.eachWithIndex { num, index ->
+        versionCode += (num * (100000 / Math.pow(100, index)))
+    }
+    def buildId = System.getenv('CI_BUILD_ID')
+    if (buildId) {
+        versionCode += Integer.parseInt(buildId)
+    }
+    return versionCode
+}
+
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+    properties {
+        properties["sonar.projectKey"] = projectName.toLowerCase() + ':android'
+        properties["sonar.projectName"] = projectName + ' Android'
+        def buildRef = System.getenv('CI_BUILD_REF')
+        if (buildRef != null && buildRef.length() > 8) {
+            properties["sonar.projectVersion"] = project.version + '-' + buildRef.substring(0, 8)
+        }
+        properties["sonar.host.url"] = System.getenv('SONAR_HOST')
+        properties["sonar.login"] = System.getenv('SONAR_LOGIN')
+        properties["sonar.password"] = System.getenv('SONAR_PASSWORD')
+        properties["sonar.jdbc.url"] = System.getenv('SONAR_JDBC_URL')
+        properties["sonar.jdbc.username"] = System.getenv('SONAR_JDBC_USER')
+    }
+}
+
+project(':app') {
+    sonarqube {
+        properties {
+            properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
+            properties["sonar.java.binaries"] = files(["${project.buildDir}/intermediates/classes/development/debug"])
+        }
     }
 }

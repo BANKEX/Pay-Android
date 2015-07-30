@@ -7,18 +7,21 @@ import android.text.TextUtils;
 
 import com.elegion.android.BuildConfig;
 
-import java.lang.reflect.InvocationTargetException;
-
-import droidkit.log.LogLevel;
 import droidkit.log.Logger;
+import droidkit.util.DynamicException;
 import droidkit.util.DynamicMethod;
 
 /**
  * @author Daniel Serdyukov
  */
-public class ActivityLifecycleAdapter implements Application.ActivityLifecycleCallbacks {
+public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
-    public static final Logger LOGGER = Logger.getLogger("ActivityLifecycleAdapter");
+    private static int sStarted;
+    private static int sStopped;
+
+    public static boolean isApplicationVisible() {
+        return sStarted > sStopped;
+    }
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
@@ -27,17 +30,20 @@ public class ActivityLifecycleAdapter implements Application.ActivityLifecycleCa
 
     @Override
     public void onActivityStarted(Activity activity) {
-
+        sStarted++;
     }
 
     @Override
     public void onActivityResumed(Activity activity) {
         if (!TextUtils.isEmpty(BuildConfig.HOCKEY_APP_ID)) {
             try {
-                final Class<?> hockey = Class.forName("net.hockeyapp.android.CrashManager");
-                DynamicMethod.invoke(hockey, "", "");
-            } catch (ClassNotFoundException | InvocationTargetException e) {
-                LOGGER.log(LogLevel.ERROR, e);
+                DynamicMethod.invokeStatic(
+                        "net.hockeyapp.android.CrashManager",
+                        "register",
+                        activity, BuildConfig.HOCKEY_APP_ID
+                );
+            } catch (DynamicException e) {
+                Logger.error(e);
             }
         }
     }
@@ -49,7 +55,7 @@ public class ActivityLifecycleAdapter implements Application.ActivityLifecycleCa
 
     @Override
     public void onActivityStopped(Activity activity) {
-
+        sStopped++;
     }
 
     @Override

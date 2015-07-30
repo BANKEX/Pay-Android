@@ -3,9 +3,7 @@ package com.elegion.android;
 import android.app.Application;
 import android.os.StrictMode;
 
-import com.elegion.android.app.ActivityLifecycleAdapter;
-
-import droidkit.log.Logger;
+import com.elegion.android.app.Lifecycler;
 
 /**
  * @author Daniel Serdyukov
@@ -17,11 +15,8 @@ public class AppDelegate extends Application {
         super.onCreate();
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
-            Logger.setDefaultLogger(Logger
-                    .getLogger("AndroidProject")
-                    .setEnabled(true));
         }
-        registerActivityLifecycleCallbacks(new ActivityLifecycleAdapter());
+        registerActivityLifecycleCallbacks(new Lifecycler());
     }
 
 }

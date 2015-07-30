@@ -1,0 +1,22 @@
+before_script:
+  - gradle -version
+
+development:
+  script:
+    - gradle clean assembleDevelopmentDebug
+    - gradle sonarqube
+  tags:
+    - android
+    - build-tools-22.0.1
+  only:
+    - master
+
+hockey:
+  script:
+    - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean uploadDevelopmentReleaseToHockeyApp
+  tags:
+    - android
+    - build-tools-22.0.1
+  only:
+    - /^v.*$/
