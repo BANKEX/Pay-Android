@@ -22,6 +22,10 @@ public class Otto {
 
     //region ---------------------------------------- Constructors
 
+
+    private Otto() {
+    }
+
     public static Bus getInstance() {
         return sBus;
     }

@@ -25,7 +25,7 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+        // Do nothing.
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityPaused(Activity activity) {
-
+        // Do nothing.
     }
 
     @Override
@@ -60,12 +60,12 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
+        // Do nothing.
     }
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
+        // Do nothing.
     }
 
 }

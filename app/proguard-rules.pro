@@ -1,28 +1,52 @@
 -keepattributes Signature,Exceptions,*Annotation*
 
--dontwarn com.squareup.okhttp.**
--dontwarn com.squareup.otto.**
--dontwarn okio.**
+-keep class retrofit.** { *; }
 -dontwarn retrofit.**
+-dontwarn com.squareup.**
 -dontwarn droidkit.**
 
-### Google Play Services
--keep class * extends java.util.ListResourceBundle {
-    protected Object[][] getContents();
+-keep class ru.ok.okgifts.** {
+    @droidkit.inject.* <fields>;
+    @droidkit.inject.* <methods>;
 }
 
--keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
-    public static final *** NULL;
+-keepclassmembers class ** {
+    @com.squareup.otto.Subscribe public *;
+    @com.squareup.otto.Produce public *;
 }
 
--keepnames @com.google.android.gms.common.annotation.KeepName class *
--keepclassmembernames class * {
-    @com.google.android.gms.common.annotation.KeepName *;
+# gson
+-keep class com.google.gson.** { *; }
+-dontwarn com.google.gson.**
+
+# droidkit
+-keep class droidkit.** { *; }
+-dontwarn droidkit.**
+
+# loaders
+-keep class **.*$LC* { *; }
+
+# support library
+-keep class android.support.v4.** { *; }
+-dontwarn android.support.v4.**
+
+-keep class android.support.v7.** { *; }
+-dontwarn android.support.v7.**
+
+-keep class android.support.design.** { *; }
+-dontwarn android.support.design.**
+
+# retrofit
+-keep class retrofit.** { *; }
+-keepclassmembernames interface * {
+    @retrofit.http.* <methods>;
 }
 
--keepnames class * implements android.os.Parcelable {
-    public static final ** CREATOR;
-}
+# picasso
+-dontwarn com.squareup.okhttp.**
+
+# okhttp
+-dontwarn okio.**
 
 ### HockeyApp
 -keep class javax.net.ssl.** { *; }
@@ -30,11 +54,3 @@
 
 -keep class net.hockeyapp.android.** { *; }
 -dontwarn net.hockeyapp.android.**
-
-### Google GSON
--keep class com.google.gson.** { *; }
--dontwarn com.google.gson.**
-
-### Android Annotations
--keep class org.androidannotations.** { *; }
--dontwarn org.androidannotations.**
