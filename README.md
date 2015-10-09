@@ -10,11 +10,9 @@
 
 ## Step 1: Gitlab CI Configuration
 1. Перейти в [Gitlab CI](https://gitlab.e-legion.com/ci). Данные авторизации от [GitLab](https://gitlab.e-legion.com).
-2. В списке `Project Name`, найти нужный проект. Если его нет, проверить доступ (уточнить у Руководителя/тех лида).
-3. Выбрать `Add Project` to CI
-4. Перейти в `Runners Page` нового проекта
-5. Выбрать подходящий `Runner` по `tags` (например, `android build-tools-22.0.1`). Нажать `Enable for this project`. Если подходящих `Tags` нет, обратить к тех лидам. Теперь проекты будут собираться на указанном `Runner`. 
-6. Перейти в `variables` и добавить параметр/значение, для совершения `Upload` на `HockeyAPP`. Не забыть нажать на `Save Changes`
+2. В списке `Project Name`, найти нужный проект и выбрать `Add Project` to CI
+3. Попросить Тех Лида, Тех Дира или Админа добавить раннер к проекту по подходящему tag (например, `android build-tools-23.0.1`). Теперь проекты будут собираться на указанном `Runner`. 
+4. Перейти в `variables` и добавить параметр/значение, для совершения `Upload` на `HockeyAPP`. Не забыть нажать на `Save Changes`
 
 ```
     	HOCKEY_APP_TOKEN 
