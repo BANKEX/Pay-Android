@@ -1,7 +1,7 @@
 # New Project Instruction.
 ### Main components
 * [Gitlab](https://gitlab.e-legion.com/) 
-* [Gitlab CI](https://gitlabci.e-legion.com/) 
+* [Gitlab CI](https://gitlab.e-legion.com/ci) 
 * [Hockey APP](https://rink.hockeyapp.net) 
 * [Redmine](https://redmine.e-legion.com/projects/android) 
 * [Sonar](https://sonar.e-legion.com/) 
