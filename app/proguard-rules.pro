@@ -1,19 +1,15 @@
 -keepattributes Signature,Exceptions,*Annotation*
+-keep public class com.elegion.android.** {
+    public static <fields>;
+    public static <methods>;
+    public <methods>;
+    protected <methods>;
+}
 
 -keep class retrofit.** { *; }
 -dontwarn retrofit.**
 -dontwarn com.squareup.**
 -dontwarn droidkit.**
-
--keep class ru.ok.okgifts.** {
-    @droidkit.inject.* <fields>;
-    @droidkit.inject.* <methods>;
-}
-
--keepclassmembers class ** {
-    @com.squareup.otto.Subscribe public *;
-    @com.squareup.otto.Produce public *;
-}
 
 # gson
 -keep class com.google.gson.** { *; }
@@ -21,10 +17,18 @@
 
 # droidkit
 -keep class droidkit.** { *; }
+-keep class **$SQLiteTable { *; }
+-keep class com.elegion.android.model.** { *; }
 -dontwarn droidkit.**
 
-# loaders
--keep class **.*$LC* { *; }
+# Joda Time
+-dontwarn org.joda.convert.**
+
+# DK loaders
+-keep class **$LC* { *; }
+
+# DK ViewInjectors
+-keep class **.*$ViewInjector* { *; }
 
 # support library
 -keep class android.support.v4.** { *; }
@@ -42,8 +46,12 @@
     @retrofit.http.* <methods>;
 }
 
-# picasso
--dontwarn com.squareup.okhttp.**
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
 
 # okhttp
 -dontwarn okio.**
@@ -54,3 +62,7 @@
 
 -keep class net.hockeyapp.android.** { *; }
 -dontwarn net.hockeyapp.android.**
+
+# ReactiveX
+-keep class rx.** { *; }
+-dontwarn rx.**

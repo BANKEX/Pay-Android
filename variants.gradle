@@ -1,4 +1,4 @@
 ext{
     projectName = 'Template'
-    hockeyAppId = '""'
+    hockeyAppId = '"00000000000000000000000000000000"'
 }

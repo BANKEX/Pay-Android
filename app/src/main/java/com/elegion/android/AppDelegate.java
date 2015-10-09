@@ -3,7 +3,7 @@ package com.elegion.android;
 import android.app.Application;
 import android.os.StrictMode;
 
-import com.elegion.android.app.Lifecycler;
+import com.elegion.android.app.FlavoredLifecycler;
 
 /**
  * @author Daniel Serdyukov
@@ -16,7 +16,7 @@ public class AppDelegate extends Application {
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
         }
-        registerActivityLifecycleCallbacks(new Lifecycler());
+        registerActivityLifecycleCallbacks(new FlavoredLifecycler());
     }
 
 }

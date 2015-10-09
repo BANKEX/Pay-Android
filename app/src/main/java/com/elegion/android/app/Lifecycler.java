@@ -3,13 +3,6 @@ package com.elegion.android.app;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.text.TextUtils;
-
-import com.elegion.android.BuildConfig;
-
-import droidkit.log.Logger;
-import droidkit.util.DynamicException;
-import droidkit.util.DynamicMethod;
 
 /**
  * @author Daniel Serdyukov
@@ -35,17 +28,7 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityResumed(Activity activity) {
-        if (!TextUtils.isEmpty(BuildConfig.HOCKEY_APP_ID)) {
-            try {
-                DynamicMethod.invokeStatic(
-                        "net.hockeyapp.android.CrashManager",
-                        "register",
-                        activity, BuildConfig.HOCKEY_APP_ID
-                );
-            } catch (DynamicException e) {
-                Logger.error(e);
-            }
-        }
+        // Do nothing.
     }
 
     @Override
