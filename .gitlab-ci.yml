@@ -7,7 +7,7 @@ development:
     - gradle sonarqube
   tags:
     - android
-    - build-tools-22.0.1
+    - build-tools-latest
   only:
     - master
 
@@ -17,6 +17,6 @@ hockey:
     - CHANGELOG=$(/usr/bin/changelog) gradle clean uploadDevelopmentReleaseToHockeyApp
   tags:
     - android
-    - build-tools-22.0.1
+    - build-tools-latest
   only:
     - /^v.*$/
