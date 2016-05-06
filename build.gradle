@@ -28,7 +28,7 @@ def getGitVersionName() {
     if (tag =~ /^v.*$/) {
         return tag.substring(1)
     }
-    return '1.1.0'
+    return '1.0.0'
 }
 
 def getGitRefHash() {
