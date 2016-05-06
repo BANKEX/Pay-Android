@@ -1,9 +1,15 @@
-before_script:
-  - gradle -version
-
-development:
+mock:
   script:
-    - gradle clean assembleDevelopmentDebug
+    - gradle clean jacocoUnitTestReport sonarqube
+  tags:
+    - android
+    - latest
+  only:
+    - master
+
+dev:
+  script:
+    - gradle clean assembleDevDebug
     - gradle sonarqube
   tags:
     - android
@@ -14,7 +20,7 @@ development:
 hockey:
   script:
     - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean uploadDevelopmentReleaseToHockeyApp
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean uploadDevReleaseToHockeyApp
   tags:
     - android
     - build-tools-latest

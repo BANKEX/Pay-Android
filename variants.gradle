@@ -1,4 +1,0 @@
-ext{
-    projectName = 'Template'
-    hockeyAppId = '"00000000000000000000000000000000"'
-}

@@ -1,0 +1,19 @@
+apply plugin: 'jacoco'
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testMockDebugUnitTest']) {
+    group = 'Reporting'
+    description = 'Generate Jacoco coverage reports after running tests.'
+    jacocoClasspath = project.configurations['androidJacocoAnt']
+    sourceDirectories = fileTree(dir: "${project.projectDir}/src/main/java")
+    classDirectories = fileTree(dir: "${project.buildDir}/intermediates/classes/mock/debug", excludes: [
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*$$ViewBinder*.*',
+            '**/*$$Table*.*',
+            '**/*$$Schema*.*',
+            '**/*Test*.*'
+    ])
+    executionData = fileTree(dir: project.buildDir, includes: ['**/*.exec', '**/*.ec'])
+}
