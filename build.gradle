@@ -4,9 +4,8 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.0'
-        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.2'
-        classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.4'
     }
 }
 
@@ -16,20 +15,30 @@ allprojects {
     }
 }
 
-version = file('VERSION').text.trim()
-
-// Add project variants.
-apply from: 'variants.gradle'
-
 ext {
-    versionCode = calculateVersionCode()
-    versionName = version
+    projectName = 'Template'
+    hockeyAppId = '"00000000000000000000000000000000"'
+    versionName = gitVersionName
+    versionCode = gitVersionCode
+    versionHash = gitRefHash
 }
 
-int calculateVersionCode() {
+def getGitVersionName() {
+    def tag = 'git describe --tags'.execute().text.split('-').first()?.trim()
+    if (tag =~ /^v.*$/) {
+        return tag.substring(1)
+    }
+    return '1.0.0'
+}
+
+def getGitRefHash() {
+    return 'git rev-parse HEAD'.execute().text.substring(0, 8)
+}
+
+int getGitVersionCode() {
     def versionCode = 1
-    (version =~ /(\d+)/).collect {
-        Integer.parseInt(it[0])
+    (gitVersionName =~ /(\d+)/).collect {
+        Integer.parseInt(it[0] as String)
     }.eachWithIndex { num, index ->
         versionCode += (num * (100000 / Math.pow(100, index)))
     }
@@ -38,31 +47,4 @@ int calculateVersionCode() {
         versionCode += Integer.parseInt(buildId)
     }
     return versionCode
-}
-
-apply plugin: 'org.sonarqube'
-
-sonarqube {
-    properties {
-        properties["sonar.projectKey"] = projectName.toLowerCase() + ':android'
-        properties["sonar.projectName"] = projectName + ' Android'
-        def buildRef = System.getenv('CI_BUILD_REF')
-        if (buildRef != null && buildRef.length() > 8) {
-            properties["sonar.projectVersion"] = project.version + '-' + buildRef.substring(0, 8)
-        }
-        properties["sonar.host.url"] = System.getenv('SONAR_HOST')
-        properties["sonar.login"] = System.getenv('SONAR_LOGIN')
-        properties["sonar.password"] = System.getenv('SONAR_PASSWORD')
-        properties["sonar.jdbc.url"] = System.getenv('SONAR_JDBC_URL')
-        properties["sonar.jdbc.username"] = System.getenv('SONAR_JDBC_USER')
-    }
-}
-
-project(':app') {
-    sonarqube {
-        properties {
-            properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
-            properties["sonar.java.binaries"] = files(["${project.buildDir}/intermediates/classes/development/debug"])
-        }
-    }
 }

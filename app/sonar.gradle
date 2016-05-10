@@ -1,0 +1,27 @@
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+    properties {
+        properties["sonar.projectKey"] = "$rootProject.ext.projectName:android"
+        properties["sonar.projectName"] = "[Android] $rootProject.ext.projectName"
+        properties["sonar.projectVersion"] = rootProject.ext.versionName + '-' + rootProject.ext.versionHash
+        def classesDir = "${project.buildDir}/intermediates/classes"
+        properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
+        properties["sonar.java.binaries"] = files(["${classesDir}/mock/debug"])
+
+        properties["sonar.tests"] = android.sourceSets.test.java.srcDirs
+        properties["sonar.java.test.binaries"] = files(["${classesDir}/test/mock/debug"])
+        properties["sonar.junit.reportsPath"] = "${project.buildDir}/test-results/mockDebug"
+        properties["sonar.jacoco.reportPath"] = "${project.buildDir}/jacoco/testMockDebugUnitTest.exec"
+        properties["sonar.coverage.exclusions"] = [
+                '**/globus/app/activity/**',
+                '**/globus/app/adapter/**',
+                '**/globus/app/behavior/**',
+                '**/globus/app/dialog/**',
+                '**/globus/app/fragment/**',
+                '**/globus/app/model/**',
+                '**/globus/app/repository/**',
+                '**/globus/app/rx/**'
+        ]
+    }
+}

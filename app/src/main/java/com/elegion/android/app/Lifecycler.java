@@ -3,6 +3,7 @@ package com.elegion.android.app;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 /**
  * @author Daniel Serdyukov
@@ -11,6 +12,10 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     private static int sStarted;
     private static int sStopped;
+
+    public static void register(@NonNull Application app) {
+        app.registerActivityLifecycleCallbacks(new FlavoredLifecycler());
+    }
 
     public static boolean isApplicationVisible() {
         return sStarted > sStopped;

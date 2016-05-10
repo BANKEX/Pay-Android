@@ -1,4 +1,4 @@
--keepattributes Signature,Exceptions,*Annotation*
+-keepattributes Signature,Exceptions,InnerClasses,EnclosingMethod,*Annotation*
 -keep public class com.elegion.android.** {
     public static <fields>;
     public static <methods>;
@@ -6,29 +6,9 @@
     protected <methods>;
 }
 
--keep class retrofit.** { *; }
--dontwarn retrofit.**
--dontwarn com.squareup.**
--dontwarn droidkit.**
-
 # gson
 -keep class com.google.gson.** { *; }
 -dontwarn com.google.gson.**
-
-# droidkit
--keep class droidkit.** { *; }
--keep class **$SQLiteTable { *; }
--keep class com.elegion.android.model.** { *; }
--dontwarn droidkit.**
-
-# Joda Time
--dontwarn org.joda.convert.**
-
-# DK loaders
--keep class **$LC* { *; }
-
-# DK ViewInjectors
--keep class **.*$ViewInjector* { *; }
 
 # support library
 -keep class android.support.v4.** { *; }
@@ -40,11 +20,9 @@
 -keep class android.support.design.** { *; }
 -dontwarn android.support.design.**
 
-# retrofit
--keep class retrofit.** { *; }
--keepclassmembernames interface * {
-    @retrofit.http.* <methods>;
-}
+# Retrofit
+-dontwarn okio.**
+-dontwarn retrofit2.**
 
 # Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
@@ -63,6 +41,36 @@
 -keep class net.hockeyapp.android.** { *; }
 -dontwarn net.hockeyapp.android.**
 
-# ReactiveX
--keep class rx.** { *; }
--dontwarn rx.**
+# RxJava
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+#RxSQLite
+-keep class sqlite4a.** { *; }
+-keep class **$$Schema { *; }
+
+-keep public class ru.globus.app.behavior.ParallaxBehavior {
+    public <init>(...);
+    public <methods>;
+}
+
+
+# ButterKnife
+-dontwarn butterknife.internal.**
+-keep class butterknife.** { *; }
+-keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
