@@ -2,6 +2,7 @@ plugins {
     id "org.sonarqube" version "1.2"
 }
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -87,7 +88,8 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${supportVersion}"
     compile "com.android.support:design:${supportVersion}"
 
-    compile "com.jakewharton:butterknife:$butterVersion"
+    compile "com.jakewharton:butterknife:${butterVersion}"
+    apt "com.jakewharton:butterknife-compiler:${butterVersion}"
     compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     compile "com.github.bumptech.glide:glide:${glideVersion}"
