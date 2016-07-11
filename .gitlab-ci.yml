@@ -13,9 +13,9 @@ dev:
     - gradle sonarqube
   tags:
     - android
-    - build-tools-latest
+    - latest
   only:
-    - master
+    - develop
 
 hockey:
   script:
