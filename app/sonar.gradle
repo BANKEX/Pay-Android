@@ -8,20 +8,22 @@ sonarqube {
         def classesDir = "${project.buildDir}/intermediates/classes"
         properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
         properties["sonar.java.binaries"] = files(["${classesDir}/mock/debug"])
-
+        properties["sonar.host.url"] = System.getenv('SONAR_HOST')
+        properties["sonar.login"] = System.getenv('SONAR_LOGIN')
+        properties["sonar.password"] = System.getenv('SONAR_PASSWORD')
         properties["sonar.tests"] = android.sourceSets.test.java.srcDirs
         properties["sonar.java.test.binaries"] = files(["${classesDir}/test/mock/debug"])
         properties["sonar.junit.reportsPath"] = "${project.buildDir}/test-results/mockDebug"
         properties["sonar.jacoco.reportPath"] = "${project.buildDir}/jacoco/testMockDebugUnitTest.exec"
         properties["sonar.coverage.exclusions"] = [
-                '**/globus/app/activity/**',
-                '**/globus/app/adapter/**',
-                '**/globus/app/behavior/**',
-                '**/globus/app/dialog/**',
-                '**/globus/app/fragment/**',
-                '**/globus/app/model/**',
-                '**/globus/app/repository/**',
-                '**/globus/app/rx/**'
+                '**/elegion/android/activity/**',
+                '**/elegion/android/adapter/**',
+                '**/elegion/android/behavior/**',
+                '**/elegion/android/dialog/**',
+                '**/elegion/android/fragment/**',
+                '**/elegion/android/model/**',
+                '**/elegion/android/repository/**',
+                '**/elegion/android/rx/**'
         ]
     }
 }

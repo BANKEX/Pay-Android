@@ -17,8 +17,9 @@ import org.robolectric.annotation.Config;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = BuildConfig.TEST_SDK_INT)
 public class TestTemplate {
+
     @Test
     public void testFailedMethod() throws Exception {
-        Assert.assertThat(TextUtils.isEmpty("  "), IsEqual.equalTo(true));
+        Assert.assertThat(TextUtils.isEmpty(""), IsEqual.equalTo(true));
     }
 }

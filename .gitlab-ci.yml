@@ -1,6 +1,6 @@
 mock:
   script:
-    - gradle clean jacocoUnitTestReport sonarqube
+    - gradle clean jacocoUnitTestReport sonarqube --stacktrace
   tags:
     - android
     - latest
