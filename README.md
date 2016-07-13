@@ -1,4 +1,8 @@
 # New Project Instruction.
+
+
+[![build status](https://gitlab.e-legion.com/android/template/badges/develop/build.svg)](https://gitlab.e-legion.com/tele2-selfcare/tele2-android/commits/master)
+
 ### Main components
 * [Gitlab](https://gitlab.e-legion.com/) 
 * [Gitlab CI](https://gitlab.e-legion.com/ci) 
