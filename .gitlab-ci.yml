@@ -3,7 +3,7 @@ before_script:
 
 mock:
   script:
-    - ./gradlew clean testMockDebugUnitTestCoverage sonarqube --stacktrace
+    - ./gradlew clean coverageMockDebug sonarqube --stacktrace
   tags:
     - android
     - latest
