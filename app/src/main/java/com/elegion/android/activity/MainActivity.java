@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
         ButterKnife.bind(this);
-        final MainPresenter presenter = new MainPresenter(this);
+        final MainPresenter presenter = new MainPresenter(this, this);
         presenter.loadContent();
     }
 
