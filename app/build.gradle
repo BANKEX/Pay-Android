@@ -1,8 +1,11 @@
 plugins {
     id "org.sonarqube" version "1.2"
 }
+
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply from: 'jacoco.gradle'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -119,5 +122,4 @@ hockeyapp {
     tags = "test"
 }
 
-apply from: 'jacoco.gradle'
 apply from: 'sonar.gradle'

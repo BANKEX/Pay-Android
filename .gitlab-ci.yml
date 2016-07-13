@@ -1,6 +1,9 @@
+before_script:
+  - chmod +x gradlew
+
 mock:
   script:
-    - gradle clean jacocoUnitTestReport sonarqube --stacktrace
+    - ./gradlew clean testMockDebugUnitTestCoverage sonarqube --stacktrace
   tags:
     - android
     - latest
@@ -9,8 +12,7 @@ mock:
 
 dev:
   script:
-    - gradle clean assembleDevDebug
-    - gradle sonarqube
+    - ./gradlew clean assembleDevDebug sonarqube --stacktrace
   tags:
     - android
     - latest
@@ -20,7 +22,7 @@ dev:
 hockey:
   script:
     - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean uploadDevReleaseToHockeyApp
+    - CHANGELOG=$(/usr/bin/changelog) ./gradlew clean uploadDevReleaseToHockeyApp
   tags:
     - android
     - build-tools-latest
