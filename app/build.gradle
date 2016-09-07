@@ -92,25 +92,22 @@ dependencies {
     compile "com.android.support:appcompat-v7:${supportVersion}"
     compile "com.android.support:recyclerview-v7:${supportVersion}"
     compile "com.android.support:design:${supportVersion}"
-
     compile "com.jakewharton:butterknife:${butterVersion}"
     apt "com.jakewharton:butterknife-compiler:${butterVersion}"
     compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     compile "com.github.bumptech.glide:glide:${glideVersion}"
-
     compile "io.reactivex:rxandroid:${rxandroidVersion}"
     compile "io.reactivex:rxjava:$rxjavaVersion"
     compile 'io.reactivex:rxjava-computation-expressions:0.21.0'
     compile "rxsqlite:library:$rxSqliteVersion"
     provided "rxsqlite:compiler:$rxSqliteVersion"
-
     devCompile "net.hockeyapp.android:HockeySDK:${hockeyAppVersion}"
     mockCompile "net.hockeyapp.android:HockeySDK:${hockeyAppVersion}"
-
-    testCompile('junit:junit:4.12')
+    testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile 'org.robolectric:robolectric:3.0'
+    compile project(':rxloadermanager')
 }
 
 
