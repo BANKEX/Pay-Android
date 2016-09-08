@@ -67,6 +67,7 @@ class LifecycleLoader<T> extends Loader<Void> {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
+                //TODO: refactor
                 if (restart) {
                     mIsCompleted = false;
                     mResult = null;
@@ -78,6 +79,7 @@ class LifecycleLoader<T> extends Loader<Void> {
                         observable = Observable.just(mResult)
                                 .concatWith(mCachedObservable);
                     } else {
+                        mCachedObservable = observable;
                         observable = Observable.just(mResult)
                                 .concatWith(observable);
                     }
