@@ -1,18 +1,15 @@
 package ru.elegion.rxloadermanager.loader;
 
-import android.app.LoaderManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.v4.app.LoaderManager;
 
 import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
 
 import ru.elegion.rxloadermanager.RxSchedulers;
 import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
 import rx.functions.Action0;
 
 /**
@@ -42,15 +39,20 @@ public class RxLoader {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(final Observable<T> observable) {
-                RxLcImpl<T> rxLc = new RxLcImpl<>(mContext);
-                return observable
-                        .doOnSubscribe(restart
-                                ? restart(loaderId, rxLc)
-                                : init(loaderId, rxLc))
-                        .compose(rxLc.getLoader().transform(restart))
-                        .lift(rxLc.getLoader().lifecycle())
-                        .subscribeOn(RxSchedulers.io())
-                        .observeOn(RxSchedulers.main());
+                final LoaderManager lm = mLmRef.get();
+                if (lm != null) {
+                    RxLcImpl<T> rxLc = new RxLcImpl<>(mContext, lm.getLoader(loaderId));
+                    return observable
+                            .doOnSubscribe(restart
+                                    ? restart(loaderId, rxLc)
+                                    : init(loaderId, rxLc))
+                            .lift(rxLc.getLoader().lifecycle())
+                            .compose(rxLc.getLoader().transform(restart))
+                            .subscribeOn(RxSchedulers.io())
+                            .observeOn(RxSchedulers.main());
+                }else {
+                    return Observable.empty();
+                }
             }
         };
     }

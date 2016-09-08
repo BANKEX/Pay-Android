@@ -1,8 +1,8 @@
 package ru.elegion.rxloadermanager.loader;
 
 import android.content.Context;
-import android.content.Loader;
 import android.support.annotation.NonNull;
+import android.support.v4.content.Loader;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -16,6 +16,8 @@ import rx.subscriptions.CompositeSubscription;
 class LifecycleLoader<T> extends Loader<Void> {
 
     private CompositeSubscription mSubscription;
+
+    private Observable<T> mCachedObservable;
 
     private boolean mIsCompleted = false;
 
@@ -33,12 +35,22 @@ class LifecycleLoader<T> extends Loader<Void> {
 
     @Override
     protected void onStopLoading() {
+        super.onStopLoading();
+    }
+
+    @Override
+    protected void onAbandon() {
+        super.onAbandon();
+    }
+
+    @Override
+    protected void onReset() {
+        super.onReset();
         if (mSubscription != null) {
             mSubscription.unsubscribe();
             mSubscription.clear();
-            mSubscription = null;
+            mCachedObservable = null;
         }
-        super.onStopLoading();
     }
 
     public Observable.Operator<T, T> lifecycle() {
@@ -51,16 +63,20 @@ class LifecycleLoader<T> extends Loader<Void> {
         };
     }
 
-    public Observable.Transformer<? super T, T> transform(final boolean restart) {
+    public Observable.Transformer<T, T> transform(final boolean restart) {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
                 if (restart) {
                     mIsCompleted = false;
                     mResult = null;
+                    mCachedObservable = observable;
                 } else {
                     if (mIsCompleted) {
                         return Observable.just(mResult);
+                    } else if (!isReset() && mCachedObservable != null) {
+                        observable = Observable.just(mResult)
+                                .concatWith(mCachedObservable);
                     } else {
                         observable = Observable.just(mResult)
                                 .concatWith(observable);

@@ -1,13 +1,11 @@
 package ru.elegion.rxloadermanager.loader;
 
-import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-
-import rx.Observable;
-import rx.Observer;
+import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 
 /**
  * @author Artur Vasilov
@@ -15,9 +13,24 @@ import rx.Observer;
 class RxLcImpl<T> implements LoaderManager.LoaderCallbacks<Void> {
 
     private final LifecycleLoader<T> mLifecycleLoader;
+    private final Context mContext;
 
-    public RxLcImpl(@NonNull Context context) {
-        mLifecycleLoader = new LifecycleLoader<>(context);
+    public RxLcImpl(@NonNull Context context, @Nullable LifecycleLoader<T> loader) {
+        mContext = context;
+        if(loader != null){
+            mLifecycleLoader = loader;
+        }else {
+            mLifecycleLoader = new LifecycleLoader<>(mContext);
+        }
+    }
+
+    public RxLcImpl(@NonNull Context context, @Nullable  Loader loader) {
+        mContext = context;
+        if(loader != null){
+            mLifecycleLoader = (LifecycleLoader<T>) loader;
+        }else {
+            mLifecycleLoader = new LifecycleLoader<>(mContext);
+        }
     }
 
     public LifecycleLoader<T> getLoader() {
