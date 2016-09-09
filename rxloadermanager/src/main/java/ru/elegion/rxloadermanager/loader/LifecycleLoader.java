@@ -23,6 +23,8 @@ class LifecycleLoader<T> extends Loader<Void> {
 
     private T mResult;
 
+    private boolean mIsLoading;
+
     public LifecycleLoader(@NonNull Context context) {
         super(context);
         mSubscription = new CompositeSubscription();
@@ -30,11 +32,13 @@ class LifecycleLoader<T> extends Loader<Void> {
 
     @Override
     protected void onStartLoading() {
+        mIsLoading = true;
         forceLoad();
     }
 
     @Override
     protected void onStopLoading() {
+        mIsLoading = false;
         super.onStopLoading();
     }
 
@@ -71,7 +75,7 @@ class LifecycleLoader<T> extends Loader<Void> {
                 if (restart) {
                     mIsCompleted = false;
                     mResult = null;
-                    mCachedObservable = observable;
+                    mCachedObservable = null;
                 } else {
                     if (mIsCompleted) {
                         return Observable.just(mResult);
@@ -85,7 +89,7 @@ class LifecycleLoader<T> extends Loader<Void> {
                     }
                 }
 
-                return observable
+                observable = observable
                         .doOnCompleted(new Action0() {
                             @Override
                             public void call() {
@@ -98,6 +102,10 @@ class LifecycleLoader<T> extends Loader<Void> {
                                 mResult = t;
                             }
                         });
+
+                mCachedObservable = observable;
+
+                return mCachedObservable;
             }
         };
     }
