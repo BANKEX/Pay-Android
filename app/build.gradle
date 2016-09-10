@@ -22,7 +22,7 @@ android {
         versionCode rootProject.versionCode
         versionName rootProject.versionName
 
-        buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method"'
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
 
@@ -105,6 +105,7 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.timber:timber:4.1.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 
     provided "rxsqlite:compiler:$rxSqliteVersion"
     devCompile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"

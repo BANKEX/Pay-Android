@@ -22,8 +22,33 @@ public class GroupInfo {
     @SerializedName("name")
     private String mName;
 
-    public interface Columns extends BaseColumns {
+    @SQLiteColumn(Columns.DESCRIPTION)
+    @SerializedName("description")
+    private String mDescription;
 
+    @SQLiteColumn(Columns.PHOTO)
+    @SerializedName("photo_big")
+    private String mPhoto;
+
+    public long getId() {
+        return mId;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public String getPhoto() {
+        return mPhoto;
+    }
+
+    public interface Columns extends BaseColumns {
         String NAME = "name";
+        String PHOTO = "photo";
+        String DESCRIPTION = "description";
     }
 }

@@ -1,5 +1,6 @@
 package ru.elegion.rxloadermanager;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import rx.Observer;
@@ -26,7 +27,7 @@ public class RxLoaderObserver<T> implements Observer<T> {
     }
 
     @Override
-    public void onNext(T t) {
+    public void onNext(@Nullable T t) {
         //do nothing
     }
 }

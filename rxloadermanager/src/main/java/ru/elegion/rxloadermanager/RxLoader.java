@@ -39,16 +39,26 @@ public class RxLoader<T> {
     }
 
     public void restart() {
-//        RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
-//        if (worker != null) {
-//            worker.unsubscribe();
-//        }
-//        mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
+        RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
+        if (worker != null) {
+            worker.unsubscribe();
+        }
+        mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
+    }
+
+    public RxLoader<T> compose(@NonNull Observable.Transformer<T,T> transformer){
+        mObservable = mObservable.compose(transformer);
+        return this;
+    }
+
+    public RxLoader<T> async(){
+        mObservable = mObservable.compose(RxUtil.<T>async());
+        return this;
     }
 
     private RxWorkObserver<T> createWorker(@NonNull Observable<T> observable) {
         RxWorkObserver<T> workObserver = new RxWorkObserver<>(mObserver);
-        workObserver.setSubscription(observable.observeOn(RxSchedulers.main()).subscribe(workObserver));
+        workObserver.setSubscription(observable.subscribe(workObserver));
         return workObserver;
     }
 

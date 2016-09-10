@@ -23,12 +23,13 @@ public class GroupRepository {
 
     @NonNull
     public Observable<GroupInfo> fetchGroupInfo(long groupId) {
-        return mApi.getGroupInfo(groupId)
+        //noinspection Convert2MethodRef
+        return mApi.getGroupInfo(groupId, "description")
                 .flatMap(groupResponse ->
                         Statement.ifThen(() -> CollectionUtil.isEmpty(groupResponse.getGroupInfoList()),
                                 Observable.empty(),
                                 Observable.just(groupResponse.getGroupInfoList().get(0))))
-                .flatMap(RxSQLite::save);
+                .flatMap(groupInfo -> RxSQLite.save(groupInfo));
     }
 
 

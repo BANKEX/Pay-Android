@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light"/>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/e_legion_blue</item>
+        <item name="colorPrimaryDark">@color/material_blue_500</item>
+        <item name="colorAccent">@color/e_legion_blue</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:editTextColor">@color/e_legion_blue</item>
+        <item name="colorButtonNormal">@color/e_legion_blue</item>
+        <item name="android:windowBackground">@color/material_gray_100</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
 
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert"/>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="FabStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+        <item name="rippleColor">@android:color/white</item>
+    </style>
 </resources>

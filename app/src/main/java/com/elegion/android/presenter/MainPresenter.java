@@ -1,17 +1,22 @@
 package com.elegion.android.presenter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.elegion.android.R;
 import com.elegion.android.model.GroupInfo;
 import com.elegion.android.repository.RepositoryProvider;
+import com.elegion.android.rx.observer.RxCompositeObserver;
+import com.elegion.android.rx.observer.RxErrorObserver;
+import com.elegion.android.rx.observer.RxLoadingObserver;
+import com.elegion.android.view.ErrorView;
+import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
 
+import java.util.concurrent.TimeUnit;
+
 import ru.elegion.rxloadermanager.RxLoaderManager;
-import ru.elegion.rxloadermanager.RxLoaderObserver;
 import rx.Observable;
-import timber.log.Timber;
 
 /**
  * @author Nikita Bumakov
@@ -21,21 +26,18 @@ public class MainPresenter {
     private static final int E_LEGION_GROUP_ID = 34196694;
 
     @NonNull
-    private final Context mContext;
-
-    @NonNull
     private final MainView mView;
 
     @NonNull
-    private final GroupInfoObserver mGroupInfoObserver = new GroupInfoObserver();
+    private final GroupInfoObserver mGroupInfoObserver;
 
     @NonNull
     private final RxLoaderManager mRxLoaderManager;
 
-    public MainPresenter(@NonNull Context context, @NonNull MainView view, @NonNull RxLoaderManager loaderManager) {
-        mContext = context;
+    public MainPresenter(@NonNull MainView view, @NonNull LoadingView loadingView, @NonNull ErrorView errorView, @NonNull RxLoaderManager loaderManager) {
         mView = view;
         mRxLoaderManager = loaderManager;
+        mGroupInfoObserver = new GroupInfoObserver(loadingView, errorView);
     }
 
     public void dispatchStart() {
@@ -46,25 +48,24 @@ public class MainPresenter {
     }
 
     private void loadContent() {
-        Observable<GroupInfo> observable = RepositoryProvider.provideGroupsRepository().getGroupInfo(E_LEGION_GROUP_ID);
-        mRxLoaderManager.create(R.id.group_info_loader, observable, mGroupInfoObserver);
-
+        Observable<GroupInfo> observable = RepositoryProvider.provideGroupsRepository()
+                .getGroupInfo(E_LEGION_GROUP_ID)
+                .delay(3, TimeUnit.SECONDS);
+        mRxLoaderManager.create(R.id.group_info_loader, observable, mGroupInfoObserver)
+                .async()
+                .init();
     }
 
-    private class GroupInfoObserver extends RxLoaderObserver<GroupInfo> {
-        @Override
-        public void onStarted() {
-            Timber.d("onStarted");
+    private class GroupInfoObserver extends RxCompositeObserver<GroupInfo> {
+
+        public GroupInfoObserver(@NonNull LoadingView loadingView, @NonNull ErrorView errorView) {
+            super(new RxLoadingObserver<>(loadingView),
+                    new RxErrorObserver<>(errorView));
         }
 
         @Override
-        public void onNext(GroupInfo result) {
-            mView.showMainText("" + result);
-        }
-
-        @Override
-        public void onError(Throwable error) {
-            Timber.e(error, error.getMessage());
+        public void onNext(@Nullable GroupInfo info) {
+            mView.showInfo(info);
         }
     }
 }

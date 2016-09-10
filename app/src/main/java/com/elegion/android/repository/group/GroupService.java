@@ -12,5 +12,5 @@ import rx.Observable;
 public interface GroupService {
 
     @GET("groups.getById")
-    Observable<GroupResponse> getGroupInfo(@Query("group_ids") long groupId);
+    Observable<GroupResponse> getGroupInfo(@Query("group_ids") long groupId, @Query("fields") String fields);
 }
