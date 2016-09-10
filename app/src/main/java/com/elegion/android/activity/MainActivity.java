@@ -9,15 +9,16 @@ import com.elegion.android.R;
 import com.elegion.android.presenter.MainPresenter;
 import com.elegion.android.view.MainView;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
+import ru.elegion.rxloadermanager.RxLoaderManager;
 
 /**
  * @author Nikita Bumakov
  */
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    @BindView(R.id.mainText)
+    @Bind(R.id.mainText)
     protected TextView mMainText;
 
     private MainPresenter mPresenter;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
         ButterKnife.bind(this);
-        mPresenter = new MainPresenter(this, this, getLoaderManager());
+        mPresenter = new MainPresenter(this, this, RxLoaderManager.get(this));
     }
 
     @Override

@@ -38,8 +38,12 @@ public class RxLoader<T> {
         }
     }
 
-
     public void restart() {
+//        RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
+//        if (worker != null) {
+//            worker.unsubscribe();
+//        }
+//        mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
     }
 
     private RxWorkObserver<T> createWorker(@NonNull Observable<T> observable) {

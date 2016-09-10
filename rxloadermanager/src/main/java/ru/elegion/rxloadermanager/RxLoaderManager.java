@@ -1,6 +1,7 @@
 package ru.elegion.rxloadermanager;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
@@ -20,11 +21,15 @@ public class RxLoaderManager {
         mRxLifecycleFragment = lifecycleFragment;
     }
 
-    public static RxLoaderManager get(Activity activity) {
-        RxLifecycleFragment lifecycleFragment = (RxLifecycleFragment) activity.getFragmentManager().findFragmentByTag(LIFECYCLE_FRAGMENT_TAG);
+    public static RxLoaderManager get(@NonNull Activity activity) {
+        return get(activity.getFragmentManager());
+    }
+
+    public static RxLoaderManager get(@NonNull FragmentManager fm) {
+        RxLifecycleFragment lifecycleFragment = (RxLifecycleFragment) fm.findFragmentByTag(LIFECYCLE_FRAGMENT_TAG);
         if (lifecycleFragment == null) {
             lifecycleFragment = new RxLifecycleFragment();
-            activity.getFragmentManager().beginTransaction().add(lifecycleFragment, LIFECYCLE_FRAGMENT_TAG).commit();
+            fm.beginTransaction().add(lifecycleFragment, LIFECYCLE_FRAGMENT_TAG).commit();
         }
         return new RxLoaderManager(lifecycleFragment);
     }
