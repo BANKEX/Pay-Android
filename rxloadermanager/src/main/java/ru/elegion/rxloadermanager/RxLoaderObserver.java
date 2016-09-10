@@ -1,4 +1,4 @@
-package ru.elegion.rxloadermanager.newrxloader;
+package ru.elegion.rxloadermanager;
 
 import android.util.Log;
 

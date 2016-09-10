@@ -1,4 +1,4 @@
-package ru.elegion.rxloadermanager.newrxloader;
+package ru.elegion.rxloadermanager;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -22,7 +22,6 @@ public class RxLoader<T> {
     @NonNull
     private RxLifecycleFragment mRxLifecycleFragment;
 
-
     public RxLoader(@IdRes int loaderId, @NonNull Observable<T> observable, @NonNull RxLoaderObserver<T> observer, @NonNull RxLifecycleFragment rxLifecycleFragment) {
         mLoaderId = loaderId;
         mObservable = observable;
@@ -30,10 +29,12 @@ public class RxLoader<T> {
         mRxLifecycleFragment = rxLifecycleFragment;
     }
 
-    public void start() {
+    public void init() {
         RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
         if (worker == null) {
             mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
+        } else {
+            worker.initObserver(mObserver);
         }
     }
 

@@ -1,7 +1,6 @@
-package ru.elegion.rxloadermanager.newrxloader;
+package ru.elegion.rxloadermanager;
 
 import android.app.Activity;
-import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
@@ -31,6 +30,6 @@ public class RxLoaderManager {
     }
 
     public <T> RxLoader<T> create(@IdRes int loaderId, @NonNull Observable<T> observable, @NonNull RxLoaderObserver<T> observer) {
-        return new RxLoader<>(loaderId, observable, observer);
+        return new RxLoader<>(loaderId, observable, observer, mRxLifecycleFragment);
     }
 }
