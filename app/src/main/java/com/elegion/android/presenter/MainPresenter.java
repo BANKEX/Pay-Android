@@ -13,8 +13,7 @@ import com.elegion.android.view.ErrorView;
 import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
 
-import java.util.concurrent.TimeUnit;
-
+import ru.elegion.rxloadermanager.RxLoader;
 import ru.elegion.rxloadermanager.RxLoaderManager;
 import rx.Observable;
 
@@ -34,6 +33,8 @@ public class MainPresenter {
     @NonNull
     private final RxLoaderManager mRxLoaderManager;
 
+    private boolean mIsLoaded;
+
     public MainPresenter(@NonNull MainView view, @NonNull LoadingView loadingView, @NonNull ErrorView errorView, @NonNull RxLoaderManager loaderManager) {
         mView = view;
         mRxLoaderManager = loaderManager;
@@ -41,19 +42,28 @@ public class MainPresenter {
     }
 
     public void dispatchStart() {
-        loadContent();
+        loadContent(false);
     }
 
     public void dispatchStop() {
     }
 
-    private void loadContent() {
+    private void loadContent(boolean refresh) {
         Observable<GroupInfo> observable = RepositoryProvider.provideGroupsRepository()
-                .getGroupInfo(E_LEGION_GROUP_ID)
-                .delay(3, TimeUnit.SECONDS);
-        mRxLoaderManager.create(R.id.group_info_loader, observable, mGroupInfoObserver)
-                .async()
-                .init();
+                .getGroupInfo(E_LEGION_GROUP_ID);
+
+        RxLoader<GroupInfo> loader = mRxLoaderManager.create(R.id.group_info_loader, observable, mGroupInfoObserver)
+                .async();
+
+        if (refresh) {
+            loader.restart();
+        } else {
+            loader.init();
+        }
+    }
+
+    public void refresh() {
+        loadContent(true);
     }
 
     private class GroupInfoObserver extends RxCompositeObserver<GroupInfo> {
@@ -65,7 +75,19 @@ public class MainPresenter {
 
         @Override
         public void onNext(@Nullable GroupInfo info) {
-            mView.showInfo(info);
+            if(info != null) {
+                mIsLoaded = true;
+                mView.hideEmptyStub();
+                mView.showInfo(info);
+            }
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            super.onError(e);
+            if(!mIsLoaded){
+                mView.showEmptyStub();
+            }
         }
     }
 }

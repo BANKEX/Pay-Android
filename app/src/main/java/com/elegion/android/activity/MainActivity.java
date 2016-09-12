@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,12 +24,13 @@ import com.elegion.android.view.MainView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import ru.elegion.rxloadermanager.RxLoaderManager;
 
 /**
  * @author Nikita Bumakov
  */
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements MainView, SwipeRefreshLayout.OnRefreshListener {
 
     @Bind(R.id.tv_description)
     TextView mDescriptionText;
@@ -37,20 +38,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Bind(R.id.iv_logo)
     ImageView mLogoImageView;
 
-    @Bind(R.id.progress)
-    ProgressBar mProgressBar;
+    @Bind(R.id.empty_stub)
+    View mEmptyStub;
+
+    @Bind(R.id.refresh_layout)
+    SwipeRefreshLayout mRefreshLayout;
 
     private MainPresenter mPresenter;
 
     private final LoadingView mLoadingView = new LoadingView() {
         @Override
         public void showLoadingIndicator() {
-            mProgressBar.setVisibility(View.VISIBLE);
+            mRefreshLayout.setRefreshing(true);
         }
 
         @Override
         public void hideLoadingIndicator() {
-            mProgressBar.setVisibility(View.GONE);
+            mRefreshLayout.setRefreshing(false);
         }
     };
 
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.ac_main);
         ButterKnife.bind(this);
         ToolbarUtil.setupToolbar(this);
+        mRefreshLayout.setOnRefreshListener(this);
         mPresenter = new MainPresenter(this, mLoadingView, RxError.view(this), RxLoaderManager.get(this));
     }
 
@@ -73,6 +78,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onStop() {
         super.onStop();
         mPresenter.dispatchStop();
+    }
+
+    @OnClick(R.id.bt_refresh)
+    public void onRefreshClick() {
+        mPresenter.refresh();
     }
 
     @Override
@@ -96,5 +106,20 @@ public class MainActivity extends AppCompatActivity implements MainView {
         Glide.with(this).load(url)
                 .placeholder(new ColorDrawable(ContextCompat.getColor(this, R.color.material_gray_100)))
                 .into(mLogoImageView);
+    }
+
+    @Override
+    public void showEmptyStub() {
+        mEmptyStub.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideEmptyStub() {
+        mEmptyStub.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.refresh();
     }
 }

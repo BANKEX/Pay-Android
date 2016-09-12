@@ -21,6 +21,7 @@ android {
         targetSdkVersion 24
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+        vectorDrawables.useSupportLibrary = true
 
         buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId

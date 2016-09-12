@@ -9,48 +9,51 @@
 
     <include layout="@layout/w_toolbar"/>
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <FrameLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/margin_medium">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:ignore="UseCompoundDrawables">
+                android:padding="@dimen/margin_medium">
 
-                <ImageView
-                    android:id="@+id/iv_logo"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="logo"
-                    android:scaleType="centerInside"
-                    tools:ignore="HardcodedText"/>
-
-                <TextView
-                    android:id="@+id/tv_description"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:gravity="clip_horizontal"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"/>
-            </LinearLayout>
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
-            <ProgressBar
-                android:id="@+id/progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:indeterminate="true"/>
-        </FrameLayout>
-    </ScrollView>
+                    <ImageView
+                        android:id="@+id/iv_logo"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="logo"
+                        android:scaleType="centerCrop"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:gravity="clip_horizontal"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <include
+                    layout="@layout/w_empty_stub"/>
+
+            </FrameLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
