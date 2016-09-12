@@ -35,6 +35,11 @@ public class RxLifecycleFragment extends Fragment {
 
     @Override
     public void onDetach() {
+        for (int i = 0; i < mWorkerSparseArray.size(); i++) {
+            int key = mWorkerSparseArray.keyAt(i);
+            RxWorkObserver workObserver = mWorkerSparseArray.get(key);
+//            workObserver.unsubscribe();
+        }
         super.onDetach();
     }
 

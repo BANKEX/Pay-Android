@@ -46,6 +46,15 @@ public class RxLoader<T> {
         mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
     }
 
+    public boolean unsubscribe() {
+        RxWorkObserver<T> subscriber = mRxLifecycleFragment.get(mLoaderId);
+        if (subscriber != null) {
+            subscriber.unsubscribe();
+            return true;
+        }
+        return false;
+    }
+
     public RxLoader<T> compose(@NonNull Observable.Transformer<T,T> transformer){
         mObservable = mObservable.compose(transformer);
         return this;

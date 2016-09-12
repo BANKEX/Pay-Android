@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,10 +23,16 @@ import com.elegion.android.util.ToolbarUtil;
 import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ru.arturvasilov.rxloader.LifecycleHandler;
+import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
+import ru.arturvasilov.rxloader.RxSchedulers;
 import ru.elegion.rxloadermanager.RxLoaderManager;
+import rx.Observable;
 
 /**
  * @author Nikita Bumakov
@@ -65,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         ButterKnife.bind(this);
         ToolbarUtil.setupToolbar(this);
         mRefreshLayout.setOnRefreshListener(this);
-        mPresenter = new MainPresenter(this, mLoadingView, RxError.view(this), RxLoaderManager.get(this));
+        mPresenter = new MainPresenter(this, this, mLoadingView, RxError.view(this), RxLoaderManager.get(this), getSupportLoaderManager());
     }
 
     @Override
@@ -78,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
     protected void onStop() {
         super.onStop();
         mPresenter.dispatchStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.dispatchDestroy();
     }
 
     @OnClick(R.id.bt_refresh)

@@ -27,12 +27,13 @@ public class GroupRepository {
     public Observable<GroupInfo> fetchGroupInfo(long groupId) {
         //noinspection Convert2MethodRef
         return mApi.getGroupInfo(groupId, "description")
+                .delay(15, TimeUnit.SECONDS) //simulating long data processing
                 .flatMap(groupResponse ->
                         Statement.ifThen(() -> CollectionUtil.isEmpty(groupResponse.getGroupInfoList()),
                                 Observable.empty(),
                                 Observable.just(groupResponse.getGroupInfoList().get(0))))
-                .flatMap(groupInfo -> RxSQLite.save(groupInfo))
-                .delay(10, TimeUnit.SECONDS); //simulating long data processing
+                .flatMap(groupInfo -> RxSQLite.save(groupInfo));
+
     }
 
 
