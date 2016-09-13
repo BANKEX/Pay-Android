@@ -2,9 +2,7 @@ package com.elegion.android.presenter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.elegion.android.R;
 import com.elegion.android.repository.RepositoryProvider;
@@ -13,13 +11,8 @@ import com.elegion.android.view.ErrorView;
 import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
 
-import java.util.concurrent.TimeUnit;
-
 import ru.elegion.rxloadermanager.RxLoaderManager;
 import ru.elegion.rxloadermanager.RxUtils;
-import rx.Observable;
-import rx.Subscription;
-import timber.log.Timber;
 
 /**
  * @author Nikita Bumakov
@@ -44,22 +37,6 @@ public class MainPresenter {
 
     private boolean mIsErrorHandled = false;
 
-    @Nullable
-    private Subscription mSubscription;
-
-    @NonNull
-    private final Handler mHandler = new Handler();
-
-    @NonNull
-    private final Runnable mUnsubscribeRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (mSubscription != null) {
-                mSubscription.unsubscribe();
-            }
-        }
-    };
-
     public MainPresenter(@NonNull Context context, @NonNull MainView view, @NonNull LoadingView loadingView, @NonNull ErrorView errorView) {
         mView = view;
         mErrorView = errorView;
@@ -69,25 +46,9 @@ public class MainPresenter {
 
     public void dispatchStart() {
         loadContent(false);
-        initSubscription();
     }
 
     public void dispatchStop() {
-        mHandler.postDelayed(mUnsubscribeRunnable, TimeUnit.SECONDS.toMillis(30));
-    }
-
-    private void initSubscription() {
-        mHandler.removeCallbacks(mUnsubscribeRunnable);
-        mSubscription = Observable.interval(1, TimeUnit.SECONDS)
-                .compose(RxUtils.async())
-                .compose(mRxLoaderManager.init(R.id.timer_loader))
-                .subscribe(value -> {
-                    if (value != null) {
-                        mView.showSubscriptionValue(value);
-                    }
-                }, throwable -> {
-                    Timber.e(throwable, throwable.getMessage());
-                });
     }
 
     private void loadContent(boolean refresh) {

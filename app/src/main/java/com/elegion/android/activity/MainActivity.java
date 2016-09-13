@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         ToolbarUtil.setupToolbar(this);
         mRefreshLayout.setOnRefreshListener(this);
         mPresenter = new MainPresenter(this, this, mLoadingView, RxError.view(this));
-
     }
 
     @Override

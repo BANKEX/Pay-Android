@@ -10,6 +10,4 @@ import com.elegion.android.model.GroupInfo;
 public interface MainView extends ErrorStubView {
 
     void showInfo(@NonNull GroupInfo groupInfo);
-
-    void showSubscriptionValue(long value);
 }
