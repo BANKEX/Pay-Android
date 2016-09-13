@@ -34,7 +34,31 @@ public class RxLoaderManager {
         return new RxLoaderManager(lifecycleFragment);
     }
 
-    public <T> RxLoader<T> create(@IdRes int loaderId, @NonNull Observable<T> observable, @NonNull RxLoaderObserver<T> observer) {
-        return new RxLoader<>(loaderId, observable, observer, mRxLifecycleFragment);
+    @NonNull
+    public <T> Observable.Transformer<T, T> init(@IdRes final int loaderId) {
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(@NonNull Observable<T> observable) {
+                if (mRxLifecycleFragment.getLoader(loaderId) == null) {
+                    RxLoader<T> rxLoader = new RxLoader<>(observable);
+                    mRxLifecycleFragment.putLoader(loaderId, rxLoader);
+                }
+                final RxLoader<T> rxLoader = mRxLifecycleFragment.getLoader(loaderId);
+                return rxLoader.getChildObservable();
+            }
+        };
+    }
+
+    @NonNull
+    public <T> Observable.Transformer<T, T> restart(@IdRes final int loaderId) {
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(final Observable<T> observable) {
+                mRxLifecycleFragment.destroyLoader(loaderId);
+                RxLoader<T> rxLoader = new RxLoader<>(observable);
+                mRxLifecycleFragment.putLoader(loaderId, rxLoader);
+                return rxLoader.getChildObservable();
+            }
+        };
     }
 }

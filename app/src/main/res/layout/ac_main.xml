@@ -50,8 +50,20 @@
                         android:textSize="20sp"/>
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/tv_subscription_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
                 <include
-                    layout="@layout/w_empty_stub"/>
+                    layout="@layout/w_error_stub"/>
 
             </FrameLayout>
         </ScrollView>

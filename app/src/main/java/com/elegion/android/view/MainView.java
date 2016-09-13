@@ -7,7 +7,9 @@ import com.elegion.android.model.GroupInfo;
 /**
  * @author Nikita Bumakov
  */
-public interface MainView extends EmptyView {
+public interface MainView extends ErrorStubView {
 
     void showInfo(@NonNull GroupInfo groupInfo);
+
+    void showSubscriptionValue(long value);
 }

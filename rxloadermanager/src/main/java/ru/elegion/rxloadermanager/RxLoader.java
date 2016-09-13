@@ -1,74 +1,140 @@
 package ru.elegion.rxloadermanager;
 
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
 
+import rx.AsyncEmitter;
 import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.MainThreadSubscription;
+import rx.functions.Action1;
 
 /**
  * @author Nikita Bumakov
  */
 public class RxLoader<T> {
 
-    @IdRes
-    private int mLoaderId;
+    private static final String TAG = RxLifecycleFragment.class.getSimpleName();
 
     @NonNull
-    private Observable<T> mObservable;
+    private Observable<T> mParentObservable;
 
-    @NonNull
-    private RxLoaderObserver<T> mObserver;
+    @Nullable
+    private Observable<T> mChildObservable;
 
-    @NonNull
-    private RxLifecycleFragment mRxLifecycleFragment;
+    @Nullable
+    private AsyncEmitter<T> mEmitter;
 
-    public RxLoader(@IdRes int loaderId, @NonNull Observable<T> observable, @NonNull RxLoaderObserver<T> observer, @NonNull RxLifecycleFragment rxLifecycleFragment) {
-        mLoaderId = loaderId;
-        mObservable = observable;
-        mObserver = observer;
-        mRxLifecycleFragment = rxLifecycleFragment;
+    @Nullable
+    private Subscription mSubscription;
+
+    @Nullable
+    private T mLastValue;
+
+    private boolean mIsErrorReported = false;
+
+    @Nullable
+    private Throwable mError;
+
+    private boolean mIsCompleted = false;
+
+    public RxLoader(@NonNull Observable<T> observable) {
+        mParentObservable = observable;
     }
 
-    public void init() {
-        RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
-        if (worker == null) {
-            mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
-        } else {
-            worker.initObserver(mObserver);
+    @NonNull
+    Observable<T> getChildObservable() {
+        if (mChildObservable == null) {
+            mChildObservable = Observable.fromEmitter(new EmitterAction(), AsyncEmitter.BackpressureMode.LATEST);
+        }
+        return mChildObservable;
+    }
+
+    void stopEmitting() {
+        Log.d(TAG, "stopEmitting");
+        mEmitter = null;
+        mChildObservable = null;
+    }
+
+    void reset() {
+        Log.d(TAG, "reset");
+        unsubscribe();
+        mChildObservable = null;
+        mLastValue = null;
+        mError = null;
+        mIsCompleted = false;
+        mIsErrorReported = false;
+        mEmitter = null;
+    }
+
+    private void unsubscribe() {
+        Log.d(TAG, "unsubscribe");
+        if (mSubscription != null) {
+            mSubscription.unsubscribe();
+            mSubscription = null;
         }
     }
 
-    public void restart() {
-        RxWorkObserver<T> worker = mRxLifecycleFragment.get(mLoaderId);
-        if (worker != null) {
-            worker.unsubscribe();
+    private void subscribe() {
+        if (mSubscription == null && mError == null && !mIsCompleted) {
+            Log.d(TAG, "subscribe");
+            mSubscription = mParentObservable.subscribe(new LoaderSubscriber());
         }
-        mRxLifecycleFragment.put(mLoaderId, createWorker(mObservable));
     }
 
-    public boolean unsubscribe() {
-        RxWorkObserver<T> subscriber = mRxLifecycleFragment.get(mLoaderId);
-        if (subscriber != null) {
-            subscriber.unsubscribe();
-            return true;
+    private class EmitterAction implements Action1<AsyncEmitter<T>> {
+
+        @Override
+        public void call(@NonNull AsyncEmitter<T> asyncEmitter) {
+            mEmitter = asyncEmitter;
+            mEmitter.setSubscription(new MainThreadSubscription() {
+                @Override
+                protected void onUnsubscribe() {
+                    RxLoader.this.unsubscribe();
+                }
+            });
+
+            if (mLastValue != null) {
+                mEmitter.onNext(mLastValue);
+            }
+            if (mIsCompleted) {
+                mEmitter.onCompleted();
+            } else if (mError != null && !mIsErrorReported) {
+                mEmitter.onError(mError);
+                mIsErrorReported = true;
+            }
+
+            subscribe();
         }
-        return false;
     }
 
-    public RxLoader<T> compose(@NonNull Observable.Transformer<T,T> transformer){
-        mObservable = mObservable.compose(transformer);
-        return this;
-    }
+    private class LoaderSubscriber extends Subscriber<T> {
 
-    public RxLoader<T> async(){
-        mObservable = mObservable.compose(RxUtil.<T>async());
-        return this;
-    }
+        @Override
+        public void onNext(T t) {
+            mLastValue = t;
+            if (mEmitter != null) {
+                mEmitter.onNext(t);
+            }
+        }
 
-    private RxWorkObserver<T> createWorker(@NonNull Observable<T> observable) {
-        RxWorkObserver<T> workObserver = new RxWorkObserver<>(mObserver);
-        workObserver.setSubscription(observable.subscribe(workObserver));
-        return workObserver;
-    }
+        @Override
+        public void onError(Throwable throwable) {
+            mError = throwable;
+            if (mEmitter != null) {
+                mEmitter.onError(throwable);
+                mIsErrorReported = true;
+            }
+        }
 
+        @Override
+        public void onCompleted() {
+            mIsCompleted = true;
+            if (mEmitter != null) {
+                mEmitter.onCompleted();
+            }
+        }
+    }
 }

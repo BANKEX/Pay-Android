@@ -2,7 +2,7 @@ package com.elegion.android.rx;
 
 import android.support.annotation.NonNull;
 
-import com.elegion.android.view.EmptyView;
+import com.elegion.android.view.ErrorStubView;
 import com.elegion.android.view.ErrorView;
 import com.elegion.android.view.LoadingView;
 
@@ -65,14 +65,14 @@ public final class RxDecor {
     }
 
     @NonNull
-    public static <T> Observable.Transformer<T, T> emptyStub(@NonNull EmptyView view) {
+    public static <T> Observable.Transformer<T, T> emptyStub(@NonNull ErrorStubView view) {
         return observable -> observable
-                .doOnSubscribe(view::hideEmptyStub)
+                .doOnSubscribe(view::hideErrorStub)
                 .switchIfEmpty(emptyObservable(view));
     }
 
-    private static <T> Observable<T> emptyObservable(@NonNull EmptyView view) {
-        return Observable.create((Observable.OnSubscribe<T>) Observer::onCompleted).doOnCompleted(view::showEmptyStub);
+    private static <T> Observable<T> emptyObservable(@NonNull ErrorStubView view) {
+        return Observable.create((Observable.OnSubscribe<T>) Observer::onCompleted).doOnCompleted(view::showErrorStub);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.elegion.android.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +10,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,16 +23,10 @@ import com.elegion.android.util.ToolbarUtil;
 import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
 
-import java.util.concurrent.TimeUnit;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
-import ru.arturvasilov.rxloader.RxSchedulers;
-import ru.elegion.rxloadermanager.RxLoaderManager;
-import rx.Observable;
+import timber.log.Timber;
 
 /**
  * @author Nikita Bumakov
@@ -45,8 +39,11 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
     @Bind(R.id.iv_logo)
     ImageView mLogoImageView;
 
-    @Bind(R.id.empty_stub)
-    View mEmptyStub;
+    @Bind(R.id.error_stub)
+    View mErrorStub;
+
+    @Bind(R.id.tv_subscription_value)
+    TextView mSubscriptionValueTextView;
 
     @Bind(R.id.refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
@@ -72,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         ButterKnife.bind(this);
         ToolbarUtil.setupToolbar(this);
         mRefreshLayout.setOnRefreshListener(this);
-        mPresenter = new MainPresenter(this, this, mLoadingView, RxError.view(this), RxLoaderManager.get(this), getSupportLoaderManager());
+        mPresenter = new MainPresenter(this, this, mLoadingView, RxError.view(this));
+
     }
 
     @Override
@@ -93,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         mPresenter.dispatchDestroy();
     }
 
+    @OnClick(R.id.next)
+    public void onNextClick() {
+        startActivity(new Intent(this, Main2Activity.class));
+    }
+
     @OnClick(R.id.bt_refresh)
     public void onRefreshClick() {
         mPresenter.refresh();
@@ -103,6 +106,12 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         setTitle(groupInfo.getName());
         setDescription(groupInfo.getDescription());
         setLogo(groupInfo.getPhoto());
+    }
+
+    @Override
+    public void showSubscriptionValue(long value) {
+        Timber.d("showSubscriptionValue %d", value);
+        mSubscriptionValueTextView.setText(String.valueOf(value));
     }
 
     private void setDescription(@Nullable String description) {
@@ -122,13 +131,13 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
     }
 
     @Override
-    public void showEmptyStub() {
-        mEmptyStub.setVisibility(View.VISIBLE);
+    public void showErrorStub() {
+        mErrorStub.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void hideEmptyStub() {
-        mEmptyStub.setVisibility(View.GONE);
+    public void hideErrorStub() {
+        mErrorStub.setVisibility(View.GONE);
     }
 
     @Override
