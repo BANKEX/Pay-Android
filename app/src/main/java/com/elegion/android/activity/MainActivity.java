@@ -1,6 +1,5 @@
 package com.elegion.android.activity;
 
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,7 +25,6 @@ import com.elegion.android.view.MainView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 /**
  * @author Nikita Bumakov
@@ -41,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
 
     @Bind(R.id.error_stub)
     View mErrorStub;
-
-    @Bind(R.id.tv_subscription_value)
-    TextView mSubscriptionValueTextView;
 
     @Bind(R.id.refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
@@ -70,6 +65,13 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         ToolbarUtil.setupToolbar(this);
         mRefreshLayout.setOnRefreshListener(this);
         mPresenter = new MainPresenter(this, this, mLoadingView, RxError.view(this));
+        mPresenter.dispatchCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mPresenter.saveInstantState(outState);
     }
 
     @Override
@@ -90,11 +92,6 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         mPresenter.dispatchDestroy();
     }
 
-    @OnClick(R.id.next)
-    public void onNextClick() {
-        startActivity(new Intent(this, Main2Activity.class));
-    }
-
     @OnClick(R.id.bt_refresh)
     public void onRefreshClick() {
         mPresenter.refresh();
@@ -105,12 +102,6 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         setTitle(groupInfo.getName());
         setDescription(groupInfo.getDescription());
         setLogo(groupInfo.getPhoto());
-    }
-
-    @Override
-    public void showSubscriptionValue(long value) {
-        Timber.d("showSubscriptionValue %d", value);
-        mSubscriptionValueTextView.setText(String.valueOf(value));
     }
 
     private void setDescription(@Nullable String description) {

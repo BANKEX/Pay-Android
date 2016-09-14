@@ -7,7 +7,10 @@ import rx.Observable;
 /**
  * @author Nikita Bumakov
  */
-public abstract class RxUtils {
+public final class RxUtils {
+
+    private RxUtils() {
+    }
 
     @NonNull
     public static <T> Observable.Transformer<T, T> async() {

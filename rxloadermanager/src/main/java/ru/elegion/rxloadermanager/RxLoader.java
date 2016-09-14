@@ -30,10 +30,12 @@ public class RxLoader<T> {
     @Nullable
     private Subscription mSubscription;
 
+    private boolean mHasLastValue = false;
+
     @Nullable
     private T mLastValue;
 
-    private boolean mIsErrorReported = false;
+    private boolean mHasError = false;
 
     @Nullable
     private Throwable mError;
@@ -47,7 +49,7 @@ public class RxLoader<T> {
     @NonNull
     Observable<T> getChildObservable() {
         if (mChildObservable == null) {
-            mChildObservable = Observable.fromEmitter(new EmitterAction(), AsyncEmitter.BackpressureMode.LATEST);
+            mChildObservable = Observable.fromEmitter(new EmitterAction(), AsyncEmitter.BackpressureMode.NONE);
         }
         return mChildObservable;
     }
@@ -62,10 +64,11 @@ public class RxLoader<T> {
         Log.d(TAG, "reset");
         unsubscribe();
         mChildObservable = null;
+        mHasLastValue = false;
         mLastValue = null;
+        mHasError = false;
         mError = null;
         mIsCompleted = false;
-        mIsErrorReported = false;
         mEmitter = null;
     }
 
@@ -84,6 +87,15 @@ public class RxLoader<T> {
         }
     }
 
+    private void emmitError() {
+        if (mEmitter == null) {
+            return;
+        }
+        mEmitter.onError(mError);
+        mHasError = false;
+        mError = null;
+    }
+
     private class EmitterAction implements Action1<AsyncEmitter<T>> {
 
         @Override
@@ -96,14 +108,13 @@ public class RxLoader<T> {
                 }
             });
 
-            if (mLastValue != null) {
+            if (mHasLastValue) {
                 mEmitter.onNext(mLastValue);
             }
             if (mIsCompleted) {
                 mEmitter.onCompleted();
-            } else if (mError != null && !mIsErrorReported) {
-                mEmitter.onError(mError);
-                mIsErrorReported = true;
+            } else if (mHasError) {
+                emmitError();
             }
 
             subscribe();
@@ -114,6 +125,7 @@ public class RxLoader<T> {
 
         @Override
         public void onNext(T t) {
+            mHasLastValue = true;
             mLastValue = t;
             if (mEmitter != null) {
                 mEmitter.onNext(t);
@@ -122,10 +134,10 @@ public class RxLoader<T> {
 
         @Override
         public void onError(Throwable throwable) {
+            mHasError = true;
             mError = throwable;
             if (mEmitter != null) {
-                mEmitter.onError(throwable);
-                mIsErrorReported = true;
+                emmitError();
             }
         }
 
