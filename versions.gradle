@@ -1,5 +1,5 @@
 ext {
-    supportVersion = '24.2.0'
+    supportVersion = '24.2.1'
     okhttpVersion = '3.2.0'
     retrofitVersion = '2.0.2'
     rxandroidVersion = '1.1.0'

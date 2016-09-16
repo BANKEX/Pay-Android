@@ -14,6 +14,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rxsqlite.RxSQLite;
 import sqlite4a.SQLiteDb;
+import timber.log.Timber;
 
 /**
  * @author Daniel Serdyukov
@@ -34,6 +35,9 @@ public class AppDelegate extends Application {
         sAppContext = getApplicationContext();
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
+        }
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
         }
         Lifecycler.register(this);
         RxSQLite.register(RxSQLiteProvider.provideClient(this));

@@ -25,16 +25,13 @@ public class GroupRepository {
 
     @NonNull
     public Observable<GroupInfo> fetchGroupInfo(long groupId) {
-        //noinspection Convert2MethodRef
         return Observable.timer(10, TimeUnit.SECONDS) //simulating long data processing
-                .flatMap(
-                        aLong -> mApi.getGroupInfo(groupId, "description")
-                )
+                .flatMap(time -> mApi.getGroupInfo(groupId, "description"))
                 .flatMap(groupResponse ->
                         Statement.ifThen(() -> CollectionUtil.isEmpty(groupResponse.getGroupInfoList()),
                                 Observable.empty(),
                                 Observable.just(groupResponse.getGroupInfoList().get(0))))
-                .flatMap(groupInfo -> RxSQLite.save(groupInfo));
+                .flatMap(this::saveGroupInfo);
     }
 
 
@@ -47,5 +44,16 @@ public class GroupRepository {
     @NonNull
     public Observable<GroupInfo> getGroupInfoLocal(long groupId) {
         return RxSQLite.query(GroupInfo.class, new RxSQLiteWhere().equalTo(GroupInfo.Columns._ID, groupId));
+    }
+
+    @NonNull
+    public Observable<Boolean> hasGroupInfoLocal(long groupId) {
+        return RxSQLite.query(GroupInfo.class, new RxSQLiteWhere().equalTo(GroupInfo.Columns._ID, groupId)).map(
+                groupInfo -> true
+        ).switchIfEmpty(Observable.just(false));
+    }
+
+    private Observable<GroupInfo> saveGroupInfo(@NonNull GroupInfo groupInfo) {
+        return RxSQLite.save(groupInfo);
     }
 }

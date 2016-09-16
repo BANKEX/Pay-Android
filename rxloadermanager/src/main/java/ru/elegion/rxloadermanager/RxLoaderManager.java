@@ -2,7 +2,6 @@ package ru.elegion.rxloadermanager;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
 import rx.Observable;
@@ -35,7 +34,7 @@ public class RxLoaderManager {
     }
 
     @NonNull
-    public <T> Observable.Transformer<T, T> init(@IdRes final int loaderId) {
+    public <T> Observable.Transformer<T, T> init(@NonNull final String loaderId) {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(@NonNull Observable<T> observable) {
@@ -50,7 +49,7 @@ public class RxLoaderManager {
     }
 
     @NonNull
-    public <T> Observable.Transformer<T, T> restart(@IdRes final int loaderId) {
+    public <T> Observable.Transformer<T, T> restart(@NonNull final String loaderId) {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(final Observable<T> observable) {

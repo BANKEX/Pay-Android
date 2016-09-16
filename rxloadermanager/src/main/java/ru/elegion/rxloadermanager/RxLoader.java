@@ -94,6 +94,7 @@ public class RxLoader<T> {
         mEmitter.onError(mError);
         mHasError = false;
         mError = null;
+        mIsCompleted = true;
     }
 
     private class EmitterAction implements Action1<AsyncEmitter<T>> {

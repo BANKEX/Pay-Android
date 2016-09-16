@@ -6,28 +6,28 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.elegion.android.R;
 import com.elegion.android.model.GroupInfo;
 import com.elegion.android.repository.RepositoryProvider;
 import com.elegion.android.rx.RxDecor;
 import com.elegion.android.view.ErrorView;
 import com.elegion.android.view.LoadingView;
 import com.elegion.android.view.MainView;
+import com.google.gson.Gson;
 
 import ru.elegion.rxloadermanager.RxLoaderManager;
-import ru.elegion.rxloadermanager.RxSchedulers;
 import ru.elegion.rxloadermanager.RxUtils;
+import timber.log.Timber;
 
 /**
  * @author Nikita Bumakov
  */
 public class MainPresenter {
 
-    private static final String ERROR_KEY = "error_key";
-    private static final String LOADING_KEY = "loading_key";
-    private static final String ERROR_HANDLED_KEY = "is_error_handled_key";
-
     private static final int E_LEGION_GROUP_ID = 34196694;
+
+    private static final String GROUP_INFO_LOADER = "group_info_loader";
+
+    private static final Gson GSON = new Gson();
 
     @NonNull
     private final MainView mView;
@@ -41,13 +41,8 @@ public class MainPresenter {
     @NonNull
     private final RxLoaderManager mRxLoaderManager;
 
-    private boolean mIsLoaded = false;
-
-    private boolean mIsLoading = false;
-
-    private boolean mIsError = false;
-
-    private boolean mIsErrorHandled = false;
+    @NonNull
+    private StateHandler mStateHandler = new StateHandler();
 
     public MainPresenter(@NonNull Context context, @NonNull MainView view, @NonNull LoadingView loadingView, @NonNull ErrorView errorView) {
         mView = view;
@@ -58,24 +53,20 @@ public class MainPresenter {
 
     public void dispatchCreate(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            mIsError = savedInstanceState.getBoolean(ERROR_KEY, false);
-            mIsLoading = savedInstanceState.getBoolean(LOADING_KEY, false);
-            mIsErrorHandled = savedInstanceState.getBoolean(ERROR_HANDLED_KEY, false);
+            mStateHandler = GSON.fromJson(savedInstanceState.getString(StateHandler.class.getName()), StateHandler.class);
         }
 
-        if (mIsError) {
+        if (mStateHandler.mIsGroupInfoErrorStub) {
             mView.showErrorStub();
         }
 
-        if (mIsLoading) {
+        if (mStateHandler.mIsGroupInfoLoading) {
             showLoading();
         }
     }
 
     public void saveInstantState(@NonNull Bundle outState) {
-        outState.putBoolean(ERROR_KEY, mIsError);
-        outState.putBoolean(LOADING_KEY, mIsLoading);
-        outState.putBoolean(ERROR_HANDLED_KEY, mIsErrorHandled);
+        outState.putString(StateHandler.class.getName(), GSON.toJson(mStateHandler));
     }
 
     public void dispatchStart() {
@@ -91,7 +82,6 @@ public class MainPresenter {
     }
 
     public void refresh() {
-        mIsErrorHandled = false;
         loadContent(true);
     }
 
@@ -101,44 +91,75 @@ public class MainPresenter {
                 .compose(RxUtils.async())
                 .doOnSubscribe(this::showLoading)
                 .compose(refresh
-                        ? mRxLoaderManager.restart(R.id.group_info_loader)
-                        : mRxLoaderManager.init(R.id.group_info_loader))
-                .observeOn(RxSchedulers.main())
+                        ? mRxLoaderManager.restart(GROUP_INFO_LOADER)
+                        : mRxLoaderManager.init(GROUP_INFO_LOADER))
                 .subscribe(this::handleResponse, this::handleError, this::onCompleted);
     }
 
     private void handleResponse(@Nullable GroupInfo groupInfo) {
+        Timber.d("onNext");
         if (groupInfo != null) {
-            mIsError = false;
-            mIsLoaded = true;
+            mStateHandler.onGroupInfoLoaded();
             mView.hideErrorStub();
             mView.showInfo(groupInfo);
         }
     }
 
     private void handleError(@NonNull Throwable throwable) {
+        Timber.d("onError");
+        mStateHandler.onError();
         hideLoading();
-        if (!mIsErrorHandled) {
-            mIsErrorHandled = true;
-            RxDecor.error(mErrorView).call(throwable);
-        }
-        if (!mIsLoaded) {
-            mIsError = true;
-            mView.showErrorStub();
-        }
+        RxDecor.error(mErrorView).call(throwable);
+
+        RepositoryProvider.provideGroupsRepository()
+                .hasGroupInfoLocal(E_LEGION_GROUP_ID)
+                .subscribe(hasInfo -> {
+                    if (!hasInfo) {
+                        mView.showErrorStub();
+                        mStateHandler.onErrorStubShown();
+                    }
+                });
     }
 
     private void onCompleted() {
+        Timber.d("onCompleted");
         hideLoading();
     }
 
     private void showLoading() {
-        mIsLoading = true;
+        mStateHandler.onGroupInfoLoading();
         mLoadingView.showLoadingIndicator();
     }
 
     private void hideLoading() {
-        mIsLoading = false;
+        mStateHandler.onLoadingComplete();
         mLoadingView.hideLoadingIndicator();
+    }
+
+    private static class StateHandler {
+
+        private boolean mIsGroupInfoLoading = false;
+
+        private boolean mIsGroupInfoErrorStub = false;
+
+        void onGroupInfoLoaded() {
+            mIsGroupInfoErrorStub = false;
+        }
+
+        void onGroupInfoLoading() {
+            mIsGroupInfoLoading = true;
+        }
+
+        void onLoadingComplete() {
+            mIsGroupInfoLoading = false;
+        }
+
+        void onError() {
+            mIsGroupInfoLoading = false;
+        }
+
+        void onErrorStubShown() {
+            mIsGroupInfoErrorStub = true;
+        }
     }
 }
