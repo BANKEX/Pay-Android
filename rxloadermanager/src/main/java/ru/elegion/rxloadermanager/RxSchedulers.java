@@ -9,6 +9,7 @@ import rx.schedulers.Schedulers;
 /**
  * @author Daniel Serdyukov
  */
+@SuppressWarnings("WeakerAccess")
 public final class RxSchedulers {
 
     private RxSchedulers() {

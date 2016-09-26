@@ -14,7 +14,7 @@ import rx.functions.Action1;
 /**
  * @author Nikita Bumakov
  */
-public class RxLoader<T> {
+class RxLoader<T> {
 
     private static final String TAG = RxLifecycleFragment.class.getSimpleName();
 
@@ -42,7 +42,7 @@ public class RxLoader<T> {
 
     private boolean mIsCompleted = false;
 
-    public RxLoader(@NonNull Observable<T> observable) {
+    RxLoader(@NonNull Observable<T> observable) {
         mParentObservable = observable;
     }
 

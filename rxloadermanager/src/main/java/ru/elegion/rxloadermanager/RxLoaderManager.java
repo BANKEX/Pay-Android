@@ -20,10 +20,12 @@ public class RxLoaderManager {
         mRxLifecycleFragment = lifecycleFragment;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static RxLoaderManager get(@NonNull Activity activity) {
         return get(activity.getFragmentManager());
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static RxLoaderManager get(@NonNull FragmentManager fm) {
         RxLifecycleFragment lifecycleFragment = (RxLifecycleFragment) fm.findFragmentByTag(LIFECYCLE_FRAGMENT_TAG);
         if (lifecycleFragment == null) {
