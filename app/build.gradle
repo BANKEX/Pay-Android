@@ -3,12 +3,12 @@ plugins {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+apply plugin: "me.tatarka.retrolambda"
 apply from: 'jacoco.gradle'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "24.0.2"
 
     packagingOptions {
         exclude 'LICENSE.txt'
@@ -17,17 +17,19 @@ android {
 
     defaultConfig {
         applicationId "com.elegion.android"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+        vectorDrawables.useSupportLibrary = true
 
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     signingConfigs {
@@ -86,29 +88,33 @@ android {
 apply from: '../versions.gradle'
 
 dependencies {
-    compile "com.android.support:support-v4:${supportVersion}"
-    compile "com.android.support:support-v13:${supportVersion}"
-    compile "com.android.support:appcompat-v7:${supportVersion}"
-    compile "com.android.support:recyclerview-v7:${supportVersion}"
-    compile "com.android.support:design:${supportVersion}"
-
-    compile "com.jakewharton:butterknife:${butterVersion}"
-    apt "com.jakewharton:butterknife-compiler:${butterVersion}"
-    compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
-    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    compile "com.github.bumptech.glide:glide:${glideVersion}"
-
-    compile "io.reactivex:rxandroid:${rxandroidVersion}"
+    compile "com.android.support:support-v4:$supportVersion"
+    compile "com.android.support:support-v13:$supportVersion"
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:recyclerview-v7:$supportVersion"
+    compile "com.android.support:design:$supportVersion"
+    compile "io.reactivex:rxandroid:$rxandroidVersion"
     compile "io.reactivex:rxjava:$rxjavaVersion"
+    compile 'io.reactivex:rxjava-computation-expressions:0.21.0'
     compile "rxsqlite:library:$rxSqliteVersion"
+
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.timber:timber:4.1.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
     provided "rxsqlite:compiler:$rxSqliteVersion"
-
-    devCompile "net.hockeyapp.android:HockeySDK:${hockeyAppVersion}"
-    mockCompile "net.hockeyapp.android:HockeySDK:${hockeyAppVersion}"
-
-    testCompile('junit:junit:4.12')
+    devCompile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
+    mockCompile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
+    testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile 'org.robolectric:robolectric:3.0'
+    compile project(':rxloadermanager')
 }
 
 

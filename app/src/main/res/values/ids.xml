@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="timer_loader" type="id"/>
+    <item name="group_info_loader" type="id"/>
+</resources>

@@ -2,10 +2,12 @@ package com.elegion.android.view;
 
 import android.support.annotation.NonNull;
 
-/**
- * @author Rovkin Max
- */
-public interface MainView {
+import com.elegion.android.model.GroupInfo;
 
-    void showMainText(@NonNull String string);
+/**
+ * @author Nikita Bumakov
+ */
+public interface MainView extends ErrorStubView {
+
+    void showInfo(@NonNull GroupInfo groupInfo);
 }
