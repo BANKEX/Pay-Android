@@ -5,7 +5,7 @@
               android:layout_height="match_parent"
               android:background="@color/white"
               android:orientation="vertical"
-              tools:context="com.elegion.android.activity.MainActivity">
+              tools:context="com.elegion.android.ui.main.MainActivity">
 
     <include layout="@layout/w_toolbar"/>
 
@@ -37,6 +37,7 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="logo"
                         android:scaleType="centerCrop"
+                        android:background="@color/colorPrimaryDark"
                         tools:ignore="HardcodedText"/>
 
                     <TextView
@@ -45,15 +46,17 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:gravity="clip_horizontal"
+                        android:gravity="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:text="@string/app_name"/>
+
                 </LinearLayout>
 
-                <include
-                    layout="@layout/w_error_stub"/>
-
             </FrameLayout>
+
         </ScrollView>
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

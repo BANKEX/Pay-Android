@@ -2,12 +2,9 @@
 <resources>
 
     <string name="app_name">AndroidProject</string>
-    <string name="hello_world">Hello world</string>
     <string name="loading">Загрузка…</string>
-    <string name="error_network">TODO: сообщение об отсутствии интернета</string>
+    <string name="error_network">Нет сети</string>
     <string name="button_ok">ОК</string>
-    <string name="error_unexpected">TODO: сообщение о непредвиденной ошибке</string>
-    <string name="empty_stub">TODO: ничего не загрузилось</string>
-    <string name="menu_refresh">Обновить</string>
+    <string name="error_unexpected">Неизвестная ошибка</string>
 
 </resources>
