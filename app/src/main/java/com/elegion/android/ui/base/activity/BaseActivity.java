@@ -2,14 +2,14 @@ package com.elegion.android.ui.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 
-/**
- * @author mikhail.funikov@e-legion.com on 29/06/2017.
- */
+import com.arellomobile.mvp.MvpAppCompatActivity;
 
-public abstract class BaseActivity extends AppCompatActivity {
+/**
+ * @author mikhail.funikov
+ */
+public abstract class BaseActivity extends MvpAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

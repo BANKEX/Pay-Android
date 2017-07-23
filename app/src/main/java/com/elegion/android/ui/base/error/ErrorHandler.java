@@ -1,13 +1,11 @@
 package com.elegion.android.ui.base.error;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.elegion.android.AppDelegate;
+import com.elegion.android.data.model.ErrorBean;
 import com.elegion.android.ui.base.view.ErrorView;
 import com.elegion.android.ui.base.view.NoInternetStubView;
-import com.elegion.android.util.AuthUtils;
 import com.elegion.android.util.GsonUtils;
 import com.google.gson.JsonSyntaxException;
 
@@ -26,12 +24,7 @@ import timber.log.Timber;
 /**
  * @author Max Kuznetsov on 15-Jun-17.
  */
-
 public class ErrorHandler {
-    public static final int PROFILE_DELETED_CODE = 410;
-    public static final int PROFILE_TEMPORARY_BLOCKED = 411;
-    public static final int PROFILE_BLOCKED = 412;
-
     protected static final List<Class<?>> NETWORK_EXCEPTIONS = Arrays.asList(
             UnknownHostException.class,
             SocketTimeoutException.class,
@@ -45,12 +38,12 @@ public class ErrorHandler {
         return new ErrorHandler(errorView, noInternetStubView);
     }
 
-    public ErrorHandler(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
+    private ErrorHandler(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
         this(errorView);
         mNoInternetStubView = noInternetStubView;
     }
 
-    public ErrorHandler(@NonNull ErrorView errorView) {
+    private ErrorHandler(@NonNull ErrorView errorView) {
         mErrorView = errorView;
     }
 
@@ -68,7 +61,7 @@ public class ErrorHandler {
     @NonNull
     public Action1<Throwable> error() {
         return e -> {
-            Timber.d(e, "from RxUtils.error");
+            Timber.d(e, "from ErrorHandler.error");
             handleError(e);
         };
     }
@@ -78,27 +71,16 @@ public class ErrorHandler {
             final HttpException httpException = (HttpException) e;
             int httpCode = httpException.code();
             // TODO: rewrite to handle general unauthorized error
-            if (httpCode == PROFILE_DELETED_CODE) {
-                mRepository.logout();
-                AuthUtils.openLoginActivity(AppDelegate.getAppContext());
-            } else if (httpCode == PROFILE_TEMPORARY_BLOCKED) {
-                final Context context = AppDelegate.getAppContext();
-                context.startActivity(BlockedActivity.makeIntent(context, MainLaunchMode.TEMPORARY_BLOCKED));
-            } else if (httpCode == PROFILE_BLOCKED) {
-                final Context context = AppDelegate.getAppContext();
-                context.startActivity(BlockedActivity.makeIntent(context, MainLaunchMode.BLOCKED));
-            } else {
-                try {
-                    final String errorBody = httpException.response().errorBody().string();
-                    final ErrorBean errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean.class);
-                    if (errorBean != null) {
-                        handleProtocolError(errorBean, httpException);
-                    } else {
-                        handleNonProtocolError(httpException);
-                    }
-                } catch (IOException | IllegalStateException | JsonSyntaxException e1) {
+            try {
+                final String errorBody = httpException.response().errorBody().string();
+                final ErrorBean errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean.class);
+                if (errorBean != null) {
+                    handleProtocolError(errorBean, httpException);
+                } else {
                     handleNonProtocolError(httpException);
                 }
+            } catch (IOException | IllegalStateException | JsonSyntaxException e1) {
+                handleNonProtocolError(httpException);
             }
         } else if (NETWORK_EXCEPTIONS.contains(e.getClass())) {
             if (null == mNoInternetStubView || !mNoInternetStubView.showNoInternetStub()) {

@@ -6,7 +6,7 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.pchela.android.R;
+import com.elegion.android.R;
 
 /**
  * @author mikhail barannikov

@@ -15,6 +15,8 @@ android {
         versionName rootProject.versionName
         vectorDrawables.useSupportLibrary = true
 
+        manifestPlaceholders = [HOCKEY_APP_ID: rootProject.hockeyAppId]
+
         buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
@@ -111,6 +113,10 @@ dependencies {
     compile "com.jakewharton.timber:timber:$timberVersion"
     compile "com.jakewharton:butterknife:$butterknifeVersion"
     compile "com.squareup.picasso:picasso:$picassoVersion"
+
+    compile 'com.arello-mobile:moxy:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
 
     compile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
 

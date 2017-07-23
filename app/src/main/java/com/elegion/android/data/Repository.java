@@ -4,15 +4,20 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.elegion.android.data.local.PreferencesRepository;
+import com.elegion.android.data.model.UserProfile;
 import com.elegion.android.data.provider.ServiceProvider;
 import com.elegion.android.data.remote.TemplateService;
+
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
 
 /**
  * @author mikhail barannikov
  */
 public class Repository {
-    private final PreferencesRepository mPreferencesRepository;
-    private final TemplateService mTemplateService;
+    private PreferencesRepository mPreferencesRepository;
+    private TemplateService mTemplateService;
     private static Repository sInstance;
 
     public static Repository get(Context context) {
@@ -30,5 +35,13 @@ public class Repository {
     public void logout() {
         mPreferencesRepository.setLoginToken("");
         mPreferencesRepository.setCurrentUser(null);
+    }
+
+    public Observable<Boolean> login(String email, String password) {
+        return Observable.defer(() -> Observable.just(true).delay(5000, TimeUnit.MILLISECONDS));
+    }
+
+    public Observable<UserProfile> getProfile(long id) {
+        return mTemplateService.getProfile(id);
     }
 }

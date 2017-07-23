@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 /**
  * @author azret.magometov on 09-Feb-17.
  */
-
 public abstract class AbstractPaginationAdapter<H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H> {
     public static final int LOAD_OFFSET = 4;
 

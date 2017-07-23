@@ -4,24 +4,28 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.pchela.android.ui.base.presenter.BasePresenter;
+import com.arellomobile.mvp.MvpAppCompatFragment;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
- * @author mikhail barannikov
+ * @author Mike
  */
-public abstract class BindViewFragment<T extends BasePresenter> extends AttachableFragment<T> {
+public class BaseFragment extends MvpAppCompatFragment {
+    protected Unbinder mUnbinder;
+    protected boolean mIsAfterOnSavedState;
 
     private Runnable mRunOnResume;
-    private boolean mIsAfterOnSavedState;
 
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bindViews(view);
         mIsAfterOnSavedState = false;
+        if (mUnbinder == null && view != null) {
+            mUnbinder = ButterKnife.bind(this, view);
+        }
     }
-
-    protected abstract void bindViews(View view);
 
     @Override
     public void onResume() {
@@ -36,6 +40,14 @@ public abstract class BindViewFragment<T extends BasePresenter> extends Attachab
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mIsAfterOnSavedState = true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     public void postOnResume(@Nullable Runnable run) {

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 
-import com.pchela.android.R;
-import com.pchela.android.data.Repository;
-import com.pchela.android.ui.main.MainActivity;
-import com.pchela.android.ui.tutorial.activity.TutorialActivity;
+import com.elegion.android.R;
+import com.elegion.android.ui.login.LoginActivity;
 
 /**
  * @author mikhail barannikov
@@ -56,29 +54,15 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 mTimerFinished = true;
-                boolean isTutorialShown = Repository.get().isTutorialShown();
-                if (isTutorialShown) {
-                    openNextActivity();
-                } else {
-                    showTutorial();
-                }
+                openNextActivity();
             }
         };
     }
 
     private void openNextActivity() {
         if (mTimerFinished) {
-            // TODO: add getLoginCode check logic here
-            openMainActivity();
+            startActivity(LoginActivity.makeIntent(this));
+            finish();
         }
-    }
-
-    private void openMainActivity() {
-        startActivity(MainActivity.makeIntent(this));
-    }
-
-    private void showTutorial() {
-        startActivity(TutorialActivity.makeIntent(this));
-        finish();
     }
 }

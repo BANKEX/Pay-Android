@@ -5,7 +5,6 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * @author mikhail barannikov
  */
-
 public class BasePresenter {
     private boolean mIsViewAttached;
     protected CompositeSubscription mCompositeSubscription;

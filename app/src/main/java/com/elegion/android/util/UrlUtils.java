@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 
+import com.elegion.android.R;
+
 /**
  * @author Mike
  */
