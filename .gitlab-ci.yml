@@ -37,4 +37,4 @@ checkstyle:
       - app/build/reports/checkstyle/checkstyle.html
       - app/build/reports/findbugs/findbugs.html
       - app/build/reports/pmd/pmd.html
-      - app/build/outputs/lint-results-prodRelease.html
+      - app/build/reports/lint-results-prodRelease.html
