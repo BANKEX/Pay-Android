@@ -20,6 +20,12 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="SeparatorView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
     <!-- Dialog -->
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColorPrimary">@color/black</item>

@@ -11,9 +11,12 @@ android {
         applicationId "com.elegion.android"
         minSdkVersion 16
         targetSdkVersion 25
+
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
 
         manifestPlaceholders = [HOCKEY_APP_ID: rootProject.hockeyAppId]
 
@@ -94,6 +97,8 @@ android {
 apply from: '../versions.gradle'
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:support-v13:$supportVersion"
     compile "com.android.support:customtabs:$supportVersion"
@@ -112,6 +117,7 @@ dependencies {
 
     compile "com.jakewharton.timber:timber:$timberVersion"
     compile "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     compile "com.squareup.picasso:picasso:$picassoVersion"
 
     compile 'com.arello-mobile:moxy:1.5.3'

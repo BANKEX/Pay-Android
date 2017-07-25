@@ -12,6 +12,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.elegion.android.R;
 import com.elegion.android.data.Repository;
 import com.elegion.android.ui.base.fragment.BaseNoInternetFragment;
+import com.elegion.android.ui.profiles.ProfilesActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,7 +41,7 @@ public class LoginFragment extends BaseNoInternetFragment implements LoginView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fr_login, container);
+        return inflater.inflate(R.layout.fr_login, container, false);
     }
 
     @OnClick(R.id.login_btn)
@@ -70,6 +71,6 @@ public class LoginFragment extends BaseNoInternetFragment implements LoginView {
 
     @Override
     public void loginSuccessful() {
-
+        startActivity(ProfilesActivity.makeIntent(getActivity()));
     }
 }

@@ -69,8 +69,6 @@ public class ErrorHandler {
     private void handleError(Throwable e) {
         if (e instanceof HttpException) {
             final HttpException httpException = (HttpException) e;
-            int httpCode = httpException.code();
-            // TODO: rewrite to handle general unauthorized error
             try {
                 final String errorBody = httpException.response().errorBody().string();
                 final ErrorBean errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean.class);

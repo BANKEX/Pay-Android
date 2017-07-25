@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.spiking.spike.android.ui.widget.NoInternetView
+<com.elegion.android.ui.widget.NoInternetView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/no_internet_view"

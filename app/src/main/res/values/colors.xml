@@ -5,4 +5,5 @@
     <color name="material_gray_100">#fff5f5f5</color>
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
+    <color name="divider">@android:color/darker_gray</color>
 </resources>

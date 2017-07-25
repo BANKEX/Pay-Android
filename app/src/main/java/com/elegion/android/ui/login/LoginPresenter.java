@@ -1,13 +1,14 @@
 package com.elegion.android.ui.login;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
 
 /**
  * @author Mike
  */
-
-class LoginPresenter extends MvpPresenter<LoginView> {
+@InjectViewState
+public class LoginPresenter extends MvpPresenter<LoginView> {
     private String mEmail;
     private String mPassword;
     private Repository mRepository;
@@ -18,6 +19,7 @@ class LoginPresenter extends MvpPresenter<LoginView> {
 
     public void login() {
         // TODO: fix the view problem: we need loading, error, no internet, empty stub views here
+        getViewState().loginSuccessful();
 //        mRepository.login(mEmail, mPassword)
 //                .compose(RxUtils::async)
 //                .compose(RxUtils.loading(getViewState()))

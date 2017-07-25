@@ -8,6 +8,8 @@ import com.elegion.android.data.model.UserProfile;
 import com.elegion.android.data.provider.ServiceProvider;
 import com.elegion.android.data.remote.TemplateService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -43,5 +45,20 @@ public class Repository {
 
     public Observable<UserProfile> getProfile(long id) {
         return mTemplateService.getProfile(id);
+    }
+
+    public Observable<List<UserProfile>> getProfiles(int offset, int count) {
+        return Observable.defer(() -> {
+            final List<UserProfile> profiles = new ArrayList<>();
+            UserProfile userProfile;
+            final int amount = offset + count;
+            for (int i = offset; i < amount; i++) {
+                userProfile = new UserProfile();
+                userProfile.setFirstName("First name " + i);
+                userProfile.setLastName("Last name " + i);
+                profiles.add(userProfile);
+            }
+            return Observable.just(profiles);
+        });
     }
 }
