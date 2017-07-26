@@ -24,7 +24,7 @@ public abstract class BaseNoInternetFragment extends BaseFragment implements NoI
     private View.OnClickListener mTryAgainListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            BaseNoInternetFragment.this.tryAgain();
+            tryAgain();
         }
     };
 
