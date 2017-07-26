@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class AddToEndSingleByTagStrategy implements StateStrategy {
     @Override
-    public <View extends MvpView> void beforeApply(List<ViewCommand<View>> currentState, ViewCommand<View> incomingCommand) {
-        Iterator<ViewCommand<View>> iterator = currentState.iterator();
+    public <T extends MvpView> void beforeApply(List<ViewCommand<T>> currentState, ViewCommand<T> incomingCommand) {
+        Iterator<ViewCommand<T>> iterator = currentState.iterator();
 
         while (iterator.hasNext()) {
-            ViewCommand<View> entry = iterator.next();
+            ViewCommand<T> entry = iterator.next();
 
             if (entry.getTag().equals(incomingCommand.getTag())) {
                 iterator.remove();
@@ -30,7 +30,7 @@ public class AddToEndSingleByTagStrategy implements StateStrategy {
     }
 
     @Override
-    public <View extends MvpView> void afterApply(List<ViewCommand<View>> currentState, ViewCommand<View> incomingCommand) {
+    public <T extends MvpView> void afterApply(List<ViewCommand<T>> currentState, ViewCommand<T> incomingCommand) {
         // pass
     }
 }
