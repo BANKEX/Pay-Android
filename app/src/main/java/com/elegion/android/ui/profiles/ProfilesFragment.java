@@ -15,6 +15,8 @@ import com.elegion.android.ui.profiles.adapter.ProfilesAdapter;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * @author mikhail.barannikov on 24.07.2017
  */
@@ -56,7 +58,14 @@ public class ProfilesFragment extends BaseRecyclerFragment implements ProfilesVi
 
     @Override
     public void showProfiles(List<UserProfile> profiles, boolean clear) {
+        Timber.d("MOXY: showProfiles(%s)", clear);
         mAdapter.setData(profiles, clear);
+    }
+
+    @Override
+    public void clearProfiles() {
+        // pass
+        Timber.d("MOXY: clearProfiles()");
     }
 
     @Override

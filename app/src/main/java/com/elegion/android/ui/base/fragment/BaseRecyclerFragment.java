@@ -34,6 +34,11 @@ public abstract class BaseRecyclerFragment extends BaseRefresherFragment {
         return view;
     }
 
+    @Override
+    protected boolean shouldShowNoInternetStubView() {
+        return mRecyclerView.getAdapter().getItemCount() == 0;
+    }
+
     protected int getLayout() {
         return R.layout.fr_recycler;
     }
@@ -59,15 +64,7 @@ public abstract class BaseRecyclerFragment extends BaseRefresherFragment {
     }
 
     @Override
-    public boolean showNoInternetStub() {
-        // show only if we have no items in adapter
-        return mRecyclerView.getAdapter().getItemCount() == 0 && super.showNoInternetStub();
-    }
-
-    @Override
     protected View[] getViews() {
         return new View[]{mRecyclerView};
     }
-
-    public abstract void tryAgain();
 }

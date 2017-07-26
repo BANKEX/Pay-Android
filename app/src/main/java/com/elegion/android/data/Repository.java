@@ -40,7 +40,7 @@ public class Repository {
     }
 
     public Observable<Boolean> login(String email, String password) {
-        return Observable.defer(() -> Observable.just(true).delay(5000, TimeUnit.MILLISECONDS));
+        return Observable.just(true).delay(3000, TimeUnit.MILLISECONDS);
     }
 
     public Observable<UserProfile> getProfile(long id) {
@@ -59,6 +59,6 @@ public class Repository {
                 profiles.add(userProfile);
             }
             return Observable.just(profiles);
-        });
+        }).delay(3000, TimeUnit.MILLISECONDS);
     }
 }

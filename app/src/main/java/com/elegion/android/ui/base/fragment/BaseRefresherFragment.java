@@ -3,15 +3,15 @@ package com.elegion.android.ui.base.fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.elegion.android.R;
-import com.elegion.android.ui.base.view.LoadingView;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 /**
  * @author Mike
  */
 public abstract class BaseRefresherFragment extends BaseNoInternetFragment
-        implements LoadingView, SwipeRefreshLayout.OnRefreshListener {
+        implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.refresher)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -29,6 +29,7 @@ public abstract class BaseRefresherFragment extends BaseNoInternetFragment
 
     @Override
     public void showLoadingIndicator() {
+        Timber.d("MOXY: Refresher showLoadingIndicator()");
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.post(() -> {
                 if (mSwipeRefreshLayout != null) {
@@ -40,6 +41,7 @@ public abstract class BaseRefresherFragment extends BaseNoInternetFragment
 
     @Override
     public void hideLoadingIndicator() {
+        Timber.d("MOXY: Refresher hideLoadingIndicator()");
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.post(() -> {
                 if (mSwipeRefreshLayout != null) {

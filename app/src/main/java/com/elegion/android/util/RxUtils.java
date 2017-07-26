@@ -1,12 +1,29 @@
 package com.elegion.android.util;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 
+import com.elegion.android.AppDelegate;
+import com.elegion.android.data.Repository;
+import com.elegion.android.data.model.ErrorBean;
 import com.elegion.android.data.remote.response.EmptyListResponse;
 import com.elegion.android.ui.base.view.ErrorStubView;
+import com.elegion.android.ui.base.view.ErrorView;
 import com.elegion.android.ui.base.view.LoadingView;
+import com.elegion.android.ui.base.view.NoInternetStubView;
+import com.elegion.android.ui.login.LoginActivity;
+import com.google.gson.JsonSyntaxException;
 
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.List;
+
+import retrofit2.HttpException;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
@@ -20,15 +37,16 @@ import timber.log.Timber;
  */
 
 public class RxUtils {
+    private static final List<Class<?>> NETWORK_EXCEPTIONS = Arrays.asList(
+            UnknownHostException.class,
+            SocketTimeoutException.class,
+            ConnectException.class
+    );
 
     public static void unsubscribe(Subscription subscription) {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
-    }
-
-    public static <T> Observable.Transformer<T, T> emptyTransformer() {
-        return tObservable -> tObservable;
     }
 
     public static boolean isNullOrUnsubscribed(Subscription subscription) {
@@ -60,13 +78,6 @@ public class RxUtils {
     }
 
     @NonNull
-    public static <T> Observable.Transformer<T, T> emptyStub(@NonNull ErrorStubView view) {
-        return observable -> observable
-                .doOnSubscribe(view::hideErrorStub)
-                .switchIfEmpty(emptyObservable(view));
-    }
-
-    @NonNull
     public static <T extends EmptyListResponse> Observable.Transformer<T, T> emptyErrorStub(@NonNull ErrorStubView view) {
         return observable -> observable
                 .doOnSubscribe(view::hideErrorStub)
@@ -95,11 +106,72 @@ public class RxUtils {
                 });
     }
 
+    @NonNull
+    public static <T> Observable.Transformer<T, T> errorTransformer(@NonNull ErrorView errorView,
+                                                                    @NonNull Repository repository,
+                                                                    @Nullable NoInternetStubView noInternetStubView) {
+        return observable -> observable
+                .doOnSubscribe(() -> {
+                    if (noInternetStubView != null) {
+                        noInternetStubView.hideNoInternetStub();
+                    }
+                })
+                .doOnError(error(errorView, repository));
+    }
+
+    @NonNull
+    public static Action1<Throwable> error(@NonNull ErrorView errorView, @NonNull Repository repository) {
+        return e -> {
+            Timber.d(e, "from RxUtils.error");
+            handleError(e, errorView, repository);
+        };
+    }
+
+    private static void handleError(Throwable e, @NonNull ErrorView errorView, @NonNull Repository repository) {
+        if (e instanceof HttpException) {
+            final HttpException httpException = (HttpException) e;
+            if (httpException.code() == 401) {
+                final Context context = AppDelegate.getAppContext();
+                if (context != null) {
+                    AuthUtils.logout(repository);
+                    context.startActivity(LoginActivity.makeIntent(context));
+                }
+            } else {
+                try {
+                    final String errorBody = httpException.response().errorBody().string();
+                    final ErrorBean errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean.class);
+                    if (errorBean != null) {
+                        errorView.showErrorMessage(errorBean.getMessage());
+                    } else {
+                        errorView.showErrorMessage(httpException.message());
+                    }
+                } catch (IOException | IllegalStateException | JsonSyntaxException e1) {
+                    errorView.showErrorMessage(httpException.message());
+                }
+            }
+        } else if (NETWORK_EXCEPTIONS.contains(e.getClass())) {
+            errorView.showNetworkError();
+        } else {
+            errorView.showUnexpectedError();
+        }
+    }
+
+    @NonNull
+    public static <T> Observable.Transformer<T, T> emptyStub(@NonNull ErrorStubView view) {
+        return observable -> observable
+                .doOnSubscribe(view::hideErrorStub)
+                .switchIfEmpty(emptyObservable(view));
+    }
+
     private static <T> Observable<T> emptyObservable(@NonNull ErrorStubView view) {
         return Observable.create((Observable.OnSubscribe<T>) Observer::onCompleted).doOnCompleted(view::showErrorStub);
     }
 
     public static void errorNoAction(Throwable e) {
         Timber.d(e, "errorNoAction");
+    }
+
+    public static <T> Observable.Transformer<T, T> emptyTransformer() {
+        return tObservable -> tObservable;
     }
 }

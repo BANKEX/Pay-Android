@@ -3,6 +3,9 @@ package com.elegion.android.ui.login;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
+import com.elegion.android.util.RxUtils;
+
+import rx.Subscription;
 
 /**
  * @author Mike
@@ -12,17 +15,26 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
     private String mEmail;
     private String mPassword;
     private Repository mRepository;
+    private Subscription mSubscription;
 
     public LoginPresenter(Repository repository) {
         mRepository = repository;
     }
 
     public void login() {
-        // TODO: fix the view problem: we need loading, error, no internet, empty stub views here
-        getViewState().loginSuccessful();
-//        mRepository.login(mEmail, mPassword)
-//                .compose(RxUtils::async)
-//                .compose(RxUtils.loading(getViewState()))
+        if (RxUtils.isNullOrUnsubscribed(mSubscription)) {
+            mSubscription = mRepository.login(mEmail, mPassword)
+                    .compose(RxUtils::async)
+                    .compose(RxUtils.loading(getViewState()))
+                    .compose(RxUtils.errorTransformer(getViewState(), mRepository, getViewState()))
+                    .subscribe(this::handleLogin, RxUtils::errorNoAction);
+        }
+    }
+
+    private void handleLogin(Boolean loggedIn) {
+        if (loggedIn) {
+            getViewState().loginSuccessful();
+        }
     }
 
     public void setEmail(String email) {

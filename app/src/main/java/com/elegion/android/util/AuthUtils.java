@@ -1,6 +1,6 @@
 package com.elegion.android.util;
 
-import android.content.Context;
+import com.elegion.android.data.Repository;
 
 /**
  * @author Mike
@@ -10,7 +10,7 @@ public class AuthUtils {
         // private constructor
     }
 
-    public static void openLoginActivity(Context context) {
-        // TODO: open login activity here
+    public static void logout(Repository repository) {
+        repository.logout();
     }
 }

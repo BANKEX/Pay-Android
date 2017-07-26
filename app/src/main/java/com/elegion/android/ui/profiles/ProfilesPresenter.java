@@ -41,15 +41,19 @@ public class ProfilesPresenter extends MvpPresenter<ProfilesView> {
         }
 
         if (!mIsLastPage && RxUtils.isNullOrUnsubscribed(mLoadProfilesSubscription)) {
-            mRepository.getProfiles(mOffset, PAGE_COUNT)
+            mLoadProfilesSubscription = mRepository.getProfiles(mOffset, PAGE_COUNT)
                     .compose(RxUtils::async)
-//                    .compose(RxUtils.loading(mLoadingView))
+                    .compose(RxUtils.loading(getViewState()))
                     .subscribe(this::handleProfilesResponse, RxUtils::errorNoAction);
         }
     }
 
     private void handleProfilesResponse(List<UserProfile> userProfiles) {
-        getViewState().showProfiles(userProfiles, mOffset == 0);
+        final boolean clear = mOffset == 0;
+        if (clear) {
+            getViewState().clearProfiles();
+        }
+        getViewState().showProfiles(userProfiles, clear);
         mOffset = mOffset + userProfiles.size();
         mIsLastPage = mOffset > 50;
     }

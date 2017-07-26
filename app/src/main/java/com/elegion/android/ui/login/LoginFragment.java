@@ -72,5 +72,6 @@ public class LoginFragment extends BaseNoInternetFragment implements LoginView {
     @Override
     public void loginSuccessful() {
         startActivity(ProfilesActivity.makeIntent(getActivity()));
+        getActivity().finish();
     }
 }

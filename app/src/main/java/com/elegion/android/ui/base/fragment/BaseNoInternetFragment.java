@@ -41,6 +41,19 @@ public abstract class BaseNoInternetFragment extends BaseFragment implements NoI
     }
 
     @Override
+    public void showNetworkError() {
+        if (shouldShowNoInternetStubView()) {
+            showNoInternetStub();
+        } else {
+            super.showNetworkError();
+        }
+    }
+
+    protected boolean shouldShowNoInternetStubView() {
+        return true;
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         mNoInternetView.setButtonClickListener(null);
@@ -54,10 +67,9 @@ public abstract class BaseNoInternetFragment extends BaseFragment implements NoI
     }
 
     @Override
-    public boolean showNoInternetStub() {
+    public void showNoInternetStub() {
         ViewUtils.setVisibility(View.INVISIBLE, getViews());
         ViewUtils.setVisibility(View.VISIBLE, getNoInternetViews());
-        return true;
     }
 
     protected View[] getNoInternetViews() {

@@ -16,7 +16,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.HttpException;
 import rx.Observable;
 import rx.functions.Action1;
 import timber.log.Timber;
@@ -24,7 +24,7 @@ import timber.log.Timber;
 /**
  * @author Max Kuznetsov on 15-Jun-17.
  */
-public class ErrorHandler {
+public class ErrorHandlerImpl {
     protected static final List<Class<?>> NETWORK_EXCEPTIONS = Arrays.asList(
             UnknownHostException.class,
             SocketTimeoutException.class,
@@ -34,16 +34,16 @@ public class ErrorHandler {
     private ErrorView mErrorView;
     private NoInternetStubView mNoInternetStubView;
 
-    public static ErrorHandler create(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
-        return new ErrorHandler(errorView, noInternetStubView);
+    public static ErrorHandlerImpl create(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
+        return new ErrorHandlerImpl(errorView, noInternetStubView);
     }
 
-    private ErrorHandler(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
+    protected ErrorHandlerImpl(@NonNull ErrorView errorView, @Nullable NoInternetStubView noInternetStubView) {
         this(errorView);
         mNoInternetStubView = noInternetStubView;
     }
 
-    private ErrorHandler(@NonNull ErrorView errorView) {
+    protected ErrorHandlerImpl(@NonNull ErrorView errorView) {
         mErrorView = errorView;
     }
 
@@ -61,7 +61,7 @@ public class ErrorHandler {
     @NonNull
     public Action1<Throwable> error() {
         return e -> {
-            Timber.d(e, "from ErrorHandler.error");
+            Timber.d(e, "from ErrorHandlerImpl.error");
             handleError(e);
         };
     }
@@ -81,7 +81,7 @@ public class ErrorHandler {
                 handleNonProtocolError(httpException);
             }
         } else if (NETWORK_EXCEPTIONS.contains(e.getClass())) {
-            if (null == mNoInternetStubView || !mNoInternetStubView.showNoInternetStub()) {
+            if (null == mNoInternetStubView) {
                 handleNetworkError(e);
             }
         } else {
