@@ -55,6 +55,7 @@ android {
         release {
             minifyEnabled true
             versionNameSuffix '-test'
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'int', 'TEST_SDK_INT', '16'
         }
