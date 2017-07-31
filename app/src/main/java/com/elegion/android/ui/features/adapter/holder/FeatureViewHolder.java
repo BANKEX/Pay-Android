@@ -15,12 +15,10 @@ import butterknife.ButterKnife;
  */
 
 public class FeatureViewHolder extends RecyclerView.ViewHolder {
-    @BindView(R.id.top_layout)
-    View mTopLayout;
     @BindView(R.id.feature_title)
-    TextView mFirstName;
+    TextView mFeatureTitle;
     @BindView(R.id.feature_description)
-    TextView mLastName;
+    TextView mFeatureDescription;
 
     private Feature mFeature;
 
@@ -31,8 +29,8 @@ public class FeatureViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Feature feature) {
         mFeature = feature;
-        mFirstName.setText(mFeature.getTitle());
-        mLastName.setText(mFeature.getDescription());
+        mFeatureTitle.setText(mFeature.getTitle());
+        mFeatureDescription.setText(mFeature.getDescription());
     }
 
 }
