@@ -1,6 +1,6 @@
 package com.elegion.android.data.remote;
 
-import com.elegion.android.data.model.UserProfile;
+import com.elegion.android.data.model.Feature;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,5 +12,5 @@ import rx.Observable;
 public interface TemplateService {
 
     @GET("api/v1/sample")
-    Observable<UserProfile> getProfile(@Query("id") long id);
+    Observable<Feature> getFeature(@Query("id") long id);
 }

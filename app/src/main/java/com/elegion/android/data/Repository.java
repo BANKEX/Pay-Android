@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.elegion.android.data.local.PreferencesRepository;
-import com.elegion.android.data.model.UserProfile;
+import com.elegion.android.data.model.Feature;
 import com.elegion.android.data.provider.ServiceProvider;
 import com.elegion.android.data.remote.TemplateService;
 
@@ -43,22 +43,18 @@ public class Repository {
         return Observable.just(true).delay(3000, TimeUnit.MILLISECONDS);
     }
 
-    public Observable<UserProfile> getProfile(long id) {
-        return mTemplateService.getProfile(id);
+    public Observable<Feature> getFeature(long id) {
+        return mTemplateService.getFeature(id);
     }
 
-    public Observable<List<UserProfile>> getProfiles(int offset, int count) {
+    public Observable<List<Feature>> getFeatures(int offset, int count) {
         return Observable.defer(() -> {
-            final List<UserProfile> profiles = new ArrayList<>();
-            UserProfile userProfile;
+            final List<Feature> features = new ArrayList<>();
             final int amount = offset + count;
             for (int i = offset; i < amount; i++) {
-                userProfile = new UserProfile();
-                userProfile.setFirstName("First name " + i);
-                userProfile.setLastName("Last name " + i);
-                profiles.add(userProfile);
+                features.add(new Feature("Title " + i, "Description " + i));
             }
-            return Observable.just(profiles);
+            return Observable.just(features);
         }).delay(3000, TimeUnit.MILLISECONDS);
     }
 }

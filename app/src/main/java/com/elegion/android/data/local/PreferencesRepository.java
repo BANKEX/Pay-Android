@@ -7,49 +7,49 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 
-import com.elegion.android.data.model.UserProfile;
+import com.elegion.android.data.model.Feature;
 import com.elegion.android.util.GsonUtils;
 
 /**
  * @author mikhail barannikov
  */
 public class PreferencesRepository {
-    private static final String KEY_USER_PROFILE = "KEY_USER_PROFILE";
+    private static final String KEY_FEATURE = "KEY_FEATURE";
     private static final String KEY_LOGIN_TOKEN = "KEY_LOGIN_TOKEN";
 
     private static SharedPreferences mPreferences;
 
-    private UserProfile mCurrentUserProfile;
+    private Feature mCurrentFeature;
 
     public PreferencesRepository(Context context) {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
     }
 
-    public UserProfile peekCurrentUser() {
-        return mCurrentUserProfile;
+    public Feature peekCurrentUser() {
+        return mCurrentFeature;
     }
 
     @WorkerThread
-    public UserProfile setCurrentUser(UserProfile userProfile) {
-        mCurrentUserProfile = userProfile;
+    public Feature setCurrentUser(Feature feature) {
+        mCurrentFeature = feature;
 
-        if (userProfile == null) {
-            mPreferences.edit().remove(KEY_USER_PROFILE).apply();
+        if (feature == null) {
+            mPreferences.edit().remove(KEY_FEATURE).apply();
         } else {
-            String userJson = GsonUtils.gson().toJson(userProfile, UserProfile.class);
-            mPreferences.edit().putString(KEY_USER_PROFILE, userJson).apply();
+            String userJson = GsonUtils.gson().toJson(feature, Feature.class);
+            mPreferences.edit().putString(KEY_FEATURE, userJson).apply();
         }
 
-        return mCurrentUserProfile;
+        return mCurrentFeature;
     }
 
     @WorkerThread
-    public UserProfile getCurrentUserProfile() {
-        if (mCurrentUserProfile == null) {
-            mCurrentUserProfile = objectFromJsonPreference(KEY_USER_PROFILE, UserProfile.class);
+    public Feature getCurrentFeature() {
+        if (mCurrentFeature == null) {
+            mCurrentFeature = objectFromJsonPreference(KEY_FEATURE, Feature.class);
         }
 
-        return mCurrentUserProfile;
+        return mCurrentFeature;
     }
 
     @Nullable

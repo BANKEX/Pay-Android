@@ -1,4 +1,4 @@
-package com.elegion.android.ui.profiles;
+package com.elegion.android.ui.features;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import com.elegion.android.util.ToolbarUtils;
 /**
  * @author Mike
  */
-public class ProfilesActivity extends SingleFragmentActivity {
+public class FeaturesActivity extends SingleFragmentActivity {
 
     public static Intent makeIntent(@NonNull Context context) {
-        return new Intent(context, ProfilesActivity.class);
+        return new Intent(context, FeaturesActivity.class);
     }
 
     @Override
@@ -46,6 +46,6 @@ public class ProfilesActivity extends SingleFragmentActivity {
 
     @Override
     public Fragment getFragment() {
-        return ProfilesFragment.newInstance();
+        return FeaturesFragment.newInstance();
     }
 }

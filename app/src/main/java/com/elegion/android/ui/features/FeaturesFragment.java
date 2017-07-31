@@ -1,4 +1,4 @@
-package com.elegion.android.ui.profiles;
+package com.elegion.android.ui.features;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.elegion.android.data.Repository;
-import com.elegion.android.data.model.UserProfile;
+import com.elegion.android.data.model.Feature;
 import com.elegion.android.ui.base.adapter.AbstractPaginationAdapter;
 import com.elegion.android.ui.base.fragment.BaseRecyclerFragment;
-import com.elegion.android.ui.profiles.adapter.ProfilesAdapter;
+import com.elegion.android.ui.features.adapter.FeaturesAdapter;
 
 import java.util.List;
 
@@ -20,19 +20,19 @@ import timber.log.Timber;
 /**
  * @author mikhail.barannikov on 24.07.2017
  */
-public class ProfilesFragment extends BaseRecyclerFragment implements ProfilesView, AbstractPaginationAdapter.Callback {
+public class FeaturesFragment extends BaseRecyclerFragment implements FeaturesView, AbstractPaginationAdapter.Callback {
     @InjectPresenter
-    ProfilesPresenter mPresenter;
+    FeaturesPresenter mPresenter;
 
-    private ProfilesAdapter mAdapter = new ProfilesAdapter();
+    private FeaturesAdapter mAdapter = new FeaturesAdapter();
 
     @ProvidePresenter
-    ProfilesPresenter providePresenter() {
-        return new ProfilesPresenter(Repository.get(getActivity()));
+    FeaturesPresenter providePresenter() {
+        return new FeaturesPresenter(Repository.get(getActivity()));
     }
 
     public static Fragment newInstance() {
-        return new ProfilesFragment();
+        return new FeaturesFragment();
     }
 
     @Override
@@ -48,28 +48,28 @@ public class ProfilesFragment extends BaseRecyclerFragment implements ProfilesVi
 
     @Override
     public void onRefresh() {
-        mPresenter.loadProfiles(true);
+        mPresenter.loadFeatures(true);
     }
 
     @Override
     public void tryAgain() {
-        mPresenter.loadProfiles(true);
+        mPresenter.loadFeatures(true);
     }
 
     @Override
-    public void showProfiles(List<UserProfile> profiles, boolean clear) {
-        Timber.d("MOXY: showProfiles(%s)", clear);
-        mAdapter.setData(profiles, clear);
+    public void showFeatures(List<Feature> features, boolean clear) {
+        Timber.d("MOXY: showFeatures(%s)", clear);
+        mAdapter.setData(features, clear);
     }
 
     @Override
-    public void clearProfiles() {
+    public void clearFeatures() {
         // pass
-        Timber.d("MOXY: clearProfiles()");
+        Timber.d("MOXY: clearFeatures()");
     }
 
     @Override
     public void loadMore() {
-        mPresenter.loadProfiles(false);
+        mPresenter.loadFeatures(false);
     }
 }
