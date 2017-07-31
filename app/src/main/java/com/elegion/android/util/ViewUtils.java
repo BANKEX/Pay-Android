@@ -45,8 +45,7 @@ public final class ViewUtils {
     }
 
     public static int dpToPx(float dp) {
-        float density = Resources.getSystem().getDisplayMetrics().density;
-        return Math.round(dp * density);
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
     public static int spToPx(float sp) {
