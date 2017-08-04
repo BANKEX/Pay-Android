@@ -13,7 +13,6 @@ import com.elegion.android.ui.base.view.ErrorStubView;
 import com.elegion.android.ui.base.view.ErrorView;
 import com.elegion.android.ui.base.view.LoadingView;
 import com.elegion.android.ui.base.view.NoInternetStubView;
-import com.elegion.android.ui.login.LoginActivity;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
@@ -131,10 +130,11 @@ public class RxUtils {
         if (e instanceof HttpException) {
             final HttpException httpException = (HttpException) e;
             if (httpException.code() == 401) {
+                errorView.showErrorMessage(httpException.message());
                 final Context context = AppDelegate.getAppContext();
                 if (context != null) {
                     AuthUtils.logout(repository);
-                    context.startActivity(LoginActivity.makeIntent(context));
+                    AuthUtils.openLogin(context);
                 }
             } else {
                 try {

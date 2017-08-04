@@ -10,5 +10,8 @@
     <string name="no_internet">No internet</string>
     <string name="try_again">Try again</string>
     <string name="login">Login</string>
+    <string name="login_email_hint">Github username</string>
+    <string name="login_pwd_hint">Github password</string>
+    <string name="menu_logout">Logout</string>
 
 </resources>

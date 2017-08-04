@@ -23,7 +23,7 @@ import butterknife.OnTextChanged;
  */
 
 public class LoginFragment extends BaseNoInternetFragment implements LoginView {
-    @BindView(R.id.top_layout)
+    @BindView(R.id.content_layout)
     View mTopLayout;
 
     @InjectPresenter

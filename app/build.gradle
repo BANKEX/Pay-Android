@@ -20,7 +20,7 @@ android {
 
         manifestPlaceholders = [HOCKEY_APP_ID: rootProject.hockeyAppId]
 
-        buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.github.com/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
 

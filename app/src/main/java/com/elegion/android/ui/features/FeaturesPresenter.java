@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
 import com.elegion.android.data.model.Feature;
+import com.elegion.android.util.AuthUtils;
 import com.elegion.android.util.RxUtils;
 
 import java.util.List;
@@ -56,5 +57,9 @@ public class FeaturesPresenter extends MvpPresenter<FeaturesView> {
         getViewState().showFeatures(features, clear);
         mOffset = mOffset + features.size();
         mIsLastPage = mOffset > 50;
+    }
+
+    public void logout() {
+        AuthUtils.logout(mRepository);
     }
 }

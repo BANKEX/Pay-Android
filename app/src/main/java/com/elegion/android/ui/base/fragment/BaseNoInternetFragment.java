@@ -9,8 +9,6 @@ import com.elegion.android.ui.base.view.NoInternetStubView;
 import com.elegion.android.ui.widget.EmptyView;
 import com.elegion.android.util.ViewUtils;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 
 /**
@@ -61,7 +59,6 @@ public abstract class BaseNoInternetFragment extends BaseFragment implements NoI
 
     @Override
     public void hideNoInternetStub() {
-        new ArrayList<View>().toArray();
         ViewUtils.setVisibility(View.GONE, getNoInternetViews());
         ViewUtils.setVisibility(View.VISIBLE, getViews());
     }

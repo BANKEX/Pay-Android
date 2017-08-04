@@ -1,9 +1,11 @@
 package com.elegion.android.data.remote;
 
-import com.elegion.android.data.model.Feature;
+import com.elegion.android.data.remote.request.LoginRequest;
+import com.elegion.android.data.remote.response.LoginResponse;
 
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Body;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 import rx.Observable;
 
 /**
@@ -11,6 +13,7 @@ import rx.Observable;
  */
 public interface TemplateService {
 
-    @GET("api/v1/sample")
-    Observable<Feature> getFeature(@Query("id") long id);
+    @POST("authorizations")
+    Observable<LoginResponse> obtainOAuthToken(@Header("Authorization") String basicAuthHeader,
+                                               @Body LoginRequest params);
 }

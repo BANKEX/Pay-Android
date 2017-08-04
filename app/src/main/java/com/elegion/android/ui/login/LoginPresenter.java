@@ -3,6 +3,7 @@ package com.elegion.android.ui.login;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
+import com.elegion.android.data.remote.response.LoginResponse;
 import com.elegion.android.util.RxUtils;
 
 import rx.Subscription;
@@ -31,10 +32,9 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
         }
     }
 
-    private void handleLogin(Boolean loggedIn) {
-        if (loggedIn) {
-            getViewState().loginSuccessful();
-        }
+    private void handleLogin(LoginResponse response) {
+        mRepository.saveLoginToken(response.getToken());
+        getViewState().loginSuccessful();
     }
 
     public void setEmail(String email) {
