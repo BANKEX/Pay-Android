@@ -77,6 +77,6 @@ public class Repository {
                 features.add(new Feature("Title " + i, "Description " + i));
             }
             return Observable.just(features);
-        }).delay(3000, TimeUnit.MILLISECONDS);
+        }).delay(1500, TimeUnit.MILLISECONDS);
     }
 }
