@@ -42,10 +42,12 @@ public class FeaturesPresenter extends MvpPresenter<FeaturesView> {
         }
 
         if (!mIsLastPage && RxUtils.isNullOrUnsubscribed(mLoadFeaturesSubscription)) {
+            mSubscription.remove(mLoadFeaturesSubscription);
             mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
                     .subscribe(this::handleFeaturesResponse, RxUtils::errorNoAction);
+            mSubscription.add(mLoadFeaturesSubscription);
         }
     }
 

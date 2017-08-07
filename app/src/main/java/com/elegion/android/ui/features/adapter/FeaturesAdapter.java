@@ -22,7 +22,7 @@ public class FeaturesAdapter extends AbstractPaginationAdapter<FeatureViewHolder
     @Override
     public FeatureViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.li_feature, parent, false);
+        final View view = inflater.inflate(R.layout.li_feature, parent, false);
         return new FeatureViewHolder(view);
     }
 

@@ -1,7 +1,9 @@
 package com.elegion.android.ui.base.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +27,8 @@ public abstract class BaseRecyclerFragment extends BaseRefresherFragment {
     @BindView(R.id.empty_view)
     protected EmptyView mEmptyView;
 
+    protected RecyclerView.LayoutManager mLayoutManager;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,9 +47,16 @@ public abstract class BaseRecyclerFragment extends BaseRefresherFragment {
         return R.layout.fr_recycler;
     }
 
+    @CallSuper
     protected void initRecycler() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mLayoutManager = getLayoutManager();
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(getAdapter());
+    }
+
+    @NonNull
+    protected RecyclerView.LayoutManager getLayoutManager() {
+        return new LinearLayoutManager(getActivity());
     }
 
     protected abstract RecyclerView.Adapter getAdapter();
