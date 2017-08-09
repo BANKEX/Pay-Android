@@ -1,8 +1,12 @@
 package com.elegion.android.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -11,6 +15,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Patterns;
@@ -72,6 +77,21 @@ public class StringUtil {
             int to = builder.length();
             builder.setSpan(span, from, to, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+    }
+
+    public static ImageSpan getImageSpan(@NonNull Context context, @DrawableRes int icon) {
+        final Drawable d = ContextCompat.getDrawable(context, icon);
+        return getImageSpan(context, d);
+    }
+
+    public static ImageSpan getImageSpan(@NonNull Context context, @NonNull Bitmap bitmap) {
+        final Drawable d = new BitmapDrawable(context.getResources(), bitmap);
+        return getImageSpan(context, d);
+    }
+
+    public static ImageSpan getImageSpan(@NonNull Context context, @NonNull Drawable drawable) {
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        return new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
     }
 
     @NonNull
