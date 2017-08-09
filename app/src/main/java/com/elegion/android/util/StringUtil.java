@@ -21,21 +21,22 @@ import android.text.style.StyleSpan;
 import android.util.Patterns;
 
 /**
- * Created by azret.magometov on 30-Jan-17.
+ * Created by Mike
  */
-
 public class StringUtil {
 
     private StringUtil() {
     }
 
-    public static SpannableStringBuilder getColoredText(Context context, String text, @ColorRes int color) {
+    @NonNull
+    public static SpannableStringBuilder getColoredText(@NonNull Context context, @NonNull String text, @ColorRes int color) {
         SpannableStringBuilder result = new SpannableStringBuilder();
         appendAndSetSpan(result, text, getColoredSpan(context, color));
         return result;
     }
 
-    public static SpannableStringBuilder getBoldText(String boldText, String text) {
+    @NonNull
+    public static SpannableStringBuilder getBoldText(@NonNull String boldText, @NonNull String text) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
         appendAndSetSpan(builder, boldText, getBoldSpan());
         builder.append(" ");
@@ -43,7 +44,9 @@ public class StringUtil {
         return builder;
     }
 
-    public static SpannableStringBuilder getColoredTexts(Context context, String[] texts, @ColorRes int[] colorRes, @Nullable String connector) {
+    @NonNull
+    public static SpannableStringBuilder getColoredTexts(@NonNull Context context, @NonNull String[] texts,
+                                                         @ColorRes int[] colorRes, @Nullable String connector) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
         for (int i = 0; i < texts.length; i++) {
             appendAndSetSpan(builder, texts[i], getColoredSpan(context, colorRes[i]));
@@ -60,7 +63,8 @@ public class StringUtil {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public static CharSequence fromHtml(String html) {
+    @NonNull
+    public static CharSequence fromHtml(@NonNull String html) {
         Spanned result;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
@@ -70,7 +74,7 @@ public class StringUtil {
         return result;
     }
 
-    private static void appendAndSetSpan(SpannableStringBuilder builder, String text, Object span) {
+    private static void appendAndSetSpan(@NonNull SpannableStringBuilder builder, @NonNull String text, @NonNull Object span) {
         if (!TextUtils.isEmpty(text)) {
             int from = builder.length();
             builder.append(text);
@@ -79,23 +83,26 @@ public class StringUtil {
         }
     }
 
+    @NonNull
     private static ImageSpan getImageSpan(@NonNull Context context, @DrawableRes int icon) {
         final Drawable d = ContextCompat.getDrawable(context, icon);
         return getImageSpan(context, d);
     }
 
+    @NonNull
     private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Bitmap bitmap) {
         final Drawable d = new BitmapDrawable(context.getResources(), bitmap);
         return getImageSpan(context, d);
     }
 
+    @NonNull
     private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Drawable drawable) {
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         return new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
     }
 
     @NonNull
-    private static ForegroundColorSpan getColoredSpan(Context context, int color) {
+    private static ForegroundColorSpan getColoredSpan(@NonNull Context context, @ColorRes int color) {
         return new ForegroundColorSpan(ContextCompat.getColor(context, color));
     }
 
