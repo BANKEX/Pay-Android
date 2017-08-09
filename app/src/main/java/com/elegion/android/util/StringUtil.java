@@ -35,7 +35,7 @@ public class StringUtil {
         return result;
     }
 
-    public static SpannableStringBuilder getBoldTitle(String boldText, String text) {
+    public static SpannableStringBuilder getBoldText(String boldText, String text) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
         appendAndSetSpan(builder, boldText, getBoldSpan());
         builder.append(" ");
@@ -54,20 +54,20 @@ public class StringUtil {
         return builder;
     }
 
-    public static SpannableStringBuilder getSecondTextColored(Context context, String text, String colored, @ColorRes int color) {
-        SpannableStringBuilder builder = new SpannableStringBuilder();
-        builder.append(text);
-        builder.append(" ");
-        appendAndSetSpan(builder, colored, getColoredSpan(context, color));
-        return builder;
+    /** GENERAL METHODS **/
+
+    public static boolean isEmail(@Nullable String email) {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public static SpannableStringBuilder getFirstTextColored(Context context, String colored, String text, @ColorRes int color) {
-        SpannableStringBuilder builder = new SpannableStringBuilder();
-        appendAndSetSpan(builder, colored, getColoredSpan(context, color));
-        builder.append(" ");
-        builder.append(text);
-        return builder;
+    public static CharSequence fromHtml(String html) {
+        Spanned result;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            result = Html.fromHtml(html);
+        }
+        return result;
     }
 
     private static void appendAndSetSpan(SpannableStringBuilder builder, String text, Object span) {
@@ -79,17 +79,17 @@ public class StringUtil {
         }
     }
 
-    public static ImageSpan getImageSpan(@NonNull Context context, @DrawableRes int icon) {
+    private static ImageSpan getImageSpan(@NonNull Context context, @DrawableRes int icon) {
         final Drawable d = ContextCompat.getDrawable(context, icon);
         return getImageSpan(context, d);
     }
 
-    public static ImageSpan getImageSpan(@NonNull Context context, @NonNull Bitmap bitmap) {
+    private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Bitmap bitmap) {
         final Drawable d = new BitmapDrawable(context.getResources(), bitmap);
         return getImageSpan(context, d);
     }
 
-    public static ImageSpan getImageSpan(@NonNull Context context, @NonNull Drawable drawable) {
+    private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Drawable drawable) {
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         return new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
     }
@@ -109,17 +109,5 @@ public class StringUtil {
         return new RelativeSizeSpan(relativeSize);
     }
 
-    public static boolean isEmail(@Nullable String email) {
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    public static CharSequence fromHtml(String html) {
-        Spanned result;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            result = Html.fromHtml(html);
-        }
-        return result;
-    }
+    /** END OF GENERAL METHODS **/
 }
