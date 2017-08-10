@@ -13,5 +13,7 @@
     <string name="login_email_hint">Github username</string>
     <string name="login_pwd_hint">Github password</string>
     <string name="menu_logout">Logout</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 
 </resources>

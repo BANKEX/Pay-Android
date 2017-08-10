@@ -15,4 +15,5 @@ ext {
     hockeyAppVersion = '4.1.5'
     stethoVersion = '1.5.0'
     constraintVersion = '1.0.2'
+    frescoVersion = '1.3.0'
 }
