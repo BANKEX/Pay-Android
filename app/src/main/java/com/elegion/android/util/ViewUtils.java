@@ -148,6 +148,7 @@ public final class ViewUtils {
             field.setAccessible(true);
             field.set(editor, drawables);
         } catch (Exception ignored) {
+            // ignored
         }
     }
 
