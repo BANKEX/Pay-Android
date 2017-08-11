@@ -18,19 +18,21 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     private String mEmail;
     private String mPassword;
     private Repository mRepository;
-    private Subscription mSubscription;
+    private Subscription mLoginSubscription;
 
     public LoginPresenter(@NonNull Repository repository) {
         mRepository = repository;
     }
 
     public void login() {
-        if (RxUtils.isNullOrUnsubscribed(mSubscription)) {
-            mSubscription = mRepository.login(mEmail, mPassword)
+        if (RxUtils.isNullOrUnsubscribed(mLoginSubscription)) {
+            removeSubscription(mLoginSubscription);
+            mLoginSubscription = mRepository.login(mEmail, mPassword)
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
                     .compose(RxUtils.errorTransformer(getViewState(), mRepository, getViewState()))
                     .subscribe(this::handleLogin, RxUtils::errorNoAction);
+            addSubscription(mLoginSubscription);
         }
     }
 
