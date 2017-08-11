@@ -1,33 +1,30 @@
 package com.elegion.android.ui.features;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
 import com.elegion.android.data.model.Feature;
+import com.elegion.android.ui.base.presenter.BasePresenter;
 import com.elegion.android.util.AuthUtils;
 import com.elegion.android.util.RxUtils;
 
 import java.util.List;
 
 import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author mikhail.barannikov on 24.07.2017
  */
 @InjectViewState
-public class FeaturesPresenter extends MvpPresenter<FeaturesView> {
+public class FeaturesPresenter extends BasePresenter<FeaturesView> {
     private static final int PAGE_COUNT = 20;
 
     private int mOffset = 0;
     private Repository mRepository;
-    private CompositeSubscription mSubscription;
     private Subscription mLoadFeaturesSubscription;
     private boolean mIsLastPage;
 
     public FeaturesPresenter(Repository repository) {
         mRepository = repository;
-        mSubscription = new CompositeSubscription();
     }
 
     @Override
@@ -42,12 +39,12 @@ public class FeaturesPresenter extends MvpPresenter<FeaturesView> {
         }
 
         if (!mIsLastPage && RxUtils.isNullOrUnsubscribed(mLoadFeaturesSubscription)) {
-            mSubscription.remove(mLoadFeaturesSubscription);
+            removeSubscription(mLoadFeaturesSubscription);
             mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
                     .subscribe(this::handleFeaturesResponse, RxUtils::errorNoAction);
-            mSubscription.add(mLoadFeaturesSubscription);
+            addSubscription(mLoadFeaturesSubscription);
         }
     }
 

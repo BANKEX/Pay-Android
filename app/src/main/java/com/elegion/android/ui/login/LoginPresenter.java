@@ -1,9 +1,9 @@
 package com.elegion.android.ui.login;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
 import com.elegion.android.data.remote.response.LoginResponse;
+import com.elegion.android.ui.base.presenter.BasePresenter;
 import com.elegion.android.util.RxUtils;
 
 import rx.Subscription;
@@ -12,7 +12,7 @@ import rx.Subscription;
  * @author Mike
  */
 @InjectViewState
-public class LoginPresenter extends MvpPresenter<LoginView> {
+public class LoginPresenter extends BasePresenter<LoginView> {
     private String mEmail;
     private String mPassword;
     private Repository mRepository;

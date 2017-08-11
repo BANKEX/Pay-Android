@@ -42,13 +42,13 @@ public class RxUtils {
             ConnectException.class
     );
 
-    public static void unsubscribe(Subscription subscription) {
+    public static void unsubscribe(@Nullable Subscription subscription) {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
     }
 
-    public static boolean isNullOrUnsubscribed(Subscription subscription) {
+    public static boolean isNullOrUnsubscribed(@Nullable Subscription subscription) {
         return subscription == null || subscription.isUnsubscribed();
     }
 

@@ -3,14 +3,14 @@ package com.elegion.android.ui.splash;
 import android.text.TextUtils;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
 import com.elegion.android.data.Repository;
+import com.elegion.android.ui.base.presenter.BasePresenter;
 
 /**
  * @author mikhail.barannikov on 04.08.2017
  */
 @InjectViewState
-public class SplashPresenter extends MvpPresenter<SplashView> {
+public class SplashPresenter extends BasePresenter<SplashView> {
 
     private final Repository mRepository;
 
