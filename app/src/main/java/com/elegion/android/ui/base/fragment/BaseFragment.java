@@ -1,10 +1,13 @@
 package com.elegion.android.ui.base.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.elegion.android.ui.base.view.ErrorView;
@@ -18,13 +21,21 @@ import butterknife.Unbinder;
 /**
  * @author Mike
  */
-public class BaseFragment extends MvpAppCompatFragment implements LoadingView, ErrorView {
+public abstract class BaseFragment extends MvpAppCompatFragment implements LoadingView, ErrorView {
     protected Unbinder mUnbinder;
     protected boolean mIsAfterOnSavedState;
 
     private Runnable mRunOnResume;
     protected LoadingView mLoadingView;
     protected ErrorView mErrorView;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(getLayout(), container, false);
+        mUnbinder = ButterKnife.bind(this, view);
+        return view;
+    }
 
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
@@ -80,6 +91,9 @@ public class BaseFragment extends MvpAppCompatFragment implements LoadingView, E
     protected ErrorView getErrorView() {
         return new ToastErrorView(getActivity());
     }
+
+    @LayoutRes
+    protected abstract int getLayout();
 
     @Override
     public void showLoadingIndicator() {

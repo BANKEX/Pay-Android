@@ -1,6 +1,7 @@
 package com.elegion.android.ui.base.activity;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 
@@ -16,6 +17,10 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         super.onCreate(savedInstanceState);
+        setContentView(getLayout());
         ButterKnife.bind(this);
     }
+
+    @LayoutRes
+    protected abstract int getLayout();
 }

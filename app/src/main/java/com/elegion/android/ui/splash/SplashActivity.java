@@ -1,6 +1,5 @@
 package com.elegion.android.ui.splash;
 
-import android.os.Bundle;
 import android.os.CountDownTimer;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -29,9 +28,8 @@ public class SplashActivity extends BaseActivity implements SplashView {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_splash);
+    protected int getLayout() {
+        return R.layout.ac_splash;
     }
 
     @Override
