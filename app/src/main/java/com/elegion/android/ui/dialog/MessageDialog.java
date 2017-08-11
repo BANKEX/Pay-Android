@@ -62,19 +62,28 @@ public class MessageDialog extends DialogFragment {
         }
     };
 
-    public static void show(@NonNull FragmentManager fragmentManager,
+    public static void show(@NonNull FragmentManager fm,
                             @Nullable String title,
                             @Nullable String message,
                             @Nullable String confirm,
                             @Nullable String cancel) {
-        final MessageDialog messageDialog = new MessageDialog();
-        final Bundle args = new Bundle();
+        show(fm, title, message, confirm, cancel, MessageDialog.class.getName());
+    }
+
+    public static void show(@NonNull FragmentManager fm,
+                            @Nullable String title,
+                            @Nullable String message,
+                            @Nullable String confirm,
+                            @Nullable String cancel,
+                            @NonNull String tag) {
+        Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
         args.putString(ARG_MESSAGE, message);
         args.putString(ARG_CONFIRM_BUTTON, confirm);
         args.putString(ARG_CANCEL_BUTTON, cancel);
-        messageDialog.setArguments(args);
-        messageDialog.show(fragmentManager, MessageDialog.class.getCanonicalName());
+        MessageDialog dialog = new MessageDialog();
+        dialog.setArguments(args);
+        dialog.show(fm, tag);
     }
 
     @SuppressWarnings("deprecation")
@@ -91,7 +100,6 @@ public class MessageDialog extends DialogFragment {
     }
 
     public void resolveCallback(Context context) {
-        super.onAttach(context);
         if (getParentFragment() instanceof Callback) {
             mCallback = (Callback) getParentFragment();
         } else if (context instanceof Callback) {
@@ -122,7 +130,7 @@ public class MessageDialog extends DialogFragment {
         initArguments();
 
         // set texts
-        bindTextOrHide(mTitle, mCancelText);
+        bindTextOrHide(mTitle, mTitleText);
         bindTextOrHide(mMessage, mMessageText);
         bindTextOrHide(mConfirmAction, mConfirmText);
         bindTextOrHide(mCancelAction, mCancelText);
@@ -132,6 +140,8 @@ public class MessageDialog extends DialogFragment {
         if (!TextUtils.isEmpty(text)) {
             textView.setVisibility(View.VISIBLE);
             textView.setText(text);
+        } else {
+            textView.setVisibility(View.GONE);
         }
     }
 
