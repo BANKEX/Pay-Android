@@ -14,17 +14,21 @@ import android.support.annotation.IdRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.text.Editable;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,11 +65,29 @@ public final class ViewUtils {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
 
-    public static void hideKeyboard(Activity activity) {
+    public static void hideKeyboard(@Nullable Activity activity) {
         if (activity != null) {
-            InputMethodManager imm =
-                    (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+            final InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            final Window window = activity.getWindow();
+            if (imm != null && window != null) {
+                View currentFocus = window.getCurrentFocus();
+                if (currentFocus == null) {
+                    currentFocus = window.getDecorView().findFocus();
+                }
+                if (currentFocus != null) {
+                    imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+                    currentFocus.clearFocus();
+                }
+            }
+        }
+    }
+
+    public static void hideKeyboard(@Nullable Context context, @NonNull View view) {
+        if (context != null) {
+            final InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 
@@ -78,7 +100,21 @@ public final class ViewUtils {
         }
     }
 
-    public static void removeOnGlobalLayoutListener(View v, ViewTreeObserver.OnGlobalLayoutListener listener) {
+    public static void makeVisibleOrGone(boolean visible, @Nullable View... views) {
+        if (views == null || views.length == 0) {
+            return;
+        }
+        setVisibility(visible ? View.VISIBLE : View.GONE, views);
+    }
+
+    public static void makeVisibleOrInvisible(boolean visible, @Nullable View... views) {
+        if (views == null || views.length == 0) {
+            return;
+        }
+        setVisibility(visible ? View.VISIBLE : View.INVISIBLE, views);
+    }
+
+    public static void removeOnGlobalLayoutListener(@NonNull View v, @NonNull ViewTreeObserver.OnGlobalLayoutListener listener) {
         if (Build.VERSION.SDK_INT < 16) {
             v.getViewTreeObserver().removeGlobalOnLayoutListener(listener);
         } else {
@@ -86,12 +122,57 @@ public final class ViewUtils {
         }
     }
 
-    public static void changeEditTextBottomLineColor(EditText editText, @ColorInt int color) {
+    public static void changeEditTextBottomLineColor(@NonNull EditText editText, @ColorInt int color) {
         editText.getBackground().mutate().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 
+    public static void setEditTextCursorColor(@NonNull EditText view, @ColorInt int color) {
+        try {
+            // Get the cursor resource id
+            Field field = TextView.class.getDeclaredField("mCursorDrawableRes");
+            field.setAccessible(true);
+            int drawableResId = field.getInt(view);
+
+            // Get the editor
+            field = TextView.class.getDeclaredField("mEditor");
+            field.setAccessible(true);
+            Object editor = field.get(view);
+
+            // Get the drawable and set a color filter
+            final Drawable drawable = ContextCompat.getDrawable(view.getContext(), drawableResId);
+            drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            Drawable[] drawables = {drawable, drawable};
+
+            // Set the drawables
+            field = editor.getClass().getDeclaredField("mCursorDrawable");
+            field.setAccessible(true);
+            field.set(editor, drawables);
+        } catch (Exception ignored) {
+        }
+    }
+
+    public static int getColorWithOpacity(@FloatRange(from = 0, to = 1) float opacity, @ColorInt int color) {
+        return Color.argb((int) (255 * opacity), Color.red(color), Color.green(color), Color.blue(color));
+    }
+
+    public static void setCheckedWithoutNotify(@NonNull CompoundButton button, boolean isChecked,
+                                               @NonNull CompoundButton.OnCheckedChangeListener listener) {
+        button.setOnCheckedChangeListener(null);
+        button.setChecked(isChecked);
+        button.setOnCheckedChangeListener(listener);
+    }
+
+    public static String getEditTextString(@NonNull EditText editText) {
+        Editable editable = editText.getText();
+        return editable == null ? "" : editable.toString();
+    }
+
+    /**
+     * REGION PROJECT SPECIFIC TOOLS
+     */
+
     @SuppressWarnings("unchecked")
-    public static <T> T findView(Activity activity, @IdRes int id) {
+    public static <T> T findView(@NonNull Activity activity, @IdRes int id) {
         return (T) activity.findViewById(id);
     }
 
@@ -100,11 +181,7 @@ public final class ViewUtils {
         return (T) view.findViewById(id);
     }
 
-    public static int getColorWithOpacity(@FloatRange(from = 0, to = 1) float opacity, int color) {
-        return Color.argb((int) (255 * opacity), Color.red(color), Color.green(color), Color.blue(color));
-    }
-
-    public static <T extends View> List<T> findViews(Activity activity, @IdRes int... ids) {
+    public static <T extends View> List<T> findViews(@NonNull Activity activity, @IdRes int... ids) {
         List<T> result = new ArrayList<>(ids.length);
         for (int id : ids) {
             result.add(ViewUtils.findView(activity, id));
@@ -112,7 +189,7 @@ public final class ViewUtils {
         return result;
     }
 
-    public static <T extends View> List<T> findViews(View view, @IdRes int... ids) {
+    public static <T extends View> List<T> findViews(@NonNull View view, @IdRes int... ids) {
         List<T> result = new ArrayList<>(ids.length);
         for (int id : ids) {
             result.add(ViewUtils.findView(view, id));
@@ -120,35 +197,7 @@ public final class ViewUtils {
         return result;
     }
 
-    public static void setCheckedWithoutNotify(CompoundButton button,
-                                        boolean isChecked,
-                                        CompoundButton.OnCheckedChangeListener listener) {
-        button.setOnCheckedChangeListener(null);
-        button.setChecked(isChecked);
-        button.setOnCheckedChangeListener(listener);
-    }
-
-    public static void makeVisibleOrGone(View view, boolean visible) {
-        view.setVisibility(visible ? View.VISIBLE : View.GONE);
-    }
-
-    public static void makeVisibleOrInvisible(View view, boolean visible) {
-        view.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
-    }
-
-    public static void makeVisibleOrGone(boolean visible, View... views) {
-        for (View view : views) {
-            makeVisibleOrGone(view, visible);
-        }
-    }
-
-    public static void makeVisibleOrInvisible(boolean visible, View... views) {
-        for (View view : views) {
-            makeVisibleOrInvisible(view, visible);
-        }
-    }
-
-    public static Drawable getDrawable(Context context, TypedArray attributeArray, int styleIndex) {
+    public static Drawable getTypedArrayDrawable(@NonNull Context context, @NonNull TypedArray attributeArray, int styleIndex) {
         Drawable result;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             result = attributeArray.getDrawable(styleIndex);
@@ -159,8 +208,7 @@ public final class ViewUtils {
         return result;
     }
 
-    public static String getStringText(@NonNull EditText editText) {
-        Editable editable = editText.getText();
-        return editable == null ? "" : editable.toString();
-    }
+    /**
+     * ENDREGION PROJECT SPECIFIC TOOLS
+     */
 }
