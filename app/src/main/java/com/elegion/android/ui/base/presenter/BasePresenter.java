@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * @author mikhail.barannikov on 11.08.2017
  */
-public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
+public class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
     protected CompositeSubscription mCompositeSubscription;
 
     public BasePresenter() {
