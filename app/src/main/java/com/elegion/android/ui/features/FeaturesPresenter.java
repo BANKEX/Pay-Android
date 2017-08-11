@@ -45,7 +45,7 @@ public class FeaturesPresenter extends BasePresenter<FeaturesView> {
             mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
-                    .subscribe(this::handleFeaturesResponse, RxUtils::errorNoAction);
+                    .subscribe(this::handleFeaturesResponse, RxUtils::errorLogE);
             addSubscription(mLoadFeaturesSubscription);
         }
     }

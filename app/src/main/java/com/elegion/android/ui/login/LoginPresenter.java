@@ -31,7 +31,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
                     .compose(RxUtils.errorTransformer(getViewState(), mRepository, getViewState()))
-                    .subscribe(this::handleLogin, RxUtils::errorNoAction);
+                    .subscribe(this::handleLogin, RxUtils::errorLogE);
             addSubscription(mLoginSubscription);
         }
     }

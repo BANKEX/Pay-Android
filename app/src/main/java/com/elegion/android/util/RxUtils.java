@@ -167,8 +167,8 @@ public class RxUtils {
         return Observable.create((Observable.OnSubscribe<T>) Observer::onCompleted).doOnCompleted(view::showErrorStub);
     }
 
-    public static void errorNoAction(Throwable e) {
-        Timber.d(e, "errorNoAction");
+    public static void errorLogE(Throwable e) {
+        Timber.d(e, "errorLogE");
     }
 
     public static <T> Observable.Transformer<T, T> emptyTransformer() {
