@@ -1,5 +1,7 @@
 package com.elegion.android.ui.features;
 
+import android.support.annotation.NonNull;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.elegion.android.data.Repository;
 import com.elegion.android.data.model.Feature;
@@ -23,7 +25,7 @@ public class FeaturesPresenter extends BasePresenter<FeaturesView> {
     private Subscription mLoadFeaturesSubscription;
     private boolean mIsLastPage;
 
-    public FeaturesPresenter(Repository repository) {
+    public FeaturesPresenter(@NonNull Repository repository) {
         mRepository = repository;
     }
 

@@ -1,5 +1,7 @@
 package com.elegion.android.ui.login;
 
+import android.support.annotation.NonNull;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.elegion.android.data.Repository;
 import com.elegion.android.data.remote.response.LoginResponse;
@@ -18,7 +20,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     private Repository mRepository;
     private Subscription mSubscription;
 
-    public LoginPresenter(Repository repository) {
+    public LoginPresenter(@NonNull Repository repository) {
         mRepository = repository;
     }
 

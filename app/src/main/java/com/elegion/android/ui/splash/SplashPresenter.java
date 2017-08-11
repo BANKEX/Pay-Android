@@ -1,5 +1,6 @@
 package com.elegion.android.ui.splash;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -14,7 +15,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
 
     private final Repository mRepository;
 
-    public SplashPresenter(Repository repository) {
+    public SplashPresenter(@NonNull Repository repository) {
         mRepository = repository;
     }
 
