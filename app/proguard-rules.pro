@@ -24,15 +24,51 @@
 -dontwarn okio.**
 -dontwarn retrofit2.**
 
+# okhttp
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+# retrolambda
+-dontwarn java.lang.invoke.*
+
+# picasso
+-dontwarn com.squareup.okhttp.**
+
+### HockeyApp
+-keep class javax.net.ssl.** { *; }
+-keep class org.apache.http.** { *; }
+
+-keep class net.hockeyapp.android.** { *; }
+-dontwarn net.hockeyapp.android.**
+
+# HockeyApp keep line numbers
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+
+# fresco
+-keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
+
+# Do not strip any method/class that is annotated with @DoNotStrip
+-keep @com.facebook.common.internal.DoNotStrip class *
+-keepclassmembers class * {
+    @com.facebook.common.internal.DoNotStrip *;
+}
+
+# Keep native methods
+-keepclassmembers class * {
+    native <methods>;
+}
+
+-dontwarn javax.annotation.**
+-dontwarn com.android.volley.toolbox.**
+-dontwarn com.facebook.infer.**
+
 # Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
     **[] $VALUES;
     public *;
 }
-
-# okhttp
--dontwarn okio.**
 
 ### HockeyApp
 -keep class javax.net.ssl.** { *; }
@@ -54,16 +90,6 @@
     rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
 
-#RxSQLite
--keep class sqlite4a.** { *; }
--keep class **$$Schema { *; }
-
--keep public class ru.globus.app.behavior.ParallaxBehavior {
-    public <init>(...);
-    public <methods>;
-}
-
-
 # ButterKnife
 -dontwarn butterknife.internal.**
 -keep class butterknife.** { *; }
@@ -74,3 +100,10 @@
 -keepclasseswithmembernames class * {
     @butterknife.* <methods>;
 }
+
+# EventBus
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }

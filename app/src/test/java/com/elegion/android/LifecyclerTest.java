@@ -7,8 +7,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
-import com.elegion.android.app.Lifecycler;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

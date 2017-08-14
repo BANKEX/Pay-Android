@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.elegion.android.ui.widget.NoInternetView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/no_internet_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    app:buttonText="@string/try_again"
+    app:icon="@drawable/ic_no_network"
+    app:text="@string/no_internet"/>

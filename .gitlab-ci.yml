@@ -1,30 +1,40 @@
-before_script:
-  - chmod +x gradlew
-
-mock:
+live:
   script:
-    - ./gradlew clean coverageMockDebug sonarqube --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdLive assembleProdLive --stacktrace
   tags:
     - android
     - latest
   only:
-    - master
-
-dev:
-  script:
-    - ./gradlew clean assembleDevDebug sonarqube --stacktrace
-  tags:
-    - android
-    - latest
-  only:
-    - develop
+    - /^v[\d.]+-live$/
+  artifacts:
+    paths:
+      - app/build/outputs/apk/app-prod-live-unsigned.apk
 
 hockey:
   script:
     - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
-    - CHANGELOG=$(/usr/bin/changelog) ./gradlew clean uploadDevReleaseToHockeyApp
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdRelease uploadProdReleaseToHockeyApp --stacktrace
   tags:
     - android
-    - build-tools-latest
+    - latest
   only:
-    - /^v.*$/
+    - /^v[\d.]+$/
+
+checkstyle:
+  script:
+    - gradle checkstyle findbugs pmd lintProdRelease
+  tags:
+    - android
+    - latest
+  except:
+    - master
+    - dev
+    - /^v[\d.]+$/
+    - /^v[\d.]+-live$/
+  artifacts:
+    when: on_failure
+    paths:
+      - app/build/reports/checkstyle/checkstyle.html
+      - app/build/reports/findbugs/findbugs.html
+      - app/build/reports/pmd/pmd.html
+      - app/build/reports/lint-results-prodRelease.html

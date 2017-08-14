@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="e_legion_blue">#22A8DF</color>
-    <color name="material_blue_500">#2196F3</color>
+    <color name="colorPrimary">#22A8DF</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#2196F3</color>
     <color name="material_gray_100">#fff5f5f5</color>
     <color name="white">@android:color/white</color>
-    <color name="taupe_333333">#333333</color>
+    <color name="black">@android:color/black</color>
+    <color name="divider">@android:color/darker_gray</color>
 </resources>

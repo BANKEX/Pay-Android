@@ -1,61 +1,39 @@
 package com.elegion.android;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
+import android.support.multidex.MultiDexApplication;
 
-import com.elegion.android.app.Lifecycler;
-import com.elegion.android.repository.OkHttpProvider;
-import com.elegion.android.repository.RxSQLiteProvider;
-import com.google.gson.GsonBuilder;
-
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rxsqlite.RxSQLite;
-import sqlite4a.SQLiteDb;
 import timber.log.Timber;
 
 /**
- * @author Daniel Serdyukov
+ * @author Mikhail Barannikov
  */
-public class AppDelegate extends Application {
+public class AppDelegate extends MultiDexApplication {
+    private static final String PROD_BUILD_TYPE = "live";
 
-    private static Retrofit sRetrofit;
-
-    private static Context sAppContext;
-
-    static {
-        SQLiteDb.loadLibrary();
-    }
+    private static Context sApplicationContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        sAppContext = getApplicationContext();
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
         }
-        if (BuildConfig.DEBUG) {
+        if (isTestBuild()) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        sApplicationContext = getApplicationContext();
+
         Lifecycler.register(this);
-        RxSQLite.register(RxSQLiteProvider.provideClient(this));
     }
 
     public static Context getAppContext() {
-        return sAppContext;
+        return sApplicationContext;
     }
 
-    public static Retrofit getRetrofitInstance() {
-        if (sRetrofit == null) {
-            sRetrofit = new Retrofit.Builder()
-                    .baseUrl(BuildConfig.API_BASE_URL)
-                    .client(OkHttpProvider.provideClient())
-                    .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        }
-        return sRetrofit;
+    public static boolean isTestBuild() {
+        return !BuildConfig.BUILD_TYPE.equals(PROD_BUILD_TYPE);
     }
 }

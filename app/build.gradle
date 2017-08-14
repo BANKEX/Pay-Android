@@ -1,35 +1,37 @@
-plugins {
-    id "org.sonarqube" version "1.2"
-}
-
 apply plugin: 'com.android.application'
 apply plugin: "me.tatarka.retrolambda"
-apply from: 'jacoco.gradle'
+apply from: '../config/quality/quality.gradle'
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
-
-    packagingOptions {
-        exclude 'LICENSE.txt'
-        exclude 'META-INF/LICENSE.txt'
-    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "com.elegion.android"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 25
+
         versionCode rootProject.versionCode
         versionName rootProject.versionName
-        vectorDrawables.useSupportLibrary = true
 
-        buildConfigField 'String', 'API_BASE_URL', '"https://api.vk.com/method/"'
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        manifestPlaceholders = [HOCKEY_APP_ID: rootProject.hockeyAppId]
+
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.github.com/"'
         buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        preDexLibraries true
+        javaMaxHeapSize "2048M"
     }
 
     signingConfigs {
@@ -49,29 +51,37 @@ android {
             signingConfig signingConfigs.debug
             buildConfigField 'int', 'TEST_SDK_INT', '21'
         }
+
         release {
             minifyEnabled true
+            versionNameSuffix '-test'
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'int', 'TEST_SDK_INT', '16'
         }
+
+        live {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'int', 'TEST_SDK_INT', '16'
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
     }
 
     flavorDimensions 'buildType'
 
     productFlavors {
-        dev {
+        fastDex {
             dimension 'buildType'
-            signingConfig signingConfigs.release
-        }
-
-        mock {
-            dimension 'buildType'
-            versionName rootProject.ext.versionName + '-mock'
-            signingConfig signingConfigs.debug
+            minSdkVersion 21
         }
 
         prod {
-            signingConfig signingConfigs.release
-            buildConfigField "String", "HOCKEY_APP_ID", '""'
             dimension 'buildType'
         }
     }
@@ -88,37 +98,39 @@ android {
 apply from: '../versions.gradle'
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:support-v13:$supportVersion"
+    compile "com.android.support:customtabs:$supportVersion"
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"
+
     compile "io.reactivex:rxandroid:$rxandroidVersion"
     compile "io.reactivex:rxjava:$rxjavaVersion"
-    compile 'io.reactivex:rxjava-computation-expressions:0.21.0'
-    compile "rxsqlite:library:$rxSqliteVersion"
 
     compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
 
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.jakewharton.timber:timber:4.1.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile "com.jakewharton.timber:timber:$timberVersion"
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    compile "com.squareup.picasso:picasso:$picassoVersion"
 
-    provided "rxsqlite:compiler:$rxSqliteVersion"
-    devCompile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
-    mockCompile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
-    testCompile 'org.robolectric:robolectric:3.0'
-    compile project(':rxloadermanager')
+    compile 'com.arello-mobile:moxy:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+
+    compile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
+
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-core:$mokitoViersion"
+    testCompile "org.robolectric:robolectric:$robolectricVersion"
 }
-
-
-apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 hockeyapp {
     apiToken = System.getenv("HOCKEY_APP_TOKEN")
@@ -127,5 +139,3 @@ hockeyapp {
     notes = System.getenv("CHANGELOG")
     tags = "test"
 }
-
-apply from: 'sonar.gradle'
