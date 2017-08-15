@@ -7,8 +7,10 @@ live:
   only:
     - /^v[\d.]+-live$/
   artifacts:
+    expire_in: 2 week
     paths:
-      - app/build/outputs/apk/app-prod-live-unsigned.apk
+      - app/build/outputs/apk/*.apk
+      - app/build/outputs/mapping
 
 hockey:
   script:
