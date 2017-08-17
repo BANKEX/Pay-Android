@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ViewUtils {
+    private static final float DP_DENSITY = 160f;
+    private static final float MAX_OPACITY = 255;
 
     private ViewUtils() {
     }
@@ -45,7 +47,7 @@ public final class ViewUtils {
 
     public static float pxToDp(float px) {
         float densityDpi = Resources.getSystem().getDisplayMetrics().densityDpi;
-        return px / (densityDpi / 160f);
+        return px / (densityDpi / DP_DENSITY);
     }
 
     public static int dpToPx(float dp) {
@@ -53,8 +55,7 @@ public final class ViewUtils {
     }
 
     public static int spToPx(float sp) {
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().getDisplayMetrics());
-        return px;
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().getDisplayMetrics());
     }
 
     public static int getDisplayWidth() {
@@ -96,7 +97,9 @@ public final class ViewUtils {
             return;
         }
         for (View v : views) {
-            if (v != null && v.getVisibility() != visibility) v.setVisibility(visibility);
+            if (v != null && v.getVisibility() != visibility) {
+                v.setVisibility(visibility);
+            }
         }
     }
 
@@ -115,7 +118,7 @@ public final class ViewUtils {
     }
 
     public static void removeOnGlobalLayoutListener(@NonNull View v, @NonNull ViewTreeObserver.OnGlobalLayoutListener listener) {
-        if (Build.VERSION.SDK_INT < 16) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             v.getViewTreeObserver().removeGlobalOnLayoutListener(listener);
         } else {
             v.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
@@ -153,7 +156,7 @@ public final class ViewUtils {
     }
 
     public static int getColorWithOpacity(@FloatRange(from = 0, to = 1) float opacity, @ColorInt int color) {
-        return Color.argb((int) (255 * opacity), Color.red(color), Color.green(color), Color.blue(color));
+        return Color.argb((int) (MAX_OPACITY * opacity), Color.red(color), Color.green(color), Color.blue(color));
     }
 
     public static void setCheckedWithoutNotify(@NonNull CompoundButton button, boolean isChecked,

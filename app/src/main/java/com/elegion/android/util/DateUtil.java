@@ -12,11 +12,14 @@ import java.util.TimeZone;
 /**
  * Created by marat.taychinov
  */
-
-public class DateUtil {
+final public class DateUtil {
 
     private static final String DD_MM_YYYY = "dd.MM.yyyy";
     private static final String SERVER_ISO8601_DATE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    private static final String TIMEZONE_UTC = "UTC";
+
+    private DateUtil() {
+    }
 
     public static String getDateString(@Nullable Date date) {
         if (date == null) {
@@ -28,22 +31,22 @@ public class DateUtil {
     }
 
     public static Calendar getCalendar() {
-        return Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        return Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC));
     }
 
     public static Calendar getCalendar(Date date) {
-        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC));
         c.setTime(date);
         return c;
     }
 
     public static Calendar getCalendar(long millis) {
-        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC));
         c.setTimeInMillis(millis);
         return c;
     }
 
     public static Date getTodayDate() {
-        return new Date(Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis());
+        return new Date(Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC)).getTimeInMillis());
     }
 }

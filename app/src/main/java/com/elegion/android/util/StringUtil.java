@@ -23,7 +23,7 @@ import android.util.Patterns;
 /**
  * Created by Mike
  */
-public class StringUtil {
+final public class StringUtil {
 
     private StringUtil() {
     }
@@ -86,17 +86,17 @@ public class StringUtil {
     @NonNull
     private static ImageSpan getImageSpan(@NonNull Context context, @DrawableRes int icon) {
         final Drawable d = ContextCompat.getDrawable(context, icon);
-        return getImageSpan(context, d);
+        return getImageSpan(d);
     }
 
     @NonNull
     private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Bitmap bitmap) {
         final Drawable d = new BitmapDrawable(context.getResources(), bitmap);
-        return getImageSpan(context, d);
+        return getImageSpan(d);
     }
 
     @NonNull
-    private static ImageSpan getImageSpan(@NonNull Context context, @NonNull Drawable drawable) {
+    private static ImageSpan getImageSpan(@NonNull Drawable drawable) {
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         return new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
     }

@@ -31,7 +31,6 @@ public class LoadingDialog extends DialogFragment {
     @NonNull
     public static LoadingView view(@NonNull FragmentManager fm) {
         return new LoadingView() {
-
             private final AtomicBoolean mWaitForHide = new AtomicBoolean();
 
             @Override
@@ -78,10 +77,12 @@ public class LoadingDialog extends DialogFragment {
     }
 
     private static class HideTask implements Runnable {
+        private static final int MAX_ATTEMPTS = 10;
+        private static final int POST_DELAY = 300;
 
         private final Reference<FragmentManager> mFmRef;
 
-        private int mAttempts = 10;
+        private int mAttempts = MAX_ATTEMPTS;
 
         HideTask(@NonNull FragmentManager fm) {
             mFmRef = new WeakReference<>(fm);
@@ -96,7 +97,7 @@ public class LoadingDialog extends DialogFragment {
                 if (dialog != null) {
                     dialog.dismissAllowingStateLoss();
                 } else if (--mAttempts >= 0) {
-                    HANDLER.postDelayed(this, 300);
+                    HANDLER.postDelayed(this, POST_DELAY);
                 }
             }
         }

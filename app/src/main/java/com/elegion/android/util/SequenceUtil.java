@@ -5,10 +5,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author Mike
  */
-public class SequenceUtil {
-    public static final AtomicInteger seed = new AtomicInteger();
+final public class SequenceUtil {
+    private static final AtomicInteger SEED = new AtomicInteger();
+
+    private SequenceUtil() {
+    }
 
     public static int getNextInt() {
-        return seed.incrementAndGet();
+        return SEED.incrementAndGet();
     }
 }

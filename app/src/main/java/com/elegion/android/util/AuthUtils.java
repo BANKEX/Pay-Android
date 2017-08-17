@@ -9,7 +9,7 @@ import com.elegion.android.ui.login.LoginActivity;
 /**
  * @author Mike
  */
-public class AuthUtils {
+final public class AuthUtils {
     private AuthUtils() {
         // private constructor
     }
