@@ -9,7 +9,7 @@ import com.elegion.android.R;
 /**
  * @author mikhail barannikov
  */
-final public class FragmentUtils {
+public final class FragmentUtils {
     private FragmentUtils() {
     }
 

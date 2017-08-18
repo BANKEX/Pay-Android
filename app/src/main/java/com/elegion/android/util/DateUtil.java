@@ -12,7 +12,7 @@ import java.util.TimeZone;
 /**
  * Created by marat.taychinov
  */
-final public class DateUtil {
+public final class DateUtil {
 
     private static final String DD_MM_YYYY = "dd.MM.yyyy";
     private static final String SERVER_ISO8601_DATE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";

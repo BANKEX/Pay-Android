@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 /**
  * @author Mike
  */
-final public class GsonUtils {
+public final class GsonUtils {
     private static Gson sRequestGson;
 
     private static Gson sGson;

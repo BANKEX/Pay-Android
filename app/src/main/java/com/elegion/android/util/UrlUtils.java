@@ -10,7 +10,7 @@ import com.elegion.android.R;
 /**
  * @author Mike
  */
-final public class UrlUtils {
+public final class UrlUtils {
 
     private UrlUtils() {}
 

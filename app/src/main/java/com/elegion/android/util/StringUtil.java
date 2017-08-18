@@ -23,7 +23,10 @@ import android.util.Patterns;
 /**
  * Created by Mike
  */
-final public class StringUtil {
+public final class StringUtil {
+    private static final char SPACE = ' ';
+    public static final char ROUBLE_SIGN = '\u20BD';
+    private static Typeface sRobotoTypeface;
 
     private StringUtil() {
     }

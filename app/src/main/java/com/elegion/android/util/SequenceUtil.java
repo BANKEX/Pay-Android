@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author Mike
  */
-final public class SequenceUtil {
+public final class SequenceUtil {
     private static final AtomicInteger SEED = new AtomicInteger();
 
     private SequenceUtil() {
