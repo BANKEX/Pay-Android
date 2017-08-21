@@ -36,8 +36,8 @@ public class PreferencesRepository {
         if (feature == null) {
             mPreferences.edit().remove(KEY_FEATURE).apply();
         } else {
-            String userJson = GsonUtils.gson().toJson(feature, Feature.class);
-            mPreferences.edit().putString(KEY_FEATURE, userJson).apply();
+            String featureJson = GsonUtils.gson().toJson(feature, Feature.class);
+            mPreferences.edit().putString(KEY_FEATURE, featureJson).apply();
         }
 
         return mCurrentFeature;
