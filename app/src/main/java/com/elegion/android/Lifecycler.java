@@ -5,6 +5,8 @@ import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import net.hockeyapp.android.CrashManager;
+
 /**
  * @author Mikhail Barannikov
  */
@@ -29,6 +31,9 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityStarted(Activity activity) {
         sStarted++;
+        if (AppDelegate.isTestBuild()) {
+            CrashManager.register(activity, BuildConfig.HOCKEY_APP_ID);
+        }
     }
 
     @Override
