@@ -31,7 +31,7 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityStarted(Activity activity) {
         sStarted++;
-        if (AppDelegate.isTestBuild()) {
+        if (!BuildConfig.DEBUG) {
             CrashManager.register(activity, BuildConfig.HOCKEY_APP_ID);
         }
     }
