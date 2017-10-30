@@ -1,6 +1,6 @@
 live:
   script:
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdLive assembleProdLive --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdLive uploadProdLiveToHockeyApp --stacktrace
   tags:
     - android
     - latest
