@@ -1,5 +1,5 @@
 -keepattributes Signature,Exceptions,InnerClasses,EnclosingMethod,*Annotation*
--keep public class com.elegion.android.** {
+-keep public class com.elegion.android.template.** {
     public static <fields>;
     public static <methods>;
     public <methods>;

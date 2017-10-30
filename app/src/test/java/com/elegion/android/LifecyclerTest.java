@@ -1,4 +1,4 @@
-package com.elegion.android;
+package com.elegion.android.template;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

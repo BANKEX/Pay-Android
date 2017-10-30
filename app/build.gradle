@@ -8,7 +8,7 @@ android {
     buildToolsVersion "25.0.3"
 
     defaultConfig {
-        applicationId "com.elegion.android"
+        applicationId "com.elegion.android.template"
         minSdkVersion 16
         targetSdkVersion 25
 
