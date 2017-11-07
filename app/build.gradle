@@ -1,11 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: "me.tatarka.retrolambda"
 apply from: '../config/quality/quality.gradle'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.elegion.android.template"
@@ -98,38 +97,38 @@ android {
 apply from: '../versions.gradle'
 
 dependencies {
-    compile 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:multidex:1.0.1'
 
-    compile "com.android.support:support-v4:$supportVersion"
-    compile "com.android.support:support-v13:$supportVersion"
-    compile "com.android.support:customtabs:$supportVersion"
-    compile "com.android.support:appcompat-v7:$supportVersion"
-    compile "com.android.support:recyclerview-v7:$supportVersion"
-    compile "com.android.support:design:$supportVersion"
+    implementation "com.android.support:support-v4:$supportVersion"
+    implementation "com.android.support:support-v13:$supportVersion"
+    implementation "com.android.support:customtabs:$supportVersion"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
 
-    compile "io.reactivex:rxandroid:$rxandroidVersion"
-    compile "io.reactivex:rxjava:$rxjavaVersion"
+    implementation "io.reactivex:rxandroid:$rxandroidVersion"
+    implementation "io.reactivex:rxjava:$rxjavaVersion"
 
-    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
-    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
 
-    compile "com.jakewharton.timber:timber:$timberVersion"
-    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-    compile "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
 
-    compile 'com.arello-mobile:moxy:1.5.3'
+    implementation 'com.arello-mobile:moxy:1.5.3'
     annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
-    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+    implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
 
-    compile "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
+    implementation "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
 
-    testCompile "junit:junit:$junitVersion"
-    testCompile "org.mockito:mockito-core:$mokitoViersion"
-    testCompile "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mokitoViersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
 
 hockeyapp {
