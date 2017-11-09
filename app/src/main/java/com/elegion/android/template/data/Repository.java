@@ -15,8 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Single;
 import okhttp3.Credentials;
-import rx.Observable;
 
 /**
  * @author mikhail barannikov
@@ -43,7 +43,7 @@ public class Repository {
         mPreferencesRepository.setCurrentUser(null);
     }
 
-    public Observable<LoginResponse> login(String username, String password) {
+    public Single<LoginResponse> login(String username, String password) {
         final String basicAuthHeader = Credentials.basic(username, password);
         final List<String> scopes = Arrays.asList("repo", "user");
         final String note = "e-legion.com";
@@ -69,14 +69,14 @@ public class Repository {
         return mPreferencesRepository.getLoginToken();
     }
 
-    public Observable<List<Feature>> getFeatures(int offset, int count) {
-        return Observable.defer(() -> {
+    public Single<List<Feature>> getFeatures(int offset, int count) {
+        return Single.defer(() -> {
             final List<Feature> features = new ArrayList<>();
             final int amount = offset + count;
             for (int i = offset; i < amount; i++) {
                 features.add(new Feature("Title " + i, "Description " + i));
             }
-            return Observable.just(features);
+            return Single.just(features);
         }).delay(1500, TimeUnit.MILLISECONDS);
     }
 }

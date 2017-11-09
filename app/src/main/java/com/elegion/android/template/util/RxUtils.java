@@ -22,13 +22,14 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 
+import io.reactivex.Single;
+import io.reactivex.SingleTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
@@ -42,75 +43,65 @@ public class RxUtils {
             ConnectException.class
     );
 
-    public static void unsubscribe(@Nullable Subscription subscription) {
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
+    public static void dispose(@Nullable CompositeDisposable subscription) {
+        if (subscription != null && !subscription.isDisposed()) {
+            subscription.dispose();
         }
     }
 
-    public static boolean isNullOrUnsubscribed(@Nullable Subscription subscription) {
-        return subscription == null || subscription.isUnsubscribed();
+    public static boolean isNullOrUnsubscribed(@Nullable Disposable disposable) {
+        return disposable == null || disposable.isDisposed();
     }
 
     @NonNull
-    public static <T> Observable<T> async(Observable<T> observable) {
-        return observable
+    public static <T> Single<T> async(Single<T> single) {
+        return single
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
     @NonNull
-    public static <T> Observable.Transformer<T, T> loading(@NonNull LoadingView view) {
+    public static <T> SingleTransformer<T, T> loading(@NonNull LoadingView view) {
         return observable -> observable
-                .doOnSubscribe(() -> {
+                .doOnSubscribe(d -> {
                     view.showLoadingIndicator();
                     Timber.d("LOADING: doOnSubscribe");
                 })
-                .doOnTerminate(() -> {
+                .doFinally(() -> {
                     Timber.d("LOADING: doOnTerminate");
-                    view.hideLoadingIndicator();
-                })
-                .doOnUnsubscribe(() -> {
-                    Timber.d("LOADING: doOnUnsubscribe");
                     view.hideLoadingIndicator();
                 });
     }
 
     @NonNull
-    public static <T extends EmptyListResponse> Observable.Transformer<T, T> emptyErrorStub(@NonNull ErrorStubView view) {
+    public static <T extends EmptyListResponse> SingleTransformer<T, T> emptyErrorStub(@NonNull ErrorStubView view) {
         return observable -> observable
                 .doOnSubscribe(view::hideErrorStub)
-                .doOnNext(new Action1<EmptyListResponse>() {
-                    @Override
-                    public void call(EmptyListResponse response) {
-                        if (response.isEmpty()) {
-                            view.showErrorStub();
-                        }
+                .doOnSuccess(response -> {
+                    if (response.isEmpty()) {
+                        view.showErrorStub();
                     }
                 });
     }
 
     @NonNull
     public static <F extends EmptyListResponse, S extends EmptyListResponse,
-            T extends Pair<F, S>> Observable.Transformer<T, T> emptyPairErrorStub(@NonNull ErrorStubView view) {
+            T extends Pair<F, S>> SingleTransformer<T, T> emptyPairErrorStub(@NonNull ErrorStubView view) {
         return observable -> observable
                 .doOnSubscribe(view::hideErrorStub)
-                .doOnNext(new Action1<Pair<F, S>>() {
-                    @Override
-                    public void call(Pair<F, S> pair) {
-                        if (pair.first.isEmpty() && pair.second.isEmpty()) {
-                            view.showErrorStub();
-                        }
+                .doOnSuccess(pair -> {
+                    if (pair.first != null && pair.first.isEmpty() && pair.second != null && pair.second.isEmpty()) {
+                        view.showErrorStub();
                     }
                 });
     }
 
     @NonNull
-    public static <T> Observable.Transformer<T, T> errorTransformer(@NonNull ErrorView errorView,
-                                                                    @NonNull Repository repository,
-                                                                    @Nullable NoInternetStubView noInternetStubView) {
+    public static <T> SingleTransformer<T, T> errorTransformer(@NonNull ErrorView errorView,
+                                                               @NonNull Repository repository,
+                                                               @Nullable NoInternetStubView noInternetStubView) {
         return observable -> observable
-                .doOnSubscribe(() -> {
+                .doOnSuccess(v -> {
                     if (noInternetStubView != null) {
                         noInternetStubView.hideNoInternetStub();
                     }
@@ -119,7 +110,7 @@ public class RxUtils {
     }
 
     @NonNull
-    public static Action1<Throwable> error(@NonNull ErrorView errorView, @NonNull Repository repository) {
+    public static Consumer<Throwable> error(@NonNull ErrorView errorView, @NonNull Repository repository) {
         return e -> {
             Timber.d(e, "from RxUtils.error");
             handleError(e, errorView, repository);
@@ -156,22 +147,11 @@ public class RxUtils {
         }
     }
 
-    @NonNull
-    public static <T> Observable.Transformer<T, T> emptyStub(@NonNull ErrorStubView view) {
-        return observable -> observable
-                .doOnSubscribe(view::hideErrorStub)
-                .switchIfEmpty(emptyObservable(view));
-    }
-
-    private static <T> Observable<T> emptyObservable(@NonNull ErrorStubView view) {
-        return Observable.create((Observable.OnSubscribe<T>) Observer::onCompleted).doOnCompleted(view::showErrorStub);
-    }
-
     public static void errorLogE(Throwable e) {
         Timber.d(e, "errorLogE");
     }
 
-    public static <T> Observable.Transformer<T, T> emptyTransformer() {
+    public static <T> SingleTransformer<T, T> emptyTransformer() {
         return tObservable -> tObservable;
     }
 }

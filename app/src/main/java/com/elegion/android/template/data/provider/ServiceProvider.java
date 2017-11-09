@@ -6,7 +6,7 @@ import com.elegion.android.template.BuildConfig;
 import com.elegion.android.template.util.GsonUtils;
 
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -30,7 +30,7 @@ public final class ServiceProvider {
                     .baseUrl(BuildConfig.API_BASE_URL)
                     .client(OkHttpProvider.provideClient())
                     .addConverterFactory(GsonConverterFactory.create(GsonUtils.requestGson()))
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
         return sRetrofit;

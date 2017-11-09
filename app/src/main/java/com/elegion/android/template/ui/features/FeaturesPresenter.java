@@ -11,7 +11,7 @@ import com.elegion.android.template.util.RxUtils;
 
 import java.util.List;
 
-import rx.Subscription;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author mikhail.barannikov on 24.07.2017
@@ -22,7 +22,7 @@ public class FeaturesPresenter extends BasePresenter<FeaturesView> {
 
     private int mOffset = 0;
     private Repository mRepository;
-    private Subscription mLoadFeaturesSubscription;
+    private Disposable mLoadFeaturesSubscription;
     private boolean mIsLastPage;
 
     public FeaturesPresenter(@NonNull Repository repository) {
@@ -41,12 +41,12 @@ public class FeaturesPresenter extends BasePresenter<FeaturesView> {
         }
 
         if (!mIsLastPage && RxUtils.isNullOrUnsubscribed(mLoadFeaturesSubscription)) {
-            removeSubscription(mLoadFeaturesSubscription);
+            removeDisposable(mLoadFeaturesSubscription);
             mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
                     .compose(RxUtils::async)
                     .compose(RxUtils.loading(getViewState()))
                     .subscribe(this::handleFeaturesResponse, RxUtils::errorLogE);
-            addSubscription(mLoadFeaturesSubscription);
+            addDisposable(mLoadFeaturesSubscription);
         }
     }
 

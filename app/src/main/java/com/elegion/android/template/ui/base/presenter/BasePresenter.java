@@ -4,34 +4,38 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
 import com.elegion.android.template.util.RxUtils;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author mikhail.barannikov on 11.08.2017
  */
 public class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
-    protected CompositeSubscription mCompositeSubscription;
+    protected CompositeDisposable mCompositeDisposable;
 
     public BasePresenter() {
-        mCompositeSubscription = new CompositeSubscription();
+        mCompositeDisposable = new CompositeDisposable();
     }
 
-    public void removeSubscription(Subscription s) {
-        mCompositeSubscription.remove(s);
+    public void removeDisposable(Disposable d) {
+        if (d != null) {
+            mCompositeDisposable.remove(d);
+        }
     }
 
-    public void addSubscription(Subscription s) {
-        mCompositeSubscription.add(s);
+    public void addDisposable(Disposable d) {
+        if (d != null) {
+            mCompositeDisposable.add(d);
+        }
     }
 
-    public void clearSubscribtions() {
-        mCompositeSubscription.clear();
+    public void clearDisposables() {
+        mCompositeDisposable.clear();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxUtils.unsubscribe(mCompositeSubscription);
+        RxUtils.dispose(mCompositeDisposable);
     }
 }
