@@ -52,11 +52,11 @@ android {
         }
 
         release {
-            versionNameSuffix '-test'
-            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
             buildConfigField 'int', 'TEST_SDK_INT', '16'
+            versionNameSuffix '-test'
         }
 
         live {
