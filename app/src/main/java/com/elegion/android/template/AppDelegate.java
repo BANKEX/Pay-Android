@@ -19,6 +19,10 @@ public class AppDelegate extends MultiDexApplication {
         super.onCreate();
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
+            StrictMode.setVmPolicy(
+                    new StrictMode.VmPolicy.Builder(StrictMode.getVmPolicy())
+                            .penaltyLog().build()
+            );
         }
         if (isTestBuild()) {
             Timber.plant(new Timber.DebugTree());
