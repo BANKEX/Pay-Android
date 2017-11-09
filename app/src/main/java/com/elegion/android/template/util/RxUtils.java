@@ -22,8 +22,8 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 
-import io.reactivex.Single;
-import io.reactivex.SingleTransformer;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -54,14 +54,14 @@ public class RxUtils {
     }
 
     @NonNull
-    public static <T> Single<T> async(Single<T> single) {
-        return single
+    public static <T> Flowable<T> async(Flowable<T> flowable) {
+        return flowable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
     @NonNull
-    public static <T> SingleTransformer<T, T> loading(@NonNull LoadingView view) {
+    public static <T> FlowableTransformer<T, T> loading(@NonNull LoadingView view) {
         return observable -> observable
                 .doOnSubscribe(d -> {
                     view.showLoadingIndicator();
@@ -74,10 +74,10 @@ public class RxUtils {
     }
 
     @NonNull
-    public static <T extends EmptyListResponse> SingleTransformer<T, T> emptyErrorStub(@NonNull ErrorStubView view) {
+    public static <T extends EmptyListResponse> FlowableTransformer<T, T> emptyErrorStub(@NonNull ErrorStubView view) {
         return observable -> observable
                 .doOnSubscribe(view::hideErrorStub)
-                .doOnSuccess(response -> {
+                .doOnNext(response -> {
                     if (response.isEmpty()) {
                         view.showErrorStub();
                     }
@@ -86,10 +86,10 @@ public class RxUtils {
 
     @NonNull
     public static <F extends EmptyListResponse, S extends EmptyListResponse,
-            T extends Pair<F, S>> SingleTransformer<T, T> emptyPairErrorStub(@NonNull ErrorStubView view) {
+            T extends Pair<F, S>> FlowableTransformer<T, T> emptyPairErrorStub(@NonNull ErrorStubView view) {
         return observable -> observable
                 .doOnSubscribe(view::hideErrorStub)
-                .doOnSuccess(pair -> {
+                .doOnNext(pair -> {
                     if (pair.first != null && pair.first.isEmpty() && pair.second != null && pair.second.isEmpty()) {
                         view.showErrorStub();
                     }
@@ -97,11 +97,11 @@ public class RxUtils {
     }
 
     @NonNull
-    public static <T> SingleTransformer<T, T> errorTransformer(@NonNull ErrorView errorView,
+    public static <T> FlowableTransformer<T, T> errorTransformer(@NonNull ErrorView errorView,
                                                                @NonNull Repository repository,
                                                                @Nullable NoInternetStubView noInternetStubView) {
         return observable -> observable
-                .doOnSuccess(v -> {
+                .doOnNext(v -> {
                     if (noInternetStubView != null) {
                         noInternetStubView.hideNoInternetStub();
                     }
@@ -151,7 +151,7 @@ public class RxUtils {
         Timber.d(e, "errorLogE");
     }
 
-    public static <T> SingleTransformer<T, T> emptyTransformer() {
+    public static <T> FlowableTransformer<T, T> emptyTransformer() {
         return tObservable -> tObservable;
     }
 }

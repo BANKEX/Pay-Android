@@ -16,7 +16,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 
-import io.reactivex.SingleTransformer;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.functions.Consumer;
 import retrofit2.HttpException;
 import timber.log.Timber;
@@ -48,7 +48,7 @@ public class ErrorHandlerImpl {
     }
 
     @NonNull
-    public final <T> SingleTransformer<T, T> noInternetTransformer() {
+    public final <T> FlowableTransformer<T, T> noInternetTransformer() {
         return observable -> observable
                 .doOnSubscribe(disposable -> {
                     if (mNoInternetStubView != null) {

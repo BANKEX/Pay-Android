@@ -1,6 +1,6 @@
 package com.elegion.android.template.ui.base.view;
 
-import io.reactivex.disposables.Disposable;
+import org.reactivestreams.Subscription;
 
 /**
  * @author Nikita Bumakov
@@ -9,5 +9,5 @@ public interface ErrorStubView {
 
     void showErrorStub();
 
-    void hideErrorStub(Disposable disposable);
+    void hideErrorStub(Subscription s);
 }
