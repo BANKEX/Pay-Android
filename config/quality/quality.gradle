@@ -57,7 +57,7 @@ task findbugs(type: FindBugs,
     exclude '**/gen/**'
 
     reports {
-        xml.enabled = true
+        xml.enabled = false
         html.enabled = true
         xml {
             destination "$reportsDir/findbugs/findbugs.xml"
