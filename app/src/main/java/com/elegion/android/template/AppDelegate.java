@@ -9,6 +9,7 @@ import timber.log.Timber;
 /**
  * @author Mikhail Barannikov
  */
+
 public class AppDelegate extends MultiDexApplication {
     private static final String PROD_BUILD_TYPE = "live";
 
