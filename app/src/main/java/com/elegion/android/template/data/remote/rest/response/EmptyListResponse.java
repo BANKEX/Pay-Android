@@ -1,4 +1,4 @@
-package com.elegion.android.template.data.remote.response;
+package com.elegion.android.template.data.remote.rest.response;
 
 /**
  * @author Mike

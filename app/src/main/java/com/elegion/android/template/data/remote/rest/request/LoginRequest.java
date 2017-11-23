@@ -1,4 +1,4 @@
-package com.elegion.android.template.data.remote.request;
+package com.elegion.android.template.data.remote.rest.request;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

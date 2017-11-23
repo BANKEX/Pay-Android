@@ -1,7 +1,7 @@
-package com.elegion.android.template.data.remote;
+package com.elegion.android.template.data.remote.rest;
 
-import com.elegion.android.template.data.remote.request.LoginRequest;
-import com.elegion.android.template.data.remote.response.LoginResponse;
+import com.elegion.android.template.data.remote.rest.request.LoginRequest;
+import com.elegion.android.template.data.remote.rest.response.LoginResponse;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Body;

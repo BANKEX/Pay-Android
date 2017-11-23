@@ -6,9 +6,9 @@ import android.support.annotation.NonNull;
 import com.elegion.android.template.data.local.PreferencesRepository;
 import com.elegion.android.template.data.model.Feature;
 import com.elegion.android.template.data.provider.ServiceProvider;
-import com.elegion.android.template.data.remote.TemplateService;
-import com.elegion.android.template.data.remote.request.LoginRequest;
-import com.elegion.android.template.data.remote.response.LoginResponse;
+import com.elegion.android.template.data.remote.rest.TemplateService;
+import com.elegion.android.template.data.remote.rest.request.LoginRequest;
+import com.elegion.android.template.data.remote.rest.response.LoginResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;

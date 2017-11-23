@@ -8,7 +8,7 @@ import android.support.v4.util.Pair;
 import com.elegion.android.template.AppDelegate;
 import com.elegion.android.template.data.Repository;
 import com.elegion.android.template.data.model.ErrorBean;
-import com.elegion.android.template.data.remote.response.EmptyListResponse;
+import com.elegion.android.template.data.remote.rest.response.EmptyListResponse;
 import com.elegion.android.template.ui.base.view.ErrorStubView;
 import com.elegion.android.template.ui.base.view.ErrorView;
 import com.elegion.android.template.ui.base.view.LoadingView;

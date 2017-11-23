@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.elegion.android.template.data.Repository;
-import com.elegion.android.template.data.remote.response.LoginResponse;
+import com.elegion.android.template.data.remote.rest.response.LoginResponse;
 import com.elegion.android.template.ui.base.presenter.BasePresenter;
 import com.elegion.android.template.util.RxUtils;
 
