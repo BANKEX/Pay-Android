@@ -5,6 +5,8 @@ import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.elegion.android.template.util.HockeyAppUtils;
+
 import net.hockeyapp.android.CrashManager;
 
 /**
@@ -32,7 +34,7 @@ public class Lifecycler implements Application.ActivityLifecycleCallbacks {
     public void onActivityStarted(Activity activity) {
         sStarted++;
         if (!BuildConfig.DEBUG) {
-            CrashManager.register(activity, BuildConfig.HOCKEY_APP_ID);
+            CrashManager.register(activity, BuildConfig.HOCKEY_APP_ID, HockeyAppUtils.HockeyAppListener.SINGLETON);
         }
     }
 
