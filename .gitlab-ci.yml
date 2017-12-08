@@ -3,7 +3,7 @@ live:
     - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdLive uploadProdLiveToHockeyApp --stacktrace
   tags:
     - android
-    - latest
+    - ubuild
   only:
     - /^v[\d.]+-live$/
   artifacts:
@@ -18,7 +18,7 @@ hockey:
     - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdRelease uploadProdReleaseToHockeyApp --stacktrace
   tags:
     - android
-    - latest
+    - ubuild
   only:
     - /^v[\d.]+$/
 
@@ -27,7 +27,7 @@ checkstyle:
     - gradle checkstyle findbugs pmd lintProdRelease
   tags:
     - android
-    - latest
+    - ubuild
   except:
     - master
     - dev
