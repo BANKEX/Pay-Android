@@ -9,7 +9,7 @@ ext {
     butterknifeVersion = '8.8.1'
     picassoVersion = '2.5.2'
     junitVersion = '4.12'
-    mokitoViersion = '1.10.19'
+    mockitoViersion = '2.13.0'
     robolectricVersion = '3.0'
     playServicesVersion = '11.0.2'
     hockeyAppVersion = '4.1.5'

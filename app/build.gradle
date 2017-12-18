@@ -127,7 +127,7 @@ dependencies {
     implementation "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
 
     testImplementation "junit:junit:$junitVersion"
-    testImplementation "org.mockito:mockito-core:$mokitoViersion"
+    testImplementation "org.mockito:mockito-core:$mockitoViersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
 
