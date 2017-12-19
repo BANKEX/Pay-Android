@@ -28,10 +28,16 @@ public final class UrlUtils {
     private UrlUtils() {}
 
     public static void openUrl(Context context, String url) {
-        final CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        builder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        final CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(context, Uri.parse(url));
+        if (!TextUtils.isEmpty(url)) {
+            try {
+                final CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                builder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                final CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(context, Uri.parse(url));
+            } catch (ActivityNotFoundException e) {
+                // ignore
+            }
+        }
     }
 
     public static void openPlayMarket(Context context) {
