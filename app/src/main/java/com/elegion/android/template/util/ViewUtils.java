@@ -39,7 +39,6 @@ public final class ViewUtils {
     private ViewUtils() {
     }
 
-
     @IntDef({View.VISIBLE, View.INVISIBLE, View.GONE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Visibility {

@@ -10,6 +10,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 interface SplashView extends MvpView {
     @StateStrategyType(OneExecutionStateStrategy.class)
     void openLogin();
+
     @StateStrategyType(OneExecutionStateStrategy.class)
     void openFeatures();
 }

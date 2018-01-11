@@ -15,7 +15,7 @@ apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
 dependencies {
-    checkstyle 'com.puppycrawl.tools:checkstyle:6.11.1'
+    checkstyle 'com.puppycrawl.tools:checkstyle:7.8.2'
 }
 
 def qualityConfigDir = "$project.rootDir/config/quality";
@@ -27,6 +27,7 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
     configFile file("$qualityConfigDir/checkstyle/checkstyle-config.xml")
     source 'src'
     include '**/*.java'
+    include '**/*.xml'
     exclude '**/gen/**'
     exclude '**/R.java'
     exclude '**/BuildConfig.java'
@@ -38,7 +39,7 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
         }
     }
 
-    classpath = files( )
+    classpath = files()
 }
 
 task findbugs(type: FindBugs,

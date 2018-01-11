@@ -1,6 +1,5 @@
 package com.elegion.android.template.ui.dialog;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Build;

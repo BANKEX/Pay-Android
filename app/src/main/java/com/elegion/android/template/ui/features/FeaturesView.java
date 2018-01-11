@@ -17,6 +17,7 @@ import java.util.List;
 interface FeaturesView extends LoadingView, NoInternetStubView, ErrorView, MvpView {
     @StateStrategyType(value = AddToEndStrategy.class)
     void showFeatures(List<Feature> features, boolean clear);
+
     @StateStrategyType(value = SingleStateStrategy.class)
     void clearFeatures();
 }
