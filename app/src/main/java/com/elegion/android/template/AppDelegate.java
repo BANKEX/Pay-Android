@@ -3,6 +3,7 @@ package com.elegion.android.template;
 import android.content.Context;
 import android.os.StrictMode;
 import android.support.multidex.MultiDexApplication;
+import android.support.v7.app.AppCompatDelegate;
 
 import timber.log.Timber;
 
@@ -17,6 +18,7 @@ public class AppDelegate extends MultiDexApplication {
 
     @Override
     public void onCreate() {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         super.onCreate();
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
