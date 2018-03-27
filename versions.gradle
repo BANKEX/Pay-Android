@@ -1,5 +1,5 @@
 ext {
-    supportVersion = '27.0.2'
+    supportVersion = '27.1.0'
     okhttpVersion = '3.9.0'
     okhttpInterceptorVersion = '3.9.0'
     retrofitVersion = '2.3.0'

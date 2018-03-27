@@ -4,7 +4,7 @@ apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.elegion.android.template"
@@ -97,7 +97,7 @@ android {
 apply from: '../versions.gradle'
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.android.support:multidex:1.0.3'
 
     implementation "com.android.support:support-v4:$supportVersion"
     implementation "com.android.support:support-v13:$supportVersion"
