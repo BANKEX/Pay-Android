@@ -45,7 +45,7 @@ public class FeaturesActivity extends SingleFragmentActivity {
     }
 
     @Override
-    public Fragment getFragment() {
+    public Fragment createFragment() {
         return FeaturesFragment.newInstance();
     }
 }
