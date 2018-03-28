@@ -18,9 +18,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author Daniel Serdyukov
- */
 @SuppressLint("CommitTransaction")
 @RunWith(MockitoJUnitRunner.class)
 public class LifecyclerTest {

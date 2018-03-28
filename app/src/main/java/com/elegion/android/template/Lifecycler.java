@@ -9,9 +9,6 @@ import com.elegion.android.template.util.HockeyAppUtils;
 
 import net.hockeyapp.android.CrashManager;
 
-/**
- * @author Mikhail Barannikov
- */
 public class Lifecycler implements Application.ActivityLifecycleCallbacks {
 
     private static int sStarted;
