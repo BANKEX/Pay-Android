@@ -83,11 +83,11 @@ public class LifecyclerTest {
 
     @Test
     public void testIsApplicationVisible() throws Exception {
-        assertThat(Lifecycler.isApplicationVisible(), is(false));
+        assertThat(Lifecycler.Companion.isApplicationVisible(), is(false));
         mLifecycler.onActivityStarted(mActivity);
-        assertThat(Lifecycler.isApplicationVisible(), is(true));
+        assertThat(Lifecycler.Companion.isApplicationVisible(), is(true));
         mLifecycler.onActivityStopped(mActivity);
-        assertThat(Lifecycler.isApplicationVisible(), is(false));
+        assertThat(Lifecycler.Companion.isApplicationVisible(), is(false));
     }
 
     @Test
