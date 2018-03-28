@@ -21,9 +21,6 @@ import io.reactivex.functions.Consumer;
 import retrofit2.HttpException;
 import timber.log.Timber;
 
-/**
- * @author Max Kuznetsov on 15-Jun-17.
- */
 public class ErrorHandlerImpl {
     protected static final List<Class<?>> NETWORK_EXCEPTIONS = Arrays.asList(
             UnknownHostException.class,

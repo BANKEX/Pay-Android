@@ -12,10 +12,6 @@ import com.elegion.android.template.ui.features.adapter.holder.FeatureViewHolder
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author mikhail.barannikov on 24.07.2017
- */
-
 public class FeaturesAdapter extends AbstractPaginationAdapter<FeatureViewHolder> {
     private final List<Feature> mItems = new ArrayList<>();
 
