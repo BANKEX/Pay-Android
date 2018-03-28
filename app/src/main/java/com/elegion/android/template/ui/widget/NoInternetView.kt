@@ -12,7 +12,7 @@ class NoInternetView(context: Context, attrs: AttributeSet) : EmptyView(context,
         return R.layout.w_no_internet
     }
 
-    override fun getButton(): Button? {
+    override fun getButton(): Button {
         return noInternetButton
     }
 }
