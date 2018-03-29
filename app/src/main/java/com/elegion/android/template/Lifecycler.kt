@@ -8,7 +8,7 @@ import com.elegion.android.template.util.HockeyAppUtils
 
 import net.hockeyapp.android.CrashManager
 
-class Lifecycler : Application.ActivityLifecycleCallbacks {
+open class Lifecycler : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
         // Do nothing.

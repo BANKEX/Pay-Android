@@ -24,7 +24,7 @@ hockey:
 
 checkstyle:
   script:
-    - gradle checkstyle findbugs pmd lintDebug
+    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
   tags:
     - android
     - ubuild
@@ -40,3 +40,4 @@ checkstyle:
       - app/build/reports/findbugs/findbugs.html
       - app/build/reports/pmd/pmd.html
       - app/build/reports/lint-results-debug.html
+      - app/build/reports/tests/testDebugUnitTest/
