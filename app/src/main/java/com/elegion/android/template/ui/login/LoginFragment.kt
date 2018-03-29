@@ -27,7 +27,7 @@ class LoginFragment : BaseNoInternetFragment(), LoginView {
     }
 
     @ProvidePresenter
-    internal fun providePresenter(): LoginPresenter = LoginPresenter(Repository.get(activity))
+    internal fun providePresenter(): LoginPresenter = LoginPresenter(Repository.get(activity!!))
 
     override fun getLayout(): Int = R.layout.fr_login
 

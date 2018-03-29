@@ -26,7 +26,7 @@ class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginatio
     private val mAdapter = FeaturesAdapter()
 
     @ProvidePresenter
-    internal fun providePresenter(): FeaturesPresenter = FeaturesPresenter(Repository.get(activity))
+    internal fun providePresenter(): FeaturesPresenter = FeaturesPresenter(Repository.get(activity!!))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

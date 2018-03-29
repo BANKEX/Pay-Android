@@ -9,8 +9,8 @@ import io.reactivex.disposables.Disposable
 
 @InjectViewState
 internal class LoginPresenter(private val mRepository: Repository) : BasePresenter<LoginView>() {
-    private var mEmail: String? = null
-    private var mPassword: String? = null
+    private var mEmail: String = ""
+    private var mPassword: String = ""
     private var mLoginSubscription: Disposable? = null
 
     fun login() {
@@ -26,7 +26,7 @@ internal class LoginPresenter(private val mRepository: Repository) : BasePresent
     }
 
     private fun handleLogin(response: LoginResponse) {
-        mRepository.saveLoginToken(response.token)
+        mRepository.loginToken = response.token
         viewState.loginSuccessful()
     }
 
