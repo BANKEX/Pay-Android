@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/feature_title"
+        android:id="@+id/featureTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -19,7 +19,7 @@
         tools:text="Feature title"/>
 
     <TextView
-        android:id="@+id/feature_description"
+        android:id="@+id/featureDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/content_layout"
+        android:id="@+id/loginTopLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,7 +27,7 @@
             android:layout_marginRight="16dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/email"
+                android:id="@+id/loginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_email_hint"
@@ -44,7 +44,7 @@
             android:layout_marginRight="16dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/password"
+                android:id="@+id/loginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_pwd_hint"
@@ -55,7 +55,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
