@@ -32,6 +32,7 @@ open class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(conte
             if (resourceId != 0) {
                 emptyViewIcon.setImageResource(resourceId)
             }
+
             emptyViewText.text = a.getString(R.styleable.EmptyView_text)
             val buttonText = a.getString(R.styleable.EmptyView_buttonText)
             if (!TextUtils.isEmpty(buttonText)) {
