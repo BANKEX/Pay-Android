@@ -13,7 +13,7 @@ import com.elegion.android.template.ui.login.LoginActivity
 class SplashActivity : BaseActivity(), SplashView {
 
     @InjectPresenter
-    private lateinit var mPresenter: SplashPresenter
+    internal lateinit var mPresenter: SplashPresenter
 
     private var mTimer: CountDownTimer? = null
     private var mTimerFinished: Boolean = false

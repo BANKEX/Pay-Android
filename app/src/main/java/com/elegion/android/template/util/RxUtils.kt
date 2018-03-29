@@ -121,7 +121,7 @@ object RxUtils {
                     val errorBody = e.response().errorBody()!!.string()
                     val errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean::class.java)
                     if (errorBean != null) {
-                        errorView.showErrorMessage(errorBean.message)
+                        errorView.showErrorMessage(errorBean.message ?: "")
                     } else {
                         errorView.showErrorMessage(e.message())
                     }

@@ -1,6 +1,6 @@
 live:
   script:
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdLive uploadProdLiveToHockeyApp --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintRelease uploadProdLiveToHockeyApp --stacktrace
   tags:
     - android
     - ubuild
@@ -15,7 +15,7 @@ live:
 hockey:
   script:
     - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintProdRelease uploadProdReleaseToHockeyApp --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintReleaseQa uploadProdReleaseToHockeyApp --stacktrace
   tags:
     - android
     - ubuild
@@ -24,7 +24,7 @@ hockey:
 
 checkstyle:
   script:
-    - gradle checkstyle findbugs pmd lintProdRelease
+    - gradle checkstyle findbugs pmd lintDebug
   tags:
     - android
     - ubuild
@@ -39,4 +39,4 @@ checkstyle:
       - app/build/reports/checkstyle/checkstyle.html
       - app/build/reports/findbugs/findbugs.html
       - app/build/reports/pmd/pmd.html
-      - app/build/reports/lint-results-prodRelease.html
+      - app/build/reports/lint-results-debug.html

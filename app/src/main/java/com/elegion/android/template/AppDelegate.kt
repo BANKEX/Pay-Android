@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.StrictMode
 import android.support.multidex.MultiDexApplication
 import android.support.v7.app.AppCompatDelegate
-
 import timber.log.Timber
 
 class AppDelegate : MultiDexApplication() {

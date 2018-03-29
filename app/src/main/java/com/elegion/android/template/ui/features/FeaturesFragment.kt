@@ -21,7 +21,7 @@ import timber.log.Timber
 
 class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginationAdapter.Callback {
     @InjectPresenter
-    lateinit var mPresenter: FeaturesPresenter
+    internal lateinit var mPresenter: FeaturesPresenter
 
     private val mAdapter = FeaturesAdapter()
 

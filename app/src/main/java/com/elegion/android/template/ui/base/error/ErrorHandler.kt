@@ -79,7 +79,7 @@ open class ErrorHandler protected constructor(
     }
 
     protected fun handleProtocolError(errorBean: ErrorBean) {
-        mErrorView.showErrorMessage(errorBean.message)
+        mErrorView.showErrorMessage(errorBean.message ?: "")
     }
 
     protected fun handleNonProtocolError(httpException: HttpException) {
