@@ -24,9 +24,7 @@ object ToolbarUtils {
     }
 
     @JvmStatic
-    fun setToolbarTitle(activity: AppCompatActivity, @StringRes title: Int) {
-        activity.supportActionBar?.setTitle(title)
-    }
+    fun setToolbarTitle(activity: AppCompatActivity, @StringRes title: Int) = activity.supportActionBar?.setTitle(title)
 
     @JvmStatic
     fun setToolbarTitle(activity: AppCompatActivity, title: CharSequence) {
@@ -48,12 +46,8 @@ object ToolbarUtils {
     }
 
     @JvmStatic
-    fun setHomeEnabled(activity: AppCompatActivity) {
-        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
+    fun setHomeEnabled(activity: AppCompatActivity) = activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     @JvmStatic
-    fun setHomeDisabled(activity: AppCompatActivity) {
-        activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-    }
+    fun setHomeDisabled(activity: AppCompatActivity) = activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 }

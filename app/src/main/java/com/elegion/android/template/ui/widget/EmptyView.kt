@@ -48,25 +48,20 @@ open class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(conte
     }
 
     @LayoutRes
-    protected open fun getLayout(): Int {
-        return R.layout.w_empty_view
-    }
+    protected open fun getLayout(): Int = R.layout.w_empty_view
 
-    protected open fun getButton(): Button {
-        return emptyViewButton
-    }
+    protected open fun getButton(): Button = emptyViewButton
 
-    fun setButtonClickListener(buttonClickListener: View.OnClickListener) {
-        getButton().setOnClickListener(buttonClickListener)
-    }
+    fun setButtonClickListener(listener: View.OnClickListener?) = getButton().setOnClickListener(listener)
 
-    fun bindEmptyView(@DrawableRes icon: Int, @StringRes text: Int, @StringRes buttonText: Int, buttonClickListener: View.OnClickListener) {
+    fun bindEmptyView(@DrawableRes icon: Int, @StringRes text: Int,
+                      @StringRes buttonText: Int, listener: View.OnClickListener?) {
         emptyViewIcon.setImageResource(icon)
         emptyViewText.setText(text)
         getButton().apply {
             visibility = View.VISIBLE
             setText(buttonText)
-            setOnClickListener(buttonClickListener)
+            setOnClickListener(listener)
         }
     }
 

@@ -27,16 +27,12 @@ object DateUtil {
     }
 
     @JvmStatic
-    fun getCalendar(date: Date): Calendar {
-        return Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC)).apply {
-            time = date
-        }
+    fun getCalendar(date: Date): Calendar = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC)).apply {
+        time = date
     }
 
     @JvmStatic
-    fun getCalendar(millis: Long): Calendar {
-        return Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC)).apply {
-          timeInMillis = millis
-        }
+    fun getCalendar(millis: Long): Calendar = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE_UTC)).apply {
+        timeInMillis = millis
     }
 }

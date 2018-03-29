@@ -60,9 +60,7 @@ object StringUtil {
     /** GENERAL METHODS  */
 
     @JvmStatic
-    fun isEmail(email: String?): Boolean {
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
+    fun isEmail(email: String?): Boolean = !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
     @JvmStatic
     fun fromHtml(html: String): CharSequence {
@@ -84,16 +82,12 @@ object StringUtil {
     }
 
     @JvmStatic
-    private fun getImageSpan(context: Context, @DrawableRes icon: Int): ImageSpan {
-        val d = ContextCompat.getDrawable(context, icon)
-        return getImageSpan(d!!)
-    }
+    private fun getImageSpan(context: Context, @DrawableRes icon: Int): ImageSpan =
+            getImageSpan(ContextCompat.getDrawable(context, icon)!!)
 
     @JvmStatic
-    private fun getImageSpan(context: Context, bitmap: Bitmap): ImageSpan {
-        val d = BitmapDrawable(context.resources, bitmap)
-        return getImageSpan(d)
-    }
+    private fun getImageSpan(context: Context, bitmap: Bitmap): ImageSpan =
+            getImageSpan(BitmapDrawable(context.resources, bitmap))
 
     @JvmStatic
     private fun getImageSpan(drawable: Drawable): ImageSpan {
@@ -102,14 +96,11 @@ object StringUtil {
     }
 
     @JvmStatic
-    private fun getColoredSpan(context: Context, @ColorRes color: Int): ForegroundColorSpan {
-        return ForegroundColorSpan(ContextCompat.getColor(context, color))
-    }
+    private fun getColoredSpan(context: Context, @ColorRes color: Int): ForegroundColorSpan =
+            ForegroundColorSpan(ContextCompat.getColor(context, color))
 
     @JvmStatic
-    private fun getSizeSpan(relativeSize: Float): RelativeSizeSpan {
-        return RelativeSizeSpan(relativeSize)
-    }
+    private fun getSizeSpan(relativeSize: Float): RelativeSizeSpan = RelativeSizeSpan(relativeSize)
 
     /** END OF GENERAL METHODS  */
 }

@@ -48,14 +48,10 @@ object ViewUtils {
     }
 
     @JvmStatic
-    fun dpToPx(dp: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics).toInt()
-    }
+    fun dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics).toInt()
 
     @JvmStatic
-    fun spToPx(sp: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().displayMetrics).toInt()
-    }
+    fun spToPx(sp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().displayMetrics).toInt()
 
     @JvmStatic
     fun hideKeyboard(activity: Activity?) {
@@ -78,7 +74,7 @@ object ViewUtils {
     @JvmStatic
     fun hideKeyboard(context: Context?, view: View) {
         if (context != null) {
-            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
             imm?.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
@@ -153,9 +149,8 @@ object ViewUtils {
     }
 
     @JvmStatic
-    fun getColorWithOpacity(@FloatRange(from = 0.0, to = 1.0) opacity: Float, @ColorInt color: Int): Int {
-        return Color.argb((MAX_OPACITY * opacity).toInt(), Color.red(color), Color.green(color), Color.blue(color))
-    }
+    fun getColorWithOpacity(@FloatRange(from = 0.0, to = 1.0) opacity: Float, @ColorInt color: Int): Int =
+            Color.argb((MAX_OPACITY * opacity).toInt(), Color.red(color), Color.green(color), Color.blue(color))
 
     @JvmStatic
     fun setCheckedWithoutNotify(button: CompoundButton, isChecked: Boolean,
@@ -166,24 +161,17 @@ object ViewUtils {
     }
 
     @JvmStatic
-    fun getEditTextString(editText: EditText): String {
-        val editable = editText.text
-        return editable?.toString() ?: ""
-    }
+    fun getEditTextString(editText: EditText) = editText.text?.toString() ?: ""
 
     /**
      * REGION PROJECT SPECIFIC TOOLS
      */
 
     @JvmStatic
-    fun <T> findView(activity: Activity, @IdRes id: Int): T {
-        return activity.findViewById<View>(id) as T
-    }
+    fun <T> findView(activity: Activity, @IdRes id: Int): T = activity.findViewById<View>(id) as T
 
     @JvmStatic
-    fun <T> findView(view: View, @IdRes id: Int): T {
-        return view.findViewById<View>(id) as T
-    }
+    fun <T> findView(view: View, @IdRes id: Int): T = view.findViewById<View>(id) as T
 
     @JvmStatic
     fun <T : View> findViews(activity: Activity, @IdRes vararg ids: Int): List<T> {

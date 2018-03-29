@@ -9,9 +9,7 @@ import com.elegion.android.template.ui.login.LoginActivity
 object AuthUtils {
 
     @JvmStatic
-    fun logout(repository: Repository) {
-        repository.logout()
-    }
+    fun logout(repository: Repository) = repository.logout()
 
     @JvmStatic
     fun openLogin(context: Context) {

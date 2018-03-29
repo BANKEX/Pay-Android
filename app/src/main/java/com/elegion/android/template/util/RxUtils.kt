@@ -142,12 +142,8 @@ object RxUtils {
     }
 
     @JvmStatic
-    fun errorLogE(e: Throwable) {
-        Timber.d(e, "errorLogE")
-    }
+    fun errorLogE(e: Throwable) = Timber.d(e, "errorLogE")
 
     @JvmStatic
-    fun <T> emptyTransformer(): FlowableTransformer<T, T> {
-        return FlowableTransformer { it }
-    }
+    fun <T> emptyTransformer(): FlowableTransformer<T, T> = FlowableTransformer { it }
 }

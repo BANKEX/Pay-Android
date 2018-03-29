@@ -8,11 +8,7 @@ import com.elegion.android.template.R
 import kotlinx.android.synthetic.main.w_no_internet.view.*
 
 class NoInternetView(context: Context, attrs: AttributeSet) : EmptyView(context, attrs) {
-    override fun getLayout(): Int {
-        return R.layout.w_no_internet
-    }
+    override fun getLayout(): Int = R.layout.w_no_internet
 
-    override fun getButton(): Button {
-        return noInternetButton
-    }
+    override fun getButton(): Button = noInternetButton
 }

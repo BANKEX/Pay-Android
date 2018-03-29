@@ -23,9 +23,7 @@ class SplashActivity : BaseActivity(), SplashView {
         return SplashPresenter(Repository.get(this))
     }
 
-    override fun getLayout(): Int {
-        return R.layout.ac_splash
-    }
+    override fun getLayout(): Int = R.layout.ac_splash
 
     override fun onResume() {
         super.onResume()
@@ -40,9 +38,9 @@ class SplashActivity : BaseActivity(), SplashView {
 
     private fun cancelTimer() {
         mTimerFinished = false
-        mTimer = mTimer?.run {
-            cancel()
-            null
+        if (mTimer != null) {
+            mTimer!!.cancel()
+            mTimer = null
         }
     }
 
