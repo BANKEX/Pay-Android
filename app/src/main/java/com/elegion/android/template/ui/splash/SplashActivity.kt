@@ -19,9 +19,7 @@ class SplashActivity : BaseActivity(), SplashView {
     private var mTimerFinished: Boolean = false
 
     @ProvidePresenter
-    internal fun providePresenter(): SplashPresenter {
-        return SplashPresenter(Repository.get(this))
-    }
+    internal fun providePresenter(): SplashPresenter = SplashPresenter(Repository.get(this))
 
     override fun getLayout(): Int = R.layout.ac_splash
 

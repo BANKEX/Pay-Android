@@ -10,7 +10,7 @@ import net.hockeyapp.android.CrashManager
 
 open class Lifecycler : Application.ActivityLifecycleCallbacks {
 
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         // Do nothing.
     }
 
@@ -33,7 +33,7 @@ open class Lifecycler : Application.ActivityLifecycleCallbacks {
         sStopped++
     }
 
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
         // Do nothing.
     }
 
@@ -42,7 +42,6 @@ open class Lifecycler : Application.ActivityLifecycleCallbacks {
     }
 
     companion object {
-
         private var sStarted: Int = 0
         private var sStopped: Int = 0
 

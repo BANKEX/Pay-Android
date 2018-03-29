@@ -43,13 +43,16 @@ class Repository private constructor(context: Context) {
     }
 
     companion object {
-        private lateinit var sInstance: Repository
+        @JvmStatic
+        private var sInstance: Repository? = null
 
+        @JvmStatic
+        @Synchronized
         fun get(context: Context): Repository {
-            if (!::sInstance.isInitialized) {
+            if (sInstance == null) {
                 sInstance = Repository(context)
             }
-            return sInstance
+            return sInstance as Repository
         }
     }
 }

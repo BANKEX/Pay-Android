@@ -35,12 +35,12 @@ open class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(conte
             emptyViewText.text = a.getString(R.styleable.EmptyView_text)
             val buttonText = a.getString(R.styleable.EmptyView_buttonText)
             if (!TextUtils.isEmpty(buttonText)) {
-                emptyViewButton.apply {
+                getButton().apply {
                     text = buttonText
                     visibility = View.VISIBLE
                 }
             } else {
-                emptyViewButton.visibility = View.GONE
+                getButton().visibility = View.GONE
             }
         } finally {
             a.recycle()
