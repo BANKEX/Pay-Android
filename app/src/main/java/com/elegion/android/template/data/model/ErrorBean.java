@@ -3,9 +3,6 @@ package com.elegion.android.template.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author Max Kuznetsov on 14-Jun-17.
- */
 public class ErrorBean {
     @SerializedName("code")
     @Expose

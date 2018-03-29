@@ -7,9 +7,7 @@ import android.preference.PreferenceManager
 
 class PreferencesRepository(context: Context) {
 
-    init {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
-    }
+    private var preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
 
     var loginToken: String?
         get() = preferences.getString(KEY_LOGIN_TOKEN, null)
@@ -20,9 +18,6 @@ class PreferencesRepository(context: Context) {
         get() = preferences.edit()
 
     companion object {
-        private const val KEY_FEATURE = "KEY_FEATURE"
         private const val KEY_LOGIN_TOKEN = "KEY_LOGIN_TOKEN"
-
-        private lateinit var preferences: SharedPreferences
     }
 }

@@ -3,9 +3,6 @@ package com.elegion.android.template.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author mikhail.barannikov
- */
 public class Feature {
     @SerializedName("title")
     @Expose

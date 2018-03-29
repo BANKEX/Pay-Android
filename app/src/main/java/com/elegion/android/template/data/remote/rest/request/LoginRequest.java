@@ -5,10 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * @author mikhail.barannikov on 04.08.2017
- */
-
 public class LoginRequest {
     @SerializedName("scopes")
     @Expose
