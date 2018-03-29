@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
-class PreferencesRepository(context: Context) {
+class PreferencesDataSource(context: Context) {
 
     private var preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
 

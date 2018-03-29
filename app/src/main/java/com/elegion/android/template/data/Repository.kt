@@ -1,7 +1,7 @@
 package com.elegion.android.template.data
 
 import android.content.Context
-import com.elegion.android.template.data.local.PreferencesRepository
+import com.elegion.android.template.data.local.PreferencesDataSource
 import com.elegion.android.template.data.model.Feature
 import com.elegion.android.template.data.provider.ServiceProvider
 import com.elegion.android.template.data.remote.rest.TemplateService
@@ -13,15 +13,15 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class Repository private constructor(context: Context) {
-    private val preferencesRepository: PreferencesRepository = PreferencesRepository(context)
+    private val preferencesDataSource: PreferencesDataSource = PreferencesDataSource(context)
     private val templateService: TemplateService = ServiceProvider.getServiceInstance(TemplateService::class.java)
     private val clientId = "01d211db9c3e6dd5effd"
     private val clientSecret = "244d5f543b86f5dc6dd9555c6534cf8e86e46976"
 
     var loginToken: String?
-        get() = preferencesRepository.loginToken
+        get() = preferencesDataSource.loginToken
         set(loginToken) {
-            preferencesRepository.loginToken = loginToken
+            preferencesDataSource.loginToken = loginToken
         }
 
     fun login(username: String, password: String): Flowable<LoginResponse> {
