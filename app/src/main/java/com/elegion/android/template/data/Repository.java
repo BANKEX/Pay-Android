@@ -18,9 +18,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Flowable;
 import okhttp3.Credentials;
 
-/**
- * @author mikhail barannikov
- */
 public class Repository {
     private PreferencesRepository mPreferencesRepository;
     private TemplateService mTemplateService;
@@ -40,7 +37,6 @@ public class Repository {
 
     public void logout() {
         mPreferencesRepository.setLoginToken("");
-        mPreferencesRepository.setCurrentUser(null);
     }
 
     public Flowable<LoginResponse> login(String username, String password) {
