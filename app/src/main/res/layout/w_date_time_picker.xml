@@ -7,13 +7,13 @@
     android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/date_time_view_pager"
+        android:id="@+id/dateTimeViewPager"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/date_time_tab_layout"
+            android:id="@+id/dateTimeTabLayout"
             app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/black"
             app:tabGravity="fill"
@@ -33,7 +33,7 @@
     </android.support.v4.view.ViewPager>
 
     <Button
-        android:id="@+id/date_time_ok"
+        android:id="@+id/dateTimeOk"
         android:layout_width="match_parent"
         android:textAllCaps="true"
         android:text="@string/btn_ok"
