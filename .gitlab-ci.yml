@@ -22,22 +22,22 @@ hockey:
   only:
     - /^v[\d.]+$/
 
-checkstyle:
-  script:
-    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
-  tags:
-    - android
-    - ubuild
-  except:
-    - master
-    - dev
-    - /^v[\d.]+$/
-    - /^v[\d.]+-live$/
-  artifacts:
-    when: on_failure
-    paths:
-      - app/build/reports/checkstyle/checkstyle.html
-      - app/build/reports/findbugs/findbugs.html
-      - app/build/reports/pmd/pmd.html
-      - app/build/reports/lint-results-debug.html
-      - app/build/reports/tests/testDebugUnitTest/
+#checkstyle:
+#  script:
+#    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
+#  tags:
+#    - android
+#    - ubuild
+#  except:
+#    - master
+#    - dev
+#    - /^v[\d.]+$/
+#    - /^v[\d.]+-live$/
+#  artifacts:
+#    when: on_failure
+#    paths:
+#      - app/build/reports/checkstyle/checkstyle.html
+#      - app/build/reports/findbugs/findbugs.html
+#      - app/build/reports/pmd/pmd.html
+#      - app/build/reports/lint-results-debug.html
+#      - app/build/reports/tests/testDebugUnitTest/
