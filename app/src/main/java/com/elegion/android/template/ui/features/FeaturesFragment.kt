@@ -58,7 +58,7 @@ class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginatio
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
-        R.id.features_menu_logout -> {
+        R.id.featuresMenuLogout -> {
             presenter.logout()
             AuthUtils.openLogin(activity!!)
             super.onOptionsItemSelected(item)

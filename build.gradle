@@ -26,11 +26,24 @@ ext {
     projectName = 'Template'
     hockeyAppId = '"00000000000000000000000000000000"'
     versionName = versionName
+    qaVersionSuffix = qaVersionSuffix
     versionCode = versionCode
 }
 
+def getQaVersionSuffix() {
+    def tag = 'git describe --tags'.execute().text.split('-').first()?.trim()
+    if (tag =~ /^v.*$/) {
+        return tag.substring(tag.lastIndexOf("."))
+    }
+    return '1.0.0'
+}
+
 def getVersionName() {
-    return '0.0.0'
+    def tag = 'git describe --tags'.execute().text.split('-').first()?.trim()
+    if (tag =~ /^v.*$/) {
+        return tag.substring(1, tag.lastIndexOf(".")) // exclude build number
+    }
+    return '1.0.0'
 }
 
 int getVersionCode() {

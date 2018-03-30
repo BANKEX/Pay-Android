@@ -1,6 +1,6 @@
 live:
   script:
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintRelease uploadProdLiveToHockeyApp --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintRelease uploadReleaseToHockeyApp --stacktrace
   tags:
     - android
     - ubuild
@@ -15,7 +15,7 @@ live:
 hockey:
   script:
     - /usr/bin/draw-version -d app/src/main/res -f ic_launcher.png
-    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintReleaseQa uploadProdReleaseToHockeyApp --stacktrace
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintReleaseQa uploadReleaseQaToHockeyApp --stacktrace
   tags:
     - android
     - ubuild

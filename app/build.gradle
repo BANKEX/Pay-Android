@@ -46,6 +46,12 @@ android {
             keyAlias System.getenv("KEYALIAS")
             keyPassword System.getenv("KEYPASS")
         }
+        playstore {
+            storeFile file(String.valueOf(System.getenv("RELEASE_KEYSTORE")))
+            storePassword System.getenv("RELEASE_STOREPASS")
+            keyAlias System.getenv("RELEASE_KEYALIAS")
+            keyPassword System.getenv("RELEASE_KEYPASS")
+        }
     }
 
     buildTypes {
@@ -57,7 +63,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            versionNameSuffix '-test'
+            versionNameSuffix rootProject.qaVersionSuffix
         }
 
         release {

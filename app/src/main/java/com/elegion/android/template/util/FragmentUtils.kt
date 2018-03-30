@@ -18,7 +18,7 @@ object FragmentUtils {
                 tr.setCustomAnimations(enter, exit)
             }
         }
-        tr.replace(R.id.fl_container, fragment, fragment.javaClass.name)
+        tr.replace(R.id.flContainer, fragment, fragment.javaClass.name)
         if (addToBackStack) {
             tr.addToBackStack(fragment.javaClass.name)
         }
@@ -37,7 +37,7 @@ object FragmentUtils {
                 tr.setCustomAnimations(enter, exit)
             }
         }
-        tr.add(R.id.fl_container, fragment, fragment.javaClass.name)
+        tr.add(R.id.flContainer, fragment, fragment.javaClass.name)
         if (addToBackStack) {
             tr.addToBackStack(fragment.javaClass.name)
         }
