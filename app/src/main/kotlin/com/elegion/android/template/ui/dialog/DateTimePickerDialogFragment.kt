@@ -57,9 +57,19 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
 
     private fun constructCalendar(): Calendar {
         val calendar = Calendar.getInstance()
-        val year = if (datePicker == null) calendar.get(Calendar.YEAR) else datePicker!!.year
-        val month = if (datePicker == null) calendar.get(Calendar.MONTH) else datePicker!!.month
-        val day = if (datePicker == null) calendar.get(Calendar.DAY_OF_MONTH) else datePicker!!.dayOfMonth
+
+        val year: Int
+        val month: Int
+        val day: Int
+        if (datePicker == null) {
+            year = calendar.get(Calendar.YEAR)
+            month = calendar.get(Calendar.MONTH)
+            day = calendar.get(Calendar.DAY_OF_MONTH)
+        } else {
+            year = datePicker!!.year
+            month = datePicker!!.month
+            day = datePicker!!.dayOfMonth
+        }
 
         val hour: Int
         val minute: Int

@@ -2,14 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../config/quality/quality.gradle'
+apply from: '../config/quality/ktlint.gradle'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 apply plugin: 'kotlin-kapt'
-apply plugin: "io.gitlab.arturbosch.detekt"
-apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.elegion.android.template"
@@ -94,20 +92,6 @@ android {
 }
 
 apply from: '../versions.gradle'
-
-ktlint {
-    version = "0.21.0"
-    reporters = ["PLAIN", "CHECKSTYLE"]
-}
-
-detekt {
-    version = "1.0.0.RC6-4"
-    profile("main") {
-        input = "$projectDir/src/main/kotlin"
-//        config = "$projectDir/detekt.yml"
-        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-    }
-}
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'

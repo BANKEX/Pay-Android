@@ -40,12 +40,13 @@ internal class FeaturesPresenter(private val repository: Repository) : BasePrese
         }
         viewState.showFeatures(features, clear)
         offset += features.size
-        isLastPage = offset > 50
+        isLastPage = offset > MAX_FEATURES
     }
 
     fun logout() = AuthUtils.logout(repository)
 
     companion object {
         private const val PAGE_COUNT = 20
+        private const val MAX_FEATURES = 50
     }
 }

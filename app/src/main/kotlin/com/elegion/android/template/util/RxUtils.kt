@@ -64,7 +64,8 @@ object RxUtils {
             it.doOnSubscribe {
                 view.hideErrorStub(it)
             }.doOnNext {
-                if (it.first != null && it.first!!.isEmpty && it.second != null && it.second!!.isEmpty) {
+                if (it.first != null || it.second == null) return@doOnNext
+                if (it.first!!.isEmpty && it.second!!.isEmpty) {
                     view.showErrorStub()
                 }
             }

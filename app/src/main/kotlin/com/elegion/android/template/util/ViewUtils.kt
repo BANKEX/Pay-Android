@@ -24,10 +24,8 @@ import android.widget.TextView
 import java.util.ArrayList
 
 object ViewUtils {
-    @JvmStatic
-    private val DP_DENSITY = 160f
-    @JvmStatic
-    private val MAX_OPACITY = 255f
+    private const val DP_DENSITY = 160f
+    private const val MAX_OPACITY = 255f
 
     @JvmStatic
     val displayWidth: Int

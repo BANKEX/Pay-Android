@@ -9,19 +9,34 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.1.0'
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        classpath "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.0.0.RC6-4"
-        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.2.0"
     }
 
     // Exclude the version that the android plugin depends on.
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-4"
+}
+
 allprojects {
     repositories {
         jcenter()
         google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+detekt {
+    version = "1.0.0.RC6-4"
+    profile("main") {
+        input = "$projectDir/app"
+        config = "$projectDir/detekt.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+        output = "$project.projectDir/app/build/reports/detekt" // Directory where output reports are stored (if present)
     }
 }
 
