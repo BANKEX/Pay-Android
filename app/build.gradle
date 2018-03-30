@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../config/quality/quality.gradle'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
+apply plugin: "io.gitlab.arturbosch.detekt"
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -34,6 +35,10 @@ android {
     dexOptions {
         preDexLibraries true
         javaMaxHeapSize "2048M"
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 
     signingConfigs {
@@ -120,6 +125,15 @@ dependencies {
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoViersion"
+}
+
+detekt {
+    version = "1.0.0.RC6-4"
+    profile("main") {
+        input = "$projectDir/src/main/kotlin"
+        config = "$projectDir/detekt.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    }
 }
 
 hockeyapp {
