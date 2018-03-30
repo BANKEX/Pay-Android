@@ -23,13 +23,13 @@ internal class FeaturesPresenter(private val mRepository: Repository) : BasePres
             mIsLastPage = false
         }
 
-        if (!mIsLastPage && RxUtils.isNullOrUnsubscribed(mLoadFeaturesSubscription)) {
-            removeDisposable(mLoadFeaturesSubscription!!)
+        if (!mIsLastPage && RxUtils.isNullOrDisposed(mLoadFeaturesSubscription)) {
+            removeDisposable(mLoadFeaturesSubscription)
             mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
-                    .compose<List<Feature>>({ RxUtils.async(it) })
+                    .compose<List<Feature>>{ RxUtils.async(it) }
                     .compose(RxUtils.loading(viewState))
                     .subscribe({ this.handleFeaturesResponse(it) }, { RxUtils.errorLogE(it) })
-            addDisposable(mLoadFeaturesSubscription!!)
+            addDisposable(mLoadFeaturesSubscription)
         }
     }
 

@@ -17,9 +17,12 @@ abstract class BaseRecyclerFragment : BaseRefresherFragment() {
     protected lateinit var mLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(getLayout(), container, false)
+        return inflater.inflate(getLayout(), container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecycler()
-        return view
     }
 
     override fun shouldShowNoInternetStubView(): Boolean = recycler.adapter.itemCount == 0

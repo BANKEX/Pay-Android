@@ -3,6 +3,7 @@ package com.elegion.android.template.ui.login
 import com.arellomobile.mvp.InjectViewState
 import com.elegion.android.template.data.Repository
 import com.elegion.android.template.data.remote.rest.response.LoginResponse
+import com.elegion.android.template.ui.base.error.ErrorHandler
 import com.elegion.android.template.ui.base.presenter.BasePresenter
 import com.elegion.android.template.util.RxUtils
 import io.reactivex.disposables.Disposable
@@ -11,17 +12,18 @@ import io.reactivex.disposables.Disposable
 internal class LoginPresenter(private val mRepository: Repository) : BasePresenter<LoginView>() {
     private var mEmail: String = ""
     private var mPassword: String = ""
+    private var mErrorHandler = ErrorHandler.create(viewState, mRepository, viewState)
     private var mLoginSubscription: Disposable? = null
 
     fun login() {
-        if (RxUtils.isNullOrUnsubscribed(mLoginSubscription)) {
-            removeDisposable(mLoginSubscription!!)
+        if (RxUtils.isNullOrDisposed(mLoginSubscription)) {
+            removeDisposable(mLoginSubscription)
             mLoginSubscription = mRepository.login(mEmail, mPassword)
-                    .compose<LoginResponse>({ RxUtils.async(it) })
+                    .compose<LoginResponse>{ RxUtils.async(it) }
                     .compose(RxUtils.loading(viewState))
-                    .compose(RxUtils.errorTransformer(viewState, mRepository, viewState))
+                    .compose(mErrorHandler.transformer())
                     .subscribe({ this.handleLogin(it) }, { RxUtils.errorLogE(it) })
-            addDisposable(mLoginSubscription!!)
+            addDisposable(mLoginSubscription)
         }
     }
 
@@ -36,5 +38,10 @@ internal class LoginPresenter(private val mRepository: Repository) : BasePresent
 
     fun setPassword(password: String) {
         mPassword = password
+    }
+
+    fun letMeIn() {
+        mRepository.loginToken = "LetMeInToken"
+        viewState.loginSuccessful()
     }
 }

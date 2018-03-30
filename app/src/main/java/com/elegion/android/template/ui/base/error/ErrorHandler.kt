@@ -28,14 +28,14 @@ open class ErrorHandler protected constructor(
         mNoInternetStubView = noInternetStubView
     }
 
-    fun <T> noInternetTransformer(): FlowableTransformer<T, T> {
+    fun <T> transformer(): FlowableTransformer<T, T> {
         return FlowableTransformer {
             it.doOnSubscribe { mNoInternetStubView?.hideNoInternetStub() }
                     .doOnError(error())
         }
     }
 
-    fun error(): Consumer<Throwable> {
+    private fun error(): Consumer<Throwable> {
         return Consumer {
             Timber.d(it, "from ErrorHandler.error")
             handleError(it)

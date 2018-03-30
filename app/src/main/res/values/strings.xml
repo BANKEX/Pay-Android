@@ -15,5 +15,6 @@
     <string name="menu_logout">Logout</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
+    <string name="let_me_in">Just let me in</string>
 
 </resources>

@@ -34,6 +34,7 @@ class LoginFragment : BaseNoInternetFragment(), LoginView {
     override fun onResume() {
         super.onResume()
         loginBtn.setOnClickListener { mPresenter.login() }
+        loginLetMeInBtn.setOnClickListener { mPresenter.letMeIn() }
         loginEmail.addTextChangedListener(loginEmailTexTWatcher)
         loginPassword.addTextChangedListener(loginPasswordTexTWatcher)
     }
