@@ -5,7 +5,7 @@ live:
     - android
     - ubuild
   only:
-    - /^v[\d.]+-live$/
+    - /^v[\d.]+r$/
   artifacts:
     expire_in: 2 week
     paths:
@@ -20,24 +20,24 @@ hockey:
     - android
     - ubuild
   only:
-    - /^v[\d.]+$/
+    - /^v[\d.]+t$/
 
-#checkstyle:
-#  script:
-#    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
-#  tags:
-#    - android
-#    - ubuild
-#  except:
-#    - master
-#    - dev
-#    - /^v[\d.]+$/
-#    - /^v[\d.]+-live$/
-#  artifacts:
-#    when: on_failure
-#    paths:
-#      - app/build/reports/checkstyle/checkstyle.html
-#      - app/build/reports/findbugs/findbugs.html
-#      - app/build/reports/pmd/pmd.html
-#      - app/build/reports/lint-results-debug.html
-#      - app/build/reports/tests/testDebugUnitTest/
+checkstyle:
+  script:
+    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
+  tags:
+    - android
+    - ubuild
+  except:
+    - master
+    - dev
+    - /^v[\d.]+t$/
+    - /^v[\d.]+r$/
+  artifacts:
+    when: on_failure
+    paths:
+      - app/build/reports/checkstyle/checkstyle.html
+      - app/build/reports/findbugs/findbugs.html
+      - app/build/reports/pmd/pmd.html
+      - app/build/reports/lint-results-debug.html
+      - app/build/reports/tests/testDebugUnitTest/

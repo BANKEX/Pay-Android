@@ -13,6 +13,10 @@
             <Bug code="IJU" />
         </Not>
     </Match>
+    <!-- Exclude Kotlin files -->
+    <Match>
+        <Source name="~.*\.kt"/>
+    </Match>
 
 
 </FindBugsFilter>
