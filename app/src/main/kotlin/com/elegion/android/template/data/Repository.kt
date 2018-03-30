@@ -9,7 +9,7 @@ import com.elegion.android.template.data.remote.rest.request.LoginRequest
 import com.elegion.android.template.data.remote.rest.response.LoginResponse
 import io.reactivex.Flowable
 import okhttp3.Credentials
-import java.util.*
+import java.util.Arrays
 import java.util.concurrent.TimeUnit
 
 class Repository private constructor(context: Context) {

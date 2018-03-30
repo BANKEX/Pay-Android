@@ -19,10 +19,10 @@ internal class LoginPresenter(private val repository: Repository) : BasePresente
         if (RxUtils.isNullOrDisposed(loginSubscription)) {
             removeDisposable(loginSubscription)
             loginSubscription = repository.login(email, password)
-                    .compose<LoginResponse>{ RxUtils.async(it) }
-                    .compose(RxUtils.loading(viewState))
-                    .compose(errorHandler.transformer())
-                    .subscribe({ this.handleLogin(it) }, { RxUtils.errorLogE(it) })
+                .compose<LoginResponse> { RxUtils.async(it) }
+                .compose(RxUtils.loading(viewState))
+                .compose(errorHandler.transformer())
+                .subscribe({ this.handleLogin(it) }, { RxUtils.errorLogE(it) })
             addDisposable(loginSubscription)
         }
     }

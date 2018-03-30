@@ -12,5 +12,4 @@ class FeatureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             itemView.featureDescription.text = description
         }
     }
-
 }

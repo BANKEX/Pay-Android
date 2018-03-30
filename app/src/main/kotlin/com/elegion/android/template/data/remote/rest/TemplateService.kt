@@ -10,6 +10,8 @@ import retrofit2.http.POST
 
 interface TemplateService {
     @POST("authorizations")
-    fun obtainOAuthToken(@Header("Authorization") basicAuthHeader: String,
-                         @Body params: LoginRequest): Flowable<LoginResponse>
+    fun obtainOAuthToken(
+        @Header("Authorization") basicAuthHeader: String,
+        @Body params: LoginRequest
+    ): Flowable<LoginResponse>
 }

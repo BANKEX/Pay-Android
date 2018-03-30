@@ -4,7 +4,7 @@ import android.support.annotation.CallSuper
 import android.support.v7.widget.RecyclerView
 
 abstract class AbstractPaginationAdapter<H : RecyclerView.ViewHolder> @JvmOverloads constructor(
-        loadOffset: Int = LOAD_OFFSET
+    loadOffset: Int = LOAD_OFFSET
 ) : RecyclerView.Adapter<H>() {
 
     var callback: Callback? = null

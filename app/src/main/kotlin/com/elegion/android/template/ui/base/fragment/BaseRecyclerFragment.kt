@@ -38,12 +38,15 @@ abstract class BaseRecyclerFragment : BaseRefresherFragment() {
 
     protected abstract fun getAdapter(): RecyclerView.Adapter<*>
 
-    protected fun bindEmptyView(@DrawableRes iconRes: Int, @StringRes msgTextRes: Int,
-                                @StringRes buttonTextRes: Int, listener: View.OnClickListener) =
-            emptyView.bindEmptyView(iconRes, msgTextRes, buttonTextRes, listener)
+    protected fun bindEmptyView(
+        @DrawableRes iconRes: Int,
+        @StringRes msgTextRes: Int,
+        @StringRes buttonTextRes: Int,
+        listener: View.OnClickListener
+    ) = emptyView.bindEmptyView(iconRes, msgTextRes, buttonTextRes, listener)
 
     protected fun bindEmptyView(@DrawableRes iconRes: Int, @StringRes msgTextRes: Int) =
-            emptyView.bindEmptyView(iconRes, msgTextRes)
+        emptyView.bindEmptyView(iconRes, msgTextRes)
 
     fun bindEmptyView(@StringRes text: Int) = emptyView.bindEmptyView(text)
 

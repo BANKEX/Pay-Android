@@ -21,7 +21,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.TextView
-import java.util.*
+import java.util.ArrayList
 
 object ViewUtils {
     @JvmStatic
@@ -150,11 +150,10 @@ object ViewUtils {
 
     @JvmStatic
     fun getColorWithOpacity(@FloatRange(from = 0.0, to = 1.0) opacity: Float, @ColorInt color: Int): Int =
-            Color.argb((MAX_OPACITY * opacity).toInt(), Color.red(color), Color.green(color), Color.blue(color))
+        Color.argb((MAX_OPACITY * opacity).toInt(), Color.red(color), Color.green(color), Color.blue(color))
 
     @JvmStatic
-    fun setCheckedWithoutNotify(button: CompoundButton, isChecked: Boolean,
-                                listener: CompoundButton.OnCheckedChangeListener) {
+    fun setCheckedWithoutNotify(button: CompoundButton, isChecked: Boolean, listener: CompoundButton.OnCheckedChangeListener) {
         button.setOnCheckedChangeListener(null)
         button.isChecked = isChecked
         button.setOnCheckedChangeListener(listener)

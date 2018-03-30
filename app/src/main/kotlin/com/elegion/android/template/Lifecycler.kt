@@ -53,5 +53,4 @@ open class Lifecycler : Application.ActivityLifecycleCallbacks {
         val isApplicationVisible: Boolean
             get() = sStarted > sStopped
     }
-
 }

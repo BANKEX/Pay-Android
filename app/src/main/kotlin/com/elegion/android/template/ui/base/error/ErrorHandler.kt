@@ -18,20 +18,23 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 open class ErrorHandler protected constructor(
-        private val errorView: ErrorView,
-        private val repository: Repository
+    private val errorView: ErrorView,
+    private val repository: Repository
 ) {
     private var noInternetStubView: NoInternetStubView? = null
 
-    protected constructor(errorView: ErrorView, repository: Repository,
-                          noInternetStubView: NoInternetStubView?) : this(errorView, repository) {
+    protected constructor(
+        errorView: ErrorView,
+        repository: Repository,
+        noInternetStubView: NoInternetStubView?
+    ) : this(errorView, repository) {
         this.noInternetStubView = noInternetStubView
     }
 
     fun <T> transformer(): FlowableTransformer<T, T> {
         return FlowableTransformer {
             it.doOnSubscribe { noInternetStubView?.hideNoInternetStub() }
-                    .doOnError(error())
+                .doOnError(error())
         }
     }
 
@@ -96,12 +99,16 @@ open class ErrorHandler protected constructor(
 
     companion object {
         protected val NETWORK_EXCEPTIONS = listOf<Class<*>>(
-                UnknownHostException::class.java,
-                SocketTimeoutException::class.java,
-                ConnectException::class.java
+            UnknownHostException::class.java,
+            SocketTimeoutException::class.java,
+            ConnectException::class.java
         )
 
-        fun create(errorView: ErrorView, repository: Repository, noInternetStubView: NoInternetStubView?): ErrorHandler {
+        fun create(
+            errorView: ErrorView,
+            repository: Repository,
+            noInternetStubView: NoInternetStubView?
+        ): ErrorHandler {
             return ErrorHandler(errorView, repository, noInternetStubView)
         }
     }

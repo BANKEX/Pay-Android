@@ -45,8 +45,12 @@ object StringUtil {
     }
 
     @JvmStatic
-    fun getColoredTexts(context: Context, texts: Array<String>,
-                        @ColorRes colorRes: IntArray, connector: String?): SpannableStringBuilder {
+    fun getColoredTexts(
+        context: Context,
+        texts: Array<String>,
+        @ColorRes colorRes: IntArray,
+        connector: String?
+    ): SpannableStringBuilder {
         val builder = SpannableStringBuilder()
         for (i in texts.indices) {
             appendAndSetSpan(builder, texts[i], getColoredSpan(context, colorRes[i]))
@@ -83,11 +87,11 @@ object StringUtil {
 
     @JvmStatic
     private fun getImageSpan(context: Context, @DrawableRes icon: Int): ImageSpan =
-            getImageSpan(ContextCompat.getDrawable(context, icon)!!)
+        getImageSpan(ContextCompat.getDrawable(context, icon)!!)
 
     @JvmStatic
     private fun getImageSpan(context: Context, bitmap: Bitmap): ImageSpan =
-            getImageSpan(BitmapDrawable(context.resources, bitmap))
+        getImageSpan(BitmapDrawable(context.resources, bitmap))
 
     @JvmStatic
     private fun getImageSpan(drawable: Drawable): ImageSpan {
@@ -97,7 +101,7 @@ object StringUtil {
 
     @JvmStatic
     private fun getColoredSpan(context: Context, @ColorRes color: Int): ForegroundColorSpan =
-            ForegroundColorSpan(ContextCompat.getColor(context, color))
+        ForegroundColorSpan(ContextCompat.getColor(context, color))
 
     @JvmStatic
     private fun getSizeSpan(relativeSize: Float): RelativeSizeSpan = RelativeSizeSpan(relativeSize)

@@ -14,7 +14,6 @@ class SingleChoiceDialog : DialogFragment() {
     @ArrayRes
     internal var options: Int = 0
     private var title: String? = null
-
     private var callback: Callback? = null
 
     override fun onAttach(activity: Activity?) {
@@ -56,8 +55,12 @@ class SingleChoiceDialog : DialogFragment() {
         private val ARG_TITLE = "ARG_TITLE"
 
         @JvmOverloads
-        fun show(fm: FragmentManager, @ArrayRes options: Int,
-                 title: String?, tag: String = SingleChoiceDialog::class.java.name) {
+        fun show(
+            fm: FragmentManager,
+            @ArrayRes options: Int,
+            title: String?,
+            tag: String = SingleChoiceDialog::class.java.name
+        ) {
             val dialog = SingleChoiceDialog()
             dialog.arguments = Bundle().apply {
                 putInt(ARG_OPTIONS, options)
@@ -66,5 +69,4 @@ class SingleChoiceDialog : DialogFragment() {
             dialog.show(fm, tag)
         }
     }
-
 }

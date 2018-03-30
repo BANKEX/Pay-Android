@@ -10,5 +10,4 @@ interface LoadingView {
 
     @StateStrategyType(value = OneExecutionByTagStrategy::class, tag = "LoadingView")
     fun hideLoadingIndicator()
-
 }

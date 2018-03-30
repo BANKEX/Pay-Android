@@ -29,5 +29,4 @@ abstract class BaseTabViewPagerFragment : BaseFragment() {
     fun getTabLayout(): TabLayout? = tabLayout
 
     fun getViewPager(): ViewPager? = viewPager
-
 }

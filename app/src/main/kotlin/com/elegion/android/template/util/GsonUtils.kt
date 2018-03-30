@@ -19,10 +19,9 @@ object GsonUtils {
     fun requestGson(): Gson {
         if (!::sRequestGson.isInitialized) {
             sRequestGson = GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'")
-                    .create()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'")
+                .create()
         }
         return sRequestGson
     }
-
 }

@@ -23,9 +23,10 @@ open class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(conte
         View.inflate(context, getLayout(), this)
 
         val a = context.theme.obtainStyledAttributes(
-                attrs,
-                R.styleable.EmptyView,
-                0, 0)
+            attrs,
+            R.styleable.EmptyView,
+            0, 0
+        )
 
         try {
             val resourceId = a.getResourceId(R.styleable.EmptyView_icon, 0)
@@ -55,8 +56,12 @@ open class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(conte
 
     fun setButtonClickListener(listener: View.OnClickListener?) = getButton().setOnClickListener(listener)
 
-    fun bindEmptyView(@DrawableRes icon: Int, @StringRes text: Int,
-                      @StringRes buttonText: Int, listener: View.OnClickListener?) {
+    fun bindEmptyView(
+        @DrawableRes icon: Int,
+        @StringRes text: Int,
+        @StringRes buttonText: Int,
+        listener: View.OnClickListener?
+    ) {
         emptyViewIcon.setImageResource(icon)
         emptyViewText.setText(text)
         getButton().apply {

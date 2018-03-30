@@ -6,7 +6,7 @@ import com.elegion.android.template.R
 import com.elegion.android.template.data.model.Feature
 import com.elegion.android.template.ui.base.adapter.AbstractPaginationAdapter
 import com.elegion.android.template.ui.features.adapter.holder.FeatureViewHolder
-import java.util.*
+import java.util.ArrayList
 
 class FeaturesAdapter : AbstractPaginationAdapter<FeatureViewHolder>() {
     private val items = ArrayList<Feature>()

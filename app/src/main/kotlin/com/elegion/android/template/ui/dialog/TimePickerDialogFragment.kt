@@ -8,7 +8,7 @@ import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.text.format.DateFormat
 import android.widget.TimePicker
-import java.util.*
+import java.util.Calendar
 
 class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
@@ -71,5 +71,4 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             dialog.show(fm, tag)
         }
     }
-
 }

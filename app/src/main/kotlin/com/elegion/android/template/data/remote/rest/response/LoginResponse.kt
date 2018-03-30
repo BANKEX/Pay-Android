@@ -3,8 +3,8 @@ package com.elegion.android.template.data.remote.rest.response
 import com.google.gson.annotations.SerializedName
 
 class LoginResponse(
-        @SerializedName("token")
-        var token: String
+    @SerializedName("token")
+    var token: String
 ) {
     @SerializedName("id")
     private var id: Int = 0

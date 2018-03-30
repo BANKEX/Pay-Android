@@ -61,10 +61,11 @@ class MessageDialog : DialogFragment() {
         return dialog
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fr_message_dialog, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fr_message_dialog, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -126,12 +127,14 @@ class MessageDialog : DialogFragment() {
         private val ARG_CANCEL_BUTTON = "ARG_CANCEL_BUTTON"
 
         @JvmOverloads
-        fun show(fm: FragmentManager,
-                 title: String?,
-                 message: String?,
-                 confirm: String?,
-                 cancel: String?,
-                 tag: String = MessageDialog::class.java.name) {
+        fun show(
+            fm: FragmentManager,
+            title: String?,
+            message: String?,
+            confirm: String?,
+            cancel: String?,
+            tag: String = MessageDialog::class.java.name
+        ) {
             val dialog = MessageDialog()
             dialog.arguments = Bundle().apply {
                 putString(ARG_TITLE, title)

@@ -14,7 +14,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import com.elegion.android.template.R
 import kotlinx.android.synthetic.main.w_date_time_picker.*
-import java.util.*
+import java.util.Calendar
 
 class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
 
@@ -93,17 +93,24 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
         val dialogView = View.inflate(activity, R.layout.w_date_time_picker, null)
         with(Calendar.getInstance()) {
             timeInMillis = initialDate
-            dateTimeViewPager.adapter = DateTimeAdapter(get(Calendar.YEAR),
-                    get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH),
-                    get(Calendar.HOUR_OF_DAY), get(Calendar.MINUTE))
+            dateTimeViewPager.adapter = DateTimeAdapter(
+                get(Calendar.YEAR),
+                get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH),
+                get(Calendar.HOUR_OF_DAY), get(Calendar.MINUTE)
+            )
         }
         dateTimeTabLayout.setupWithViewPager(dateTimeViewPager)
 
         return dialogView
     }
 
-    private inner class DateTimeAdapter(private val year: Int, private val month: Int, private val day: Int,
-                                        private val hourOfDay: Int, private val minute: Int) : PagerAdapter() {
+    private inner class DateTimeAdapter(
+        private val year: Int,
+        private val month: Int,
+        private val day: Int,
+        private val hourOfDay: Int,
+        private val minute: Int
+    ) : PagerAdapter() {
 
         override fun getPageTitle(position: Int): CharSequence? = when (position) {
             0 -> getString(R.string.date)
@@ -168,8 +175,13 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
         private const val ARG_INITIAL_DATE = "ARG_INITIAL_DATE"
 
         @JvmOverloads
-        fun show(fm: FragmentManager, initialDate: Long, minDate: Long,
-                 maxDate: Long, tag: String = DateTimePickerDialogFragment::class.java.name) {
+        fun show(
+            fm: FragmentManager,
+            initialDate: Long,
+            minDate: Long,
+            maxDate: Long,
+            tag: String = DateTimePickerDialogFragment::class.java.name
+        ) {
             val dialog = DateTimePickerDialogFragment()
             dialog.arguments = Bundle().apply {
                 putLong(ARG_MIN_DATE, if (minDate < 0) 0 else minDate)

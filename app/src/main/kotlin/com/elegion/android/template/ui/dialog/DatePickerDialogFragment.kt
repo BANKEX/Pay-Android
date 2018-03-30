@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.widget.DatePicker
-import java.util.*
+import java.util.Calendar
 
 class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
@@ -31,8 +31,10 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
 
         val dialog = Calendar.getInstance().run {
             timeInMillis = initialDate
-            DatePickerDialog(activity, this@DatePickerDialogFragment, get(Calendar.YEAR),
-                    get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH))
+            DatePickerDialog(
+                activity, this@DatePickerDialogFragment, get(Calendar.YEAR),
+                get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)
+            )
         }
         if (minDate > 0) {
             dialog.datePicker.minDate = minDate
@@ -59,7 +61,7 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        callback?.apply{
+        callback?.apply {
             onDateSet(year, month, day)
         }
     }
@@ -75,8 +77,13 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
         private const val ARG_INITIAL_DATE = "ARG_INITIAL_DATE"
 
         @JvmOverloads
-        fun show(fm: FragmentManager, initialDate: Long, minDate: Long,
-                 maxDate: Long, tag: String = DatePickerDialogFragment::class.java.name) {
+        fun show(
+            fm: FragmentManager,
+            initialDate: Long,
+            minDate: Long,
+            maxDate: Long,
+            tag: String = DatePickerDialogFragment::class.java.name
+        ) {
             val dialog = DatePickerDialogFragment()
             dialog.arguments = Bundle().apply {
                 putLong(ARG_MIN_DATE, if (minDate < 0) 0 else minDate)
@@ -86,5 +93,4 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
             dialog.show(fm, tag)
         }
     }
-
 }

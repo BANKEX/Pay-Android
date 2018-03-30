@@ -40,12 +40,10 @@ object UrlUtils {
             context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(WEB_MARKET_URI + appPackageName)))
             Timber.e(e, "Failed to open market")
         }
-
     }
 
     @JvmStatic
-    fun sendEmail(context: Context, subject: String?,
-                  message: String?, vararg recipients: String): Boolean {
+    fun sendEmail(context: Context, subject: String?, message: String?, vararg recipients: String): Boolean {
         val email = Intent(Intent.ACTION_SENDTO)
         if (!TextUtils.isEmpty(subject)) {
             email.putExtra(Intent.EXTRA_SUBJECT, subject)
