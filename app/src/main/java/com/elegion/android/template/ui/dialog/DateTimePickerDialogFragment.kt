@@ -18,15 +18,15 @@ import java.util.*
 
 class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
 
-    private var mInitialDate: Long = 0
-    private var mMinDate: Long = 0
-    private var mMaxDate: Long = 0
+    private var initialDate: Long = 0
+    private var minDate: Long = 0
+    private var maxDate: Long = 0
 
-    private var mCallback: Callback? = null
+    private var callback: Callback? = null
 
     //TODO : need to save last date and time if this widgets will be destroy
-    private var mDatePicker: DatePicker? = null
-    private var mTimePicker: TimePicker? = null
+    private var datePicker: DatePicker? = null
+    private var timePicker: TimePicker? = null
 
     override fun onAttach(activity: Activity?) {
         super.onAttach(activity)
@@ -45,30 +45,30 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
     }
 
     private fun initArguments() = arguments?.apply {
-        mMinDate = getLong(ARG_MIN_DATE)
-        mMaxDate = getLong(ARG_MAX_DATE)
-        mInitialDate = getLong(ARG_INITIAL_DATE)
+        minDate = getLong(ARG_MIN_DATE)
+        maxDate = getLong(ARG_MAX_DATE)
+        initialDate = getLong(ARG_INITIAL_DATE)
     }
 
     override fun onClick(v: View) {
-        mCallback?.apply { onDateTimeSet(constructCalendar(), tag) }
+        callback?.apply { onDateTimeSet(constructCalendar(), tag) }
         dismiss()
     }
 
     private fun constructCalendar(): Calendar {
         val calendar = Calendar.getInstance()
-        val year = if (mDatePicker == null) calendar.get(Calendar.YEAR) else mDatePicker!!.year
-        val month = if (mDatePicker == null) calendar.get(Calendar.MONTH) else mDatePicker!!.month
-        val day = if (mDatePicker == null) calendar.get(Calendar.DAY_OF_MONTH) else mDatePicker!!.dayOfMonth
+        val year = if (datePicker == null) calendar.get(Calendar.YEAR) else datePicker!!.year
+        val month = if (datePicker == null) calendar.get(Calendar.MONTH) else datePicker!!.month
+        val day = if (datePicker == null) calendar.get(Calendar.DAY_OF_MONTH) else datePicker!!.dayOfMonth
 
         val hour: Int
         val minute: Int
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            hour = if (mTimePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else mTimePicker!!.currentHour
-            minute = if (mTimePicker == null) calendar.get(Calendar.MINUTE) else mTimePicker!!.currentMinute
+            hour = if (timePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.currentHour
+            minute = if (timePicker == null) calendar.get(Calendar.MINUTE) else timePicker!!.currentMinute
         } else {
-            hour = if (mTimePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else mTimePicker!!.hour
-            minute = if (mTimePicker == null) calendar.get(Calendar.MINUTE) else mTimePicker!!.minute
+            hour = if (timePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.hour
+            minute = if (timePicker == null) calendar.get(Calendar.MINUTE) else timePicker!!.minute
         }
 
         calendar.clear()
@@ -78,21 +78,21 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
 
     private fun resolveCallback(activity: Activity?) {
         if (parentFragment is Callback) {
-            mCallback = parentFragment as Callback?
+            callback = parentFragment as Callback?
         } else if (activity is Callback) {
-            mCallback = activity
+            callback = activity
         }
     }
 
     private fun createDialogView(): View {
         // set initial date to current time if not set
-        if (mInitialDate == 0L) {
-            mInitialDate = Calendar.getInstance().timeInMillis
+        if (initialDate == 0L) {
+            initialDate = Calendar.getInstance().timeInMillis
         }
 
         val dialogView = View.inflate(activity, R.layout.w_date_time_picker, null)
         with(Calendar.getInstance()) {
-            timeInMillis = mInitialDate
+            timeInMillis = initialDate
             dateTimeViewPager.adapter = DateTimeAdapter(get(Calendar.YEAR),
                     get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH),
                     get(Calendar.HOUR_OF_DAY), get(Calendar.MINUTE))
@@ -102,8 +102,8 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
         return dialogView
     }
 
-    private inner class DateTimeAdapter(private val mYear: Int, private val mMonth: Int, private val mDay: Int,
-                                        private val mHourOfDay: Int, private val mMinute: Int) : PagerAdapter() {
+    private inner class DateTimeAdapter(private val year: Int, private val month: Int, private val day: Int,
+                                        private val hourOfDay: Int, private val minute: Int) : PagerAdapter() {
 
         override fun getPageTitle(position: Int): CharSequence? = when (position) {
             0 -> getString(R.string.date)
@@ -122,30 +122,30 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
         override fun instantiateItem(container: ViewGroup, position: Int): Any = when (position) {
             0 -> {
                 val dp = DatePicker(activity)
-                dp.init(mYear, mMonth, mDay, null)
-                if (mMinDate > 0) {
-                    dp.minDate = mMinDate
+                dp.init(year, month, day, null)
+                if (minDate > 0) {
+                    dp.minDate = minDate
                 }
-                if (mMaxDate > 0) {
-                    dp.maxDate = mMaxDate
+                if (maxDate > 0) {
+                    dp.maxDate = maxDate
                 }
 
                 dp.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-                mDatePicker = dp
-                mDatePicker as Any
+                datePicker = dp
+                datePicker as Any
             }
             1 -> {
                 val tp = TimePicker(activity)
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                    tp.currentHour = mHourOfDay
-                    tp.currentMinute = mMinute
+                    tp.currentHour = hourOfDay
+                    tp.currentMinute = minute
                 } else {
-                    tp.hour = mHourOfDay
-                    tp.minute = mMinute
+                    tp.hour = hourOfDay
+                    tp.minute = minute
                 }
                 tp.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                mTimePicker = tp
-                mTimePicker as Any
+                timePicker = tp
+                timePicker as Any
             }
             else -> throw IllegalStateException("DateTimePickerDialogFragment adapter may have only 2 tabs trying to create the third one")
         }

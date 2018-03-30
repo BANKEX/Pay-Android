@@ -12,8 +12,8 @@ import java.util.*
 
 class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
-    private var mInitialDate: Long = 0
-    private var mCallback: Callback? = null
+    private var initialDate: Long = 0
+    private var callback: Callback? = null
 
     override fun onAttach(activity: Activity?) {
         super.onAttach(activity)
@@ -24,13 +24,13 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
         initArguments()
 
         // set initial date to current time if not set
-        if (mInitialDate == 0L) {
+        if (initialDate == 0L) {
             val calendar = Calendar.getInstance()
-            mInitialDate = calendar.timeInMillis
+            initialDate = calendar.timeInMillis
         }
 
         val calendar = Calendar.getInstance()
-        calendar.timeInMillis = mInitialDate
+        calendar.timeInMillis = initialDate
         val hourOfDay = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
@@ -38,19 +38,19 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
     }
 
     private fun initArguments() = arguments?.apply {
-        mInitialDate = getLong(ARG_INITIAL_TIME)
+        initialDate = getLong(ARG_INITIAL_TIME)
     }
 
     private fun resolveCallback(activity: Activity?) {
         if (parentFragment is Callback) {
-            mCallback = parentFragment as Callback?
+            callback = parentFragment as Callback?
         } else if (activity is Callback) {
-            mCallback = activity
+            callback = activity
         }
     }
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-        mCallback?.apply {
+        callback?.apply {
             onTimeSet(hourOfDay, minute)
         }
     }

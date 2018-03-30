@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager
 import com.elegion.android.template.R
 import com.elegion.android.template.ui.dialog.MessageDialog
 
-class DialogErrorView(private val mFragmentManager: FragmentManager?, private val mResources: Resources) : ErrorView {
+class DialogErrorView(private val fragmentManager: FragmentManager?, private val resources: Resources) : ErrorView {
 
     override fun showNetworkError() = showDialog(R.string.error_network)
 
@@ -22,10 +22,10 @@ class DialogErrorView(private val mFragmentManager: FragmentManager?, private va
     }
 
     private fun showDialog(message: String) {
-        mFragmentManager?.let {
-            MessageDialog.show(mFragmentManager, null, message, mResources.getString(R.string.btn_ok), null)
+        fragmentManager?.let {
+            MessageDialog.show(fragmentManager, null, message, resources.getString(R.string.btn_ok), null)
         }
     }
 
-    private fun showDialog(@StringRes message: Int) = showDialog(mResources.getString(message))
+    private fun showDialog(@StringRes message: Int) = showDialog(resources.getString(message))
 }

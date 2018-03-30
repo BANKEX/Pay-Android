@@ -7,26 +7,26 @@ abstract class AbstractPaginationAdapter<H : RecyclerView.ViewHolder> @JvmOverlo
         loadOffset: Int = LOAD_OFFSET
 ) : RecyclerView.Adapter<H>() {
 
-    var mCallback: Callback? = null
-    protected var mLoadOffset = LOAD_OFFSET
-    protected var mPaginationEnabled = true
+    var callback: Callback? = null
+    protected var loadOffset = LOAD_OFFSET
+    protected var paginationEnabled = true
 
     init {
-        mLoadOffset = loadOffset
+        this.loadOffset = loadOffset
     }
 
     constructor(callback: Callback) : this(LOAD_OFFSET) {
-        mCallback = callback
+        this.callback = callback
     }
 
     constructor(loadOffset: Int, callback: Callback) : this(loadOffset) {
-        mCallback = callback
+        this.callback = callback
     }
 
     @CallSuper
     override fun onBindViewHolder(holder: H, position: Int) {
-        if (mPaginationEnabled && position == itemCount - mLoadOffset) {
-            mCallback?.loadMore()
+        if (paginationEnabled && position == itemCount - loadOffset) {
+            callback?.loadMore()
         }
     }
 

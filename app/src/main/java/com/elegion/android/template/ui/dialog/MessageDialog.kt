@@ -17,21 +17,21 @@ import kotlinx.android.synthetic.main.fr_message_dialog.*
 
 class MessageDialog : DialogFragment() {
 
-    private var mCallback: Callback? = null
-    private var mTitleText: String? = null
-    private var mMessageText: String? = null
-    private var mConfirmText: String? = null
-    private var mCancelText: String? = null
+    private var callback: Callback? = null
+    private var titleText: String? = null
+    private var messageText: String? = null
+    private var confirmText: String? = null
+    private var cancelText: String? = null
 
-    private val mPrimaryButtonListener = View.OnClickListener {
-        mCallback?.apply {
+    private val primaryButtonListener = View.OnClickListener {
+        callback?.apply {
             onConfirmButtonClick()
         }
         dialog.dismiss()
     }
 
-    private val mSecondaryButtonListener = View.OnClickListener {
-        mCallback?.apply {
+    private val secondaryButtonListener = View.OnClickListener {
+        callback?.apply {
             onCancelButtonClick()
         }
         dialog.dismiss()
@@ -49,9 +49,9 @@ class MessageDialog : DialogFragment() {
 
     private fun resolveCallback(context: Context?) {
         if (parentFragment is Callback) {
-            mCallback = parentFragment as Callback?
+            callback = parentFragment as Callback?
         } else if (context is Callback) {
-            mCallback = context
+            callback = context
         }
     }
 
@@ -71,10 +71,10 @@ class MessageDialog : DialogFragment() {
         initArguments()
 
         // set texts
-        bindTextOrHide(title, mTitleText)
-        bindTextOrHide(message, mMessageText)
-        bindTextOrHide(primaryAction, mConfirmText)
-        bindTextOrHide(secondaryAction, mCancelText)
+        bindTextOrHide(title, titleText)
+        bindTextOrHide(message, messageText)
+        bindTextOrHide(primaryAction, confirmText)
+        bindTextOrHide(secondaryAction, cancelText)
     }
 
     private fun bindTextOrHide(textView: TextView?, text: String?) {
@@ -89,18 +89,18 @@ class MessageDialog : DialogFragment() {
     }
 
     private fun initArguments() = arguments?.apply {
-        mTitleText = getString(ARG_TITLE)
-        mMessageText = getString(ARG_MESSAGE)
-        mConfirmText = getString(ARG_CONFIRM_BUTTON)
-        mCancelText = getString(ARG_CANCEL_BUTTON)
+        titleText = getString(ARG_TITLE)
+        messageText = getString(ARG_MESSAGE)
+        confirmText = getString(ARG_CONFIRM_BUTTON)
+        cancelText = getString(ARG_CANCEL_BUTTON)
     }
 
     override fun onResume() {
         super.onResume()
         val width = resources.getDimensionPixelSize(R.dimen.dialog_message_width)
         changeWindowSizes(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-        primaryAction.setOnClickListener(mPrimaryButtonListener)
-        secondaryAction.setOnClickListener(mSecondaryButtonListener)
+        primaryAction.setOnClickListener(primaryButtonListener)
+        secondaryAction.setOnClickListener(secondaryButtonListener)
     }
 
     override fun onPause() {

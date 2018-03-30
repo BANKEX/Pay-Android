@@ -13,16 +13,17 @@ import kotlinx.android.synthetic.main.fr_login.*
 
 class LoginFragment : BaseNoInternetFragment(), LoginView {
     @InjectPresenter
-    internal
-    lateinit var mPresenter: LoginPresenter
-    val loginEmailTexTWatcher = object : SimpleTextWatcher() {
+    internal lateinit var presenter: LoginPresenter
+
+    private val loginEmailTexTWatcher = object : SimpleTextWatcher() {
         override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-            mPresenter.setEmail(text.toString())
+            presenter.setEmail(text.toString())
         }
     }
+
     val loginPasswordTexTWatcher = object : SimpleTextWatcher() {
         override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-            mPresenter.setPassword(text.toString())
+            presenter.setPassword(text.toString())
         }
     }
 
@@ -33,8 +34,8 @@ class LoginFragment : BaseNoInternetFragment(), LoginView {
 
     override fun onResume() {
         super.onResume()
-        loginBtn.setOnClickListener { mPresenter.login() }
-        loginLetMeInBtn.setOnClickListener { mPresenter.letMeIn() }
+        loginBtn.setOnClickListener { presenter.login() }
+        loginLetMeInBtn.setOnClickListener { presenter.letMeIn() }
         loginEmail.addTextChangedListener(loginEmailTexTWatcher)
         loginPassword.addTextChangedListener(loginPasswordTexTWatcher)
     }
@@ -48,7 +49,7 @@ class LoginFragment : BaseNoInternetFragment(), LoginView {
 
     override fun getViews(): Array<View> = arrayOf(loginTopLayout)
 
-    override fun tryAgain() = mPresenter.login()
+    override fun tryAgain() = presenter.login()
 
     override fun loginSuccessful() {
         startActivity(FeaturesActivity.makeIntent(activity!!))

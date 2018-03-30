@@ -14,7 +14,7 @@ import com.elegion.android.template.R
 import kotlinx.android.synthetic.main.fr_recycler.*
 
 abstract class BaseRecyclerFragment : BaseRefresherFragment() {
-    protected lateinit var mLayoutManager: RecyclerView.LayoutManager
+    open val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayout(), container, false)
@@ -32,12 +32,9 @@ abstract class BaseRecyclerFragment : BaseRefresherFragment() {
 
     @CallSuper
     protected fun initRecycler() {
-        mLayoutManager = getLayoutManager()
-        recycler.layoutManager = mLayoutManager
+        recycler.layoutManager = layoutManager
         recycler.adapter = getAdapter()
     }
-
-    protected fun getLayoutManager(): RecyclerView.LayoutManager = LinearLayoutManager(activity)
 
     protected abstract fun getAdapter(): RecyclerView.Adapter<*>
 

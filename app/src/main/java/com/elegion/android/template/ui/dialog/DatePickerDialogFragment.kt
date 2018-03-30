@@ -11,10 +11,10 @@ import java.util.*
 
 class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    private var mMinDate: Long = 0
-    private var mMaxDate: Long = 0
-    private var mInitialDate: Long = 0
-    private var mCallback: Callback? = null
+    private var minDate: Long = 0
+    private var maxDate: Long = 0
+    private var initialDate: Long = 0
+    private var callback: Callback? = null
 
     override fun onAttach(activity: Activity?) {
         super.onAttach(activity)
@@ -25,41 +25,41 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
         initArguments()
 
         // set initial date to current time if not set
-        if (mInitialDate == 0L) {
-            mInitialDate = Calendar.getInstance().timeInMillis
+        if (initialDate == 0L) {
+            initialDate = Calendar.getInstance().timeInMillis
         }
 
         val dialog = Calendar.getInstance().run {
-            timeInMillis = mInitialDate
+            timeInMillis = initialDate
             DatePickerDialog(activity, this@DatePickerDialogFragment, get(Calendar.YEAR),
                     get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH))
         }
-        if (mMinDate > 0) {
-            dialog.datePicker.minDate = mMinDate
+        if (minDate > 0) {
+            dialog.datePicker.minDate = minDate
         }
-        if (mMaxDate > 0) {
-            dialog.datePicker.maxDate = mMaxDate
+        if (maxDate > 0) {
+            dialog.datePicker.maxDate = maxDate
         }
 
         return dialog
     }
 
     private fun initArguments() = arguments?.apply {
-        mMinDate = getLong(ARG_MIN_DATE)
-        mMaxDate = getLong(ARG_MAX_DATE)
-        mInitialDate = getLong(ARG_INITIAL_DATE)
+        minDate = getLong(ARG_MIN_DATE)
+        maxDate = getLong(ARG_MAX_DATE)
+        initialDate = getLong(ARG_INITIAL_DATE)
     }
 
     private fun resolveCallback(activity: Activity?) {
         if (parentFragment is Callback) {
-            mCallback = parentFragment as Callback?
+            callback = parentFragment as Callback?
         } else if (activity is Callback) {
-            mCallback = activity
+            callback = activity
         }
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        mCallback?.apply{
+        callback?.apply{
             onDateSet(year, month, day)
         }
     }

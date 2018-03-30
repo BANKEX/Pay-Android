@@ -9,41 +9,41 @@ import com.elegion.android.template.util.RxUtils
 import io.reactivex.disposables.Disposable
 
 @InjectViewState
-internal class FeaturesPresenter(private val mRepository: Repository) : BasePresenter<FeaturesView>() {
+internal class FeaturesPresenter(private val repository: Repository) : BasePresenter<FeaturesView>() {
 
-    private var mOffset = 0
-    private var mLoadFeaturesSubscription: Disposable? = null
-    private var mIsLastPage: Boolean = false
+    private var offset = 0
+    private var loadFeaturesSubscription: Disposable? = null
+    private var isLastPage: Boolean = false
 
     override fun onFirstViewAttach() = loadFeatures(true)
 
     fun loadFeatures(refresh: Boolean) {
         if (refresh) {
-            mOffset = 0
-            mIsLastPage = false
+            offset = 0
+            isLastPage = false
         }
 
-        if (!mIsLastPage && RxUtils.isNullOrDisposed(mLoadFeaturesSubscription)) {
-            removeDisposable(mLoadFeaturesSubscription)
-            mLoadFeaturesSubscription = mRepository.getFeatures(mOffset, PAGE_COUNT)
+        if (!isLastPage && RxUtils.isNullOrDisposed(loadFeaturesSubscription)) {
+            removeDisposable(loadFeaturesSubscription)
+            loadFeaturesSubscription = repository.getFeatures(offset, PAGE_COUNT)
                     .compose<List<Feature>>{ RxUtils.async(it) }
                     .compose(RxUtils.loading(viewState))
                     .subscribe({ this.handleFeaturesResponse(it) }, { RxUtils.errorLogE(it) })
-            addDisposable(mLoadFeaturesSubscription)
+            addDisposable(loadFeaturesSubscription)
         }
     }
 
     private fun handleFeaturesResponse(features: List<Feature>) {
-        val clear = mOffset == 0
+        val clear = offset == 0
         if (clear) {
             viewState.clearFeatures()
         }
         viewState.showFeatures(features, clear)
-        mOffset += features.size
-        mIsLastPage = mOffset > 50
+        offset += features.size
+        isLastPage = offset > 50
     }
 
-    fun logout() = AuthUtils.logout(mRepository)
+    fun logout() = AuthUtils.logout(repository)
 
     companion object {
         private const val PAGE_COUNT = 20

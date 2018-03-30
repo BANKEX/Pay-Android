@@ -8,26 +8,26 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 open class BasePresenter<V : MvpView> : MvpPresenter<V>() {
-    private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun removeDisposable(d: Disposable?) {
         if (d != null) {
-            mCompositeDisposable.remove(d)
+            compositeDisposable.remove(d)
         }
     }
 
     fun addDisposable(d: Disposable?) {
         if (d != null) {
-            mCompositeDisposable.add(d)
+            compositeDisposable.add(d)
         }
     }
 
     fun clearDisposables() {
-        mCompositeDisposable.clear()
+        compositeDisposable.clear()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        RxUtils.dispose(mCompositeDisposable)
+        RxUtils.dispose(compositeDisposable)
     }
 }

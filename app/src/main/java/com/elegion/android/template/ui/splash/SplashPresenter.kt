@@ -7,10 +7,10 @@ import com.elegion.android.template.data.Repository
 import com.elegion.android.template.ui.base.presenter.BasePresenter
 
 @InjectViewState
-internal class SplashPresenter(private val mRepository: Repository) : BasePresenter<SplashView>() {
+internal class SplashPresenter(private val repository: Repository) : BasePresenter<SplashView>() {
 
     fun timerFinish() {
-        val loginToken = mRepository.loginToken
+        val loginToken = repository.loginToken
         if (TextUtils.isEmpty(loginToken)) {
             viewState.openLogin()
         } else {

@@ -13,10 +13,10 @@ import com.elegion.android.template.ui.login.LoginActivity
 class SplashActivity : BaseActivity(), SplashView {
 
     @InjectPresenter
-    internal lateinit var mPresenter: SplashPresenter
+    internal lateinit var presenter: SplashPresenter
 
-    private var mTimer: CountDownTimer? = null
-    private var mTimerFinished: Boolean = false
+    private var timer: CountDownTimer? = null
+    private var timerFinished: Boolean = false
 
     @ProvidePresenter
     internal fun providePresenter(): SplashPresenter = SplashPresenter(Repository.get(this))
@@ -26,7 +26,7 @@ class SplashActivity : BaseActivity(), SplashView {
     override fun onResume() {
         super.onResume()
         cancelTimer()
-        mTimer = createSplashTimer().start()
+        timer = createSplashTimer().start()
     }
 
     override fun onPause() {
@@ -35,10 +35,10 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     private fun cancelTimer() {
-        mTimerFinished = false
-        if (mTimer != null) {
-            mTimer!!.cancel()
-            mTimer = null
+        timerFinished = false
+        if (timer != null) {
+            timer!!.cancel()
+            timer = null
         }
     }
 
@@ -49,15 +49,15 @@ class SplashActivity : BaseActivity(), SplashView {
             }
 
             override fun onFinish() {
-                mTimerFinished = true
+                timerFinished = true
                 openNextActivity()
             }
         }
     }
 
     private fun openNextActivity() {
-        if (mTimerFinished) {
-            mPresenter.timerFinish()
+        if (timerFinished) {
+            presenter.timerFinish()
         }
     }
 

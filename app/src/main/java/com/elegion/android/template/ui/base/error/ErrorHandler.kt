@@ -18,19 +18,19 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 open class ErrorHandler protected constructor(
-        private val mErrorView: ErrorView,
-        private val mRepository: Repository
+        private val errorView: ErrorView,
+        private val repository: Repository
 ) {
-    private var mNoInternetStubView: NoInternetStubView? = null
+    private var noInternetStubView: NoInternetStubView? = null
 
     protected constructor(errorView: ErrorView, repository: Repository,
                           noInternetStubView: NoInternetStubView?) : this(errorView, repository) {
-        mNoInternetStubView = noInternetStubView
+        this.noInternetStubView = noInternetStubView
     }
 
     fun <T> transformer(): FlowableTransformer<T, T> {
         return FlowableTransformer {
-            it.doOnSubscribe { mNoInternetStubView?.hideNoInternetStub() }
+            it.doOnSubscribe { noInternetStubView?.hideNoInternetStub() }
                     .doOnError(error())
         }
     }
@@ -64,7 +64,7 @@ open class ErrorHandler protected constructor(
                 }
             }
         } else if (NETWORK_EXCEPTIONS.contains(e.javaClass)) {
-            if (null == mNoInternetStubView) {
+            if (null == noInternetStubView) {
                 handleNetworkError(e)
             }
         } else {
@@ -73,25 +73,25 @@ open class ErrorHandler protected constructor(
     }
 
     protected fun handleAuthError(e: Throwable) {
-        mErrorView.showErrorMessage(e.message ?: "")
-        AuthUtils.logout(mRepository)
+        errorView.showErrorMessage(e.message ?: "")
+        AuthUtils.logout(repository)
         AuthUtils.openLogin(AppDelegate.appContext)
     }
 
     protected fun handleProtocolError(errorBean: ErrorBean) {
-        mErrorView.showErrorMessage(errorBean.message ?: "")
+        errorView.showErrorMessage(errorBean.message ?: "")
     }
 
     protected fun handleNonProtocolError(httpException: HttpException) {
-        mErrorView.showErrorMessage(httpException.message())
+        errorView.showErrorMessage(httpException.message())
     }
 
     protected fun handleNetworkError(e: Throwable) {
-        mErrorView.showNetworkError()
+        errorView.showNetworkError()
     }
 
     protected fun handleUnexpectedError(e: Throwable) {
-        mErrorView.showUnexpectedError()
+        errorView.showUnexpectedError()
     }
 
     companion object {

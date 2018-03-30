@@ -6,7 +6,7 @@ import android.widget.Toast
 
 import com.elegion.android.template.R
 
-class ToastErrorView(private val mContext: Context) : ErrorView {
+class ToastErrorView(private val context: Context) : ErrorView {
 
     override fun showNetworkError() = showToast(R.string.error_network)
 
@@ -16,9 +16,9 @@ class ToastErrorView(private val mContext: Context) : ErrorView {
 
     override fun showErrorMessage(@StringRes message: Int) = showToast(message)
 
-    private fun showToast(message: String) = Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+    private fun showToast(message: String) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
-    private fun showToast(@StringRes message: Int) = Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+    private fun showToast(@StringRes message: Int) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
     override fun hideErrorMessage() {
         //Not implemented yet

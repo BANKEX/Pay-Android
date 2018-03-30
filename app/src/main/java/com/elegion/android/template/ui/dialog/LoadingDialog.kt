@@ -36,22 +36,22 @@ class LoadingDialog : DialogFragment() {
 
     private class HideTask internal constructor(fm: FragmentManager) : Runnable {
 
-        private val mFmRef: Reference<FragmentManager>
+        private val fmRef: Reference<FragmentManager>
 
-        private var mAttempts = MAX_ATTEMPTS
+        private var attempts = MAX_ATTEMPTS
 
         init {
-            mFmRef = WeakReference(fm)
+            fmRef = WeakReference(fm)
         }
 
         override fun run() {
             HANDLER.removeCallbacks(this)
-            val fm = mFmRef.get()
+            val fm = fmRef.get()
             if (fm != null) {
                 val dialog = fm.findFragmentByTag(LoadingDialog::class.java.name) as? LoadingDialog
                 if (dialog != null) {
                     dialog.dismissAllowingStateLoss()
-                } else if (--mAttempts >= 0) {
+                } else if (--attempts >= 0) {
                     HANDLER.postDelayed(this, POST_DELAY.toLong())
                 }
             }
@@ -69,10 +69,10 @@ class LoadingDialog : DialogFragment() {
 
         fun view(fm: FragmentManager): LoadingView {
             return object : LoadingView {
-                private val mWaitForHide = AtomicBoolean()
+                private val waitForHide = AtomicBoolean()
 
                 override fun showLoadingIndicator() {
-                    if (mWaitForHide.compareAndSet(false, true)) {
+                    if (waitForHide.compareAndSet(false, true)) {
                         HANDLER.removeCallbacks(null)
                         if (fm.findFragmentByTag(LoadingDialog::class.java.name) == null) {
                             val loadingDialog = LoadingDialog()
@@ -82,7 +82,7 @@ class LoadingDialog : DialogFragment() {
                 }
 
                 override fun hideLoadingIndicator() {
-                    if (mWaitForHide.compareAndSet(true, false)) {
+                    if (waitForHide.compareAndSet(true, false)) {
                         HANDLER.post(HideTask(fm))
                     }
                 }

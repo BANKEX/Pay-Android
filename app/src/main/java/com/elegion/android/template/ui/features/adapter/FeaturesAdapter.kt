@@ -9,7 +9,7 @@ import com.elegion.android.template.ui.features.adapter.holder.FeatureViewHolder
 import java.util.*
 
 class FeaturesAdapter : AbstractPaginationAdapter<FeatureViewHolder>() {
-    private val mItems = ArrayList<Feature>()
+    private val items = ArrayList<Feature>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeatureViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,16 +19,16 @@ class FeaturesAdapter : AbstractPaginationAdapter<FeatureViewHolder>() {
 
     override fun onBindViewHolder(holder: FeatureViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        holder.bind(mItems[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = mItems.size
+    override fun getItemCount(): Int = items.size
 
     fun setData(items: List<Feature>, clear: Boolean) {
         if (clear) {
-            mItems.clear()
+            this.items.clear()
         }
-        mItems.addAll(items)
+        this.items.addAll(items)
         notifyDataSetChanged()
     }
 }

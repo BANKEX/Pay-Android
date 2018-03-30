@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 class LoginRequest(
         @SerializedName("scopes")
-        private var mScopes: List<String>,
+        private var scopes: List<String>,
         @SerializedName("note")
-        private var mNote: String,
+        private var note: String,
         @SerializedName("client_id")
-        private var mClientId: String,
+        private var clientId: String,
         @SerializedName("client_secret")
-        private var mClientSecret: String
+        private var clientSecret: String
 )

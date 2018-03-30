@@ -21,9 +21,9 @@ import timber.log.Timber
 
 class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginationAdapter.Callback {
     @InjectPresenter
-    internal lateinit var mPresenter: FeaturesPresenter
+    internal lateinit var presenter: FeaturesPresenter
 
-    private val mAdapter = FeaturesAdapter()
+    private val adapter = FeaturesAdapter()
 
     @ProvidePresenter
     internal fun providePresenter(): FeaturesPresenter = FeaturesPresenter(Repository.get(activity!!))
@@ -35,18 +35,18 @@ class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginatio
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mAdapter.mCallback = this
+        adapter.callback = this
     }
 
-    override fun getAdapter(): RecyclerView.Adapter<*> = mAdapter
+    override fun getAdapter(): RecyclerView.Adapter<*> = adapter
 
-    override fun onRefresh() = mPresenter.loadFeatures(true)
+    override fun onRefresh() = presenter.loadFeatures(true)
 
-    override fun tryAgain() = mPresenter.loadFeatures(true)
+    override fun tryAgain() = presenter.loadFeatures(true)
 
     override fun showFeatures(features: List<Feature>, clear: Boolean) {
         Timber.d("MOXY: showFeatures(%s)", clear)
-        mAdapter.setData(features, clear)
+        adapter.setData(features, clear)
     }
 
     override fun clearFeatures() {
@@ -59,14 +59,14 @@ class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginatio
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         R.id.features_menu_logout -> {
-            mPresenter.logout()
+            presenter.logout()
             AuthUtils.openLogin(activity!!)
             super.onOptionsItemSelected(item)
         }
         else -> super.onOptionsItemSelected(item)
     }
 
-    override fun loadMore() = mPresenter.loadFeatures(false)
+    override fun loadMore() = presenter.loadFeatures(false)
 
     companion object {
         fun newInstance(): Fragment {

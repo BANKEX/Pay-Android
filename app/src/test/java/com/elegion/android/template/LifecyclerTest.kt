@@ -20,85 +20,85 @@ import org.mockito.junit.MockitoJUnitRunner
 class LifecyclerTest {
 
     @Mock
-    private val mActivity: Activity? = null
+    private val activity: Activity? = null
 
     @Mock
-    private val mSavedInstanceState: Bundle? = null
+    private val savedInstanceState: Bundle? = null
 
     @Mock
-    private val mFm: FragmentManager? = null
+    private val fragmentManager: FragmentManager? = null
 
     @Mock
-    private val mFt: FragmentTransaction? = null
+    private val fragmentTransaction: FragmentTransaction? = null
 
     @Spy
-    private val mLifecycler = Lifecycler()
+    private val lifecycler = Lifecycler()
 
     @Before
     @Throws(Exception::class)
     fun setUp() {
-        Mockito.doReturn(mFm).`when`<Activity>(mActivity).fragmentManager
-        Mockito.doReturn(mFt).`when`<FragmentManager>(mFm).beginTransaction()
-        Mockito.doReturn(mFt).`when`<FragmentTransaction>(mFt).add(Mockito.any(), Mockito.anyString())
+        Mockito.doReturn(fragmentManager).`when`<Activity>(activity).fragmentManager
+        Mockito.doReturn(fragmentTransaction).`when`<FragmentManager>(fragmentManager).beginTransaction()
+        Mockito.doReturn(fragmentTransaction).`when`<FragmentTransaction>(fragmentTransaction).add(Mockito.any(), Mockito.anyString())
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityStarted() {
-        mLifecycler.onActivityStarted(mActivity!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityStarted(activity!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityResumed() {
-        mLifecycler.onActivityResumed(mActivity!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityResumed(activity!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityPaused() {
-        mLifecycler.onActivityPaused(mActivity!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityPaused(activity!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityStopped() {
-        mLifecycler.onActivityStopped(mActivity!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityStopped(activity!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivitySaveInstanceState() {
-        mLifecycler.onActivitySaveInstanceState(mActivity!!, mSavedInstanceState!!)
-        Mockito.verifyZeroInteractions(mActivity)
-        Mockito.verifyZeroInteractions(mSavedInstanceState)
+        lifecycler.onActivitySaveInstanceState(activity!!, savedInstanceState!!)
+        Mockito.verifyZeroInteractions(activity)
+        Mockito.verifyZeroInteractions(savedInstanceState)
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityDestroyed() {
-        mLifecycler.onActivityDestroyed(mActivity!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityDestroyed(activity!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 
     @Test
     @Throws(Exception::class)
     fun testIsApplicationVisible() {
         assertThat(Lifecycler.isApplicationVisible, `is`(false))
-        mLifecycler.onActivityStarted(mActivity!!)
+        lifecycler.onActivityStarted(activity!!)
         assertThat(Lifecycler.isApplicationVisible, `is`(true))
-        mLifecycler.onActivityStopped(mActivity)
+        lifecycler.onActivityStopped(activity)
         assertThat(Lifecycler.isApplicationVisible, `is`(false))
     }
 
     @Test
     @Throws(Exception::class)
     fun testOnActivityCreated() {
-        mLifecycler.onActivityCreated(mActivity!!, mSavedInstanceState!!)
-        Mockito.verifyZeroInteractions(mActivity)
+        lifecycler.onActivityCreated(activity!!, savedInstanceState!!)
+        Mockito.verifyZeroInteractions(activity)
     }
 }

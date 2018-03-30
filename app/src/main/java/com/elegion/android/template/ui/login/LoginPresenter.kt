@@ -9,39 +9,39 @@ import com.elegion.android.template.util.RxUtils
 import io.reactivex.disposables.Disposable
 
 @InjectViewState
-internal class LoginPresenter(private val mRepository: Repository) : BasePresenter<LoginView>() {
-    private var mEmail: String = ""
-    private var mPassword: String = ""
-    private var mErrorHandler = ErrorHandler.create(viewState, mRepository, viewState)
-    private var mLoginSubscription: Disposable? = null
+internal class LoginPresenter(private val repository: Repository) : BasePresenter<LoginView>() {
+    private var email: String = ""
+    private var password: String = ""
+    private var errorHandler = ErrorHandler.create(viewState, repository, viewState)
+    private var loginSubscription: Disposable? = null
 
     fun login() {
-        if (RxUtils.isNullOrDisposed(mLoginSubscription)) {
-            removeDisposable(mLoginSubscription)
-            mLoginSubscription = mRepository.login(mEmail, mPassword)
+        if (RxUtils.isNullOrDisposed(loginSubscription)) {
+            removeDisposable(loginSubscription)
+            loginSubscription = repository.login(email, password)
                     .compose<LoginResponse>{ RxUtils.async(it) }
                     .compose(RxUtils.loading(viewState))
-                    .compose(mErrorHandler.transformer())
+                    .compose(errorHandler.transformer())
                     .subscribe({ this.handleLogin(it) }, { RxUtils.errorLogE(it) })
-            addDisposable(mLoginSubscription)
+            addDisposable(loginSubscription)
         }
     }
 
     private fun handleLogin(response: LoginResponse) {
-        mRepository.loginToken = response.token
+        repository.loginToken = response.token
         viewState.loginSuccessful()
     }
 
     fun setEmail(email: String) {
-        mEmail = email
+        this.email = email
     }
 
     fun setPassword(password: String) {
-        mPassword = password
+        this.password = password
     }
 
     fun letMeIn() {
-        mRepository.loginToken = "LetMeInToken"
+        repository.loginToken = "LetMeInToken"
         viewState.loginSuccessful()
     }
 }

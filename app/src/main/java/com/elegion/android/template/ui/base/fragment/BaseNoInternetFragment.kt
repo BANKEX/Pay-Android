@@ -8,7 +8,7 @@ import com.elegion.android.template.util.ViewUtils
 import kotlinx.android.synthetic.main.w_no_internet_view.*
 
 abstract class BaseNoInternetFragment : BaseFragment(), NoInternetStubView {
-    private val mTryAgainListener = View.OnClickListener { tryAgain() }
+    private val tryAgainListener = View.OnClickListener { tryAgain() }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -17,7 +17,7 @@ abstract class BaseNoInternetFragment : BaseFragment(), NoInternetStubView {
 
     override fun onResume() {
         super.onResume()
-        noInternetView!!.setButtonClickListener(mTryAgainListener)
+        noInternetView!!.setButtonClickListener(tryAgainListener)
     }
 
     override fun showNetworkError() {

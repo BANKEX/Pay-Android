@@ -13,11 +13,11 @@ import com.elegion.android.template.ui.base.view.ToastErrorView
 import com.elegion.android.template.ui.dialog.LoadingDialog
 
 abstract class BaseFragment : MvpAppCompatFragment(), LoadingView, ErrorView {
-    protected var mIsAfterOnSavedState: Boolean = false
+    protected var isAfterOnSavedState: Boolean = false
 
-    private var mRunOnResume: Runnable? = null
-    protected lateinit var mLoadingView: LoadingView
-    protected lateinit var mErrorView: ErrorView
+    private var runOnResume: Runnable? = null
+    protected lateinit var loadingView: LoadingView
+    protected lateinit var errorView: ErrorView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayout(), container, false)
@@ -25,31 +25,31 @@ abstract class BaseFragment : MvpAppCompatFragment(), LoadingView, ErrorView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mIsAfterOnSavedState = false
+        isAfterOnSavedState = false
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mLoadingView = createLoadingView()
-        mErrorView = createErrorView()
+        loadingView = createLoadingView()
+        errorView = createErrorView()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mRunOnResume != null) {
-            mRunOnResume!!.run()
-            mRunOnResume = null
+        if (runOnResume != null) {
+            runOnResume!!.run()
+            runOnResume = null
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        mIsAfterOnSavedState = true
+        isAfterOnSavedState = true
     }
 
     fun postOnResume(run: Runnable?) {
-        if (mIsAfterOnSavedState) {
-            mRunOnResume = run
+        if (isAfterOnSavedState) {
+            runOnResume = run
         } else {
             run?.run()
         }
@@ -62,17 +62,17 @@ abstract class BaseFragment : MvpAppCompatFragment(), LoadingView, ErrorView {
     @LayoutRes
     protected abstract fun getLayout(): Int
 
-    override fun showLoadingIndicator() = mLoadingView.showLoadingIndicator()
+    override fun showLoadingIndicator() = loadingView.showLoadingIndicator()
 
-    override fun hideLoadingIndicator() = mLoadingView.hideLoadingIndicator()
+    override fun hideLoadingIndicator() = loadingView.hideLoadingIndicator()
 
-    override fun showNetworkError() = mErrorView.showNetworkError()
+    override fun showNetworkError() = errorView.showNetworkError()
 
-    override fun showUnexpectedError() = mErrorView.showUnexpectedError()
+    override fun showUnexpectedError() = errorView.showUnexpectedError()
 
-    override fun showErrorMessage(message: String) = mErrorView.showErrorMessage(message)
+    override fun showErrorMessage(message: String) = errorView.showErrorMessage(message)
 
-    override fun showErrorMessage(@StringRes message: Int) = mErrorView.showErrorMessage(message)
+    override fun showErrorMessage(@StringRes message: Int) = errorView.showErrorMessage(message)
 
-    override fun hideErrorMessage() = mErrorView.hideErrorMessage()
+    override fun hideErrorMessage() = errorView.hideErrorMessage()
 }

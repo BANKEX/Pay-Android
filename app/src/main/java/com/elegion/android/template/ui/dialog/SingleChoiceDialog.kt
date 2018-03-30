@@ -12,10 +12,10 @@ import android.text.TextUtils
 class SingleChoiceDialog : DialogFragment() {
 
     @ArrayRes
-    internal var mOptions: Int = 0
-    private var mTitle: String? = null
+    internal var options: Int = 0
+    private var title: String? = null
 
-    private var mCallback: Callback? = null
+    private var callback: Callback? = null
 
     override fun onAttach(activity: Activity?) {
         super.onAttach(activity)
@@ -25,25 +25,25 @@ class SingleChoiceDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
         initArguments()
-        if (!TextUtils.isEmpty(mTitle)) {
-            builder.setTitle(mTitle)
+        if (!TextUtils.isEmpty(title)) {
+            builder.setTitle(title)
         }
-        builder.setItems(mOptions) { _, option ->
-            mCallback?.onOptionSelected(option)
+        builder.setItems(options) { _, option ->
+            callback?.onOptionSelected(option)
         }
         return builder.create()
     }
 
     private fun initArguments() = arguments?.apply {
-        mOptions = getInt(ARG_OPTIONS)
-        mTitle = getString(ARG_TITLE)
+        options = getInt(ARG_OPTIONS)
+        title = getString(ARG_TITLE)
     }
 
     private fun resolveCallback(activity: Activity?) {
         if (parentFragment is Callback) {
-            mCallback = parentFragment as Callback?
+            callback = parentFragment as Callback?
         } else if (activity is Callback) {
-            mCallback = activity
+            callback = activity
         }
     }
 
