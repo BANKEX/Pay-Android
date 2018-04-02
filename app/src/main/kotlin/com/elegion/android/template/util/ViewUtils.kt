@@ -121,29 +121,25 @@ object ViewUtils {
 
     @JvmStatic
     fun setEditTextCursorColor(view: EditText, @ColorInt color: Int) {
-        try {
-            // Get the cursor resource id
-            var field = TextView::class.java.getDeclaredField("mCursorDrawableRes")
-            field.isAccessible = true
-            val drawableResId = field.getInt(view)
+        // Get the cursor resource id
+        var field = TextView::class.java.getDeclaredField("mCursorDrawableRes")
+        field.isAccessible = true
+        val drawableResId = field.getInt(view)
 
-            // Get the editor
-            field = TextView::class.java.getDeclaredField("mEditor")
-            field.isAccessible = true
-            val editor = field.get(view)
+        // Get the editor
+        field = TextView::class.java.getDeclaredField("mEditor")
+        field.isAccessible = true
+        val editor = field.get(view)
 
-            // Get the drawable and set a color filter
-            val drawable = ContextCompat.getDrawable(view.context, drawableResId)
-            drawable!!.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-            val drawables = arrayOf(drawable, drawable)
+        // Get the drawable and set a color filter
+        val drawable = ContextCompat.getDrawable(view.context, drawableResId)
+        drawable!!.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+        val drawables = arrayOf(drawable, drawable)
 
-            // Set the drawables
-            field = editor.javaClass.getDeclaredField("mCursorDrawable")
-            field.isAccessible = true
-            field.set(editor, drawables)
-        } catch (ignored: Exception) {
-            // ignored
-        }
+        // Set the drawables
+        field = editor.javaClass.getDeclaredField("mCursorDrawable")
+        field.isAccessible = true
+        field.set(editor, drawables)
     }
 
     @JvmStatic

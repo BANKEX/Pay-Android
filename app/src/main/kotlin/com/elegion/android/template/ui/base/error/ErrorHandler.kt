@@ -46,32 +46,32 @@ open class ErrorHandler protected constructor(
     }
 
     private fun handleError(e: Throwable) {
-        if (e is HttpException) {
-            if (e.code() == 401) {
-                handleAuthError(e)
-            } else {
-                try {
-                    val errorBody = e.response().errorBody()!!.string()
-                    val errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean::class.java)
-                    if (errorBean != null) {
-                        handleProtocolError(errorBean)
-                    } else {
-                        handleNonProtocolError(e)
-                    }
-                } catch (e1: IOException) {
-                    handleNonProtocolError(e)
-                } catch (e1: IllegalStateException) {
-                    handleNonProtocolError(e)
-                } catch (e1: JsonSyntaxException) {
+        when {
+            e is HttpException -> handleHttpException(e)
+            NETWORK_EXCEPTIONS.contains(e.javaClass) -> if (null == noInternetStubView) { handleNetworkError(e) }
+            else -> handleUnexpectedError(e)
+        }
+    }
+
+    private fun handleHttpException(e: HttpException) {
+        if (e.code() == 401) {
+            handleAuthError(e)
+        } else {
+            try {
+                val errorBody = e.response().errorBody()!!.string()
+                val errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean::class.java)
+                if (errorBean != null) {
+                    handleProtocolError(errorBean)
+                } else {
                     handleNonProtocolError(e)
                 }
+            } catch (e1: IOException) {
+                handleNonProtocolError(e)
+            } catch (e1: IllegalStateException) {
+                handleNonProtocolError(e)
+            } catch (e1: JsonSyntaxException) {
+                handleNonProtocolError(e)
             }
-        } else if (NETWORK_EXCEPTIONS.contains(e.javaClass)) {
-            if (null == noInternetStubView) {
-                handleNetworkError(e)
-            }
-        } else {
-            handleUnexpectedError(e)
         }
     }
 
