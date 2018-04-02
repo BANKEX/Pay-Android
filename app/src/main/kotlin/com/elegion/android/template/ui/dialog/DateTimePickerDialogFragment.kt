@@ -71,14 +71,15 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
             day = datePicker!!.dayOfMonth
         }
 
+        val timePickerIsNull = timePicker == null
         val hour: Int
         val minute: Int
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            hour = if (timePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.currentHour
-            minute = if (timePicker == null) calendar.get(Calendar.MINUTE) else timePicker!!.currentMinute
+            hour = if (timePickerIsNull) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.currentHour
+            minute = if (timePickerIsNull) calendar.get(Calendar.MINUTE) else timePicker!!.currentMinute
         } else {
-            hour = if (timePicker == null) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.hour
-            minute = if (timePicker == null) calendar.get(Calendar.MINUTE) else timePicker!!.minute
+            hour = if (timePickerIsNull) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.hour
+            minute = if (timePickerIsNull) calendar.get(Calendar.MINUTE) else timePicker!!.minute
         }
 
         calendar.clear()
