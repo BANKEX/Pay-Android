@@ -15,10 +15,6 @@ buildscript {
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
-plugins {
-    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-4"
-}
-
 allprojects {
     repositories {
         jcenter()
@@ -28,16 +24,6 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-detekt {
-    version = "1.0.0.RC6-4"
-    profile("main") {
-        input = "$projectDir/app"
-        config = "$projectDir/detekt.yml"
-        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-        output = "$project.projectDir/app/build/reports/detekt" // Directory where output reports are stored (if present)
-    }
 }
 
 ext {

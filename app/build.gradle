@@ -1,7 +1,10 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-4"
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../config/quality/quality.gradle'
 apply from: '../config/quality/ktlint.gradle'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 apply plugin: 'kotlin-kapt'
@@ -125,6 +128,16 @@ dependencies {
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoViersion"
+}
+
+detekt {
+    version = "1.0.0.RC6-4"
+    profile("main") {
+        input = "$projectDir"
+        config = "$project.rootDir/config/quality/detekt.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+        output = "$projectDir/build/reports/detekt" // Directory where output reports are stored (if present)
+    }
 }
 
 hockeyapp {
