@@ -7,9 +7,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.template.R
 import com.elegion.android.template.data.Repository
+import com.elegion.android.template.extension.android.widget.addTextChangedListener
 import com.elegion.android.template.ui.base.fragment.BaseNoInternetFragment
 import com.elegion.android.template.ui.features.FeaturesActivity
-import com.elegion.android.template.util.addTextChangedListener
 import kotlinx.android.synthetic.main.fr_login.*
 
 class LoginFragment : BaseNoInternetFragment(), LoginView {

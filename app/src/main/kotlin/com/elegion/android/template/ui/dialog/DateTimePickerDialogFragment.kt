@@ -57,34 +57,35 @@ class DateTimePickerDialogFragment : DialogFragment(), View.OnClickListener {
 
     private fun constructCalendar(): Calendar {
         val calendar = Calendar.getInstance()
-
-        val year: Int
-        val month: Int
-        val day: Int
-        if (datePicker == null) {
-            year = calendar.get(Calendar.YEAR)
-            month = calendar.get(Calendar.MONTH)
-            day = calendar.get(Calendar.DAY_OF_MONTH)
-        } else {
-            year = datePicker!!.year
-            month = datePicker!!.month
-            day = datePicker!!.dayOfMonth
-        }
-
-        val timePickerIsNull = timePicker == null
-        val hour: Int
-        val minute: Int
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            hour = if (timePickerIsNull) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.currentHour
-            minute = if (timePickerIsNull) calendar.get(Calendar.MINUTE) else timePicker!!.currentMinute
-        } else {
-            hour = if (timePickerIsNull) calendar.get(Calendar.HOUR_OF_DAY) else timePicker!!.hour
-            minute = if (timePickerIsNull) calendar.get(Calendar.MINUTE) else timePicker!!.minute
-        }
-
-        calendar.clear()
-        calendar.set(year, month, day, hour, minute)
+        removeSecondsAndMillis(calendar)
+        updateDate(calendar)
+        updateTime(calendar)
         return calendar
+    }
+
+    private fun removeSecondsAndMillis(calendar: Calendar) {
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+    }
+
+    private fun updateDate(calendar: Calendar) {
+        datePicker?.let {
+            calendar.set(Calendar.YEAR, it.year)
+            calendar.set(Calendar.MONTH, it.month)
+            calendar.set(Calendar.DAY_OF_MONTH, it.dayOfMonth)
+        }
+    }
+
+    private fun updateTime(calendar: Calendar) {
+        timePicker?.let {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                calendar.set(Calendar.HOUR_OF_DAY, it.currentHour)
+                calendar.set(Calendar.MINUTE, it.currentMinute)
+            } else {
+                calendar.set(Calendar.HOUR_OF_DAY, it.hour)
+                calendar.set(Calendar.MINUTE, it.minute)
+            }
+        }
     }
 
     private fun resolveCallback(activity: Activity?) {

@@ -1,14 +1,14 @@
-package com.elegion.android.template.util
+package com.elegion.android.template.extension.android.widget
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 
 inline fun TextView.addTextChangedListener(init: TextWatcherFunctions.() -> Unit): TextWatcher =
-        TextWatcherFunctions().apply {
-            init()
-            addTextChangedListener(this)
-        }
+    TextWatcherFunctions().apply {
+        init()
+        addTextChangedListener(this)
+    }
 
 class TextWatcherFunctions : TextWatcher {
 

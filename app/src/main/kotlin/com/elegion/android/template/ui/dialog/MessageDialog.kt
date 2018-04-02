@@ -120,6 +120,12 @@ class MessageDialog : DialogFragment() {
         fun onCancelButtonClick()
     }
 
+    class Params(
+        val title: String?,
+        val message: String?,
+        val confirm: String?,
+        val cancel: String?)
+
     companion object {
         private val ARG_TITLE = "ARG_TITLE"
         private val ARG_MESSAGE = "ARG_MESSAGE"
@@ -127,20 +133,13 @@ class MessageDialog : DialogFragment() {
         private val ARG_CANCEL_BUTTON = "ARG_CANCEL_BUTTON"
 
         @JvmOverloads
-        fun show(
-            fm: FragmentManager,
-            title: String?,
-            message: String?,
-            confirm: String?,
-            cancel: String?,
-            tag: String = MessageDialog::class.java.name
-        ) {
+        fun show(fm: FragmentManager, params: Params, tag: String = MessageDialog::class.java.name) {
             val dialog = MessageDialog()
             dialog.arguments = Bundle().apply {
-                putString(ARG_TITLE, title)
-                putString(ARG_MESSAGE, message)
-                putString(ARG_CONFIRM_BUTTON, confirm)
-                putString(ARG_CANCEL_BUTTON, cancel)
+                putString(ARG_TITLE, params.title)
+                putString(ARG_MESSAGE, params.message)
+                putString(ARG_CONFIRM_BUTTON, params.confirm)
+                putString(ARG_CANCEL_BUTTON, params.cancel)
             }
             dialog.show(fm, tag)
         }

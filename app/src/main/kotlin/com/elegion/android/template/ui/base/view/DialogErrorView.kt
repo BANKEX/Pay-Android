@@ -23,7 +23,7 @@ class DialogErrorView(private val fragmentManager: FragmentManager?, private val
 
     private fun showDialog(message: String) {
         fragmentManager?.let {
-            MessageDialog.show(fragmentManager, null, message, resources.getString(R.string.btn_ok), null)
+            MessageDialog.show(fragmentManager, MessageDialog.Params(null, message, resources.getString(R.string.btn_ok), null))
         }
     }
 
