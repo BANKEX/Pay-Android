@@ -22,9 +22,9 @@ hockey:
   only:
     - /^v[\d.]+t$/
 
-checkstyle:
+verification:
   script:
-    - gradle checkstyle findbugs pmd lintDebug testDebugUnitTest
+    - gradle clean ktlint detektCheck testDebugUnitTest
   tags:
     - android
     - ubuild

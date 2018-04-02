@@ -124,7 +124,8 @@ class MessageDialog : DialogFragment() {
         val title: String?,
         val message: String?,
         val confirm: String?,
-        val cancel: String?)
+        val cancel: String?
+    )
 
     companion object {
         private val ARG_TITLE = "ARG_TITLE"
