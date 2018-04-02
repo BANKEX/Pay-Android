@@ -39,10 +39,11 @@ class Repository private constructor(context: Context) {
                 features.add(Feature("Title $i", "Description $i"))
             }
             Flowable.just<List<Feature>>(features)
-        }.delay(1500, TimeUnit.MILLISECONDS)
+        }.delay(DELAY, TimeUnit.MILLISECONDS)
     }
 
     companion object {
+        private const val DELAY = 1500L
         @JvmStatic
         private var sInstance: Repository? = null
 

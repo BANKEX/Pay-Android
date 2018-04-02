@@ -54,7 +54,7 @@ open class ErrorHandler protected constructor(
     }
 
     private fun handleHttpException(e: HttpException) {
-        if (e.code() == 401) {
+        if (e.code() == AUTH_ERROR_HTTP_CODE) {
             handleAuthError(e)
         } else {
             try {
@@ -98,7 +98,8 @@ open class ErrorHandler protected constructor(
     }
 
     companion object {
-        protected val NETWORK_EXCEPTIONS = listOf<Class<*>>(
+        const val AUTH_ERROR_HTTP_CODE = 401
+        val NETWORK_EXCEPTIONS = listOf<Class<*>>(
             UnknownHostException::class.java,
             SocketTimeoutException::class.java,
             ConnectException::class.java
