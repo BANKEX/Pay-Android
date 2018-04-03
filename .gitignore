@@ -62,3 +62,6 @@ sonar-project.properties
 !/.idea/
 /.idea/
 /.idea/copyright/profiles_settings.xml
+
+# Crashlytics
+app/fabric.properties
