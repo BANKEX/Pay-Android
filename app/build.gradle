@@ -117,17 +117,10 @@ android {
 
         def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
         generateResourcesTask.dependsOn generatePropertiesTask
-        generateResourcesTask.doLast {
-            println "Removing fabric.properties"
-            crashlyticsProperties.delete()
-        }
-
-        def uploadDistribution = project.tasks.getByName("crashlyticsUploadDistribution${variantSuffix}")
-        uploadDistribution.dependsOn generatePropertiesTask
-        uploadDistribution.doLast {
-            println "Removing fabric.properties"
-            crashlyticsProperties.delete()
-        }
+//        generateResourcesTask.doLast {
+//            println "Removing fabric.properties"
+//            crashlyticsProperties.delete()
+//        }
     }
 }
 
