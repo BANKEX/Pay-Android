@@ -13,8 +13,8 @@ object CrashlyticsUtils {
     @JvmStatic
     fun init(context: Context) {
         Fabric.with(context.applicationContext, Crashlytics())
-         Crashlytics.setUserName(UNKNOWN_USER)
-         Crashlytics.setUserIdentifier(UNKNOWN_USER_ID)
+        Crashlytics.setUserName(UNKNOWN_USER)
+        Crashlytics.setUserIdentifier(UNKNOWN_USER_ID)
     }
 
     /**
