@@ -121,6 +121,13 @@ android {
             println "Removing fabric.properties"
             crashlyticsProperties.delete()
         }
+
+        def uploadDistribution = project.tasks.getByName("crashlyticsUploadDistribution${variantSuffix}")
+        uploadDistribution.dependsOn generatePropertiesTask
+        uploadDistribution.doLast {
+            println "Removing fabric.properties"
+            crashlyticsProperties.delete()
+        }
     }
 }
 
