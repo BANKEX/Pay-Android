@@ -4,10 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 
-import com.elegion.android.template.util.HockeyAppUtils
-
-import net.hockeyapp.android.CrashManager
-
 open class Lifecycler : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
@@ -16,9 +12,6 @@ open class Lifecycler : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityStarted(activity: Activity) {
         sStarted++
-        if (!BuildConfig.DEBUG) {
-            CrashManager.register(activity, BuildConfig.HOCKEY_APP_ID, HockeyAppUtils.HockeyAppListener.SINGLETON)
-        }
     }
 
     override fun onActivityResumed(activity: Activity) {

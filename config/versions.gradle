@@ -12,7 +12,7 @@ ext {
     mockitoViersion = '2.17.0'
     robolectricVersion = '3.0'
     playServicesVersion = '11.0.2'
-    hockeyAppVersion = '4.1.5'
+    crashlyticsVersion = '2.9.1@aar'
     stethoVersion = '1.5.0'
     constraintVersion = '1.0.2'
     frescoVersion = '1.3.0'
