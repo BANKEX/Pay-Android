@@ -11,7 +11,7 @@ abstract class SingleFragmentActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            supportFragmentManager.replaceFragment(createFragment())
+            supportFragmentManager.replaceFragment(createFragment()).commit()
         }
     }
 
