@@ -23,7 +23,7 @@ releaseQa:
 
 verification:
   script:
-    - gradle clean ktlint detektCheck testDebugUnitTest
+    - gradle clean ktlint detektCheck lintDebug testDebugUnitTest
   tags:
     - android
     - ubuild
@@ -35,8 +35,7 @@ verification:
   artifacts:
     when: on_failure
     paths:
-      - app/build/reports/checkstyle/checkstyle.html
-      - app/build/reports/findbugs/findbugs.html
-      - app/build/reports/pmd/pmd.html
+      - app/build/reports/ktlint/ktlint.xml
+      - app/build/reports/detekt/detekt-report.html
       - app/build/reports/lint-results-debug.html
       - app/build/reports/tests/testDebugUnitTest/
