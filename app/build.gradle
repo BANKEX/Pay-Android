@@ -117,10 +117,6 @@ android {
 
         def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
         generateResourcesTask.dependsOn generatePropertiesTask
-//        generateResourcesTask.doLast {
-//            println "Removing fabric.properties"
-//            crashlyticsProperties.delete()
-//        }
     }
 }
 
