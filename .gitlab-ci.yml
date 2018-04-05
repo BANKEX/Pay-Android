@@ -21,7 +21,6 @@ releaseQa:
   only:
     - /^v[\d.]+t$/
 
-#
 #verification:
 #  script:
 #    - gradle clean ktlint detektCheck lintDebug testDebugUnitTest
