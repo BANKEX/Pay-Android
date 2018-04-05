@@ -11,15 +11,16 @@
 #    paths:
 #      - app/build/outputs/apk/*.apk
 #      - app/build/outputs/mapping
-#
-#releaseQa:
-#  script:
-#    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace
-#  tags:
-#    - android
-#    - ubuild
-#  only:
+
+releaseQa:
+  script:
+    - CHANGELOG=$(/usr/bin/changelog) gradle clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace
+  tags:
+    - android
+    - ubuild
+  only:
 #    - /^v[\d.]+t$/
+    - /^v[\d.]+tsssss$/
 
 #verification:
 #  script:
