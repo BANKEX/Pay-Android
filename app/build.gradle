@@ -6,6 +6,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "build-time-tracker"
 apply plugin: 'io.fabric'
 
 repositories {
@@ -162,5 +163,25 @@ detekt {
         config = "$project.rootDir/config/quality/detekt.yml"
         filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
         output = "$projectDir/build/reports/detekt" // Directory where output reports are stored (if present)
+    }
+}
+
+buildtimetracker {
+    reporters {
+        csv {
+            output "build/times.csv"
+            append true
+            header false
+        }
+
+        summary {
+            ordered true
+            threshold 50
+            barstyle "none"
+        }
+
+        csvSummary {
+            csv "build/times.csv"
+        }
     }
 }

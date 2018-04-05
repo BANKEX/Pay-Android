@@ -21,21 +21,21 @@ releaseQa:
   only:
     - /^v[\d.]+t$/
 
-verification:
-  script:
-    - gradle clean ktlint detektCheck lintDebug testDebugUnitTest
-  tags:
-    - android
-    - ubuild
-  except:
-    - master
-    - dev
-    - /^v[\d.]+t$/
-    - /^v[\d.]+r$/
-  artifacts:
-    when: on_failure
-    paths:
-      - app/build/reports/ktlint/ktlint.xml
-      - app/build/reports/detekt/detekt-report.html
-      - app/build/reports/lint-results-debug.html
-      - app/build/reports/tests/testDebugUnitTest/
+#verification:
+#  script:
+#    - gradle clean ktlint detektCheck lintDebug testDebugUnitTest
+#  tags:
+#    - android
+#    - ubuild
+#  except:
+#    - master
+#    - dev
+#    - /^v[\d.]+t$/
+#    - /^v[\d.]+r$/
+#  artifacts:
+#    when: on_failure
+#    paths:
+#      - app/build/reports/ktlint/ktlint.xml
+#      - app/build/reports/detekt/detekt-report.html
+#      - app/build/reports/lint-results-debug.html
+#      - app/build/reports/tests/testDebugUnitTest/
