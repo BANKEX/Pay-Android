@@ -20,6 +20,20 @@ pipeline {
         RELEASE_QA_FABRIC_API_SECRET = "a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64"
         REASSIGN_QA_ID = "591"
     }
+    post {
+        always {
+            updateGitlabCommitStatus name: 'verification', state: 'pending'
+        }
+        failure {
+            updateGitlabCommitStatus name: 'verification', state: 'failed'
+        }
+        success {
+            updateGitlabCommitStatus name: 'verification', state: 'success'
+        }
+        aborted {
+            updateGitlabCommitStatus name: 'verification', state: 'canceled'
+        }
+    }
     options {
         gitLabConnection("https://gitlab.e-legion.com")
     }
@@ -36,17 +50,6 @@ pipeline {
                 sh 'gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
                 archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
-        }
-    }
-    post {
-        failure {
-            updateGitlabCommitStatus name: 'verification', state: 'failed'
-        }
-        success {
-            updateGitlabCommitStatus name: 'verification', state: 'success'
-        }
-        aborted {
-            updateGitlabCommitStatus name: 'verification', state: 'canceled'
         }
     }
 }
