@@ -21,9 +21,6 @@ pipeline {
         REASSIGN_QA_ID = "591"
     }
     post {
-        always {
-            updateGitlabCommitStatus name: 'verification', state: 'pending'
-        }
         failure {
             updateGitlabCommitStatus name: 'verification', state: 'failed'
         }
@@ -47,7 +44,7 @@ pipeline {
     stages {
         stage('verification') {
             steps {
-                sh 'gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
+                sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
                 archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
         }
