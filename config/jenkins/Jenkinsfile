@@ -1,3 +1,5 @@
+def gitLabJobName = 'JenkinsPipeline'
+
 pipeline {
     agent ubuild
     environment {
@@ -20,6 +22,7 @@ pipeline {
     }
     options {
         gitLabConnection("https://gitlab.e-legion.com")
+        gitlabBuilds(builds: ['verification'])
     }
     triggers {
         gitlab(
@@ -35,10 +38,23 @@ pipeline {
                     branch 'master'
                 }
             }
-            steps {
-                sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
-                archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
+            gitlabCommitStatus("verification") {
+                steps {
+                    sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
+                    archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
+                }
             }
+        }
+    }
+    post {
+        failure {
+            updateGitlabCommitStatus name: 'verification', state: 'failed'
+        }
+        success {
+            updateGitlabCommitStatus name: 'verification', state: 'success'
+        }
+        abort {
+            updateGitlabCommitStatus name: 'verification', state: 'canceled'
         }
     }
 }
