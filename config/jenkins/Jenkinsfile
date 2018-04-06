@@ -22,7 +22,6 @@ pipeline {
     }
     options {
         gitLabConnection("https://gitlab.e-legion.com")
-        gitlabBuilds(builds: ['verification'])
     }
     triggers {
         gitlab(
@@ -34,10 +33,8 @@ pipeline {
     stages {
         stage('verification') {
             steps {
-                gitlabCommitStatus("verification") {
-                    sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
-                    archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
-                }
+                sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
+                archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
         }
     }
@@ -48,7 +45,7 @@ pipeline {
         success {
             updateGitlabCommitStatus name: 'verification', state: 'success'
         }
-        abort {
+        aborted {
             updateGitlabCommitStatus name: 'verification', state: 'canceled'
         }
     }
