@@ -86,6 +86,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ext.betaDistributionReleaseNotes = System.getenv("CHANGELOG")
             ext.fabricApiKey = System.getenv("RELEASE_FABRIC_API_KEY")
             ext.fabricApiSecret = System.getenv("RELEASE_FABRIC_API_SECRET")
         }
