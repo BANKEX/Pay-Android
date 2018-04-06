@@ -33,11 +33,6 @@ pipeline {
     }
     stages {
         stage('verification') {
-            when {
-                not {
-                    branch 'master'
-                }
-            }
             gitlabCommitStatus("verification") {
                 steps {
                     sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
