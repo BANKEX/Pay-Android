@@ -1,5 +1,7 @@
+def gitLabJobName = 'JenkinsPipeline'
+
 pipeline {
-    agent ubuild
+    agent { ubuild }
     environment {
         REDMINE_API_KEY = "80352e51c41c38850d2d5cf1ac2e51c9c0e611e1"
         REDMINE_URL = "https://redmine.e-legion.com"
@@ -32,9 +34,10 @@ pipeline {
     stages {
         stage('verification') {
             steps {
-                updateGitlabCommitStatus name: 'verification', state: 'running'
-                sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
-                archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
+                gitlabCommitStatus("verification") {
+                    sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
+                    archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
+                }
             }
         }
     }
