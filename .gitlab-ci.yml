@@ -20,7 +20,7 @@ releaseQa:
     - ubuild
   only:
 #    - /^v[\d.]+t$/
-    - /^v[\d.]+tssssd$/
+    - /^v[\d.]+tssss$/
 
 #verification:
 #  script:
