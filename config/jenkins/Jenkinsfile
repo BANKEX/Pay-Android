@@ -42,6 +42,11 @@ pipeline {
         )
     }
     stages {
+        stage('chmod') {
+            steps {
+                sh 'chmod +x ./gradlew'
+            }
+        }
         stage('verification') {
             steps {
                 sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
