@@ -16,7 +16,7 @@ pipeline {
         RELEASE_FABRIC_API_SECRET = "a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64"
         RELEASE_QA_FABRIC_API_KEY = "aba301d58d2ab586a56e281861dd14141b362b34"
         RELEASE_QA_FABRIC_API_SECRET = "a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64"
-        REASSIGN_QA_ID = "590"
+        REASSIGN_QA_ID = "591"
     }
     options {
         gitLabConnection("https://gitlab.e-legion.com")
