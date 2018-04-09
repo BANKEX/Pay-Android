@@ -39,7 +39,7 @@ pipeline {
             triggerOnPush: true,
             triggerOnMergeRequest: false,
             branchFilterType: 'RegexBasedFilter',
-            targetBranchRegex: '/refs/tags/v[\\d.]+t/'
+            targetBranchRegex: 'refs/tags/v[\\d.]+t'
         )
     }
     stages {
