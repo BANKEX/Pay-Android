@@ -50,7 +50,11 @@ pipeline {
             }
         }
         stage('chmod-tag') {
-            when { tag "release" }
+            when {
+                allOf {
+                    tag "release"
+                }
+            }
             steps {
                 script {
                     println(BRANCH_NAME)
