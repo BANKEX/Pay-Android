@@ -39,7 +39,7 @@ pipeline {
             triggerOnPush: true,
             triggerOnMergeRequest: false,
             branchFilterType: 'NameBasedFilter',
-            includeBranchesSpec: "+refs/tags/:refs/remotes/origin/tags/"
+            includeBranchesSpec: "kotlin"
         )
     }
     stages {
