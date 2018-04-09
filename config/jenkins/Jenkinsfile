@@ -52,7 +52,6 @@ pipeline {
         stage('chmod-tag') {
             steps {
                 script {
-                    println(TAG_NAME)
                     println(buildingTag())
                 }
                 // sh 'chmod +x ./gradlew'
