@@ -22,13 +22,13 @@ pipeline {
     }
     post {
         failure {
-            updateGitlabCommitStatus name: 'verification', state: 'failed'
+            updateGitlabCommitStatus name: gitLabJobName, state: 'failed'
         }
         success {
-            updateGitlabCommitStatus name: 'verification', state: 'success'
+            updateGitlabCommitStatus name: gitLabJobName, state: 'success'
         }
         aborted {
-            updateGitlabCommitStatus name: 'verification', state: 'canceled'
+            updateGitlabCommitStatus name: gitLabJobName, state: 'canceled'
         }
     }
     options {
@@ -45,7 +45,15 @@ pipeline {
     stages {
         stage('chmod') {
             steps {
-                updateGitlabCommitStatus name: 'verification', state: 'running'
+                updateGitlabCommitStatus name: gitLabJobName, state: 'running'
+                sh 'chmod +x ./gradlew'
+            }
+        }
+        stage('chmod-tag') {
+            when {
+                expression { BRANCH_NAME ==~ /v[\d.]+t/ }
+            }
+            steps {
                 sh 'chmod +x ./gradlew'
             }
         }
@@ -60,13 +68,13 @@ pipeline {
                 archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
         }*/
-        stage('releaseQa') {
+        /*stage('releaseQa') {
             when {
                 expression { BRANCH_NAME ==~ /v[\d.]+t/ }
             }
             steps {
                 sh './gradlew clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace'
             }
-        }
+        }*/
     }
 }
