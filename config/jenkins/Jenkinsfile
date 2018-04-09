@@ -56,7 +56,7 @@ pipeline {
             steps {
                 script {
                     println(BRANCH_NAME)
-                    println(env.TAG_NAME)
+                    println(env.TAG_NAME)//
                 }
             }
         }
