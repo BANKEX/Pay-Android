@@ -38,8 +38,8 @@ pipeline {
         gitlab(
             triggerOnPush: true,
             triggerOnMergeRequest: false,
-            includeBranchesSpec: "+refs/tags/*:refs/remotes/origin/tags/*",
-            branchFilterType: 'refs\/tags\/v[\d.]+t'
+            branchFilterType: 'RegexBasedFilter',
+            includeBranchesSpec: "+refs/tags/*:refs/remotes/origin/tags/*"
         )
     }
     stages {
