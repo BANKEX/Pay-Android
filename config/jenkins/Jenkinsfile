@@ -62,7 +62,7 @@ pipeline {
         }*/
         stage('releaseQa') {
             when {
-                branch 'refs\/tags\/v[\d.]+t'
+                expression { BRANCH_NAME ==~ /v[\d.]+t/ }
             }
             steps {
                 sh './gradlew clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace'
