@@ -59,5 +59,13 @@ pipeline {
                 archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
         }
+        stage('releaseQa') {
+            when {
+                branch 'refs\/tags\/v[\d.]+t'
+            }
+            steps {
+                sh './gradlew clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace'
+            }
+        }
     }
 }
