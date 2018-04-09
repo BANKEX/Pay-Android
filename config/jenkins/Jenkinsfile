@@ -48,7 +48,7 @@ pipeline {
                 sh 'chmod +x ./gradlew'
             }
         }
-        stage('verification') {
+        /*stage('verification') {
             when {
                 not {
                     branch 'master'
@@ -58,7 +58,7 @@ pipeline {
                 sh './gradlew clean ktlint detektCheck lintDebug testDebugUnitTest --stacktrace'
                 archiveArtifacts 'app/build/reports/ktlint/ktlint.xml, app/build/reports/detekt/detekt-report.html, app/build/reports/lint-results-debug.html, app/build/reports/tests/testDebugUnitTest/'
             }
-        }
+        }*/
         stage('releaseQa') {
             when {
                 branch 'refs\/tags\/v[\d.]+t'
