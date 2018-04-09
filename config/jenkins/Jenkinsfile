@@ -38,7 +38,7 @@ pipeline {
         gitlab(
             triggerOnPush: true,
             triggerOnMergeRequest: false,
-            includeBranchesSpec: "**/tags/**",
+            includeBranchesSpec: "+refs/tags/:refs/remotes/origin/tags/",
             branchFilterType: 'All'
         )
     }
