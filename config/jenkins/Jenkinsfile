@@ -61,7 +61,7 @@ pipeline {
         }*/
         stage('releaseQa') {
             when {
-                branch 'refs\/tags\/v[\d.]+t'
+                branch '**/tags/**'
             }
             steps {
                 sh './gradlew clean lintReleaseQa assembleReleaseQa crashlyticsUploadDistributionReleaseQa --stacktrace'
