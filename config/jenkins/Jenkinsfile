@@ -38,8 +38,8 @@ pipeline {
         gitlab(
             triggerOnPush: true,
             triggerOnMergeRequest: false,
-            branchFilterType: 'NameBasedFilter',
-            includeBranchesSpec: "kotlin"
+            branchFilterType: 'RegexBasedFilter',
+            includeBranchesSpec: "+refs/tags/:refs/remotes/origin/tags/"
         )
     }
     stages {
