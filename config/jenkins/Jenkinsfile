@@ -50,10 +50,10 @@ pipeline {
             }
         }
         stage('chmod-tag') {
-            when {
-                expression { env.BRANCH_NAME ==~ /v[\d.]+t/ }
-            }
             steps {
+                script {
+                    println(BRANCH_NAME)
+                }
                 sh 'chmod +x ./gradlew'
             }
         }
