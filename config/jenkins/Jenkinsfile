@@ -38,8 +38,8 @@ pipeline {
         gitlab(
             triggerOnPush: true,
             triggerOnMergeRequest: false,
-            includeBranchesSpec: "+refs/tags/:refs/remotes/origin/tags/",
-            branchFilterType: 'All'
+            includeBranchesSpec: "+refs/tags/*:refs/remotes/origin/tags/*",
+            branchFilterType: 'refs\/tags\/v[\d.]+t'
         )
     }
     stages {
@@ -52,7 +52,7 @@ pipeline {
         stage('chmod-tag') {
             steps {
                 script {
-                    println(buildingTag())
+                    println(BRANCH_NAME)
                 }
                 // sh 'chmod +x ./gradlew'
             }
