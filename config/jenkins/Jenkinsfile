@@ -39,7 +39,7 @@ pipeline {
             triggerOnPush: true,
             triggerOnMergeRequest: false,
             branchFilterType: 'RegexBasedFilter',
-            includeBranchesSpec: "+refs/tags/:refs/remotes/origin/tags/"
+            targetBranchRegex: "release"
         )
     }
     stages {
