@@ -52,9 +52,10 @@ pipeline {
         stage('chmod-tag') {
             steps {
                 script {
-                    println(BRANCH_NAME)
+                    println(TAG_NAME)
+                    println(buildingTag())
                 }
-                sh 'chmod +x ./gradlew'
+                // sh 'chmod +x ./gradlew'
             }
         }
         /*stage('verification') {
