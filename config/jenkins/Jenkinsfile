@@ -38,8 +38,7 @@ pipeline {
         gitlab(
             triggerOnPush: true,
             triggerOnMergeRequest: false,
-            branchFilterType: 'RegexBasedFilter',
-            targetBranchRegex: 'master'
+            branchFilterType: 'All'
         )
     }
     stages {
@@ -50,13 +49,12 @@ pipeline {
             }
         }
         stage('chmod-tag') {
-            /*when {
-                expression { env.TAG_NAME == ""}
-            }*/
+            when {
+                branch 'release-*'
+            }
             steps {
                 script {
                     println(BRANCH_NAME)
-                    println(env.TAG_NAME)//
                 }
             }
         }
