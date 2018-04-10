@@ -50,7 +50,7 @@ pipeline {
         }
         stage('chmod-tag') {
             when {
-                branch 'release-*'
+                branch 'release'
             }
             steps {
                 script {
