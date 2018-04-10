@@ -107,11 +107,7 @@ object ViewUtils {
 
     @JvmStatic
     fun removeOnGlobalLayoutListener(v: View, listener: ViewTreeObserver.OnGlobalLayoutListener) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            v.viewTreeObserver.removeGlobalOnLayoutListener(listener)
-        } else {
-            v.viewTreeObserver.removeOnGlobalLayoutListener(listener)
-        }
+        v.viewTreeObserver.removeOnGlobalLayoutListener(listener)
     }
 
     @JvmStatic
