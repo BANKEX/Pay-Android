@@ -54,7 +54,7 @@ object ViewUtils {
     @JvmStatic
     fun hideKeyboard(activity: Activity?) {
         if (activity != null) {
-            val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
             val window = activity.window
             if (imm != null && window != null) {
                 var currentFocus = window.currentFocus
