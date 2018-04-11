@@ -21,6 +21,7 @@ local.properties
 !.idea/
 .idea/*
 !.idea/inspectionProfiles/
+!.idea/inspectionProfiles/Project_Default.xml
 
 *.iml
 *.ipr
