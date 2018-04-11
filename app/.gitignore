@@ -18,11 +18,13 @@ gen-external-apklibs/**
 local.properties
 
 # IntellijJ IDEA
+!.idea/
+.idea/*
+!.idea/inspectionProfiles/
+
 *.iml
 *.ipr
 *.iws
-.idea/**
-!.idea/inspectionProfiles/*
 classes/**
 target/**
 
