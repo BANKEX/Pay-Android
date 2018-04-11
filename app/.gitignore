@@ -17,12 +17,6 @@ gen-external-apklibs/**
 # Local configuration file (sdk path, etc)
 local.properties
 
-# IntellijJ IDEA
-#!.idea/
-#.idea/*
-#!.idea/inspectionProfiles/
-#!.idea/inspectionProfiles/Project_Default.xml
-
 *.iml
 *.ipr
 *.iws
