@@ -9,20 +9,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceProvider {
 
-    private lateinit var sRetrofit: Retrofit
+    @JvmStatic
+    private val retrofit: Retrofit by lazy {
+        getRetrofitInstance()
+    }
 
     @JvmStatic
-    fun <T> getServiceInstance(clazz: Class<T>): T = getRetrofitInstance().create(clazz)
+    fun <T> getServiceInstance(clazz: Class<T>): T = retrofit.create(clazz)
 
     private fun getRetrofitInstance(): Retrofit {
-        if (!::sRetrofit.isInitialized) {
-            sRetrofit = Retrofit.Builder()
-                    .baseUrl(BuildConfig.API_BASE_URL)
-                    .client(OkHttpProvider.provideClient())
-                    .addConverterFactory(GsonConverterFactory.create(GsonUtils.requestGson()))
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-        }
-        return sRetrofit
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.API_BASE_URL)
+            .client(OkHttpProvider.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(GsonUtils.requestGson()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
     }
 }

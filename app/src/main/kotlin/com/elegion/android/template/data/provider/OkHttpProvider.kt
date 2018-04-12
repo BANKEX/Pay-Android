@@ -6,6 +6,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 object OkHttpProvider {
+
+    @JvmStatic
+    val okHttpClient: OkHttpClient by lazy {
+        provideClient()
+    }
+
     @JvmStatic
     fun provideClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
