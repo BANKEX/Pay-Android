@@ -1,0 +1,18 @@
+ext {
+    supportVersion = '27.1.1'
+    okhttpVersion = '3.10.0'
+    retrofitVersion = '2.4.0'
+    rxandroidVersion = '2.0.1'
+    rxjavaVersion = '2.1.5'
+    timberVersion = '4.5.1'
+    butterknifeVersion = '8.8.1'
+    picassoVersion = '2.5.2'
+    junitVersion = '4.12'
+    mockitoViersion = '2.17.0'
+    robolectricVersion = '3.0'
+    playServicesVersion = '11.0.2'
+    crashlyticsVersion = '2.9.1@aar'
+    stethoVersion = '1.5.0'
+    constraintVersion = '1.0.2'
+    frescoVersion = '1.3.0'
+}

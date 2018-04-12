@@ -1,10 +1,23 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-4"
+}
+
 apply plugin: 'com.android.application'
-apply from: '../config/quality/quality.gradle'
-apply plugin: 'de.felixschulze.gradle.hockeyapp'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "build-time-tracker"
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+apply from: '../config/quality/ktlint.gradle'
+apply from: '../config/versions.gradle'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.elegion.android.template"
@@ -17,10 +30,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
 
-        manifestPlaceholders = [HOCKEY_APP_ID: rootProject.hockeyAppId]
-
         buildConfigField 'String', 'API_BASE_URL', '"https://api.github.com/"'
-        buildConfigField "String", "HOCKEY_APP_ID", rootProject.ext.hockeyAppId
     }
 
     compileOptions {
@@ -33,6 +43,11 @@ android {
         javaMaxHeapSize "2048M"
     }
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
     signingConfigs {
         debug {
             storeFile file('debug.jks')
@@ -43,26 +58,37 @@ android {
             keyAlias System.getenv("KEYALIAS")
             keyPassword System.getenv("KEYPASS")
         }
+        playstore {
+            storeFile file(String.valueOf(System.getenv("RELEASE_KEYSTORE")))
+            storePassword System.getenv("RELEASE_STOREPASS")
+            keyAlias System.getenv("RELEASE_KEYALIAS")
+            keyPassword System.getenv("RELEASE_KEYPASS")
+        }
     }
 
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            buildConfigField 'int', 'TEST_SDK_INT', '21'
+            ext.fabricApiKey = System.getenv("RELEASE_QA_FABRIC_API_KEY")
+            ext.fabricApiSecret = System.getenv("RELEASE_QA_FABRIC_API_SECRET")
+        }
+
+        releaseQa {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            versionNameSuffix rootProject.qaVersionSuffix
+            ext.betaDistributionReleaseNotes = System.getenv("CHANGELOG")
+            ext.fabricApiKey = System.getenv("RELEASE_QA_FABRIC_API_KEY")
+            ext.fabricApiSecret = System.getenv("RELEASE_QA_FABRIC_API_SECRET")
         }
 
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-            buildConfigField 'int', 'TEST_SDK_INT', '16'
-            versionNameSuffix '-test'
-        }
-
-        live {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'int', 'TEST_SDK_INT', '16'
+            ext.betaDistributionReleaseNotes = System.getenv("CHANGELOG")
+            ext.fabricApiKey = System.getenv("RELEASE_FABRIC_API_KEY")
+            ext.fabricApiSecret = System.getenv("RELEASE_FABRIC_API_SECRET")
         }
     }
 
@@ -72,19 +98,6 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
 
-    flavorDimensions 'buildType'
-
-    productFlavors {
-        fastDex {
-            dimension 'buildType'
-            minSdkVersion 21
-        }
-
-        prod {
-            dimension 'buildType'
-        }
-    }
-
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -92,12 +105,27 @@ android {
     testOptions {
         unitTests.all { jvmArgs '-noverify' }
     }
-}
 
-apply from: '../versions.gradle'
+    // Generate different fabric.properties files for different build variants
+    File crashlyticsProperties = new File("${project.projectDir.absolutePath}/fabric.properties")
+    applicationVariants.all { variant ->
+        def variantSuffix = variant.name.capitalize()
+        def generatePropertiesTask = task("fabricGenerateProperties${variantSuffix}") << {
+            Properties properties = new Properties()
+            properties.put("apiKey", variant.buildType.ext.fabricApiKey)
+            properties.put("apiSecret", variant.buildType.ext.fabricApiSecret)
+            properties.store(new FileWriter(crashlyticsProperties), "")
+        }
+
+        def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
+        generateResourcesTask.dependsOn generatePropertiesTask
+    }
+}
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation "com.android.support:support-v4:$supportVersion"
     implementation "com.android.support:support-v13:$supportVersion"
@@ -110,31 +138,51 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     implementation "com.jakewharton.timber:timber:$timberVersion"
-    implementation "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
 
     implementation 'com.arello-mobile:moxy:1.5.3'
-    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
+    kapt 'com.arello-mobile:moxy-compiler:1.5.3'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
 
-    implementation "net.hockeyapp.android:HockeySDK:$hockeyAppVersion"
+    compile("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
+        transitive = true
+    }
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoViersion"
-    testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
 
-hockeyapp {
-    apiToken = System.getenv("HOCKEY_APP_TOKEN")
-    notesType = 1
-    notify = 1
-    notes = System.getenv("CHANGELOG")
-    tags = "test"
+detekt {
+    version = "1.0.0.RC6-4"
+    profile("main") {
+        input = "$projectDir"
+        config = "$project.rootDir/config/quality/detekt.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+        output = "$projectDir/build/reports/detekt" // Directory where output reports are stored (if present)
+    }
+}
+
+buildtimetracker {
+    reporters {
+        csv {
+            output "build/times.csv"
+            append true
+            header false
+        }
+
+        summary {
+            ordered true
+            threshold 50
+            barstyle "none"
+        }
+
+        csvSummary {
+            csv "build/times.csv"
+        }
+    }
 }

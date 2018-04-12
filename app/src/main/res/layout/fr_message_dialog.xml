@@ -35,7 +35,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/secondary_action"
+            android:id="@+id/secondaryAction"
             style="@style/MessageDialogBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             tools:text="@string/btn_cancel"/>
 
         <TextView
-            android:id="@+id/primary_action"
+            android:id="@+id/primaryAction"
             style="@style/MessageDialogBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

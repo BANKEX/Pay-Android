@@ -1,16 +1,16 @@
 buildscript {
+    ext.kotlin_version = '1.2.31'
     repositories {
         jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
         google()
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.5'
+        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.11.0"
+        classpath 'io.fabric.tools:gradle:1.+'
     }
-
-    // Exclude the version that the android plugin depends on.
-    configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
 allprojects {
@@ -20,15 +20,31 @@ allprojects {
     }
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
 ext {
     projectName = 'Template'
-    hockeyAppId = '"00000000000000000000000000000000"'
     versionName = versionName
+    qaVersionSuffix = qaVersionSuffix
     versionCode = versionCode
 }
 
+def getQaVersionSuffix() {
+    def tag = 'git describe --tags'.execute().text.split('-').first()?.trim()
+    if (tag =~ /^v.*$/) {
+        return tag.substring(tag.lastIndexOf("."))
+    }
+    return '1.0.0'
+}
+
 def getVersionName() {
-    return '0.0.0'
+    def tag = 'git describe --tags'.execute().text.split('-').first()?.trim()
+    if (tag =~ /^v.*$/) {
+        return tag.substring(1, tag.lastIndexOf(".")) // exclude build number
+    }
+    return '1.0.0'
 }
 
 int getVersionCode() {

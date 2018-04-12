@@ -59,6 +59,12 @@ sonar-project.properties
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
-!/.idea/
-/.idea/
-/.idea/copyright/profiles_settings.xml
+
+# All files in .idea directory except custom lint project profile
+/.idea/*
+!/.idea/inspectionProfiles/
+/.idea/inspectionProfiles/*
+!/.idea/inspectionProfiles/Project_Default.xml
+
+# Crashlytics
+app/fabric.properties
