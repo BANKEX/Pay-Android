@@ -28,9 +28,13 @@ class CustomTypefaceSpan(private val typeface: Typeface) : MetricAffectingSpan()
         }
 
         if (fake and Typeface.ITALIC != 0) {
-            paint.textSkewX = -0.25f
+            paint.textSkewX = STANDARD_SKEW_X
         }
 
         paint.typeface = tf
+    }
+
+    companion object {
+        const val STANDARD_SKEW_X = -0.25f
     }
 }
