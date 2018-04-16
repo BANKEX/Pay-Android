@@ -42,6 +42,8 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
         if (maxDate > 0) {
             dialog.datePicker.maxDate = maxDate
         }
+        // remove title from the dialog
+        dialog.setTitle(null)
 
         return dialog
     }
