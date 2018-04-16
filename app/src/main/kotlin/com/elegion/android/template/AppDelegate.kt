@@ -32,8 +32,7 @@ class AppDelegate : MultiDexApplication() {
     }
 
     companion object {
-        @JvmStatic
-        private val RELEASE_BUILD_TYPE = "release"
+        private const val RELEASE_BUILD_TYPE = "release"
 
         lateinit var appContext: Context
             private set
