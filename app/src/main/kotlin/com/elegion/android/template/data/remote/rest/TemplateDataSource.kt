@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface TemplateService {
+interface TemplateDataSource {
     @POST("authorizations")
     fun obtainOAuthToken(
         @Header("Authorization") basicAuthHeader: String,
