@@ -44,7 +44,12 @@
 
 # HockeyApp keep line numbers
 -renamesourcefileattribute SourceFile
+
+#Crashlytics
+-keepattributes *Annotation*
 -keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
+
 
 # fresco
 -keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
@@ -103,7 +108,6 @@
 }
 
 # EventBus
--keepattributes *Annotation*
 -keepclassmembers class ** {
     @org.greenrobot.eventbus.Subscribe <methods>;
 }
