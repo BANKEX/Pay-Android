@@ -18,15 +18,35 @@ import android.text.style.ImageSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.util.Patterns
+import com.elegion.android.template.AppDelegate
 
-object StringUtil {
+object StringUtils {
     private const val SPACE = ' '
     private const val ROUBLE_SIGN = '\u20BD'
-    private val sRobotoTypeface: Typeface? = null
+    private val sRobotoTypeface: Typeface by lazy {
+        Typeface.createFromAsset(AppDelegate.appContext.assets, "fonts/Roboto-Regular.ttf")
+    }
 
     @JvmStatic
     private val boldSpan: StyleSpan
         get() = StyleSpan(Typeface.BOLD)
+
+    @JvmStatic
+    fun appendRoubleSign(source: String): SpannableStringBuilder {
+        val builder = SpannableStringBuilder(source)
+        builder.append(SPACE).append(ROUBLE_SIGN)
+        val roubleSpan = CustomTypefaceSpan(sRobotoTypeface)
+        builder.setSpan(roubleSpan, builder.length - 1, builder.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+        return builder
+    }
+
+    @JvmStatic
+    fun appendImage(context: Context, source: String, @DrawableRes res: Int): SpannableStringBuilder {
+        val result = SpannableStringBuilder(source)
+        result.append(SPACE)
+        appendAndSetSpan(result, source, getImageSpan(context, res))
+        return result
+    }
 
     @JvmStatic
     fun getColoredText(context: Context, text: String, @ColorRes color: Int): SpannableStringBuilder {

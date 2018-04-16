@@ -6,7 +6,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
-object DateUtil {
+object DateUtils {
 
     private const val DD_MM_YYYY = "dd.MM.yyyy"
     private const val SERVER_ISO8601_DATE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
