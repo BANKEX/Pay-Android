@@ -7,14 +7,13 @@ import com.elegion.android.template.ui.base.view.LoadingView
 import io.reactivex.Flowable
 import io.reactivex.FlowableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 object RxUtils {
     @JvmStatic
-    fun dispose(subscription: CompositeDisposable?) {
+    fun dispose(subscription: Disposable?) {
         if (subscription != null && !subscription.isDisposed) {
             subscription.dispose()
         }
