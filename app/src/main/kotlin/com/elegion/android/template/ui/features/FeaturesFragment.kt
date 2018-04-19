@@ -1,12 +1,10 @@
 package com.elegion.android.template.ui.features
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.template.R
@@ -16,7 +14,6 @@ import com.elegion.android.template.ui.base.adapter.AbstractPaginationAdapter
 import com.elegion.android.template.ui.base.fragment.BaseRecyclerFragment
 import com.elegion.android.template.ui.features.adapter.FeaturesAdapter
 import com.elegion.android.template.util.AuthUtils
-
 import timber.log.Timber
 
 class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginationAdapter.Callback {
@@ -69,8 +66,6 @@ class FeaturesFragment : BaseRecyclerFragment(), FeaturesView, AbstractPaginatio
     override fun loadMore() = presenter.loadFeatures(false)
 
     companion object {
-        fun newInstance(): Fragment {
-            return FeaturesFragment()
-        }
+        fun newInstance() = FeaturesFragment()
     }
 }

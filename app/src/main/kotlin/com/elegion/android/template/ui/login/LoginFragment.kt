@@ -1,6 +1,5 @@
 package com.elegion.android.template.ui.login
 
-import android.support.v4.app.Fragment
 import android.text.TextWatcher
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -53,8 +52,6 @@ class LoginFragment : BaseNoInternetFragment(), LoginView {
     }
 
     companion object {
-        fun newInstance(): Fragment {
-            return LoginFragment()
-        }
+        fun newInstance() = LoginFragment()
     }
 }

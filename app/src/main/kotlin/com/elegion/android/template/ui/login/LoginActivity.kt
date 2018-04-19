@@ -11,8 +11,6 @@ class LoginActivity : SingleFragmentActivity() {
     override fun createFragment(): Fragment = LoginFragment.newInstance()
 
     companion object {
-        fun makeIntent(context: Context): Intent {
-            return Intent(context, LoginActivity::class.java)
-        }
+        fun makeIntent(context: Context) = Intent(context, LoginActivity::class.java)
     }
 }

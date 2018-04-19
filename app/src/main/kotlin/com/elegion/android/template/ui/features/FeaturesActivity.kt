@@ -33,8 +33,6 @@ class FeaturesActivity : SingleFragmentActivity() {
     override fun createFragment(): Fragment = FeaturesFragment.newInstance()
 
     companion object {
-        fun makeIntent(context: Context): Intent {
-            return Intent(context, FeaturesActivity::class.java)
-        }
+        fun makeIntent(context: Context) = Intent(context, FeaturesActivity::class.java)
     }
 }
