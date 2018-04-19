@@ -38,7 +38,7 @@ class Repository private constructor(context: Context) {
             for (i in offset until amount) {
                 features.add(Feature("Title $i", "Description $i"))
             }
-            Flowable.just<MutableList<Feature>>(features)
+            Flowable.just(features)
         }.delay(DELAY, TimeUnit.MILLISECONDS)
     }
 
