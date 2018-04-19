@@ -26,7 +26,7 @@ internal class FeaturesPresenter(private val repository: Repository) : BasePrese
         if (!isLastPage && RxUtils.isNullOrDisposed(loadFeaturesSubscription)) {
             removeDisposable(loadFeaturesSubscription)
             loadFeaturesSubscription = repository.getFeatures(offset, PAGE_COUNT)
-                .compose<List<Feature>> { RxUtils.async(it) }
+                .compose { RxUtils.async(it) }
                 .compose(RxUtils.loading(viewState))
                 .subscribe({ this.handleFeaturesResponse(it) }, { RxUtils.errorLogE(it) })
             addDisposable(loadFeaturesSubscription)

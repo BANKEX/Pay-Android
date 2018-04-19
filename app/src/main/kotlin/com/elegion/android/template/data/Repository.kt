@@ -31,14 +31,14 @@ class Repository private constructor(context: Context) {
         return templateDataSource.obtainOAuthToken(basicAuthHeader, request)
     }
 
-    fun getFeatures(offset: Int, count: Int): Flowable<List<Feature>> {
+    fun getFeatures(offset: Int, count: Int): Flowable<MutableList<Feature>> {
         return Flowable.defer {
-            val features = ArrayList<Feature>()
+            val features = mutableListOf<Feature>()
             val amount = offset + count
             for (i in offset until amount) {
                 features.add(Feature("Title $i", "Description $i"))
             }
-            Flowable.just<List<Feature>>(features)
+            Flowable.just<MutableList<Feature>>(features)
         }.delay(DELAY, TimeUnit.MILLISECONDS)
     }
 
