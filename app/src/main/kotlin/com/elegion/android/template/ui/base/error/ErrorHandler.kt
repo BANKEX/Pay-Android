@@ -21,6 +21,7 @@ open class ErrorHandler protected constructor(
     private val errorView: ErrorView,
     private val repository: Repository
 ) {
+
     private var noInternetStubView: NoInternetStubView? = null
 
     protected constructor(
