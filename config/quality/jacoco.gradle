@@ -39,28 +39,39 @@ project.afterEvaluate {
                 group = "Reporting"
                 description = "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
 
+                def excludes = [
+                        '**/R.class',
+                        '**/R$*.class',
+                        '**/BuildConfig.*',
+                        '**/Manifest*.*',
+                        'android/**/*.*',
+                        'io/realm/**/*.*',
+                        '**/*_MembersInjector.class',
+                        '**/Dagger*Component.class',
+                        '**/Dagger*Component$Builder.class',
+                        '**/*Module_*Factory.class',
+                        '**/*_Factory.class',
+                        '**/*_ViewBinding*.class',
+                        '**/*$$*.class',
+                        '**/*MoxyReflector.class'
+                ]
+
                 classDirectories = fileTree(
                         dir: "${project.buildDir}/intermediates/classes/${sourcePath}",
-                        excludes: ['**/R.class',
-                                    '**/R$*.class',
-                                    '**/BuildConfig.*',
-                                    '**/Manifest*.*',
-                                    'android/**/*.*',
-                                    'io/realm/**/*.*',
-                                    '**/*_MembersInjector.class',
-                                    '**/Dagger*Component.class',
-                                    '**/Dagger*Component$Builder.class',
-                                    '**/*Module_*Factory.class',
-                                    '**/*_Factory.class',
-                                    '**/*_ViewBinding*.class',
-                                    '**/*$$*.class',
-                                    '**/*MoxyReflector.class']
+                        excludes: excludes
+                ) + fileTree(
+                        dir: "${project.buildDir}/tmp/kotlin-classes/${sourcePath}",
+                        excludes: excludes
                 )
 
                 def coverageSourceDirs = [
+                        android.sourceSets.main.java.srcDirs,
                         "src/main/java",
                         "src/$productFlavorName/java",
-                        "src/$buildTypeName/java"
+                        "src/$buildTypeName/java",
+                        "src/main/kotlin",
+                        "src/$productFlavorName/kotlin",
+                        "src/$buildTypeName/kotlin"
                 ]
                 additionalSourceDirs = files(coverageSourceDirs)
                 sourceDirectories = files(coverageSourceDirs)
