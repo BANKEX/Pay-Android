@@ -10,7 +10,6 @@ import android.widget.DatePicker
 import java.util.Calendar
 
 class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-
     private var minDate: Long = 0
     private var maxDate: Long = 0
     private var initialDate: Long = 0
