@@ -53,9 +53,9 @@
 2. Перейти в `Jenkins`. Переидти в папку со сборками проекта. Создать копию этой папки через Copy Folder.
 3. Настроить сборки чтобы они смотрели на корректный репозиторий в Gitlab. Добавить дополнительные шаги сборки при необходимости.
 4. Добавить в `Gitlab` `Web hook` с `URL` из конфигурации билдов дженкинса. Для примера можно посмотреть проект шаблона.
-    1. `release` - собирает релизную сборку в крашлитикс. Тригеры: Push Events, Tag Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/release
-    2. `releaseQa` - собирает релизную сборку для отдела тестирования в крашлитикс. Тригеры: Push Events, Tag Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/releaseQa
-    3. `verification` - прогоняет тесты и синтаксические анализаторы при пушах в репозиторий. Тригеры: Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/verification
+    * `release` - собирает релизную сборку в крашлитикс. Тригеры: Push Events, Tag Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/release
+    * `releaseQa` - собирает релизную сборку для отдела тестирования в крашлитикс. Тригеры: Push Events, Tag Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/releaseQa
+    * `verification` - прогоняет тесты и синтаксические анализаторы при пушах в репозиторий. Тригеры: Push Events. Url: https://jenkins.e-legion.com/project/<PROJECT_NAME>/verification
 5. В `Gitlab` включить `Deploy key` `jenkins` в настройках проекта.
 6. В `Gitlab` добавить пользователя Jenkins в проект.
 
@@ -86,9 +86,7 @@ Jenkins готов. Далее при необходимости можно до
     	RELEASE_QA_FABRIC_API_SECRET
     	a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64
 ```
-
 4. Дополнительно указывается
-
 ```
     	REASSIGN_QA_ID     <----- Перевод тасок на QA в редмайне
     	591     <----- Берем из ссылки https://redmine.e-legion.com/users/591
@@ -109,7 +107,6 @@ Jenkins готов. Далее при необходимости можно до
     	RELEASE_QA_FABRIC_API_SECRET
     	a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64
 ``` 
-
 5. Добавить и при необходимости настроить файл с конфигурацией `.gitlab-ci.yml` под проект.
 Начальный конфиг можно взять [тут](https://gitlab.e-legion.com/snippets/17)
 `.gitlab-ci.yml` используется для сборки проектов [Gitlab CI](https://gitlab.e-legion.com/ci).
