@@ -86,6 +86,7 @@ Jenkins готов. Далее при необходимости можно до
     	RELEASE_QA_FABRIC_API_SECRET
     	a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64
 ```
+
 4. Дополнительно указывается
 ```
     	REASSIGN_QA_ID     <----- Перевод тасок на QA в редмайне
@@ -106,7 +107,8 @@ Jenkins готов. Далее при необходимости можно до
     	aba301d58d2ab586a56e281861dd14141b362b34
     	RELEASE_QA_FABRIC_API_SECRET
     	a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64
-``` 
+```
+
 5. Добавить и при необходимости настроить файл с конфигурацией `.gitlab-ci.yml` под проект.
 Начальный конфиг можно взять [тут](https://gitlab.e-legion.com/snippets/17)
 `.gitlab-ci.yml` используется для сборки проектов [Gitlab CI](https://gitlab.e-legion.com/ci).
