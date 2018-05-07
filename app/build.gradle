@@ -70,8 +70,9 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            ext.fabricApiKey = System.getenv("RELEASE_QA_FABRIC_API_KEY")
-            ext.fabricApiSecret = System.getenv("RELEASE_QA_FABRIC_API_SECRET")
+            // have to keep them here because of lazy programmers who do not want to add environment variables
+            ext.fabricApiKey = "aba301d58d2ab586a56e281861dd14141b362b34"
+            ext.fabricApiSecret = "a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64"
         }
 
         releaseQa {
