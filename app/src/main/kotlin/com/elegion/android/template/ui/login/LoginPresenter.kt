@@ -11,7 +11,7 @@ internal class LoginPresenter(private val repository: Repository) : BasePresente
     private var email: String = ""
     private var password: String = ""
     private var errorHandler = ErrorHandler.create(viewState, repository, viewState)
-    private var loginJob : Job? = null
+    private var loginJob: Job? = null
 
     fun login() {
         if (loginJob?.isCompleted != false) {

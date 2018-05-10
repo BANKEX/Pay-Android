@@ -27,6 +27,7 @@ open class BasePresenter<V : MvpView> : MvpPresenter<V>() {
         jobs.clear()
     }
 
+    @Suppress("TooGenericExceptionCaught")
     protected fun launchLoadingErrorJob(
         errorHandler: ErrorHandler? = null,
         loadingView: LoadingView? = null,
