@@ -1,4 +1,5 @@
 ext {
+    kotlin_coroutine_version = '0.22.5'
     supportVersion = '27.1.1'
     okhttpVersion = '3.10.0'
     retrofitVersion = '2.4.0'

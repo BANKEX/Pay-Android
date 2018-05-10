@@ -8,10 +8,7 @@ import com.elegion.android.template.ui.base.view.NoInternetStubView
 import com.elegion.android.template.util.AuthUtils
 import com.elegion.android.template.util.GsonUtils
 import com.google.gson.JsonSyntaxException
-import io.reactivex.FlowableTransformer
-import io.reactivex.functions.Consumer
 import retrofit2.HttpException
-import timber.log.Timber
 import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -31,25 +28,15 @@ open class ErrorHandler protected constructor(
         this.noInternetStubView = noInternetStubView
     }
 
-    fun <T> transformer(): FlowableTransformer<T, T> {
-        return FlowableTransformer {
-            it.doOnSubscribe { noInternetStubView?.hideNoInternetStub() }
-                .doOnError(error())
-        }
-    }
+    fun hideNoInternetStub() = noInternetStubView?.hideNoInternetStub()
 
-    private fun error(): Consumer<Throwable> {
-        return Consumer {
-            Timber.d(it, "from ErrorHandler.error")
-            handleError(it)
-        }
-    }
-
-    private fun handleError(e: Throwable) {
+    fun handleError(t: Throwable) {
         when {
-            e is HttpException -> handleHttpException(e)
-            NETWORK_EXCEPTIONS.contains(e.javaClass) -> if (null == noInternetStubView) { handleNetworkError(e) }
-            else -> handleUnexpectedError(e)
+            t is HttpException -> handleHttpException(t)
+            NETWORK_EXCEPTIONS.contains(t.javaClass) -> {
+                noInternetStubView?.showNoInternetStub() ?: handleNetworkError(t)
+            }
+            else -> handleUnexpectedError(t)
         }
     }
 

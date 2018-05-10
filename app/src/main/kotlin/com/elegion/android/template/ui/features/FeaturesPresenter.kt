@@ -3,16 +3,17 @@ package com.elegion.android.template.ui.features
 import com.arellomobile.mvp.InjectViewState
 import com.elegion.android.template.data.Repository
 import com.elegion.android.template.data.model.Feature
+import com.elegion.android.template.ui.base.error.ErrorHandler
 import com.elegion.android.template.ui.base.presenter.BasePresenter
 import com.elegion.android.template.util.AuthUtils
-import com.elegion.android.template.util.RxUtils
-import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.experimental.Job
 
 @InjectViewState
 internal class FeaturesPresenter(private val repository: Repository) : BasePresenter<FeaturesView>() {
 
     private var offset = 0
-    private var loadFeaturesSubscription: Disposable? = null
+    private var errorHandler = ErrorHandler.create(viewState, repository, viewState)
+    private var loadFeaturesJob: Job? = null
     private var isLastPage: Boolean = false
 
     override fun onFirstViewAttach() = loadFeatures(true)
@@ -23,13 +24,11 @@ internal class FeaturesPresenter(private val repository: Repository) : BasePrese
             isLastPage = false
         }
 
-        if (!isLastPage && RxUtils.isNullOrDisposed(loadFeaturesSubscription)) {
-            removeDisposable(loadFeaturesSubscription)
-            loadFeaturesSubscription = repository.getFeatures(offset, PAGE_COUNT)
-                .compose { RxUtils.async(it) }
-                .compose(RxUtils.loading(viewState))
-                .subscribe({ this.handleFeaturesResponse(it) }, { RxUtils.errorLogE(it) })
-            addDisposable(loadFeaturesSubscription)
+        if (!isLastPage && loadFeaturesJob?.isCompleted != false) {
+            loadFeaturesJob = launchLoadingErrorJob(errorHandler, viewState) {
+                handleFeaturesResponse(repository.getFeatures(offset, PAGE_COUNT))
+            }
+            addCancellableJob(loadFeaturesJob)
         }
     }
 
