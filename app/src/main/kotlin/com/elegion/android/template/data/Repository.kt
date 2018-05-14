@@ -7,10 +7,10 @@ import com.elegion.android.template.data.provider.ServiceProvider
 import com.elegion.android.template.data.remote.rest.TemplateDataSource
 import com.elegion.android.template.data.remote.rest.request.LoginRequest
 import com.elegion.android.template.data.remote.rest.response.LoginResponse
-import io.reactivex.Flowable
+import com.elegion.android.template.extension.kotlinx.coroutines.experimental.await
+import kotlinx.coroutines.experimental.delay
 import okhttp3.Credentials
 import java.util.Arrays
-import java.util.concurrent.TimeUnit
 
 class Repository private constructor(context: Context) {
     private val preferencesDataSource: PreferencesDataSource = PreferencesDataSource(context)
@@ -24,22 +24,21 @@ class Repository private constructor(context: Context) {
             preferencesDataSource.loginToken = loginToken
         }
 
-    fun login(username: String, password: String): Flowable<LoginResponse> {
+    suspend fun login(username: String, password: String): LoginResponse {
         val basicAuthHeader = Credentials.basic(username, password)
         val scopes = Arrays.asList("repo", "user")
         val request = LoginRequest(scopes, "e-legion.com", clientId, clientSecret)
-        return templateDataSource.obtainOAuthToken(basicAuthHeader, request)
+        return templateDataSource.obtainOAuthToken(basicAuthHeader, request).await()
     }
 
-    fun getFeatures(offset: Int, count: Int): Flowable<MutableList<Feature>> {
-        return Flowable.defer {
-            val features = mutableListOf<Feature>()
-            val amount = offset + count
-            for (i in offset until amount) {
-                features.add(Feature("Title $i", "Description $i"))
-            }
-            Flowable.just(features)
-        }.delay(DELAY, TimeUnit.MILLISECONDS)
+    suspend fun getFeatures(offset: Int, count: Int): MutableList<Feature> {
+        delay(DELAY)
+        val features = mutableListOf<Feature>()
+        val amount = offset + count
+        for (i in offset until amount) {
+            features.add(Feature("Title $i", "Description $i"))
+        }
+        return features
     }
 
     companion object {
