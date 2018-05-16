@@ -4,24 +4,15 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
 object GsonUtils {
-    private lateinit var sRequestGson: Gson
-    private lateinit var sGson: Gson
-
     @JvmStatic
-    fun gson(): Gson {
-        if (!::sGson.isInitialized) {
-            sGson = Gson()
-        }
-        return sGson
+    val requestGson: Gson by lazy {
+        GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'")
+            .create()
     }
 
     @JvmStatic
-    fun requestGson(): Gson {
-        if (!::sRequestGson.isInitialized) {
-            sRequestGson = GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSS'Z'")
-                .create()
-        }
-        return sRequestGson
+    val gson: Gson by lazy {
+        Gson()
     }
 }
