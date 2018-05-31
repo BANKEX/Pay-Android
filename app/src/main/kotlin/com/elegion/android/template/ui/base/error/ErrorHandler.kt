@@ -46,7 +46,7 @@ open class ErrorHandler protected constructor(
         } else {
             try {
                 val errorBody = e.response().errorBody()!!.string()
-                val errorBean = GsonUtils.requestGson().fromJson(errorBody, ErrorBean::class.java)
+                val errorBean = GsonUtils.requestGson.fromJson(errorBody, ErrorBean::class.java)
                 if (errorBean != null) {
                     handleProtocolError(errorBean)
                 } else {
