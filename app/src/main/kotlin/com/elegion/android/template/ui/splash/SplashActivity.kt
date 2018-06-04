@@ -7,8 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.template.R
 import com.elegion.android.template.data.Repository
 import com.elegion.android.template.ui.base.activity.BaseActivity
-import com.elegion.android.template.ui.features.FeaturesActivity
-import com.elegion.android.template.ui.login.LoginActivity
+import com.elegion.android.template.ui.onboarding.OnBoardingActivity
 
 class SplashActivity : BaseActivity(), SplashView {
 
@@ -61,13 +60,12 @@ class SplashActivity : BaseActivity(), SplashView {
         }
     }
 
-    override fun openLogin() {
-        startActivity(LoginActivity.makeIntent(this))
+    override fun openOnBoarding() {
+        startActivity(OnBoardingActivity.makeIntent(this))
         supportFinishAfterTransition()
     }
 
-    override fun openFeatures() {
-        startActivity(FeaturesActivity.makeIntent(this))
+    override fun openWallet() {
         supportFinishAfterTransition()
     }
 

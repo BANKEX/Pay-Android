@@ -1,7 +1,5 @@
 package com.elegion.android.template.ui.splash
 
-import android.text.TextUtils
-
 import com.arellomobile.mvp.InjectViewState
 import com.elegion.android.template.data.Repository
 import com.elegion.android.template.ui.base.presenter.BasePresenter
@@ -10,11 +8,11 @@ import com.elegion.android.template.ui.base.presenter.BasePresenter
 internal class SplashPresenter(private val repository: Repository) : BasePresenter<SplashView>() {
 
     fun timerFinish() {
-        val loginToken = repository.loginToken
-        if (TextUtils.isEmpty(loginToken)) {
-            viewState.openLogin()
+        val onBoardingFlag = repository.onBoardingFlag
+        if (onBoardingFlag) {
+            viewState.openOnBoarding()
         } else {
-            viewState.openFeatures()
+            viewState.openWallet()
         }
     }
 }

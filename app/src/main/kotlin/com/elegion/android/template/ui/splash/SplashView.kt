@@ -6,8 +6,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
 internal interface SplashView : MvpView {
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun openLogin()
+    fun openOnBoarding()
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun openFeatures()
+    fun openWallet()
 }

@@ -1,4 +1,4 @@
-package com.elegion.android.template.ui.login
+package com.elegion.android.template.ui.onboarding
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
@@ -7,7 +7,10 @@ import com.elegion.android.template.ui.base.view.ErrorView
 import com.elegion.android.template.ui.base.view.LoadingView
 import com.elegion.android.template.ui.base.view.NoInternetStubView
 
-internal interface LoginView : LoadingView, NoInternetStubView, ErrorView, MvpView {
+internal interface OnBoardingView : LoadingView, NoInternetStubView, ErrorView, MvpView {
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun loginSuccessful()
+    fun onBoardingConfirmed()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onBoardingSkipped()
 }
