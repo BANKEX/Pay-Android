@@ -1,2 +1,0 @@
-# BankexWalletAndroid
-Android wallet
