@@ -21,7 +21,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.elegion.android.template"
+        applicationId "com.elegion.android.bankex"
         minSdkVersion 16
         targetSdkVersion 27
 

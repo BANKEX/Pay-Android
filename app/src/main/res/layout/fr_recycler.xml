@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <com.elegion.android.template.ui.widget.EmptyView
+            <com.elegion.android.bankex.ui.widget.EmptyView
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
