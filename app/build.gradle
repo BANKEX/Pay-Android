@@ -159,6 +159,8 @@ dependencies {
     kapt 'com.arello-mobile:moxy-compiler:1.5.3'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
 
+    implementation 'org.web3j:core:3.3.1-android'
+
     implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true
     }

@@ -32,6 +32,7 @@
         <activity
             android:name="com.elegion.android.bankex.ui.onboarding.OnBoardingActivity"
             android:label="@string/app_name"/>
+        <activity android:name=".ui.generation.GenerationActivity" />
 
     </application>
 
