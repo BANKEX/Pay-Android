@@ -12,6 +12,16 @@ internal class OnBoardingPresenter(private val repository: Repository) : BasePre
     private var errorHandler = ErrorHandler.create(viewState, repository, viewState)
     private var loginJob: Job? = null
 
+    fun changeLabel() {
+        viewState.onBoardingSetLabelStart()
+    }
+
+    fun onBoardingNext(currentItem: Int, childCount: Int) {
+        when (currentItem) {
+            childCount -> letMeIn()
+            else -> viewState.onBoardingNext(currentItem)
+        }
+    }
 
     fun letMeIn() {
         repository.onBoardingFlag = true

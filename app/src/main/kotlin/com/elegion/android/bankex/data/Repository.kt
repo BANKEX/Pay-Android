@@ -1,19 +1,23 @@
 package com.elegion.android.bankex.data
 
 import android.content.Context
+import com.elegion.android.bankex.data.local.EthereumNetworkDataSource
 import com.elegion.android.bankex.data.local.PreferencesDataSource
+import com.elegion.android.bankex.data.local.WalletDataSource
+import com.elegion.android.bankex.data.provider.GethKeystoreAccountProvider
+import com.elegion.android.bankex.data.provider.OkHttpProvider
+import org.web3j.protocol.Web3jFactory
+import org.web3j.protocol.core.DefaultBlockParameterName
+import org.web3j.protocol.http.HttpService
+import java.io.File
+import java.math.BigInteger
 
-import com.elegion.android.bankex.data.provider.ServiceProvider
-import com.elegion.android.bankex.data.remote.rest.TemplateDataSource
-import com.elegion.android.bankex.data.remote.rest.request.LoginRequest
-import com.elegion.android.bankex.data.remote.rest.response.LoginResponse
-import com.elegion.android.bankex.extension.kotlinx.coroutines.experimental.await
-import okhttp3.Credentials
-import java.util.Arrays
-
-class Repository private constructor(context: Context) {
+class Repository private constructor(val context: Context) {
     private val preferencesDataSource: PreferencesDataSource = PreferencesDataSource(context)
-    private val templateDataSource: TemplateDataSource = ServiceProvider.getServiceInstance(TemplateDataSource::class.java)
+    private val ethereumNetworkDataSource: EthereumNetworkDataSource = EthereumNetworkDataSource(preferencesDataSource)
+    private val gethKeystoreAccountProvider: GethKeystoreAccountProvider = GethKeystoreAccountProvider(File(context.filesDir, "store"))
+    val walletDataSource: WalletDataSource = WalletDataSource(OkHttpProvider.provideClient(), preferencesDataSource, gethKeystoreAccountProvider,ethereumNetworkDataSource)
+
     private val clientId = "01d211db9c3e6dd5effd"
     private val clientSecret = "244d5f543b86f5dc6dd9555c6534cf8e86e46976"
 
@@ -23,12 +27,14 @@ class Repository private constructor(context: Context) {
             preferencesDataSource.onBoardingFlag = onBoarding
         }
 
-    suspend fun login(username: String, password: String): LoginResponse {
-        val basicAuthHeader = Credentials.basic(username, password)
-        val scopes = Arrays.asList("repo", "user")
-        val request = LoginRequest(scopes, "e-legion.com", clientId, clientSecret)
-        return templateDataSource.obtainOAuthToken(basicAuthHeader, request).await()
+    suspend fun getEtheriumBalance(): BigInteger {
+        val result = Web3jFactory.build(HttpService("https://ropsten.etherscan.io")).ethGetBalance("0x92278E21889fd1E72bD59048AC042561D39E8A52", DefaultBlockParameterName.EARLIEST)
+        val sendAsync = result.sendAsync()
+        val get = sendAsync.get()
+        val balance = get.balance
+        return balance
     }
+
 
     companion object {
         private const val DELAY = 1500L

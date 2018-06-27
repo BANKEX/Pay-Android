@@ -5,6 +5,7 @@
     <string name="loading">Загрузка…</string>
     <string name="error_network">Нет сети</string>
     <string name="btn_ok">ОК</string>
+    <string name="btn_start">Start</string>
     <string name="btn_cancel">Cancel</string>
     <string name="error_unexpected">Неизвестная ошибка</string>
     <string name="no_internet">No internet</string>
@@ -16,5 +17,14 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="let_me_in">Just let me in</string>
+
+
+    <string name="favorite_list">Favorite list</string>
+    <string name="ERC20_standart">ERC20 standart</string>
+    <string name="custom_network">Custom network</string>
+
+    <string name="add_your_contacts">Add your contacts in the Favorite list for quick access to them</string>
+    <string name="support_any_tokens">Support for any tokens within the Ether network</string>
+    <string name="add_your_network">Add your network and work with tokens right inside wallet</string>
 
 </resources>

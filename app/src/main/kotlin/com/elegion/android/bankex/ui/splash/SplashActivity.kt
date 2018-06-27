@@ -7,8 +7,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.bankex.R
 import com.elegion.android.bankex.data.Repository
 import com.elegion.android.bankex.ui.base.activity.BaseActivity
-import com.elegion.android.bankex.ui.generation.GenerationActivity
 import com.elegion.android.bankex.ui.onboarding.OnBoardingActivity
+import com.elegion.android.bankex.ui.startscreen.StartActivity
 
 class SplashActivity : BaseActivity(), SplashView {
 
@@ -67,7 +67,7 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun openWallet() {
-        startActivity(GenerationActivity.makeIntent(this))
+        startActivity(StartActivity.makeIntent(this))
         supportFinishAfterTransition()
     }
 

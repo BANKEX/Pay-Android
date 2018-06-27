@@ -7,4 +7,5 @@
     <dimen name="margin_xlarge">38dp</dimen>
 
     <dimen name="dialog_message_width">280dp</dimen>
+    <dimen name="onboarding100_margin">100dp</dimen>
 </resources>

@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "build-time-tracker"
 apply plugin: 'io.fabric'
+//apply plugin: 'com.getkeepsafe.dexcount'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -22,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId "com.elegion.android.bankex"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 27
 
         versionCode rootProject.versionCode
@@ -129,20 +130,36 @@ android {
         generateResourcesTask.dependsOn generatePropertiesTask
     }
 }
+project.ext {
+    retrofitVersion = "2.3.0"
+    okhttpVersion = "3.9.0"
+    supportVersion = "27.1.0"
+    web3jVersion = "3.3.1-android"
+    gethVersion = "1.7.0"
+    gsonVersion = "2.8.2"
+    rxJavaVersion = "2.1.6"
+    rxAndroidVersion = "2.0.1"
+    daggerVersion = "2.11"
+}
 
 dependencies {
+    // Etherium client
+    implementation "org.web3j:core:$project.web3jVersion"
+    implementation "org.ethereum:geth:$project.gethVersion"
+
     implementation 'com.android.support:multidex:1.0.3'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_version"
 
-    implementation "com.android.support:support-v4:$supportVersion"
     implementation "com.android.support:support-v13:$supportVersion"
     implementation "com.android.support:customtabs:$supportVersion"
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:recyclerview-v7:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
 
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
@@ -156,15 +173,16 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
     implementation 'com.arello-mobile:moxy:1.5.3'
+    implementation 'com.android.support:support-v4:27.1.1'
     kapt 'com.arello-mobile:moxy-compiler:1.5.3'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
 
-    implementation 'org.web3j:core:3.3.1-android'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.1'
 
     implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true
     }
-
+    implementation project(":tn")
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoViersion"
 }
@@ -175,7 +193,8 @@ detekt {
         input = "$projectDir"
         config = "$project.rootDir/config/quality/detekt.yml"
         filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-        output = "$projectDir/build/reports/detekt" // Directory where output reports are stored (if present)
+        output = "$projectDir/build/reports/detekt"
+        // Directory where output reports are stored (if present)
     }
 }
 
