@@ -21,13 +21,6 @@ class OnBoardingFragment : BaseFragment(), OnBoardingView {
 
     override fun onResume() {
         super.onResume()
-        val onboardings = arrayListOf<Onboarding>()
-        val favourites = Onboarding(R.drawable.x35, R.string.favorite_list, R.string.add_your_contacts)
-        val standart = Onboarding(R.drawable.x36, R.string.ERC20_standart, R.string.support_any_tokens)
-        val network = Onboarding(R.drawable.x37, R.string.custom_network, R.string.add_your_network)
-        onboardings.add(favourites)
-        onboardings.add(standart)
-        onboardings.add(network)
         viewPager.adapter = OnBoardingPagerAdapter(fragmentManager, onboardings)
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
@@ -41,7 +34,7 @@ class OnBoardingFragment : BaseFragment(), OnBoardingView {
         })
 
         pageButton.setOnClickListener { v ->
-            val childCount = viewPager.childCount - 1
+            val childCount = viewPager.childCount
             val currentItem = viewPager.currentItem
             presenter.onBoardingNext(currentItem, childCount)
         }
@@ -67,6 +60,10 @@ class OnBoardingFragment : BaseFragment(), OnBoardingView {
 
     companion object {
         fun newInstance() = OnBoardingFragment()
+        val favourites = Onboarding(R.drawable.x35, R.string.favorite_list, R.string.add_your_contacts)
+        val standart = Onboarding(R.drawable.x36, R.string.ERC20_standart, R.string.support_any_tokens)
+        val network = Onboarding(R.drawable.x37, R.string.custom_network, R.string.add_your_network)
+        val onboardings = arrayListOf(favourites, standart, network)
     }
 }
 

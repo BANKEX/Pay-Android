@@ -1,30 +1,41 @@
 package com.elegion.android.bankex.ui.createwallet
 
+import com.arellomobile.mvp.InjectViewState
 import com.elegion.android.bankex.data.Repository
 import com.elegion.android.bankex.ui.base.presenter.BasePresenter
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
+@InjectViewState
+class CreateWalletPresenter(private val repository: Repository) : BasePresenter<CreateWalletView>() {
 
-class CreateWalletPresenter(private val repository: Repository, private val mWalletGenerationView: CreateWalletView, val mPassword: String)  : BasePresenter<CreateWalletView>(){
+    var password = ""
+        set(value) {
+            field = value
+            viewState.showButtonEnabled(checkPassword())
+        }
 
-    fun generateWallet(password: String) {
+    var confPassword = ""
+        set(value) {
+            field = value
+            viewState.showButtonEnabled(checkPassword())
+        }
+
+    fun generateWallet() {
         launch(UI) {
             try {
                 val createWallet = async { repository.walletDataSource.createWallet(password) }.await()
-                mWalletGenerationView.showGeneratedWallet(" Address " + createWallet.address)
+                viewState.showGeneratedWallet(" Address " + createWallet.address)
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
         }
     }
 
-    fun setEmail(toString: String) {
-
-    }
-
-    fun setPassword(toString: String) {
-
+    fun checkPassword(): Boolean {
+        if (password.length == 0 || confPassword.length == 0) return false
+        if (password.equals(confPassword)) return true
+        return false
     }
 
 }

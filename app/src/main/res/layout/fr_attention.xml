@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/standartTitle"
+        android:id="@+id/title"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="@dimen/attention66_margin"
+        android:text="Attention" />
+
+    <RelativeLayout
+        android:id="@+id/mainContent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="249dp"
+            android:layout_height="181dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/attention" />
+
+        <TextView
+            android:id="@+id/attention"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="47dp"
+            android:gravity="center"
+            android:text="If you lose passphrase, then you will not
+be able to restore your wallet!"
+            android:textColor="@color/attention_pink_text_color" />
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="43dp"
+            android:text="Please, copy your passphrase
+to safe place" />
+
+        <TextView
+            style="@style/standartBlueButton"
+            android:id="@+id/pageButton"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/note"
+            android:text="Next" />
+
+
+    </RelativeLayout>
+
+
+
+    <include layout="@layout/w_no_internet_view" />
+</FrameLayout>

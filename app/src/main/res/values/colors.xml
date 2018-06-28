@@ -7,4 +7,5 @@
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
     <color name="divider">@android:color/darker_gray</color>
+    <color name="attention_pink_text_color">#EF86A7</color>
 </resources>

@@ -1,62 +1,115 @@
 package com.elegion.android.bankex.ui.createwallet
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
+import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.bankex.R
 import com.elegion.android.bankex.data.Repository
+import com.elegion.android.bankex.extension.android.widget.addTextChangedListener
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
+import kotlinx.android.synthetic.main.fr_wallet.*
+import kotlinx.android.synthetic.main.w_top_navigation.*
+import timber.log.Timber
 
 class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {
 
     @InjectPresenter
-    internal lateinit var mPresenterCreate: CreateWalletPresenter
+    internal lateinit var presenterCreate: CreateWalletPresenter
+
+    private lateinit var passwordTexTWatcher: TextWatcher
+    private lateinit var confirmpasswordTexTWatcher: TextWatcher
 
     @ProvidePresenter
-    internal fun providePresenter(): CreateWalletPresenter = CreateWalletPresenter(Repository.get(activity!!),this,"erferf")
+    internal fun providePresenter(): CreateWalletPresenter = CreateWalletPresenter(Repository.get(activity!!))
 
-    private var mGenerateWalletButton: Button? = null
+    override fun getViews(): Array<View> = arrayOf(content)
 
-    private var mPassword: EditText? = null
-
-    private var mPasswordConfirmation: EditText? = null
-
-    override fun getViews(): Array<View> = arrayOf()
+    fun tabList(): Array<View> = arrayOf(passphraseLayuot)
 
     override fun getLayout(): Int = R.layout.fr_wallet
 
-
     override fun onResume() {
         super.onResume()
-        mGenerateWalletButton!!.setOnClickListener { mPresenterCreate.generateWallet("") }
-
-     /*   mPasswordConfirmation = mPassword.addTextChangedListener {
-            onTextChanged { text, _, _, _ -> mPresenterCreate.setEmail(text.toString()) }
+        generateWalletButton!!.setOnClickListener {
+            val parent = activity!!.parent
+            val permissionCheck = ContextCompat.checkSelfPermission(parent,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        parent,
+                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        REQUEST_PERMISSION_WRITE_STORAGE)
+            } else presenterCreate.generateWallet()
         }
-        mPassword = mPassword.addTextChangedListener {
-            onTextChanged { text, _, _, _ -> mPresenterCreate.setPassword(text.toString()) }
-        }*/
+
+        passwordTexTWatcher = password.addTextChangedListener {
+            onTextChanged { text, _, _, _ -> presenterCreate.password = text.toString() }
+        }
+        confirmpasswordTexTWatcher = confirmPassword.addTextChangedListener {
+            onTextChanged { text, _, _, _ -> presenterCreate.confPassword = text.toString() }
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        mGenerateWalletButton!!.setOnClickListener(null)
-/*        mPassword.removeTextChangedListener(loginEmailTexTWatcher)
-        mPasswordConfirmation.removeTextChangedListener(loginPasswordTexTWatcher)*/
+        generateWalletButton!!.setOnClickListener(null)
+        password.removeTextChangedListener(passwordTexTWatcher)
+        confirmPassword.removeTextChangedListener(confirmpasswordTexTWatcher)
     }
 
 
-    override fun tryAgain() {
+    override fun tryAgain() = presenterCreate.generateWallet()
 
+    override fun showButtonEnabled(enabled: Boolean) {
+        generateWalletButton.isEnabled = enabled
     }
 
     override fun showGeneratedWallet(walletAddress: String) {
 
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_PERMISSION_WRITE_STORAGE -> {
+                if (grantResults.size == 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    activity!!.finish()
+                } else {
+                    presenterCreate!!.generateWallet()
+                }
+            }
+        }
+    }
+
     companion object {
         fun newInstance() = CreateWalletFragment()
+    }
+
+    private val REQUEST_PERMISSION_WRITE_STORAGE = 0
+
+    fun onTabSelected(v: View) {
+        var tabList = tabList()
+        val isSelected = v.isSelected
+        //supportInvalidateOptionsMenu()
+        when (v.id) {
+            R.id.privateKey -> {
+                Timber.i("click best_stocks tab")
+                if (!isSelected) {
+
+                }
+            }
+            R.id.passphrase -> if (!isSelected) {
+
+            }
+        }
+        if (!isSelected) {
+            for (tab in tabList) {
+                tab.setSelected(tab === v)
+            }
+        }
     }
 }

@@ -4,4 +4,6 @@ import com.arellomobile.mvp.MvpView
 
 interface CreateWalletView : MvpView {
     fun showGeneratedWallet(walletAddress: String)
+
+    fun showButtonEnabled(enabled: Boolean)
 }

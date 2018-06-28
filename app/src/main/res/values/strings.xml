@@ -26,5 +26,10 @@
     <string name="add_your_contacts">Add your contacts in the Favorite list for quick access to them</string>
     <string name="support_any_tokens">Support for any tokens within the Ether network</string>
     <string name="add_your_network">Add your network and work with tokens right inside wallet</string>
+    <string name="please_copy">Please, copy your passphrase to safe place</string>
 
-</resources>
+    <string name="multi_line_">Multi-line text fields show all user input at once Overflow text causes the text</string>
+    <string name="field_to_ex">field to expand shifting screen elements downward and text wraps</string>
+    <string name="private_key">PRIVATE KEY</string>
+    <string name="passphrase">PASSPHRASE</string>
+    <string name="enter_your_private_key">Enter your private key</string></resources>

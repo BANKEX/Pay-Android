@@ -8,4 +8,6 @@
 
     <dimen name="dialog_message_width">280dp</dimen>
     <dimen name="onboarding100_margin">100dp</dimen>
+    <dimen name="attention80_margin">80dp</dimen>
+    <dimen name="attention66_margin">66dp</dimen>
 </resources>
