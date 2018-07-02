@@ -179,6 +179,10 @@ dependencies {
 
     implementation 'com.romandanylyk:pageindicatorview:1.0.1'
 
+    //    Add Zxing library to generate barcode
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0@aar'
+
     implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true
     }

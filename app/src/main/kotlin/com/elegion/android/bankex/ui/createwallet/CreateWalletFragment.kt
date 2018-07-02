@@ -12,8 +12,8 @@ import com.elegion.android.bankex.R
 import com.elegion.android.bankex.data.Repository
 import com.elegion.android.bankex.extension.android.widget.addTextChangedListener
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
-import kotlinx.android.synthetic.main.fr_wallet.*
 import kotlinx.android.synthetic.main.w_top_navigation.*
+import kotlinx.android.synthetic.main.w_wallet_content.*
 import timber.log.Timber
 
 class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {
@@ -53,6 +53,8 @@ class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {
         confirmpasswordTexTWatcher = confirmPassword.addTextChangedListener {
             onTextChanged { text, _, _, _ -> presenterCreate.confPassword = text.toString() }
         }
+        privateKey.setOnClickListener({ onTabSelected(privateKey) })
+        passphrase.setOnClickListener({ onTabSelected(passphrase) })
     }
 
     override fun onPause() {

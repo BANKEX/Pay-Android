@@ -5,32 +5,47 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginTop="145dp"
     android:background="#00000000"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/enterPrivateKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_your_private_key"
-        android:textAppearance="@style/enter_your_private_key" />
-
-    <LinearLayout
-        android:weightSum="2"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enterPrivateKeyBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/enterPrivateKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_private_key"
+            android:textAppearance="@style/enter_your_private_key"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/paste"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center_horizontal"/>
-            //android:text="@string/paste"
-            //android:textAppearance="@style/paste"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_scar_qr"
+            android:gravity="center"
+            android:text="@string/paste"
+            android:textAppearance="@style/scan_qr" />
 
-
-
+        <TextView
+            android:id="@+id/scan_qr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_scan"
+            android:gravity="center"
+            android:text="@string/qr"
+            android:textAppearance="@style/scan_qr" />
     </LinearLayout>
-
 </LinearLayout>
