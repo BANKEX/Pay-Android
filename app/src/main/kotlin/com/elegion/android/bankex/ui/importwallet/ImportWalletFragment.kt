@@ -7,7 +7,9 @@ import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.bankex.R
+
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
+import com.elegion.android.bankex.ui.scanqr.ScanQRActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.w_wallet_content.*
 
@@ -16,7 +18,7 @@ import kotlinx.android.synthetic.main.w_wallet_content.*
  */
 class ImportWalletFragment : BaseNoInternetFragment(), ImportWalletView {
 
-    companion object {
+     companion object {
         fun newInstance(): ImportWalletFragment {
             return ImportWalletFragment()
         }
@@ -42,7 +44,11 @@ class ImportWalletFragment : BaseNoInternetFragment(), ImportWalletView {
 
     override fun showScanQR() {
         IntentIntegrator(activity).initiateScan()
+        IntentIntegrator(activity).setOrientationLocked(false).setCaptureActivity(ScanQRActivity::class.java).initiateScan()
         //startActivity(ScanQRActivity.makeIntent(activity!!))
+    }
+
+    override fun pasteScannedAddress(address: String) {
     }
 
     val CUSTOMIZED_REQUEST_CODE = 0x0000ffff

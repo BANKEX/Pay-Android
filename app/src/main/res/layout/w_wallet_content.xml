@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:showIn="@layout/fr_wallet">
+    tools:showIn="@layout/fr_create_wallet">
 
     <include layout="@layout/w_top_navigation" />
 
@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name your wallet"
-            android:inputType="textPassword"
             android:padding="10dp" />
     </android.support.design.widget.TextInputLayout>
 

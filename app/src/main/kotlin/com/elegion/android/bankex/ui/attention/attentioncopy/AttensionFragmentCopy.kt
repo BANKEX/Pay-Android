@@ -3,7 +3,6 @@ package com.elegion.android.bankex.ui.attention.attentioncopy
 import android.view.View
 import com.elegion.android.bankex.R
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
-import com.elegion.android.bankex.ui.onboarding.OnBoardingFragment
 import kotlinx.android.synthetic.main.fr_attension2.*
 
 /**
@@ -32,6 +31,6 @@ class AttentionFragmentCopy : BaseNoInternetFragment(), AttentionViewCopy {
     override fun getViews(): Array<View> = arrayOf(content)
 
     companion object {
-        fun newInstance() = OnBoardingFragment()
+        fun newInstance() = AttentionFragmentCopy()
     }
 }

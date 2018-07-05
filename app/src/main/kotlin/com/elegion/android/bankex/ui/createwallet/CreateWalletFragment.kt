@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elegion.android.bankex.R
 import com.elegion.android.bankex.data.Repository
 import com.elegion.android.bankex.extension.android.widget.addTextChangedListener
+import com.elegion.android.bankex.ui.attention.attentionwarning.AttentionActivity
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
 import kotlinx.android.synthetic.main.w_top_navigation.*
 import kotlinx.android.synthetic.main.w_wallet_content.*
@@ -31,17 +32,16 @@ class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {
 
     fun tabList(): Array<View> = arrayOf(passphraseLayuot)
 
-    override fun getLayout(): Int = R.layout.fr_wallet
+    override fun getLayout(): Int = R.layout.fr_create_wallet
 
     override fun onResume() {
         super.onResume()
-        generateWalletButton!!.setOnClickListener {
-            val parent = activity!!.parent
-            val permissionCheck = ContextCompat.checkSelfPermission(parent,
+        generateWalletButton.setOnClickListener {
+            val permissionCheck = ContextCompat.checkSelfPermission(activity!!,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
-                        parent,
+                        activity!!,
                         arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                         REQUEST_PERMISSION_WRITE_STORAGE)
             } else presenterCreate.generateWallet()
@@ -72,7 +72,7 @@ class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {
     }
 
     override fun showGeneratedWallet(walletAddress: String) {
-
+        startActivity(AttentionActivity.makeIntent(activity!!))
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

@@ -50,9 +50,10 @@ to safe place" />
 
         <TextView
             style="@style/standartBlueButton"
-            android:id="@+id/pageButton"
+            android:id="@+id/nextButton"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/note"
+            android:layout_marginTop="@dimen/margin_60"
             android:text="Next" />
 
 

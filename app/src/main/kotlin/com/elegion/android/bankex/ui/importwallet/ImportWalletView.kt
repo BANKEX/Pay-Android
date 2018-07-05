@@ -10,6 +10,9 @@ interface ImportWalletView : MvpView {
     @StateStrategyType(AddToEndStrategy::class)
     fun showButtonEnabled(enabled: Boolean)
 
+    @StateStrategyType(AddToEndStrategy::class)
+    fun pasteScannedAddress(address: String)
+
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showScanQR()
 }
