@@ -9,6 +9,10 @@
 
     <dimen name="dialog_message_width">280dp</dimen>
     <dimen name="onboarding100_margin">100dp</dimen>
+    <dimen name="onboarding120_margin">120dp</dimen>
     <dimen name="attention80_margin">80dp</dimen>
     <dimen name="attention66_margin">66dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="magin_66">66dp</dimen>
 </resources>

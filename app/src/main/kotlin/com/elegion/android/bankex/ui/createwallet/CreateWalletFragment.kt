@@ -15,6 +15,7 @@ import com.elegion.android.bankex.ui.attention.attentionwarning.AttentionActivit
 import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
 import kotlinx.android.synthetic.main.w_top_navigation.*
 import kotlinx.android.synthetic.main.w_wallet_content.*
+import kotlinx.android.synthetic.main.w_wallet_create_bottom.*
 import timber.log.Timber
 
 class CreateWalletFragment : BaseNoInternetFragment(), CreateWalletView {

@@ -5,5 +5,7 @@
 
     <include layout="@layout/w_wallet_content" />
 
+    <include layout="@layout/w_wallet_create_bottom" />
+
     <include layout="@layout/w_no_internet_view" />
 </FrameLayout>

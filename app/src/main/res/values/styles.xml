@@ -135,4 +135,39 @@
         <item name="android:textAppearance">@style/private_key</item>
     </style>
 
+    <style name="create_wallet_input_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/margin_10</item>
+    </style>
+
+    <style name="password_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="passwordToggleDrawable">@drawable/ic_eye2</item>
+        <item name="passwordToggleEnabled">true</item>
+        <item name="passwordToggleTint">@android:color/white</item>-->
+    </style>
+
+    <style name="import_buttons_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/ic_scar_qr</item>
+        <item name="android:drawablePadding">-50dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAppearance">@style/scan_qr</item>
+    </style>
+
+    <style name="standartBlueButtonWallet" parent="standartBlueButton">
+        <item name="android:enabled">false</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">80dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
 </resources>

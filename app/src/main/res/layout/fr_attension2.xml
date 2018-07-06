@@ -8,9 +8,9 @@
         android:id="@+id/please_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="58dp"
-        android:layout_marginRight="57dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginLeft="@dimen/margin_60"
+        android:layout_marginRight="@dimen/margin_60"
+        android:layout_marginTop="@dimen/margin_50"
         android:gravity="center_horizontal"
         android:text="@string/please_copy"
         android:textAppearance="@style/please_copy" />
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
         android:background="#00000000"
         android:orientation="horizontal"
         android:weightSum="2">

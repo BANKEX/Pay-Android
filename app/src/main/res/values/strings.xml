@@ -35,6 +35,12 @@
     <string name="enter_your_private_key">Enter your private key</string>
     <string name="qr">Scan QR</string>
     <string name="paste">Paste</string>
+    <string name="name_your_wallet">Name your wallet</string>
+    <string name="enter_passw">Enter password</string>
+    <string name="repeat_pass">Repeat password</string>
+    <string name="create">Create</string>
+    <string name="import_wallet">Import</string>
+
 
 </resources>
 

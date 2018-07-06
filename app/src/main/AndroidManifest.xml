@@ -26,17 +26,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.startscreen.StartActivity" />
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".ui.createwallet.CreateWalletActivity"
-            android:label="@string/app_name" />
-        <activity android:name=".ui.startscreen.StartActivity" />
+            android:parentActivityName=".ui.startscreen.StartActivity" />
+
+        <activity
+            android:name=".ui.importwallet.ImportWalletActivity"
+            android:parentActivityName=".ui.startscreen.StartActivity" />
         <activity android:name=".ui.scanqr.ScanQRActivity" />
-        <activity android:name=".ui.importwallet.ImportWalletActivity" />
         <activity android:name=".ui.attention.attentionwarning.AttentionActivity" />
-        <activity android:name=".ui.attention.attentioncopy.AttentionCopyActivity"></activity>
+        <activity android:name=".ui.attention.attentioncopy.AttentionCopyActivity" />
     </application>
 
 </manifest>
