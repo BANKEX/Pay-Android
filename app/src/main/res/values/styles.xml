@@ -144,7 +144,7 @@
     <style name="password_layout_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-<!--        <item name="passwordToggleDrawable">@drawable/ic_eye2</item>
+        <!--        <item name="passwordToggleDrawable">@drawable/ic_eye2</item>
         <item name="passwordToggleEnabled">true</item>
         <item name="passwordToggleTint">@android:color/white</item>-->
     </style>
@@ -170,4 +170,29 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+
+
+    <style name="BottomBarStyle">
+        <item name="android:background">@color/white</item>
+        <item name="bb_badgeBackgroundColor">@color/dodger_blue</item>
+        <item name="bb_activeTabColor">@color/shark</item>
+        <item name="bb_inActiveTabColor">@color/shark</item>
+        <item name="bb_tabXmlResource">@xml/main_bottom_bar_tabs</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="BottomBarTitleTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/bottom_bar_text_size</item>
+        <item name="android:textColor">@color/shark</item>
+        <item name="fontPath">@string/font_textsans_bold</item>
+    </style>
+
+    <style name="BottomBarBadgeTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/bottom_bar_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontPath">@string/font_textsans_bold</item>
+    </style>
+
+    <dimen name="bottom_bar_text_size">12sp</dimen>
 </resources>

@@ -8,7 +8,7 @@ import com.elegion.android.bankex.ui.createwallet.CreateWalletFragment
 
 class ImportWalletActivity : SingleFragmentActivity() {
 
-    override fun createFragment(): Fragment = CreateWalletFragment.newInstance()
+    override fun createFragment(): Fragment = ImportWalletFragment.newInstance()
 
     companion object {
         fun makeIntent(context: Context) = Intent(context, ImportWalletActivity::class.java)

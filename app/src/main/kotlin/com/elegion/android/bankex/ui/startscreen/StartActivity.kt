@@ -20,12 +20,10 @@ class StartActivity : BaseActivity(), StartView {
 
     override fun createWallet() {
         startActivity(CreateWalletActivity.makeIntent(this))
-        supportFinishAfterTransition()
     }
 
     override fun importWallet() {
         startActivity(ImportWalletActivity.makeIntent(this))
-        supportFinishAfterTransition()
     }
 
     companion object {
