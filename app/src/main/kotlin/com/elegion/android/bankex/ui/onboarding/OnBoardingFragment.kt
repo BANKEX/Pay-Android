@@ -1,5 +1,6 @@
 package com.elegion.android.bankex.ui.onboarding
 
+import android.os.Bundle
 import android.support.v4.view.ViewPager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -14,30 +15,41 @@ class OnBoardingFragment : BaseFragment(), OnBoardingView {
     @InjectPresenter
     internal lateinit var presenter: OnBoardingPresenter
 
+    private val onPageChangeListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+
+        override fun onPageSelected(position: Int) {
+            pageIndicatorView.selection = position
+            if (position == 2) presenter.changeLabel()
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {}
+    }
+
     @ProvidePresenter
     internal fun providePresenter(): OnBoardingPresenter = OnBoardingPresenter(Repository.get(activity!!))
 
     override fun getLayout(): Int = R.layout.fr_onboarding
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewPager.adapter = OnBoardingPagerAdapter(fragmentManager, onboardings)
+    }
+
     override fun onResume() {
         super.onResume()
-        viewPager.adapter = OnBoardingPagerAdapter(fragmentManager, onboardings)
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
-            override fun onPageSelected(position: Int) {
-                pageIndicatorView.selection = position
-                if (position == 2) presenter.changeLabel()
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
-
+        viewPager.addOnPageChangeListener(onPageChangeListener)
         pageButton.setOnClickListener { v ->
             val childCount = viewPager.childCount
             val currentItem = viewPager.currentItem
             presenter.onBoardingNext(currentItem, childCount)
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewPager.removeOnPageChangeListener(onPageChangeListener)
+        pageButton.setOnClickListener(null)
     }
 
     override fun onBoardingSetLabelStart() {

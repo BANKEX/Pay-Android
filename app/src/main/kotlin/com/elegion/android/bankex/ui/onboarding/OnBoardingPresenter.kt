@@ -18,12 +18,12 @@ internal class OnBoardingPresenter(private val repository: Repository) : BasePre
 
     fun onBoardingNext(currentItem: Int, childCount: Int) {
         when (currentItem) {
-            childCount -> letMeIn()
+            childCount -> finishOnboarding()
             else -> viewState.onBoardingNext(currentItem)
         }
     }
 
-    fun letMeIn() {
+    fun finishOnboarding() {
         repository.onBoardingFlag = true
         viewState.onBoardingConfirmed()
     }

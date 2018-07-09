@@ -7,8 +7,6 @@ import com.elegion.android.bankex.R
 import com.elegion.android.bankex.ui.base.activity.BaseActivity
 import com.elegion.android.bankex.ui.createwallet.CreateWalletActivity
 import com.elegion.android.bankex.ui.importwallet.ImportWalletActivity
-import com.elegion.android.bankex.ui.scanqr.ScanQRActivity
-import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.ac_start.*
 
 class StartActivity : BaseActivity(), StartView {
@@ -20,12 +18,10 @@ class StartActivity : BaseActivity(), StartView {
 
     override fun createWallet() {
         startActivity(CreateWalletActivity.makeIntent(this))
-        supportFinishAfterTransition()
     }
 
     override fun importWallet() {
         startActivity(ImportWalletActivity.makeIntent(this))
-        supportFinishAfterTransition()
     }
 
     companion object {

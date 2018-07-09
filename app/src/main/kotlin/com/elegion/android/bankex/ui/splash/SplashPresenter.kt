@@ -10,9 +10,9 @@ internal class SplashPresenter(private val repository: Repository) : BasePresent
     fun timerFinish() {
         val onBoardingFlag = repository.onBoardingFlag
         if (onBoardingFlag) {
-            viewState.openOnBoarding()
-        } else {
             viewState.openWallet()
+        } else {
+            viewState.openOnBoarding()
         }
     }
 }
