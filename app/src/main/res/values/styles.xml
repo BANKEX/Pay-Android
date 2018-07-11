@@ -185,14 +185,11 @@
     <style name="BottomBarTitleTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/bottom_bar_text_size</item>
         <item name="android:textColor">@color/shark</item>
-        <item name="fontPath">@string/font_textsans_bold</item>
     </style>
 
     <style name="BottomBarBadgeTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/bottom_bar_text_size</item>
         <item name="android:textColor">@color/black</item>
-        <item name="fontPath">@string/font_textsans_bold</item>
-    </style>
+     </style>
 
-    <dimen name="bottom_bar_text_size">12sp</dimen>
 </resources>

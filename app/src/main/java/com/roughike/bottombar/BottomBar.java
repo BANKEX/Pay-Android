@@ -27,6 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.elegion.android.bankex.R;
+
 import java.util.List;
 
 

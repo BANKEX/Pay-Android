@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-import ru.tele2.mytele2.R;
+import com.elegion.android.bankex.R;
+
+
 
 /*
  * BottomBar library for Android
