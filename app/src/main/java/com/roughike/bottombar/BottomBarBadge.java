@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-import com.elegion.android.bankex.R;
+import com.bankex.wallet.R;
 
 
 
