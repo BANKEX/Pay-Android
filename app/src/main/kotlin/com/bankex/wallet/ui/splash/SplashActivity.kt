@@ -6,9 +6,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bankex.wallet.R
 import com.bankex.wallet.data.Repository
-import com.elegion.android.bankex.ui.base.activity.BaseActivity
-import com.elegion.android.bankex.ui.onboarding.OnBoardingActivity
-import com.elegion.android.bankex.ui.startscreen.StartActivity
+import com.bankex.wallet.ui.base.activity.BaseActivity
+import com.bankex.wallet.ui.onboarding.OnBoardingActivity
+import com.bankex.wallet.ui.startscreen.StartActivity
 
 class SplashActivity : BaseActivity(), SplashView {
 

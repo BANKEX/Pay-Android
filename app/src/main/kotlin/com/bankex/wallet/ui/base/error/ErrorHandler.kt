@@ -2,8 +2,8 @@ package com.bankex.wallet.ui.base.error
 
 import com.bankex.wallet.data.Repository
 import com.bankex.wallet.data.model.ErrorBean
-import com.elegion.android.bankex.ui.base.view.ErrorView
-import com.elegion.android.bankex.ui.base.view.NoInternetStubView
+import com.bankex.wallet.ui.base.view.ErrorView
+import com.bankex.wallet.ui.base.view.NoInternetStubView
 
 import com.bankex.wallet.util.GsonUtils
 import com.google.gson.JsonSyntaxException

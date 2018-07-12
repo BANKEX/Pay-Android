@@ -3,8 +3,8 @@ package com.bankex.wallet.ui.attention.attentionwarning
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bankex.wallet.R
-import com.elegion.android.bankex.ui.attention.attentioncopy.AttentionCopyActivity
-import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
+import com.bankex.wallet.ui.attention.attentioncopy.AttentionCopyActivity
+import com.bankex.wallet.ui.base.fragment.BaseNoInternetFragment
 import kotlinx.android.synthetic.main.fr_attention.*
 
 class AttentionFragment : BaseNoInternetFragment(), AttentionView {

@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bankex.wallet.R
-import com.elegion.android.bankex.ui.base.activity.BaseActivity
-import com.elegion.android.bankex.ui.createwallet.CreateWalletActivity
-import com.elegion.android.bankex.ui.importwallet.ImportWalletActivity
+import com.bankex.wallet.ui.base.activity.BaseActivity
+import com.bankex.wallet.ui.createwallet.CreateWalletActivity
+import com.bankex.wallet.ui.importwallet.ImportWalletActivity
 import kotlinx.android.synthetic.main.ac_start.*
 
 class StartActivity : BaseActivity(), StartView {

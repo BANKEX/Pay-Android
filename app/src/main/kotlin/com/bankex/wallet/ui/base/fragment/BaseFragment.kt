@@ -7,10 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
-import com.elegion.android.bankex.ui.base.view.ErrorView
-import com.elegion.android.bankex.ui.base.view.LoadingView
-import com.elegion.android.bankex.ui.base.view.ToastErrorView
-import com.elegion.android.bankex.ui.dialog.LoadingDialog
+import com.bankex.wallet.ui.base.view.ErrorView
+import com.bankex.wallet.ui.base.view.LoadingView
+import com.bankex.wallet.ui.base.view.ToastErrorView
+import com.bankex.wallet.ui.dialog.LoadingDialog
+
 
 abstract class BaseFragment : MvpAppCompatFragment(), LoadingView, ErrorView {
     protected var isAfterOnSavedState: Boolean = false

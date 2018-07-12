@@ -22,7 +22,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.elegion.android.bankex"
+        applicationId "com.bankex.wallet"
         minSdkVersion 21
         targetSdkVersion 27
 

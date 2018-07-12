@@ -2,8 +2,9 @@ package com.bankex.wallet.ui.base.presenter
 
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
-import com.elegion.android.bankex.ui.base.error.ErrorHandler
-import com.elegion.android.bankex.ui.base.view.LoadingView
+import com.bankex.wallet.ui.base.error.ErrorHandler
+import com.bankex.wallet.ui.base.view.LoadingView
+
 import kotlinx.coroutines.experimental.Job
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
@@ -29,10 +30,10 @@ open class BasePresenter<V : MvpView> : MvpPresenter<V>() {
 
     @Suppress("TooGenericExceptionCaught")
     protected fun launchLoadingErrorJob(
-        errorHandler: ErrorHandler? = null,
-        loadingView: LoadingView? = null,
-        context: CoroutineContext = UI,
-        block: suspend () -> Unit
+            errorHandler: ErrorHandler? = null,
+            loadingView: LoadingView? = null,
+            context: CoroutineContext = UI,
+            block: suspend () -> Unit
     ): Job {
         return launch(context) {
             try {

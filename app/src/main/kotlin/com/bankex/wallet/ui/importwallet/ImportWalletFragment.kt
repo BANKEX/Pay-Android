@@ -8,8 +8,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bankex.wallet.R
 
-import com.elegion.android.bankex.ui.base.fragment.BaseNoInternetFragment
-import com.elegion.android.bankex.ui.scanqr.ScanQRActivity
+import com.bankex.wallet.ui.base.fragment.BaseNoInternetFragment
+import com.bankex.wallet.ui.scanqr.ScanQRActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.w_wallet_content.*
 

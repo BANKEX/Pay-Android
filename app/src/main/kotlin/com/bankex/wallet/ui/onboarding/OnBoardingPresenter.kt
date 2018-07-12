@@ -2,8 +2,8 @@ package com.bankex.wallet.ui.onboarding
 
 import com.arellomobile.mvp.InjectViewState
 import com.bankex.wallet.data.Repository
-import com.elegion.android.bankex.ui.base.error.ErrorHandler
-import com.elegion.android.bankex.ui.base.presenter.BasePresenter
+import com.bankex.wallet.ui.base.error.ErrorHandler
+import com.bankex.wallet.ui.base.presenter.BasePresenter
 import kotlinx.coroutines.experimental.Job
 
 @InjectViewState
