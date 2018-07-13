@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bankex.wallet.R;
+import com.bankex.pay.R;
 
 import java.util.List;
 

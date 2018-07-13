@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bankex.wallet">
+    package="com.bankex.pay">
 
     <supports-screens
         android:anyDensity="true"
@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.bankex.wallet.ui.splash.SplashActivity"
+            android:name="com.bankex.pay.ui.splash.SplashActivity"
             android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,16 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.bankex.wallet.ui.startscreen.StartActivity" />
+        <activity android:name="com.bankex.pay.ui.startscreen.StartActivity" />
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".ui.createwallet.CreateWalletActivity"
-            android:parentActivityName="com.bankex.wallet.ui.startscreen.StartActivity" />
+            android:parentActivityName="com.bankex.pay.ui.startscreen.StartActivity" />
         <activity
             android:name=".ui.importwallet.ImportWalletActivity"
-            android:parentActivityName="com.bankex.wallet.ui.startscreen.StartActivity" />
+            android:parentActivityName="com.bankex.pay.ui.startscreen.StartActivity" />
         <activity android:name=".ui.scanqr.ScanQRActivity" />
         <activity android:name=".ui.attention.attentionwarning.AttentionActivity" />
         <activity android:name=".ui.attention.attentioncopy.AttentionCopyActivity" />

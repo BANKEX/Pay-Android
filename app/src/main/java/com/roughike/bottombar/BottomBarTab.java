@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bankex.wallet.R;
+import com.bankex.pay.R;
 
 /*
  * BottomBar library for Android

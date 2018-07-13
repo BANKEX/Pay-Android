@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <com.bankex.wallet.ui.widget.EmptyView
+            <com.bankex.pay.ui.widget.EmptyView
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

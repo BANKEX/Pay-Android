@@ -22,7 +22,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.bankex.wallet"
+        applicationId "com.bankex.pay"
         minSdkVersion 21
         targetSdkVersion 27
 
