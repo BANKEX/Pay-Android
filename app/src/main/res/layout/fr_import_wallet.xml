@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/conentImp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/w_top_import_wallet" />
+
+        <include layout="@layout/w_wallet_content" />
+
+        <include layout="@layout/w_wallet_import_bottom" />
+
+    </LinearLayout>
+
+    <include layout="@layout/w_no_internet_view" />
+
+</FrameLayout>

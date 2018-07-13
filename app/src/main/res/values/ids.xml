@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="bb_bottom_bar_color_id" type="id"/>
+    <item name="bb_bottom_bar_appearance_id" type="id"/>
+
+    <!-- base mvp views -->
+    <item name="refresherView" type="id"/>
+    <item name="statusMessageView" type="id"/>
+    <item name="loadingStateView" type="id"/>
+</resources>

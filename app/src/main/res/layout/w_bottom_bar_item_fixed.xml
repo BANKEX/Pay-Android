@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bb_bottom_bar_icon"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="@dimen/bottom_bar_icon_size"
+        android:layout_height="@dimen/bottom_bar_icon_size"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/bb_bottom_bar_title"
+        android:lines="1"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="@style/BottomBarTitleTextAppearance"
+        android:layout_marginTop="@dimen/margin_2"
+        android:visibility="gone"/>
+
+</merge>

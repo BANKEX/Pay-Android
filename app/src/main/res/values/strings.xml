@@ -26,5 +26,30 @@
     <string name="add_your_contacts">Add your contacts in the Favorite list for quick access to them</string>
     <string name="support_any_tokens">Support for any tokens within the Ether network</string>
     <string name="add_your_network">Add your network and work with tokens right inside wallet</string>
+    <string name="please_copy">Please, copy your passphrase to safe place</string>
 
+    <string name="multi_line_">Multi-line text fields show all user input at once Overflow text causes the text</string>
+    <string name="field_to_ex">field to expand shifting screen elements downward and text wraps</string>
+    <string name="private_key">PRIVATE KEY</string>
+    <string name="passphrase">PASSPHRASE</string>
+    <string name="enter_your_private_key">Enter your private key</string>
+    <string name="qr">Scan QR</string>
+    <string name="paste">Paste</string>
+    <string name="name_your_wallet">Name your wallet</string>
+    <string name="enter_passw">Enter password</string>
+    <string name="repeat_pass">Repeat password</string>
+    <string name="create">Create</string>
+    <string name="import_wallet">Import</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="item_one">Home</string>
+    <string name="item_two">Wallet</string>
+    <string name="item_three">Contacts</string>
+    <string name="item_four">History</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
+
+

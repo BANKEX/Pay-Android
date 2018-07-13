@@ -22,7 +22,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.elegion.android.bankex"
+        applicationId "com.bankex.pay"
         minSdkVersion 21
         targetSdkVersion 27
 
@@ -93,11 +93,11 @@ android {
         }
 
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             ext.betaDistributionReleaseNotes = System.getenv("CHANGELOG")
-            ext.fabricApiKey = System.getenv("RELEASE_FABRIC_API_KEY")
-            ext.fabricApiSecret = System.getenv("RELEASE_FABRIC_API_SECRET")
+            ext.fabricApiKey = "aba301d58d2ab586a56e281861dd14141b362b34"
+            ext.fabricApiSecret = "a896e777cae983a61bc57b2024bec131e975dce43eebc223bbc343b8f0f46a64"
         }
     }
 
@@ -164,6 +164,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
 
+    //    Okhttp
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -172,12 +173,22 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    //    Moxy
     implementation 'com.arello-mobile:moxy:1.5.3'
     implementation 'com.android.support:support-v4:27.1.1'
     kapt 'com.arello-mobile:moxy-compiler:1.5.3'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
 
+    //    Pager
     implementation 'com.romandanylyk:pageindicatorview:1.0.1'
+
+    //    Room
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
+    //    Add Zxing library to generate barcode
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0@aar'
 
     implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true

@@ -1,5 +1,5 @@
 -keepattributes Signature,Exceptions,InnerClasses,EnclosingMethod,*Annotation*
--keep public class com.elegion.android.template.** {
+-keep public class com.bankex.pay.** {
     public static <fields>;
     public static <methods>;
     public <methods>;

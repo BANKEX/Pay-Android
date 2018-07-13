@@ -12,20 +12,21 @@
         android:layout_height="190dp"
         android:layout_gravity="center"
         android:foregroundGravity="center"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="@dimen/onboarding120_margin"
         app:srcCompat="@drawable/x35" />
 
     <TextView
         android:id="@+id/titleOnboarding"
         android:text="@string/favorite_list"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="@dimen/margin_50"
         style="@style/onboarding_title_style" />
 
     <TextView
         android:id="@+id/descOnboarding"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginLeft="@dimen/magin_66"
+        android:layout_marginRight="@dimen/magin_66"
+        android:layout_marginTop="@dimen/margin_50"
         android:text="@string/add_your_contacts"
         style="@style/onboarding_desc_style" />
+
 </LinearLayout>

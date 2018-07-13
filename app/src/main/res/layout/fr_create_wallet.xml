@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/w_wallet_content" />
+
+    <include layout="@layout/w_wallet_create_bottom" />
+
+    <include layout="@layout/w_no_internet_view" />
+</FrameLayout>

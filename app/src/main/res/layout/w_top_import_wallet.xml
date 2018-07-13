@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/importWalletLayuotTop"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:background="#00000000"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enterPrivateKeyBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/enterPrivateKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_private_key"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textAppearance="@style/enter_your_private_key" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/import_buttons_style"
+            android:id="@+id/paste"
+            android:drawableStart="@drawable/ic_paste"
+            android:text="@string/paste" />
+
+        <TextView
+            style="@style/import_buttons_style"
+            android:id="@+id/scan_qr"
+            android:drawableLeft="@drawable/ic_qr"
+            android:text="@string/qr" />
+    </LinearLayout>
+</LinearLayout>

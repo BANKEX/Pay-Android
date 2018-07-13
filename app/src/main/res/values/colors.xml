@@ -7,4 +7,11 @@
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
     <color name="divider">@android:color/darker_gray</color>
+    <color name="attention_pink_text_color">#EF86A7</color>
+    <color name="shark">#1f2229</color>
+    <color name="anakiwa">#9fe5ff</color>
+    <color name="dodger_blue">#3fcbff</color>
+    <color name="whisper">#f5f5fa</color>
+    <color name="athens_gray">#edecf1</color>
+    <color name="athens_gray_1">#e8e8ed</color>
 </resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/please_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_60"
+        android:layout_marginRight="@dimen/margin_60"
+        android:layout_marginTop="@dimen/margin_50"
+        android:gravity="center_horizontal"
+        android:text="@string/please_copy"
+        android:textAppearance="@style/please_copy" />
+
+    <LinearLayout
+        android:id="@+id/passphraseLayuot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="#00000000"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/multi_line_"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="87dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/multi_line_"
+            android:textAppearance="@style/multi_line_" />
+
+        <TextView
+            android:id="@+id/field_to_ex"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:layout_height="87dp"
+            android:text="@string/field_to_ex"
+            android:textAppearance="@style/multi_line_" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/attention80_margin"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#00000000"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/standartBlueButton"
+            android:id="@+id/copyButton"
+            android:layout_below="@id/note"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Copy" />
+
+        <TextView
+            style="@style/standartBlueButton"
+            android:id="@+id/finishButton"
+            android:layout_below="@id/note"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="Finish" />
+    </LinearLayout>
+
+
+    <include layout="@layout/w_no_internet_view" />
+</FrameLayout>

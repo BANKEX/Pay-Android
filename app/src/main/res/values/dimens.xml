@@ -5,7 +5,27 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">24dp</dimen>
     <dimen name="margin_xlarge">38dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
 
     <dimen name="dialog_message_width">280dp</dimen>
     <dimen name="onboarding100_margin">100dp</dimen>
+    <dimen name="onboarding120_margin">120dp</dimen>
+    <dimen name="attention80_margin">80dp</dimen>
+    <dimen name="attention66_margin">66dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="magin_66">66dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!-- bottom navigation bar -->
+    <dimen name="bottom_bar_text_size">11sp</dimen>
+    <dimen name="bottom_bar_icon_size">24dp</dimen>
+    <dimen name="bottom_bar_height">56dp</dimen>
+    <dimen name="bottom_bar_default_elevation">8dp</dimen>
+    <dimen name="bottom_bar_fake_shadow_height">4dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
 </resources>

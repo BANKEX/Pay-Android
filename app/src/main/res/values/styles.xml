@@ -68,11 +68,45 @@
     <style name="standartBlueButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/ic_rectangle</item>
+        <item name="android:background">@drawable/btn_create</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="standartTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="private_key">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/tab_text_selector</item>
+    </style>
+
+    <style name="enter_your_private_key">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#BDBDBD</item>
+    </style>
+
+    <style name="please_copy">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="multi_line_">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#A4A4A4</item>
+    </style>
+
+    <style name="scan_qr">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#333333</item>
     </style>
 
     <style name="onboarding_title_style">
@@ -91,5 +125,71 @@
         <item name="android:textColor">#828282</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="tabsStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAppearance">@style/private_key</item>
+    </style>
+
+    <style name="create_wallet_input_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/margin_10</item>
+    </style>
+
+    <style name="password_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--        <item name="passwordToggleDrawable">@drawable/ic_eye2</item>
+        <item name="passwordToggleEnabled">true</item>
+        <item name="passwordToggleTint">@android:color/white</item>-->
+    </style>
+
+    <style name="import_buttons_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/ic_scar_qr</item>
+        <item name="android:drawablePadding">-50dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAppearance">@style/scan_qr</item>
+    </style>
+
+    <style name="standartBlueButtonWallet" parent="standartBlueButton">
+        <item name="android:enabled">false</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">80dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+
+
+    <style name="BottomBarStyle">
+        <item name="android:background">@color/white</item>
+        <item name="bb_badgeBackgroundColor">@color/dodger_blue</item>
+        <item name="bb_activeTabColor">@color/shark</item>
+        <item name="bb_inActiveTabColor">@color/shark</item>
+        <item name="bb_tabXmlResource">@xml/main_bottom_bar_tabs</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="BottomBarTitleTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/bottom_bar_text_size</item>
+        <item name="android:textColor">@color/shark</item>
+    </style>
+
+    <style name="BottomBarBadgeTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/bottom_bar_text_size</item>
+        <item name="android:textColor">@color/black</item>
+     </style>
 
 </resources>

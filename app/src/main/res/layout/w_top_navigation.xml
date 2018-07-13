@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/passphraseLayuot"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:layout_marginTop="46dp"
+    android:background="#00000000"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <TextView
+        style="@style/tabsStyle"
+        android:id="@+id/privateKey"
+        android:text="@string/private_key" />
+
+    <TextView
+        style="@style/tabsStyle"
+        android:id="@+id/passphrase"
+        android:text="@string/passphrase" />
+</LinearLayout>
