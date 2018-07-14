@@ -66,5 +66,3 @@ sonar-project.properties
 /.idea/inspectionProfiles/*
 !/.idea/inspectionProfiles/Project_Default.xml
 
-# Crashlytics
-app/fabric.properties
