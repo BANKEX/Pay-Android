@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#48A6F8</color>
+    <color name="colorPrimaryDark">#2b6394</color>
+    <color name="colorAccent">#48A6F8</color>
+
+    <color name="bankex_black">#202326</color>
+    <color name="bankex_white">#FFFFFF</color>
+    <color name="bankex_grey">#C4C4C4</color>
+
+    <color name="caption">#8E96B0</color>
+
+    <color name="onboarding_temporary_background">#F2F3F5</color>
+    <color name="onboarding_selected_indicator">#F6A92A</color>
+
+    <color name="tabs_inactive_white">#B2FFFFFF</color>
+
+    <color name="placeholder_background">#EFF2F4</color>
+    <color name="placeholder_body_text">#63687D</color>
+    <color name="placeholder_wrong_type_title">@color/operation_failed</color>
+
+    <color name="operation_success">#1BBE00</color>
+    <color name="operation_failed">#DB333E</color>
+    <color name="operation_pending">#EFC674</color>
+
+</resources>

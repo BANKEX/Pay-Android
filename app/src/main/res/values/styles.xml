@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@color/bankex_black</item>
+    </style>
+
+    <style name="Toolbar" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/bankex_white</item>
+    </style>
+
+    <style name="ViewPagerToolbar" parent="AppTheme">
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/bankex_white</item>
+        <item name="tabSelectedTextColor">@color/bankex_white</item>
+        <item name="tabTextColor">@color/tabs_inactive_white</item>
+    </style>
+
+    <style name="TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="Widget.AppCompat.Button.Colored">
+
+    </style>
+
+
+</resources>

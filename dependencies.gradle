@@ -1,0 +1,123 @@
+// project dependencies
+
+ext {
+    // region android versions
+    COMPILE_SDK_VERSION = 28
+    TARGET_SDK_VERSION = 28
+    MIN_SDK_VERSION = 23
+    // endregion
+
+    //region version
+    VERSION_MAJOR = 1
+    VERSION_MINOR = 0
+    VERSION_HOTFIX = 0
+    // endregion
+
+    // region main lib versions
+    DAGGER_VERSION = '2.14.1'
+    MOXY_VERSION = '1.5.3'
+    SUPPORT_VERSION = '27.0.2'
+    CONSTRAINT_LAYOUT_VERSION = '1.0.2'
+    RX_JAVA_VERSION = '2.1.9'
+    RX_ANDROID_VERSION = '2.0.1'
+    LIFECYCLE_VERSION = '1.1.0'
+    RETROFIT_VERSION = '2.3.0'
+    OK_HTTP_VERSION = '3.6.0'
+    APPINTRO_VERSION = '4.2.3'
+    ADAPTER_DELEGATES_VERSION = '3.0.1'
+    GUAVA_VERSION = '23.4'
+    JODA_TIME_ANDROID_VERSION = '2.9.9.4'
+    SEARCH_VIEW_VERSION = '27.1.1.0.0'
+    LOTTIE_VERSION = '2.5.4'
+    CRASHLYTICS_VERSION = '2.9.4'
+    AMPLITUDE_VERSION = '2.14.1'
+    QR_VERSION = '1.9.8'
+    // endregion
+
+    // region test lib versions
+    JUNIT_VERSION = '4.12'
+    HAMCREST_VERSION = '1.3'
+    MOCKITO_VERSION = '2.13.0'
+    ROBOLECTRIC_VERSION = '3.6.1'
+    ESPRESSO_VERSION = '3.0.1'
+    TEST_RUNNER_VERSION = '1.0.1'
+    // endregion
+
+    // region firebase
+    FIREBASE_VERSION = '16.0.1'
+    FIREBASE_DYNAMIC_LINKS = '16.0.1'
+    FIREBASE_CLOUD_MESSANGING = '17.1.0'
+    FIREBASE_APP_INDEXING = '16.0.1'
+    //endregion
+
+    androidSupport = [
+            appcompatV7     : "com.android.support:appcompat-v7:$SUPPORT_VERSION",
+            design          : "com.android.support:design:$SUPPORT_VERSION",
+            constraintLayout: "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION",
+            preference      : "com.android.support:preference-v7:$SUPPORT_VERSION",
+
+            // testing
+            espresso        : "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION",
+            testRunner      : "com.android.support.test:runner:$TEST_RUNNER_VERSION"
+    ]
+
+    libs = [
+            // dagger
+            dagger                : "com.google.dagger:dagger-android-support:$DAGGER_VERSION",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$DAGGER_VERSION",
+            daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_VERSION",
+
+            // rxJava
+            rxJava                : "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
+
+            //region "Moxy"
+            moxy                  : "com.arello-mobile:moxy:$MOXY_VERSION",
+            moxyAppCompat         : "com.arello-mobile:moxy-app-compat:$MOXY_VERSION",
+            moxyCompiler          : "com.arello-mobile:moxy-compiler:$MOXY_VERSION",
+            //endregion
+
+            retrofit              : "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION",
+            retrofitConverter     : "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION",
+            retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION",
+            okHttpInterceptor     : "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION",
+
+            //Onboarding
+            appintro              : "com.github.apl-devs:appintro:v$APPINTRO_VERSION",
+
+            //AdapterDelegates
+            adapterDelegates      : "com.hannesdorfmann:adapterdelegates3:$ADAPTER_DELEGATES_VERSION",
+
+            //Guava
+            guava                 : "com.google.guava:guava:$GUAVA_VERSION-android",
+
+            //SearchView
+            searchView            : "com.lapism:searchview:$SEARCH_VIEW_VERSION",
+
+            //Fabric
+            fabric                : "com.crashlytics.sdk.android:crashlytics:$CRASHLYTICS_VERSION@aar",
+
+            //Lottie
+            lottie                : "com.airbnb.android:lottie:$LOTTIE_VERSION",
+
+            //Amplitude
+            amplitude             : "com.amplitude:android-sdk:$AMPLITUDE_VERSION",
+
+            //QR
+            qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
+
+            // region testing
+            junit                 : "junit:junit:$JUNIT_VERSION",
+            hamcrest              : "org.hamcrest:hamcrest-library:$HAMCREST_VERSION",
+            mockito               : "org.mockito:mockito-core:$MOCKITO_VERSION",
+            robolectric           : "org.robolectric:robolectric:$ROBOLECTRIC_VERSION",
+            // endregion
+
+            // region firebase
+            firebase              : "com.google.firebase:firebase-core:$FIREBASE_VERSION",
+            firebaseDynamicLink   : "com.google.firebase:firebase-dynamic-links:$FIREBASE_DYNAMIC_LINKS",
+            firebaseCloudMessaging: "com.google.firebase:firebase-messaging:$FIREBASE_CLOUD_MESSANGING",
+            firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING"
+            //endregion
+    ]
+}

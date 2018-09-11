@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        ANDROID_PLUGIN_VERSION = '3.1.0'
+        FABRIC_PLUGIN_VERSION = '1.+'
+        REALM_PLUGIN_VERSION = '5.3.0'
+        GOOGLE_SERVICES_PLUGIN_VERSION = "4.0.0"
+
+        pluginLibs = [
+                android: "com.android.tools.build:gradle:$ANDROID_PLUGIN_VERSION",
+                fabric : "io.fabric.tools:gradle:$FABRIC_PLUGIN_VERSION",
+                realm : "io.realm:realm-gradle-plugin:$REALM_PLUGIN_VERSION",
+                googleServices : "com.google.gms:google-services:$GOOGLE_SERVICES_PLUGIN_VERSION"
+        ]
+    }
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath pluginLibs.android
+        classpath pluginLibs.fabric
+        classpath pluginLibs.realm
+        classpath pluginLibs.googleServices
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
