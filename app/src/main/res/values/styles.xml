@@ -171,7 +171,6 @@
     </style>
 
 
-
     <style name="BottomBarStyle">
         <item name="android:background">@color/white</item>
         <item name="bb_badgeBackgroundColor">@color/dodger_blue</item>
@@ -190,6 +189,41 @@
     <style name="BottomBarBadgeTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/bottom_bar_text_size</item>
         <item name="android:textColor">@color/black</item>
-     </style>
+    </style>
+
+    <style name="balck_margin">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+    </style>
+
+    <style name="some_id">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="eth_wallet">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+    </style>
+
+    <style name="xde0b295669">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_xsmall</item>
+    </style>
+
+    <style name="send">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #333333
+        </item>
+
+    </style>
+
 
 </resources>

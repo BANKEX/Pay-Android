@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:paddingBottom="@dimen/margin_medium"
+    android:paddingEnd="@dimen/margin_medium"
+    android:paddingStart="0dp"
+    android:paddingTop="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="38dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:src="@drawable/ic_eth" />
+
+    <TextView
+        style="@style/some_id"
+        android:id="@+id/symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_toEndOf="@+id/logo"
+        android:layout_toStartOf="@+id/eth"
+        android:textAllCaps="true"
+        tools:text="112 453 241 835 832 " />
+
+    <TextView
+        style="@style/some_id"
+        android:id="@+id/eth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/logo"
+        android:layout_marginEnd="49dp"
+        tools:text="ETH" />
+
+    <TextView
+        style="@style/eth_wallet"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/symbol"
+        android:layout_below="@id/eth"
+        android:gravity="bottom"
+        tools:text="ETH Wallet Name " />
+
+    <TextView
+        style="@style/xde0b295669"
+        android:id="@+id/xde0b295669"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/logo"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/symbol"
+        android:layout_below="@id/name"
+        android:gravity="bottom"
+        android:text="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+        android:textAppearance="@style/xde0b295669" />
+
+  <!--  <TextView
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/receive"
+        android:layout_below="@id/xde0b295669"
+        android:gravity="start"
+        android:text="@string/send"
+        android:textAppearance="@style/send" />
+
+    <TextView
+        android:id="@id/receive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/send"
+        android:layout_below="@id/xde0b295669"
+        android:gravity="end"
+        android:text="@string/receive"
+        android:textAppearance="@style/send" />-->
+</RelativeLayout>

@@ -1,7 +1,9 @@
 package com.bankex.pay.ui.onboarding
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.bankex.pay.R
 import com.bankex.pay.ui.base.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fr_content_onboarding.*
@@ -13,6 +15,7 @@ private const val ARG_DESC = "param_desc"
 class ContentOnBoardingFragment : BaseFragment() {
 
     override fun getLayout(): Int = R.layout.fr_content_onboarding
+
 
     private var paramID: Int? = null
     private var paramTitle: Int? = null

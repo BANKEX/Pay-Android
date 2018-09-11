@@ -1,5 +1,7 @@
 package com.bankex.pay.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -18,9 +20,12 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val get = intent.extras.get(ARG_ADDRESS_NUMBER)
+
         setSupportActionBar(toolbar)
         sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         container.adapter = sectionsPagerAdapter
+        initBottomBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -38,6 +43,21 @@ class MainActivity : BaseActivity(), MainView {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun initBottomBar() {
+        footerView.setOnTabSelectListener({ tabId ->
+            when (tabId) {
+                R.id.home -> switchFragment()
+                R.id.wallet -> switchFragment()
+                R.id.contacts -> switchFragment()
+                R.id.history -> switchFragment()
+            }
+        }, false)
+    }
+
+    private fun switchFragment() {
+
+    }
+
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
@@ -47,6 +67,12 @@ class MainActivity : BaseActivity(), MainView {
         override fun getCount(): Int {
             return 3
         }
+    }
+
+
+    companion object {
+        public val ARG_ADDRESS_NUMBER = "address_number"
+        fun makeIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
     class PlaceholderFragment : Fragment() {

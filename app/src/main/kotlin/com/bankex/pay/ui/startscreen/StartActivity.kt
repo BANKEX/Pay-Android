@@ -5,8 +5,8 @@ import android.content.Intent
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bankex.pay.R
 import com.bankex.pay.ui.base.activity.BaseActivity
-import com.bankex.pay.ui.createwallet.CreateWalletActivity
 import com.bankex.pay.ui.importwallet.ImportWalletActivity
+import com.bankex.pay.ui.main.MainActivity
 import kotlinx.android.synthetic.main.ac_start.*
 
 class StartActivity : BaseActivity(), StartView {
@@ -17,7 +17,7 @@ class StartActivity : BaseActivity(), StartView {
     override fun getLayout(): Int = R.layout.ac_start
 
     override fun createWallet() {
-        startActivity(CreateWalletActivity.makeIntent(this))
+        startActivity(MainActivity.makeIntent(this))
     }
 
     override fun importWallet() {
