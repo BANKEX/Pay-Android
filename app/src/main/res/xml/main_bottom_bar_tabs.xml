@@ -5,7 +5,16 @@
         id="@+id/home"
         title="@string/item_one" />
     <tab
-        icon="@drawable/ic_home"
-        id="@+id/bbChar"
-        title="@string/item_one" />
+        icon="@drawable/ic_wallet"
+        id="@+id/wallet"
+        title="@string/item_two" />
+    <tab
+        icon="@drawable/ic_contacts"
+        id="@+id/contacts"
+        title="@string/item_three" />
+
+    <tab
+        icon="@drawable/ic_clock"
+        id="@+id/history"
+        title="@string/item_four" />
 </tabs>

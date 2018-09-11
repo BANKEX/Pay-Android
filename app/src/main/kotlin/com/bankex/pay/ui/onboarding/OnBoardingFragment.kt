@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fr_onboarding.*
 
 class OnBoardingFragment : BaseFragment(), OnBoardingView {
 
-
     @InjectPresenter
     internal lateinit var presenter: OnBoardingPresenter
 

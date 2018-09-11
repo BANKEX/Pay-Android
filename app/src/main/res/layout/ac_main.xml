@@ -35,6 +35,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-
+    <com.roughike.bottombar.BottomBar
+        style="@style/BottomBarStyle"
+        android:id="@+id/footerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:bb_longPressHintsEnabled="false" />
 
 </android.support.design.widget.CoordinatorLayout>
