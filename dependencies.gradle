@@ -106,6 +106,9 @@ ext {
             //QR
             qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
 
+            //Preference
+            preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
+
             // region testing
             junit                 : "junit:junit:$JUNIT_VERSION",
             hamcrest              : "org.hamcrest:hamcrest-library:$HAMCREST_VERSION",

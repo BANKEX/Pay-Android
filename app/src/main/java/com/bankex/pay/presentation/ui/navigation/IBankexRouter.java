@@ -29,7 +29,7 @@ public interface IBankexRouter {
      * @param fragment        Fragment, который необходимо запустить
      * @param containerViewId Id контейнера
      */
-    void runFragment(FragmentActivity activity,
+    void runBankexFragment(FragmentActivity activity,
                      BaseFragment fragment,
                      @IdRes int containerViewId);
 

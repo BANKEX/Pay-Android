@@ -1,4 +1,4 @@
-package com.bankex.pay.domain;
+package com.bankex.pay.domain.analytics;
 
 /**
  * Менеджер аналитики

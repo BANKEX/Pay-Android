@@ -39,7 +39,7 @@ public class BaseActivity extends MvpAppCompatActivity {
      * @param fragment BaseFragment
      */
     public void runFragment(BaseFragment fragment) {
-        mRouter.runFragment(this,
+        mRouter.runBankexFragment(this,
                 fragment,
                 R.id.fragment_container);
     }

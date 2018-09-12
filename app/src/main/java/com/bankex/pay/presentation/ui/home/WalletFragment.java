@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bankex.pay.R;
-import com.bankex.pay.domain.IAnalyticsManager;
+import com.bankex.pay.domain.analytics.IAnalyticsManager;
+import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
-import com.bankex.pay.presentation.ui.navigation.IBankexRouter;
 
 import javax.inject.Inject;
 
@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class WalletFragment extends BaseFragment {
 
     @Inject
-    IBankexRouter mRouter;
+    IWalletRouter mRouter;
     @Inject
     IAnalyticsManager mAnalyticsManager;
 

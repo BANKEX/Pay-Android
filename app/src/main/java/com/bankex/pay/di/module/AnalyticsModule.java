@@ -1,7 +1,7 @@
 package com.bankex.pay.di.module;
 
-import com.bankex.pay.domain.AnalyticsManager;
-import com.bankex.pay.domain.IAnalyticsManager;
+import com.bankex.pay.domain.analytics.AnalyticsManager;
+import com.bankex.pay.domain.analytics.IAnalyticsManager;
 
 import javax.inject.Singleton;
 

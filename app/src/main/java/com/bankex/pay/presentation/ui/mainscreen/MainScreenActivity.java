@@ -10,10 +10,11 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
+import com.bankex.pay.domain.navigation.home.IHomeRouter;
 import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
+import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
-import com.bankex.pay.presentation.ui.navigation.IBankexRouter;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
 import com.bankex.pay.utils.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -27,23 +28,18 @@ import javax.inject.Inject;
 public class MainScreenActivity extends BaseActivity implements IMainScreenView {
 
     @Inject
-    IBankexRouter mRouter;
+    IHomeRouter mRouter;
 
     @Inject
     @InjectPresenter
     MainScreenPresenter mMainScreenPresenter;
-
-    private BottomNavigationView mBottomNavigationView;
 
     @ProvidePresenter
     public MainScreenPresenter providePresenter() {
         return mMainScreenPresenter;
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
-        return false;
-    };
+    private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,4 +82,35 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         Intent intent = OnboardingActivity.newIntent(this);
         startActivity(intent);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+        switch (item.getItemId()) {
+            case R.id.navigation_wallet:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                }
+                return true;
+            case R.id.navigation_history:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                }
+                return true;
+            case R.id.navigation_contacts:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                }
+                return true;
+            case R.id.navigation_settings:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToSettingsTab(this, SettingsFragment.newInstance());
+                }
+                return true;
+        }
+        return false;
+    };
 }

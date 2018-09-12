@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
@@ -57,5 +58,14 @@ public class BankexRouter extends BaseRouter implements IBankexRouter {
 
         fragmentTransaction.replace(containerViewId, baseFragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void runBankexFragment(FragmentActivity activity,
+                                  BaseFragment fragment,
+                                  int containerViewId) {
+        runFragment(activity,
+                fragment,
+                containerViewId);
     }
 }
