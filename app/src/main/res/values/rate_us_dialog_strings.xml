@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rate_us_dialog_title">Rate us</string>
+    <string name="rate_us_dialog_message">If you enjoy using the app, please take a moment to rate it. Thank you for your support!</string>
+    <string name="rate_us_dialog_positive">rate now</string>
+    <string name="rate_us_dialog_negative">no, thanks</string>
+</resources>
