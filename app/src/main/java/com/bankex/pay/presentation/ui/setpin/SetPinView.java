@@ -5,7 +5,7 @@ import com.bankex.pay.presentation.ui.base.BaseView;
 /**
  * @author Denis Anisimov.
  */
-public interface SetPinView extends BaseView{
+public interface SetPinView extends BaseView {
     void setPin();
 
     void showMessage(String message);

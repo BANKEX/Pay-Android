@@ -9,8 +9,6 @@ import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
 import com.elegion.littlefinger.fingerprint.AuthResult;
 
-import javax.inject.Inject;
-
 /**
  * @author Denis Anisimov.
  */
