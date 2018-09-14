@@ -32,6 +32,8 @@ ext {
     CRASHLYTICS_VERSION = '2.9.4'
     AMPLITUDE_VERSION = '2.14.1'
     QR_VERSION = '1.9.8'
+    FP_VERSION = '0.9.0'
+    JT_VERSION = '2.10'
     // endregion
 
     // region test lib versions
@@ -108,6 +110,10 @@ ext {
 
             //Preference
             preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
+
+            //FingerPrint
+            fingetprint           : "com.elegion.littlefinger:littlefinger:$FP_VERSION",
+            time                  : "joda-time:joda-time:2.10:$JT_VERSION",
 
             // region testing
             junit                 : "junit:junit:$JUNIT_VERSION",

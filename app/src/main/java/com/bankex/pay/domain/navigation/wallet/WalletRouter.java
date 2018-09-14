@@ -8,4 +8,5 @@ import com.bankex.pay.presentation.ui.navigation.BaseRouter;
  * @author Pavel Apanovskiy on 12.09.2018.
  */
 public class WalletRouter extends BaseRouter implements IWalletRouter {
+
 }

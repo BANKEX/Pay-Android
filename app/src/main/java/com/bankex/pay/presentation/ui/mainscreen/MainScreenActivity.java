@@ -15,7 +15,9 @@ import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
+import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
+import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
 import com.bankex.pay.utils.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -26,6 +28,8 @@ import javax.inject.Inject;
  * Корневая активити
  */
 public class MainScreenActivity extends BaseActivity implements IMainScreenView {
+
+    private static final int ONBOARDING_REQUEST = 0;
 
     @Inject
     IHomeRouter mRouter;
@@ -68,6 +72,11 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         startOnboarding();
     }
 
+    @Override
+    public void showLockScreen() {
+        startLockScreen();
+    }
+
     private void initViews() {
         mBottomNavigationView = findViewById(R.id.home_navigation);
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -80,7 +89,12 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 
     private void startOnboarding() {
         Intent intent = OnboardingActivity.newIntent(this);
-        startActivity(intent);
+        startActivityForResult(intent, ONBOARDING_REQUEST);
+    }
+
+    private void startLockScreen() {
+        Intent intent = LockScreenActivity.newIntent(this);
+        startActivityForResult(intent, ONBOARDING_REQUEST);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -113,4 +127,17 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         }
         return false;
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ONBOARDING_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    Intent intent = SetPinActivity.newIntent(this);
+                    startActivityForResult(intent, ONBOARDING_REQUEST);
+                }
+                break;
+        }
+    }
 }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="loading">Загрузка…</string>
+    <string name="error_network">Нет сети</string>
+    <string name="btn_ok">ОК</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="error_unexpected">Неизвестная ошибка</string>
+    <string name="no_internet">No internet</string>
+
+    <string name="login">Login</string>
+    <string name="login_email_hint">Github username</string>
+    <string name="login_pwd_hint">Github password</string>
+    <string name="menu_logout">Logout</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="let_me_in">Just let me in</string>
+
+
+    <string name="favorite_list">Favorite list</string>
+    <string name="ERC20_standart">ERC20 standart</string>
+    <string name="custom_network">Custom network</string>
+
+    <string name="retrieving_">
+
+Retrieving data
+</string>
+    <string name="the_operati">
+
+The operation may take\nseveral minutes, please wait....
+</string>
+
+    <string name="add_your_contacts">Add your contacts in the Favorite list for quick access to them</string>
+    <string name="support_any_tokens">Support for any tokens within the Ether network</string>
+    <string name="add_your_network">Add your network and work with tokens right inside wallet</string>
+
+    <string name="multi_line_">Multi-line text fields show all user input at once Overflow text causes the text</string>
+    <string name="field_to_ex">field to expand shifting screen elements downward and text wraps</string>
+    <string name="private_key">PRIVATE KEY</string>
+    <string name="passphrase">PASSPHRASE</string>
+    <string name="enter_your_private_key">Enter your private key</string>
+    <string name="android_wal_name">Android Wallet Name</string>
+    <string name="qr">Scan QR</string>
+    <string name="paste">Paste</string>
+    <string name="name_your_wallet">Name your wallet</string>
+    <string name="enter_passw">Enter password</string>
+    <string name="repeat_pass">Repeat password</string>
+    <string name="create">Create</string>
+    <string name="import_wallet">Import</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="item_one">Home</string>
+    <string name="item_two">Wallet</string>
+    <string name="item_three">Contacts</string>
+    <string name="item_four">History</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="please_copy">Please copy your passphrase to a safe place.\nThese words are the only way to restore your wallet</string>
+    <string name="single_line">Passphrase is copied to clipboard</string>
+    <string name="action">CLOSE</string>
+    <string name="please_repe">Please repeat the phrase by tapping the words in the right order</string>
+    <string name="wrong_order">Wrong order\nPlease try again</string>
+    <string name="create_wall">Create Wallet</string>
+    <string name="finish">Finish</string>
+    <string name="wallet_crea">Wallet Created!</string>
+    <string name="wallet_name">Wallet Name</string>
+    <string name="wallet_addr">Wallet Address</string>
+    <string name="eth_wallet_">ETH Wallet Name</string>
+    <string name="edit">EDIT</string>
+    <string name="xde0b295669">0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</string>
+    <string name="papi_pacify">Edit Your Wallet Name</string>
+    <string name="enter_your_">Enter your PIN</string>
+    <string name="at_the_rate">$689 913 at the rate of Binance</string>
+
+
+    <!-- Fingerprint -->
+    <string name="fp_title">LittleFinger</string>
+    <string name="fp_btn_check_sensor_state">Проверить состояние сенсора</string>
+    <string name="fp_btn_set_pin">Установить PIN</string>
+    <string name="fp_btn_auth_by_pin_or_fp">Вход по PIN или FP</string>
+    <string name="fp_btn_use_aes_crypto">Использование шифрования</string>
+    <string name="fp_sensor_not_supported">На устройстве нет сканера отпечатков</string>
+    <string name="fp_sensor_device_not_blocked">Устройство не защищено</string>
+    <string name="fp_sensor_no_enrolled_fingerprints">На устройстве нет установленных отпечатков</string>
+    <string name="fp_sensor_ready">Сенсор готов к использованию</string>
+    <string name="fp_message_touch_sensor">Приложите палец к сенсору</string>
+    <string name="fp_touch_help">Слишком быстрый или недостаточно сильный нажим</string>
+
+    <string name="fp_touch_canceled_by_user">Операция с отпечатком отменена</string>
+    <string name="fp_touch_error">Сенсор отключен. Повторите попытку позже</string>
+    <string name="fp_touch_success">Отпечаток распознан</string>
+    <string name="fp_auth_unavailable">Тут больше нечего делать</string>
+    <string name="fp_pin_removed">PIN удален</string>
+    <string name="fp_or_use_sensor">Или войдите с помощью отпечатка</string>
+    <string name="fp_auth_by_fp_unavailable">Вход по сенсору недоступен</string>
+    <string name="fp_added_or_removed_fp">Был добавлен/удален отпечаток. Войдите через пин</string>
+    <string name="fp_success">Успешно</string>
+
+    <string name="wrong_passc">Wrong passcode. Please try again</string>
+    <string name="fp_touch_failed">Fingerprint is not recognized. Please try again</string>
+    <string name="pins_don_t_">PINs don\'t match. Please try again</string>
+
+</resources>
+
+
