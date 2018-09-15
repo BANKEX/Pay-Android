@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.bankex.pay.R;
 import com.bankex.pay.domain.navigation.settings.ISettingsRouter;
+import com.bankex.pay.utils.dialogs.RateUsDialog;
 
 import javax.inject.Inject;
 
@@ -93,7 +94,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private Preference.OnPreferenceClickListener getRateUsOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "rateUs", Toast.LENGTH_SHORT).show();
+            RateUsDialog dialog = new RateUsDialog();
+            if (getFragmentManager() != null) {
+                dialog.show(getFragmentManager(), getTag());
+            }
             return true;
         };
     }
