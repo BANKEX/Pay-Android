@@ -79,25 +79,6 @@ android {
     }
 }
 
-
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.bankex.pay"
-        minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
 def computeVersionName(int versionCode) {
     if (VERSION_HOTFIX > 0) {
         return String.format('%d.%d.%d', VERSION_MAJOR, VERSION_MINOR, VERSION_HOTFIX)
