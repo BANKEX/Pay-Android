@@ -16,7 +16,7 @@ import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
-import com.bankex.pay.utils.SharedPreferencesUtils;
+import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import javax.inject.Inject;

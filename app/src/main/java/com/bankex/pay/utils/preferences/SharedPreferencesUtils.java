@@ -1,4 +1,4 @@
-package com.bankex.pay.utils;
+package com.bankex.pay.utils.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;

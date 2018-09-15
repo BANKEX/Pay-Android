@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 
 import com.bankex.pay.R;
 import com.bankex.pay.di.onboarding.OnboardingInjector;
-import com.bankex.pay.utils.SharedPreferencesUtils;
+import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.github.paolorotolo.appintro.AppIntro;
 
 import org.json.JSONException;
