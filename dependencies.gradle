@@ -107,7 +107,7 @@ ext {
             qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
 
             //Preference
-            preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
+            preference            : "com.android.support:preference-v14:$SUPPORT_VERSION",
 
             // region testing
             junit                 : "junit:junit:$JUNIT_VERSION",

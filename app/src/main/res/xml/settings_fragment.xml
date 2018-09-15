@@ -33,10 +33,12 @@
     <PreferenceCategory android:title="@string/settings_community_title">
 
         <Preference
+            android:icon="@drawable/ic_twitter_grey_24dp"
             android:key="@string/settings_twitter_key"
             android:title="@string/settings_twitter_title"/>
 
         <Preference
+            android:icon="@drawable/ic_facebook_grey_24dp"
             android:key="@string/settings_facebook_key"
             android:title="@string/settings_facebook_title"/>
 
