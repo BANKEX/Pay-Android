@@ -118,6 +118,11 @@ dependencies {
         transitive = true
     }
     implementation libs.preference
+    implementation libs.web3j
+    implementation libs.ethereum
+    implementation libs.bip32
+    implementation libs.bip39
+    implementation libs.bip44
     testImplementation libs.junit
     testImplementation libs.mockito
     testImplementation libs.robolectric
