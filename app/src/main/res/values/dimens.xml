@@ -4,6 +4,7 @@
     <dimen name="margin_little">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
+    <dimen name="text_medium">18sp</dimen>
     <dimen name="margin_medium_x">24dp</dimen>
     <dimen name="margin_big">56dp</dimen>
     <dimen name="first_screen_text_top_margin">168dp</dimen>
@@ -15,4 +16,6 @@
     <dimen name="onboarding_left_right_margin">40dp</dimen>
     <dimen name="onboarding_image_height">280dp</dimen>
     <dimen name="login_button_margin">12dp</dimen>
+
+
 </resources>

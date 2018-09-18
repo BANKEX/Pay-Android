@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.lockscreen;
+package com.bankex.pay.presentation.presenter.lockscreen;
 
 
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
+import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
+import com.bankex.pay.presentation.ui.lockscreen.ILockScreenView;
 import com.bankex.pay.utils.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
@@ -14,10 +16,12 @@ import com.elegion.littlefinger.fingerprint.AuthResult;
 import static io.fabric.sdk.android.Fabric.TAG;
 
 /**
+ * Презентер активити блокировки экрана {@link LockScreenActivity}
+ *
  * @author Denis Anisimov.
  */
 @InjectViewState
-public class LockScreenPresenter extends BasePresenter<LockScreenView> {
+public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
 
     public final static String KEY_ALIAS = "KEY_ALIAS";
     private LittleFinger littleFinger;

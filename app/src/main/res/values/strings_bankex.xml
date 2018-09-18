@@ -22,18 +22,8 @@
     <string name="ERC20_standart">ERC20 standart</string>
     <string name="custom_network">Custom network</string>
 
-    <string name="retrieving_">
-
-Retrieving data
-</string>
-    <string name="the_operati">
-
-The operation may take\nseveral minutes, please wait....
-</string>
-
-    <string name="add_your_contacts">Add your contacts in the Favorite list for quick access to them</string>
-    <string name="support_any_tokens">Support for any tokens within the Ether network</string>
-    <string name="add_your_network">Add your network and work with tokens right inside wallet</string>
+    <string name="retrieving_">Retrieving data</string>
+    <string name="the_operati">The operation may take\nseveral minutes, please wait....</string>
 
     <string name="multi_line_">Multi-line text fields show all user input at once Overflow text causes the text</string>
     <string name="field_to_ex">field to expand shifting screen elements downward and text wraps</string>
@@ -73,34 +63,6 @@ The operation may take\nseveral minutes, please wait....
     <string name="papi_pacify">Edit Your Wallet Name</string>
     <string name="enter_your_">Enter your PIN</string>
     <string name="at_the_rate">$689 913 at the rate of Binance</string>
-
-
-    <!-- Fingerprint -->
-    <string name="fp_title">LittleFinger</string>
-    <string name="fp_btn_check_sensor_state">Проверить состояние сенсора</string>
-    <string name="fp_btn_set_pin">Установить PIN</string>
-    <string name="fp_btn_auth_by_pin_or_fp">Вход по PIN или FP</string>
-    <string name="fp_btn_use_aes_crypto">Использование шифрования</string>
-    <string name="fp_sensor_not_supported">На устройстве нет сканера отпечатков</string>
-    <string name="fp_sensor_device_not_blocked">Устройство не защищено</string>
-    <string name="fp_sensor_no_enrolled_fingerprints">На устройстве нет установленных отпечатков</string>
-    <string name="fp_sensor_ready">Сенсор готов к использованию</string>
-    <string name="fp_message_touch_sensor">Приложите палец к сенсору</string>
-    <string name="fp_touch_help">Слишком быстрый или недостаточно сильный нажим</string>
-
-    <string name="fp_touch_canceled_by_user">Операция с отпечатком отменена</string>
-    <string name="fp_touch_error">Сенсор отключен. Повторите попытку позже</string>
-    <string name="fp_touch_success">Отпечаток распознан</string>
-    <string name="fp_auth_unavailable">Тут больше нечего делать</string>
-    <string name="fp_pin_removed">PIN удален</string>
-    <string name="fp_or_use_sensor">Или войдите с помощью отпечатка</string>
-    <string name="fp_auth_by_fp_unavailable">Вход по сенсору недоступен</string>
-    <string name="fp_added_or_removed_fp">Был добавлен/удален отпечаток. Войдите через пин</string>
-    <string name="fp_success">Успешно</string>
-
-    <string name="wrong_passc">Wrong passcode. Please try again</string>
-    <string name="fp_touch_failed">Fingerprint is not recognized. Please try again</string>
-    <string name="pins_don_t_">PINs don\'t match. Please try again</string>
 
 </resources>
 

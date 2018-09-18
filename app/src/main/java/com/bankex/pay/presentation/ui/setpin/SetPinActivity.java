@@ -3,36 +3,49 @@ package com.bankex.pay.presentation.ui.setpin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.bankex.pay.BankexPayApplication;
 import com.bankex.pay.R;
+import com.bankex.pay.di.setpin.SetPinInjector;
+import com.bankex.pay.presentation.presenter.setpin.SetPinPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
-import com.elegion.littlefinger.LittleFinger;
 
+import javax.inject.Inject;
 
-public class SetPinActivity extends BaseActivity implements SetPinView {
+/**
+ * Активити установки пин кода
+ *
+ * @author Denis Anisimov on 13.09.2018.
+ */
+public class SetPinActivity extends BaseActivity implements ISetPinView {
 
+    @Inject
     @InjectPresenter
     SetPinPresenter presenter;
 
     @ProvidePresenter
     SetPinPresenter providePresenter() {
-        return new SetPinPresenter(new LittleFinger(BankexPayApplication.getInstance().getApplicationContext()));
+        return presenter;
     }
 
     private TextView editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SetPinInjector.getSetPinComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_pin);
         editText = findViewById(R.id.pin);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SetPinInjector.clearSetPinComponent();
     }
 
     @Override

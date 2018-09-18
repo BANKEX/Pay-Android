@@ -1,9 +1,10 @@
-package com.bankex.pay.presentation.ui.setpin;
+package com.bankex.pay.presentation.presenter.setpin;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.ui.lockscreen.LockScreenPresenter;
+import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
+import com.bankex.pay.presentation.ui.setpin.ISetPinView;
 import com.bankex.pay.utils.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
@@ -13,7 +14,7 @@ import com.elegion.littlefinger.fingerprint.AuthResult;
  * @author Denis Anisimov.
  */
 @InjectViewState
-public class SetPinPresenter extends BasePresenter<SetPinView> {
+public class SetPinPresenter extends BasePresenter<ISetPinView> {
 
     private LittleFinger littleFinger;
 

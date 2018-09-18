@@ -9,15 +9,28 @@ import android.widget.Toast;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.bankex.pay.BankexPayApplication;
 import com.bankex.pay.R;
+import com.bankex.pay.di.lockscreen.LockScreenInjector;
+import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
-import com.elegion.littlefinger.LittleFinger;
 
-import dagger.android.AndroidInjection;
+import javax.inject.Inject;
 
-public class LockScreenActivity extends BaseActivity implements LockScreenView {
+/**
+ * Активити блокировки приложения
+ *
+ * @author Denis Anisimov on 13.09.2018.
+ */
+public class LockScreenActivity extends BaseActivity implements ILockScreenView {
+
+    @Inject
+    @InjectPresenter
+    LockScreenPresenter presenter;
+
+    @ProvidePresenter
+    LockScreenPresenter providePresenter() {
+        return presenter;
+    }
 
     /**
      * Возвращает интент LockScreenActivity
@@ -29,21 +42,20 @@ public class LockScreenActivity extends BaseActivity implements LockScreenView {
         return new Intent(context, LockScreenActivity.class);
     }
 
-    @InjectPresenter
-    LockScreenPresenter presenter;
-
-    @ProvidePresenter
-    LockScreenPresenter providePresenter() {
-        return new LockScreenPresenter(new LittleFinger(BankexPayApplication.getInstance().getApplicationContext()));
-    }
-
     private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LockScreenInjector.getLockScreenComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
         editText = findViewById(R.id.pin);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LockScreenInjector.clearLockScreenComponent();
     }
 
     @Override
