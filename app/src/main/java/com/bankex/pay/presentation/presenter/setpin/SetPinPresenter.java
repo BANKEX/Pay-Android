@@ -11,6 +11,8 @@ import com.elegion.littlefinger.crypto.CryptoAlgorithm;
 import com.elegion.littlefinger.fingerprint.AuthResult;
 
 /**
+ * Презентер активити экрана установки пин кодж{@link com.bankex.pay.presentation.ui.setpin.SetPinActivity}
+ *
  * @author Denis Anisimov.
  */
 @InjectViewState
@@ -22,6 +24,11 @@ public class SetPinPresenter extends BasePresenter<ISetPinView> {
         this.littleFinger = littleFinger;
     }
 
+    /**
+     * Метод сохранения пин кода зашифрованного и нет
+     *
+     * @param pin - введённый пин код
+     */
     public void savePin(String pin) {
         SharedPreferencesUtils.setPin(pin);
         if (littleFinger.isReadyToUse()) {

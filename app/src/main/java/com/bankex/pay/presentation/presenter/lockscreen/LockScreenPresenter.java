@@ -30,12 +30,18 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
         this.littleFinger = littleFinger;
     }
 
+    /**
+     * Авторизация по пин коду
+     * @param pin
+     */
     public void onAuthByPinClick(String pin) {
         if (checkIsPinCorrect(pin)) getViewState().unlock();
         else getViewState().showMessage(R.string.pins_don_t_);
     }
 
-
+    /**
+     *
+     */
     public void dispatchOnResume() {
         if (littleFinger.isReadyToUse() && SharedPreferencesUtils.isPinEncoded()) {
             String encoded = SharedPreferencesUtils.encodedPin();

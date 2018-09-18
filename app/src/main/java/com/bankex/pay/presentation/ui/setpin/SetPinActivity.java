@@ -80,6 +80,12 @@ public class SetPinActivity extends BaseActivity implements ISetPinView {
 
     }
 
+    /**
+     * Возвращает интент SetPinActivity
+     *
+     * @param context Context
+     * @return intent
+     */
     public static Intent newIntent(Context context) {
         return new Intent(context, SetPinActivity.class);
     }

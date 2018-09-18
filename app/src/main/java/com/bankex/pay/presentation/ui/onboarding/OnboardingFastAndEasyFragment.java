@@ -18,7 +18,6 @@ import com.bankex.pay.presentation.ui.base.BaseFragment;
  */
 public class OnboardingFastAndEasyFragment extends BaseFragment {
 
-
     /**
      * Возвращает новый OnboardingFastAndEasyFragment
      *

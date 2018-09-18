@@ -32,16 +32,6 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
         return presenter;
     }
 
-    /**
-     * Возвращает интент LockScreenActivity
-     *
-     * @param context Context
-     * @return intent
-     */
-    public static Intent newIntent(Context context) {
-        return new Intent(context, LockScreenActivity.class);
-    }
-
     private EditText editText;
 
     @Override
@@ -91,5 +81,15 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
     @Override
     public void setSensorStateMessage(int messageRes) {
 
+    }
+
+    /**
+     * Возвращает интент LockScreenActivity
+     *
+     * @param context Context
+     * @return intent
+     */
+    public static Intent newIntent(Context context) {
+        return new Intent(context, LockScreenActivity.class);
     }
 }
