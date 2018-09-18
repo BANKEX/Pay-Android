@@ -13,6 +13,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.domain.navigation.settings.ISettingsRouter;
 import com.bankex.pay.utils.dialogs.RateUsDialog;
 import com.bankex.pay.utils.email.EmailUtils;
+import com.bankex.pay.utils.socialnetwork.SocialNetworkUtils;
 
 import javax.inject.Inject;
 
@@ -109,21 +110,23 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             Context context = getContext();
             Toast.makeText(context, "Нужно указать валидный e-mail", Toast.LENGTH_SHORT).show();
             EmailUtils emailUtils = new EmailUtils();
-            emailUtils.createEmail(context, "e-mail");
+            emailUtils.createEmail(context);
             return true;
         };
     }
 
     private Preference.OnPreferenceClickListener getTwitterOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "twitter", Toast.LENGTH_SHORT).show();
+            SocialNetworkUtils socialNetworkUtils = new SocialNetworkUtils();
+            socialNetworkUtils.goToTwitter(getContext());
             return true;
         };
     }
 
     private Preference.OnPreferenceClickListener getFacebookOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "facebook", Toast.LENGTH_SHORT).show();
+            SocialNetworkUtils socialNetworkUtils = new SocialNetworkUtils();
+            socialNetworkUtils.goToFacebook(getContext());
             return true;
         };
     }

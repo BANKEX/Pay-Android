@@ -13,16 +13,17 @@ import android.widget.Toast;
  */
 public class EmailUtils {
 
+    private static final String EMAIL = "e-mail";
+
     /**
      * Пытаемся открыть почтовый клиент с заданным e-mail
      *
      * @param context context
-     * @param email   e-mail на который необходимо отправить кляузу
      */
-    public void createEmail(Context context, String email) {
+    public void createEmail(Context context) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("text/plain");
-        intent.setData(Uri.parse("mailto:" + email));
+        intent.setData(Uri.parse("mailto:" + EMAIL));
 
         try {
             context.startActivity(Intent.createChooser(intent, "Send Email"));
