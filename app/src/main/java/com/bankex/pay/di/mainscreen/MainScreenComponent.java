@@ -2,6 +2,7 @@ package com.bankex.pay.di.mainscreen;
 
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
+import com.bankex.pay.di.wallet.WalletComponent;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 
 import dagger.Subcomponent;
@@ -27,4 +28,6 @@ public interface MainScreenComponent {
     void inject(SettingsFragment settingsFragment);
 
     OnboardingComponent.Builder plusOnboardingComponent();
+
+    WalletComponent.Builder plusWalletComponent();
 }

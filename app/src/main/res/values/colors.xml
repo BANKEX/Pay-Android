@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#2b6394</color>
     <color name="colorAccent">#48A6F8</color>
 
+    <color name="colorPrimaryShadow">#6648A6F8</color>
+    <color name="colorPrimaryDarkShadow">#662b6394</color>
+
     <color name="bankex_black">#202326</color>
     <color name="bankex_white">#FFFFFF</color>
     <color name="bankex_grey">#C4C4C4</color>
