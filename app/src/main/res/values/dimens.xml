@@ -6,7 +6,9 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="text_medium">18sp</dimen>
     <dimen name="margin_medium_x">24dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_big">56dp</dimen>
+    <dimen name="import_or_export_logo_top_margin">127dp</dimen>
     <dimen name="first_screen_text_top_margin">168dp</dimen>
     <dimen name="first_screen_search_top_margin">88dp</dimen>
     <dimen name="first_screen_search_left_margin">64dp</dimen>
@@ -18,4 +20,6 @@
     <dimen name="login_button_margin">12dp</dimen>
 
 
+    <dimen name="button_stroke_width">1dp</dimen>
+    <dimen name="button_radius">3dp</dimen>
 </resources>

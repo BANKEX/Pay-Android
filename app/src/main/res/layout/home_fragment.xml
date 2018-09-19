@@ -47,5 +47,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <Button
+        android:id="@+id/create_button"
+        style="@style/ButtonOutlinePrimary"
+        android:layout_width="@dimen/first_screen_text_top_margin"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:shadowColor="@color/colorPrimary"
+        android:text="Import Wallet"/>
 
 </android.support.design.widget.CoordinatorLayout>
