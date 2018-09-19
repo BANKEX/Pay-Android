@@ -5,7 +5,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
 import com.bankex.pay.presentation.ui.setpin.ISetPinView;
-import com.bankex.pay.utils.SharedPreferencesUtils;
+import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
 import com.elegion.littlefinger.fingerprint.AuthResult;
