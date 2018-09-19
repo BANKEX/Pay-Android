@@ -27,7 +27,15 @@
     </style>
 
     <style name="ButtonPrimary" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button_primary_selector</item>
+        <item name="android:shadowColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/bankex_white</item>
+    </style>
 
+    <style name="ButtonOutlinePrimary" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button_primary_outline_selector</item>
+        <item name="android:shadowColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 
