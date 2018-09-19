@@ -1,5 +1,6 @@
 package com.bankex.pay.di.mainscreen;
 
+import com.bankex.pay.di.contacts.ContactsComponent;
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 
@@ -24,4 +25,6 @@ public interface MainScreenComponent {
     void inject(MainScreenActivity activity);
 
     OnboardingComponent.Builder plusOnboardingComponent();
+
+    ContactsComponent.Builder plusContactsComponent();
 }

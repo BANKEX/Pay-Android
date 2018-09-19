@@ -109,6 +109,8 @@ def computeVersionName(int versionCode) {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation libs.firebase
+    implementation libs.firebaseDatabase
+    implementation libs.firebaseAuth
     implementation libs.firebaseDynamicLink
     implementation libs.firebaseCloudMessaging
     implementation libs.firebaseAppIndexing
@@ -116,6 +118,7 @@ dependencies {
     implementation androidSupport.design
     implementation androidSupport.constraintLayout
     implementation libs.dagger
+    implementation 'com.android.support:support-v4:28.0.0-rc02'
     annotationProcessor libs.daggerCompiler
     annotationProcessor libs.daggerProcessor
     implementation libs.moxy
@@ -147,4 +150,3 @@ dependencies {
     androidTestImplementation androidSupport.espresso
     androidTestImplementation androidSupport.testRunner
 }
-

@@ -50,6 +50,8 @@ ext {
     FIREBASE_DYNAMIC_LINKS = '16.0.1'
     FIREBASE_CLOUD_MESSANGING = '17.1.0'
     FIREBASE_APP_INDEXING = '16.0.1'
+    FIREBASE_DATABASE = '16.0.1'
+    FIREBASE_AUTH = '16.0.3'
     //endregion
 
     androidSupport = [
@@ -126,7 +128,9 @@ ext {
             firebase              : "com.google.firebase:firebase-core:$FIREBASE_VERSION",
             firebaseDynamicLink   : "com.google.firebase:firebase-dynamic-links:$FIREBASE_DYNAMIC_LINKS",
             firebaseCloudMessaging: "com.google.firebase:firebase-messaging:$FIREBASE_CLOUD_MESSANGING",
-            firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING"
+            firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
+            firebaseDatabase      : "com.google.firebase:firebase-database:$FIREBASE_DATABASE",
+            firebaseAuth          : "com.google.firebase:firebase-auth:$FIREBASE_AUTH"
             //endregion
     ]
 }
