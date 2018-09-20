@@ -5,7 +5,7 @@ import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент для варианта "чтобы быстро и работало"
+ * Временный сабкомпонент для эркана установки пин кода
  *
  * @author Denis Anisimov.
  */

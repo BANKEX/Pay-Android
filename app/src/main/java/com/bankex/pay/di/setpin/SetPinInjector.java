@@ -3,6 +3,7 @@ package com.bankex.pay.di.setpin;
 import com.bankex.pay.di.user.UserComponentInjector;
 
 /**
+ * Инжектор для компонента установки пин кода
  * @author Denis Anisimov.
  */
 public class SetPinInjector {
