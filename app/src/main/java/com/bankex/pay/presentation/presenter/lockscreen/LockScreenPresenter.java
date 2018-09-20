@@ -41,7 +41,7 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
     }
 
     /**
-     *
+     * Считываение отпечатка
      */
     public void dispatchOnResume() {
         if (littleFinger.isReadyToUse() && SharedPreferencesUtils.isPinEncoded()) {
@@ -50,6 +50,13 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
         } else {
             getViewState().setSensorStateMessage(R.string.fp_auth_by_fp_unavailable);
         }
+    }
+
+    /**
+     * Отмена считывания отпечатка
+     */
+    public void dispatchOnPause() {
+        littleFinger.cancelAuth();
     }
 
     private void handleCallback(AuthResult result) {
@@ -76,9 +83,5 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
 
     private boolean checkIsPinCorrect(String data) {
         return data.equals(SharedPreferencesUtils.pin());
-    }
-
-    public void dispatchOnPause() {
-        littleFinger.cancelAuth();
     }
 }

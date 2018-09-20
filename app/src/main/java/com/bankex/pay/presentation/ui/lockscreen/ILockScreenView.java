@@ -8,9 +8,21 @@ import com.bankex.pay.presentation.ui.base.BaseView;
  * @author Denis Anisimov.
  */
 public interface ILockScreenView extends BaseView {
+
+    /**
+     * Метод снятия блокировки с экрана
+     */
     void unlock();
 
+    /***
+     * Отображение сообщение об ошибке
+     * @param message
+     */
     void showMessage(int message);
 
+    /**
+     * Отображение состояние сенсора
+     * @param messageRes
+     */
     void setSensorStateMessage(int messageRes);
 }
