@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bankex.pay.R;
-import com.bankex.pay.di.mainscreen.MainScreenInjector;
+import com.bankex.pay.di.settings.SettingsInjector;
 import com.bankex.pay.domain.navigation.settings.ISettingsRouter;
 import com.bankex.pay.utils.dialogs.RateUsDialog;
 
@@ -32,7 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        MainScreenInjector.getMainScreenComponent().inject(this);
+        SettingsInjector.getSettingsComponent().inject(this);
         super.onCreate(savedInstanceState);
 
     }
@@ -46,6 +46,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initPreferences();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        SettingsInjector.clearSettingsComponent();
     }
 
     private void initPreferences() {
