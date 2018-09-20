@@ -6,7 +6,7 @@
     <string name="settings_network_title">Network</string>
 
     <string name="settings_wallets_key">pref_settings_wallets</string>
-    <string name="settings_wallets_title">HD Wallets</string>
+    <string name="settings_wallets_title">Wallets</string>
 
     <string name="settings_security_key">pref_settings_security</string>
     <string name="settings_security_title">Security</string>

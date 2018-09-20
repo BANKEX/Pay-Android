@@ -54,6 +54,14 @@ ext {
     FIREBASE_AUTH = '16.0.3'
     //endregion
 
+    // region wallet
+    WEB3J_VERSION = '3.1.1-android'
+    ETHERUM_GETH_VERSION = '1.7.3'
+    BIP32_VERSION = '0.0.9'
+    BIP39_VERSION = '0.1.9'
+    BIP44_VERSION = '0.0.3'
+    // end region
+
     androidSupport = [
             appcompatV7     : "com.android.support:appcompat-v7:$SUPPORT_VERSION",
             design          : "com.android.support:design:$SUPPORT_VERSION",
@@ -111,7 +119,7 @@ ext {
             qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
 
             //Preference
-            preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
+            preference            : "com.android.support:preference-v14:$SUPPORT_VERSION",
 
             //FingerPrint
             fingetprint           : "com.elegion.littlefinger:littlefinger:$FP_VERSION",
@@ -131,6 +139,15 @@ ext {
             firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
             firebaseDatabase      : "com.google.firebase:firebase-database:$FIREBASE_DATABASE",
             firebaseAuth          : "com.google.firebase:firebase-auth:$FIREBASE_AUTH"
+            firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
             //endregion
+
+            // region wallet
+            web3j                 : "org.web3j:core:$WEB3J_VERSION",
+            ethereum              : "org.ethereum:geth:$ETHERUM_GETH_VERSION",
+            bip32                 : "io.github.novacrypto:BIP32:$BIP32_VERSION",
+            bip39                 : "io.github.novacrypto:BIP39:$BIP39_VERSION",
+            bip44                 : "io.github.novacrypto:BIP44:$BIP44_VERSION"
+            // end region
     ]
 }

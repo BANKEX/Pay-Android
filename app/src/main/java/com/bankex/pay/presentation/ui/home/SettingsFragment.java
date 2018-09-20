@@ -1,5 +1,6 @@
 package com.bankex.pay.presentation.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bankex.pay.R;
+import com.bankex.pay.di.mainscreen.MainScreenInjector;
 import com.bankex.pay.domain.navigation.settings.ISettingsRouter;
+import com.bankex.pay.utils.dialogs.RateUsDialog;
 
 import javax.inject.Inject;
 
@@ -20,7 +23,6 @@ import javax.inject.Inject;
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    // TODO: 08.09.2018 Настроить di
     @Inject
     ISettingsRouter mSettingsRouter;
 
@@ -30,7 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        // TODO: 08.09.2018 добавить Injector
+        MainScreenInjector.getMainScreenComponent().inject(this);
         super.onCreate(savedInstanceState);
 
     }
@@ -44,12 +46,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initPreferences();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // TODO: 08.09.2018 очистить компонент через injector
     }
 
     private void initPreferences() {
@@ -93,28 +89,33 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private Preference.OnPreferenceClickListener getRateUsOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "rateUs", Toast.LENGTH_SHORT).show();
+            RateUsDialog dialog = new RateUsDialog();
+            if (getFragmentManager() != null) {
+                dialog.show(getFragmentManager(), getTag());
+            }
             return true;
         };
     }
 
     private Preference.OnPreferenceClickListener getWriteUsOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "writeUs", Toast.LENGTH_SHORT).show();
+            Context context = getContext();
+            Toast.makeText(context, "Нужно указать валидный e-mail", Toast.LENGTH_SHORT).show();
+            mSettingsRouter.goToEmail(context);
             return true;
         };
     }
 
     private Preference.OnPreferenceClickListener getTwitterOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "twitter", Toast.LENGTH_SHORT).show();
+            mSettingsRouter.goToTwitter(getContext());
             return true;
         };
     }
 
     private Preference.OnPreferenceClickListener getFacebookOnClickListener() {
         return preference -> {
-            Toast.makeText(getActivity(), "facebook", Toast.LENGTH_SHORT).show();
+            mSettingsRouter.goToFacebook(getContext());
             return true;
         };
     }
