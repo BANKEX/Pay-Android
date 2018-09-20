@@ -115,6 +115,8 @@ dependencies {
     implementation libs.adapterDelegates
     implementation libs.guava
     implementation libs.searchView
+    implementation libs.sticky
+    implementation libs.circularimage
     implementation libs.lottie
     implementation libs.amplitude
     implementation libs.fingetprint
