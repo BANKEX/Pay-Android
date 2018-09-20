@@ -15,6 +15,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
@@ -26,7 +27,7 @@ import br.com.stickyindex.view.StickyIndex;
  *
  * @author Denis Anisimov.
  */
-public class ContactFragment extends Fragment {
+public class ContactFragment extends BaseFragment {
 
     @Inject
     IWalletRouter mRouter;
