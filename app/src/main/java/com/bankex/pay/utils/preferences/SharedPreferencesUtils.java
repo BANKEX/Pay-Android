@@ -17,6 +17,10 @@ public class SharedPreferencesUtils {
     private static final String KEY_PIN = "KEY_PIN";
     private static final String KEY_ENCODED_PIN = "KEY_ENCODED_PIN";
 
+    private static SharedPreferences getDefaultSharedPreferences() {
+        return PreferenceManager.getDefaultSharedPreferences(BankexPayApplication.getInstance().getApplicationContext());
+    }
+
     /**
      * Получаем статус - показывали ли онбординг
      *
@@ -41,36 +45,57 @@ public class SharedPreferencesUtils {
                 .apply();
     }
 
-
+    /**
+     * Проверка записан ли шифрованный пальцем пин
+     *
+     * @return статус boolean
+     */
     public static boolean isPinEncoded() {
         SharedPreferences preferences = getDefaultSharedPreferences();
         return preferences.contains(KEY_ENCODED_PIN);
     }
 
-    private static SharedPreferences getDefaultSharedPreferences() {
-        return PreferenceManager.getDefaultSharedPreferences(BankexPayApplication.getInstance().getApplicationContext());
-    }
-
+    /**
+     * Проверка записан ли пин
+     *
+     * @return статус boolean
+     */
     public static boolean isPinSaved() {
         SharedPreferences preferences = getDefaultSharedPreferences();
         return preferences.contains(KEY_PIN);
     }
 
+    /**
+     * Получаем пин
+     * @return Пин
+     */
     public static String pin() {
         SharedPreferences preferences = getDefaultSharedPreferences();
         return preferences.getString(KEY_PIN, null);
     }
 
+    /**
+     * Получаем шифрованный пальцем пин
+     * @return Пин
+     */
     public static String encodedPin() {
         SharedPreferences preferences = getDefaultSharedPreferences();
         return preferences.getString(KEY_ENCODED_PIN, null);
     }
 
+    /**
+     *  Устанавливаем шифрованый пальцем пин
+     * @param pin
+     */
     public static void setEncodedPin(String pin) {
         SharedPreferences preferences = getDefaultSharedPreferences();
         preferences.edit().putString(KEY_ENCODED_PIN, pin).apply();
     }
 
+    /**
+     *  Устанавливаем пин
+     * @param pin
+     */
     public static void setPin(String pin) {
         SharedPreferences preferences = getDefaultSharedPreferences();
         preferences.edit().putString(KEY_PIN, pin).apply();
