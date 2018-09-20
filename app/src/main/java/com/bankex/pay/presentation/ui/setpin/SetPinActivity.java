@@ -34,6 +34,16 @@ public class SetPinActivity extends BaseActivity implements ISetPinView {
 
     private TextView editText;
 
+    /**
+     * Возвращает интент SetPinActivity
+     *
+     * @param context Context
+     * @return intent
+     */
+    public static Intent newIntent(Context context) {
+        return new Intent(context, SetPinActivity.class);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SetPinInjector.getSetPinComponent().inject(this);
@@ -78,15 +88,5 @@ public class SetPinActivity extends BaseActivity implements ISetPinView {
     @Override
     public void setSensorStateMessage(int messageRes) {
 
-    }
-
-    /**
-     * Возвращает интент SetPinActivity
-     *
-     * @param context Context
-     * @return intent
-     */
-    public static Intent newIntent(Context context) {
-        return new Intent(context, SetPinActivity.class);
     }
 }
