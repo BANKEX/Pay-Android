@@ -6,6 +6,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import dagger.Provides;
 
 /**
+ * Модуль для файербэйса
+ *
  * @author Denis Anisimov.
  */
 public class FireBaseModule {

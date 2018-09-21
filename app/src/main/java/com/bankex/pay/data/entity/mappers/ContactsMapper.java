@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ * Маппер из серверного энтити с модель приложения на случай переезда
+ *
  * @author Denis Anisimov.
  */
 public class ContactsMapper {

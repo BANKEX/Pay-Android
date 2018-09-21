@@ -17,6 +17,8 @@ import java.util.List;
 import br.com.stickyindex.view.FastScrollerLabelPublisher;
 
 /**
+ * Адаптер для списка контктов
+ *
  * @author Denis Anisimov.
  */
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FastScrollerLabelPublisher {

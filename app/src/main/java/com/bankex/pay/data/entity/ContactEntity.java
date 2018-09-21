@@ -3,6 +3,8 @@ package com.bankex.pay.data.entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Серверное энтити файербайса
+ *
  * @author Denis Anisimov.
  */
 public class ContactEntity {

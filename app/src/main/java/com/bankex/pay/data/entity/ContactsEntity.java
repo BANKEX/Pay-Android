@@ -8,6 +8,8 @@ import java.util.HashMap;
 import io.realm.internal.Keep;
 
 /**
+ * Серверное энтити файербайса которое по идее вяжется к аккаунту или HD wallet
+ *
  * @author Denis Anisimov.
  */
 @Keep

@@ -5,7 +5,7 @@ import com.bankex.pay.presentation.ui.home.ContactFragment;
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент для варианта "чтобы быстро и работало"
+ * Временный сабкомпонент для вфрагмента с контактами
  *
  * @author Denis Anisimov.
  */

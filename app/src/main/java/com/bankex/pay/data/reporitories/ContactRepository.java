@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import io.reactivex.Observable;
 
 /**
+ * Общий репозиторий для контактов
  * @author Denis Anisimov.
  */
 @Singleton

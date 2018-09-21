@@ -8,6 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Модуль для экрана блокировки экрана
  *
  * @author Denis Anisimov.
  */

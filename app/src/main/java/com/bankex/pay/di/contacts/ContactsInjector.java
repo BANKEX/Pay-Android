@@ -3,6 +3,8 @@ package com.bankex.pay.di.contacts;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 
 /**
+ * Инжектор для фрагмента с конткатами
+ *
  * @author Denis Anisimov.
  */
 public class ContactsInjector {

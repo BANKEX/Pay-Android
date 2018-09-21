@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 
 /**
+ * Датасорс дляктонтактов из файрбэйса
  * @author Denis Anisimov.
  */
 public class ContactsDataSourceRemote extends BaseFirebaseDataSource {

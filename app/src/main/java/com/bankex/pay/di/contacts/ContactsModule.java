@@ -10,6 +10,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * Модуль для фрагмента с контактами
+ *
+ * @author Denis Anisimov.
+ */
 @Module(includes = FireBaseModule.class)
 public class ContactsModule {
 

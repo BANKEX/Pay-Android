@@ -4,6 +4,8 @@ import com.bankex.pay.data.entity.ContactEntity;
 import com.bankex.pay.domain.models.ContactModel;
 
 /**
+ * Маппер из серверного энтити с модель приложения  на случай переезда
+ *
  * @author Denis Anisimov.
  */
 class ContactMapper {

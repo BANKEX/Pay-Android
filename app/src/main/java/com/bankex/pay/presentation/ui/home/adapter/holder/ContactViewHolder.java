@@ -9,6 +9,8 @@ import com.bankex.pay.R;
 import com.pkmmte.view.CircularImageView;
 
 /**
+ * Холдер для контактов
+ *
  * @author Denis Anisimov.
  */
 public class ContactViewHolder extends RecyclerView.ViewHolder {

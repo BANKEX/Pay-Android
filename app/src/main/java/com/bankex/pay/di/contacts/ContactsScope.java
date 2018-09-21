@@ -6,6 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
+ * Скоуп для фрагмента с конктами
+ *
  * @author Denis Anisimov.
  */
 @Scope
