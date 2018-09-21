@@ -34,18 +34,22 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
 
     private EditText editText;
 
+    /**
+     * Возвращает интент LockScreenActivity
+     *
+     * @param context Context
+     * @return intent
+     */
+    public static Intent newIntent(Context context) {
+        return new Intent(context, LockScreenActivity.class);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LockScreenInjector.getLockScreenComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
         editText = findViewById(R.id.pin);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        LockScreenInjector.clearLockScreenComponent();
     }
 
     @Override
@@ -67,6 +71,11 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LockScreenInjector.clearLockScreenComponent();
+    }
 
     @Override
     public void unlock() {
@@ -81,15 +90,5 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
     @Override
     public void setSensorStateMessage(int messageRes) {
 
-    }
-
-    /**
-     * Возвращает интент LockScreenActivity
-     *
-     * @param context Context
-     * @return intent
-     */
-    public static Intent newIntent(Context context) {
-        return new Intent(context, LockScreenActivity.class);
     }
 }

@@ -5,7 +5,7 @@ import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент для варианта "чтобы быстро и работало"
+ * Временный сабкомпонент лок скрина
  *
  * @author Denis Anisimov.
  */

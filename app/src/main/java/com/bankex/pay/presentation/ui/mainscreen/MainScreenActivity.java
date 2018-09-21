@@ -64,6 +64,19 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         MainScreenInjector.clearMainScreenComponent();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ONBOARDING_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    Intent intent = SetPinActivity.newIntent(this);
+                    startActivityForResult(intent, ONBOARDING_REQUEST);
+                }
+                break;
+        }
+    }
+
     /**
      * {@inheritDoc }
      */
@@ -127,17 +140,4 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         }
         return false;
     };
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case ONBOARDING_REQUEST:
-                if (resultCode == RESULT_OK) {
-                    Intent intent = SetPinActivity.newIntent(this);
-                    startActivityForResult(intent, ONBOARDING_REQUEST);
-                }
-                break;
-        }
-    }
 }

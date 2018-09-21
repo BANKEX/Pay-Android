@@ -7,6 +7,10 @@ import com.elegion.littlefinger.LittleFinger;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * Модуль для экрана установки пин кода предоставляющий перезнтер
+ * @author Denis Anisimov.
+ */
 @Module(includes = LittleFingerModule.class)
 public class SetPinModule {
 

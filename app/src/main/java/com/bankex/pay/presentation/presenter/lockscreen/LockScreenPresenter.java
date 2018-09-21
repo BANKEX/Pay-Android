@@ -8,6 +8,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.ui.lockscreen.ILockScreenView;
+
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
@@ -40,7 +41,7 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
     }
 
     /**
-     *
+     * Считываение отпечатка
      */
     public void dispatchOnResume() {
         if (littleFinger.isReadyToUse() && SharedPreferencesUtils.isPinEncoded()) {
@@ -49,6 +50,13 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
         } else {
             getViewState().setSensorStateMessage(R.string.fp_auth_by_fp_unavailable);
         }
+    }
+
+    /**
+     * Отмена считывания отпечатка
+     */
+    public void dispatchOnPause() {
+        littleFinger.cancelAuth();
     }
 
     private void handleCallback(AuthResult result) {
@@ -75,9 +83,5 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
 
     private boolean checkIsPinCorrect(String data) {
         return data.equals(SharedPreferencesUtils.pin());
-    }
-
-    public void dispatchOnPause() {
-        littleFinger.cancelAuth();
     }
 }

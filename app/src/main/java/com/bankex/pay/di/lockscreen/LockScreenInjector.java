@@ -3,6 +3,8 @@ package com.bankex.pay.di.lockscreen;
 import com.bankex.pay.di.user.UserComponentInjector;
 
 /**
+ * Инжектор для компонента блокировки экрана
+ *
  * @author Denis Anisimov.
  */
 public class LockScreenInjector {

@@ -11,7 +11,7 @@ import dagger.Provides;
 /**
  * Модуль представления зависимостей LittleFinger
  *
- * @author Gevork Safaryan on 11.09.2018.
+ * @author Denis Anisimov.
  */
 @Module
 public class LittleFingerModule {

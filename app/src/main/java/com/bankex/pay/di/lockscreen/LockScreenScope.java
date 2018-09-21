@@ -6,6 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
+ * Скоуп для лок скрина
  * @author Denis Anisimov.
  */
 @Scope
