@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.ui.home;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +16,7 @@ import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.home.adapter.ContactsAdapter;
 
 import javax.inject.Inject;
 
@@ -36,6 +37,9 @@ public class ContactFragment extends BaseFragment {
     IAnalyticsManager mAnalyticsManager;
 
     @Inject
+    ContactsAdapter adapter;
+
+    @Inject
     @InjectPresenter
     ContactsPresenter mContactsPresenter;
 
@@ -51,7 +55,6 @@ public class ContactFragment extends BaseFragment {
     StickyIndex stickyIndex;
 
     FloatingActionButton floatingActionButton;
-
 
     /**
      * Возвращаем инстанс фрагмента ContactFragment
@@ -81,5 +84,17 @@ public class ContactFragment extends BaseFragment {
         stickyIndex = inflate.findViewById(R.id.stickyIndex);
         floatingActionButton = inflate.findViewById(R.id.fab);
     }
+
+    private void assemblyContactList() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
+        assemblyStickyIndexAndFastScroller();
+    }
+
+    private void assemblyStickyIndexAndFastScroller() {
+        stickyIndex.bindRecyclerView(recyclerView);
+        fastScroller.bindRecyclerView(recyclerView);
+    }
+
 
 }

@@ -2,9 +2,13 @@ package com.bankex.pay.presentation.ui.home.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.bankex.pay.R;
 import com.bankex.pay.domain.models.ContactModel;
+import com.bankex.pay.presentation.ui.home.adapter.holder.ContactViewHolder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,14 +19,16 @@ import br.com.stickyindex.view.FastScrollerLabelPublisher;
 /**
  * @author Denis Anisimov.
  */
-public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FastScrollerLabelPublisher {
+public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FastScrollerLabelPublisher {
 
     List<ContactModel> mContactModelList;
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater from = LayoutInflater.from(parent.getContext());
+        View inflate = from.inflate(R.layout.contacts_list_item, parent, false);
+        return new ContactViewHolder(inflate);
     }
 
     @Override
@@ -32,12 +38,15 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mContactModelList.size();
     }
 
     @NotNull
     @Override
     public String getLabel(int i) {
-        return null;
+        ContactModel contactModel = mContactModelList.get(i);
+        String firstName = contactModel.getFirstName();
+        char c = firstName.charAt(0);
+        return String.valueOf(c).toUpperCase();
     }
 }
