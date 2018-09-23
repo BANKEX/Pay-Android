@@ -10,7 +10,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
-import com.bankex.pay.domain.navigation.home.IHomeRouter;
+import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
 import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;

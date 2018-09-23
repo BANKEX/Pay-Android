@@ -1,6 +1,7 @@
 package com.bankex.pay.di.user;
 
 
+import com.bankex.pay.di.importorcreate.ImportOrCreateComponent;
 import com.bankex.pay.di.mainscreen.MainScreenComponent;
 
 import dagger.Subcomponent;
@@ -21,4 +22,6 @@ public interface UserComponent {
     }
 
     MainScreenComponent.Builder plusMainScreenComponentBuilder();
+
+    ImportOrCreateComponent.Builder plusImportOrCreateComponentBuilder();
 }

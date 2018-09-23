@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bankex_background">
 
     <ImageView
         android:id="@+id/logo"
@@ -19,29 +19,29 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/import_button"
+        android:id="@+id/create_button"
         style="@style/ButtonPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
         android:layout_marginLeft="@dimen/login_button_margin"
         android:layout_marginRight="@dimen/margin_medium_x"
-        android:text="Create Wallet"
-        android:layout_marginBottom="@dimen/margin_large"
+        android:text="@string/create_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/create_button"
+        app:layout_constraintLeft_toRightOf="@+id/import_button"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/create_button"
+        android:id="@+id/import_button"
         style="@style/ButtonOutlinePrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
         android:layout_marginLeft="@dimen/margin_medium_x"
         android:layout_marginRight="@dimen/login_button_margin"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:text="Import Wallet"
+        android:text="@string/import_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/import_button"/>
+        app:layout_constraintRight_toLeftOf="@+id/create_button"/>
 
 </android.support.constraint.ConstraintLayout>
