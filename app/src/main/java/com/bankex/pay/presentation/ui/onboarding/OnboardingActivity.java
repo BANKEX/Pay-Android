@@ -101,6 +101,7 @@ public class OnboardingActivity extends AppIntro {
 
     private void saveResultAndFinish() {
         SharedPreferencesUtils.setOnboardingPreferenceStatus(this, true);
+        setResult(RESULT_OK);
         finish();
     }
 }

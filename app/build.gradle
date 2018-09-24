@@ -114,6 +114,8 @@ dependencies {
     implementation libs.searchView
     implementation libs.lottie
     implementation libs.amplitude
+    implementation libs.fingetprint
+
     implementation(libs.fabric) {
         transitive = true
     }
