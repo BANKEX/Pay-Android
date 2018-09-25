@@ -15,13 +15,13 @@ import com.pkmmte.view.CircularImageView;
  */
 public class ContactViewHolder extends RecyclerView.ViewHolder {
 
-    private LinearLayout container;
+    public LinearLayout container;
 
-    private TextView index;
+    public TextView index;
 
-    private TextView name;
+    public TextView name;
 
-    private CircularImageView thumbnail;
+    public CircularImageView thumbnail;
 
     public ContactViewHolder(View itemView) {
         super(itemView);
@@ -30,5 +30,6 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         name = itemView.findViewById(R.id.textView_contactName);
         thumbnail = itemView.findViewById(R.id.circularView_thumbnail);
     }
+
 
 }

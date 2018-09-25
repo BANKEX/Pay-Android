@@ -13,10 +13,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
+import com.bankex.pay.domain.models.ContactModel;
 import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.home.adapter.ContactsAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,7 +31,7 @@ import br.com.stickyindex.view.StickyIndex;
  *
  * @author Denis Anisimov.
  */
-public class ContactFragment extends BaseFragment {
+public class ContactFragment extends BaseFragment implements IContactView {
 
     @Inject
     IWalletRouter mRouter;
@@ -85,15 +88,39 @@ public class ContactFragment extends BaseFragment {
         floatingActionButton = inflate.findViewById(R.id.fab);
     }
 
-    private void assemblyContactList() {
+    @Override
+    public void assemblyContactList() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
         assemblyStickyIndexAndFastScroller();
     }
 
-    private void assemblyStickyIndexAndFastScroller() {
+    @Override
+    public void assemblyStickyIndexAndFastScroller() {
         stickyIndex.bindRecyclerView(recyclerView);
         fastScroller.bindRecyclerView(recyclerView);
+    }
+
+    @Override
+    public char[] convertToIndexList(List<ContactModel> list) {
+        char[] result = new char[list.size()];
+        int i = 0;
+        for (ContactModel model : list) {
+            result[i] = model.getFirstName().toUpperCase().charAt(0);
+            i++;
+        }
+        return result;
+    }
+
+    @Override
+    public void loadContacts(List<ContactModel> contacts) {
+        adapter.refresh(contacts);
+        stickyIndex.refresh(convertToIndexList(contacts));
+    }
+
+    @Override
+    public void scrollToContact(String name) {
+
     }
 
 
