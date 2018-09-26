@@ -20,10 +20,6 @@ public class ContactsPresenter extends BasePresenter<IContactView> {
 
     private ContactRepository datasource;
 
-    public ContactsPresenter(@NotNull Lifecycle lifecycle) {
-        super(lifecycle);
-    }
-
     @Override
     public void onStart() {
         super.onStart();

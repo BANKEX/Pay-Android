@@ -12,11 +12,11 @@ import com.bankex.pay.di.mainscreen.MainScreenInjector;
 public class ContactsInjector {
     private static ContactsComponent sContactsComponent;
 
-    public static ContactsComponent getContactsComponent(Lifecycle lifecycle) {
+    public static ContactsComponent getContactsComponent() {
         if (sContactsComponent == null) {
             sContactsComponent = MainScreenInjector.getMainScreenComponent()
                     .plusContactsComponent()
-                    .makeContactsModule(new ContactsModule(lifecycle))
+                    .makeContactsModule(new ContactsModule())
                     .build();
         }
         return sContactsComponent;

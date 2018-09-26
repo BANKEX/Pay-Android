@@ -20,16 +20,11 @@ import dagger.Provides;
 @Module(includes = FireBaseModule.class)
 public class ContactsModule {
 
-    private final Lifecycle lifecycle;
-
-    public ContactsModule(Lifecycle lifecycle) {
-        this.lifecycle = lifecycle;
-    }
 
     @Provides
     @ContactsScope
     ContactsPresenter provideContactsPresenter() {
-        return new ContactsPresenter(lifecycle);
+        return new ContactsPresenter();
     }
 
     @Provides
