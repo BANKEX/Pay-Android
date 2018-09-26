@@ -98,6 +98,7 @@ dependencies {
     implementation androidSupport.appcompatV7
     implementation androidSupport.design
     implementation androidSupport.constraintLayout
+    implementation androidSupport.multidex
     implementation libs.dagger
     implementation 'com.android.support:support-v4:28.0.0-rc02'
     annotationProcessor libs.daggerCompiler

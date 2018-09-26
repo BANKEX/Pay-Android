@@ -17,6 +17,7 @@ ext {
     DAGGER_VERSION = '2.14.1'
     MOXY_VERSION = '1.5.3'
     SUPPORT_VERSION = '27.0.2'
+    MULTIDEX_VERSION = '1.0.3'
     CONSTRAINT_LAYOUT_VERSION = '1.0.2'
     RX_JAVA_VERSION = '2.1.9'
     RX_ANDROID_VERSION = '2.0.1'
@@ -69,6 +70,7 @@ ext {
             design          : "com.android.support:design:$SUPPORT_VERSION",
             constraintLayout: "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION",
             preference      : "com.android.support:preference-v7:$SUPPORT_VERSION",
+            multidex        : "com.android.support:multidex:$MULTIDEX_VERSION",
 
             // testing
             espresso        : "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION",

@@ -1,6 +1,7 @@
 package com.bankex.pay;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.bankex.pay.di.application.ApplicationComponent;
 import com.bankex.pay.di.application.DaggerApplicationComponent;
@@ -19,7 +20,7 @@ import io.realm.Realm;
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
-public class BankexPayApplication extends Application {
+public class BankexPayApplication extends MultiDexApplication {
     private static BankexPayApplication sInstance;
     private static ApplicationComponent sApplicationComponent;
 
