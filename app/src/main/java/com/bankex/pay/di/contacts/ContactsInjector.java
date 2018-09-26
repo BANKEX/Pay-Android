@@ -1,5 +1,7 @@
 package com.bankex.pay.di.contacts;
 
+import android.arch.lifecycle.Lifecycle;
+
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 
 /**
@@ -10,11 +12,11 @@ import com.bankex.pay.di.mainscreen.MainScreenInjector;
 public class ContactsInjector {
     private static ContactsComponent sContactsComponent;
 
-    public static ContactsComponent getContactsComponent() {
+    public static ContactsComponent getContactsComponent(Lifecycle lifecycle) {
         if (sContactsComponent == null) {
             sContactsComponent = MainScreenInjector.getMainScreenComponent()
                     .plusContactsComponent()
-                    .makeContactsModule(new ContactsModule())
+                    .makeContactsModule(new ContactsModule(lifecycle))
                     .build();
         }
         return sContactsComponent;

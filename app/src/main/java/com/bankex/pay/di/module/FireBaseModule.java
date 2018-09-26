@@ -3,6 +3,7 @@ package com.bankex.pay.di.module;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import dagger.Module;
 import dagger.Provides;
 
 /**
@@ -10,6 +11,7 @@ import dagger.Provides;
  *
  * @author Denis Anisimov.
  */
+@Module
 public class FireBaseModule {
 
     @Provides

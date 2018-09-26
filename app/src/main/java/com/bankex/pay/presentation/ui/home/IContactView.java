@@ -17,8 +17,6 @@ public interface IContactView extends BaseView {
 
     void assemblyStickyIndexAndFastScroller();
 
-    char[] convertToIndexList(List<ContactModel> list);
-
     /**
      * Load the given contacts in the list
      */

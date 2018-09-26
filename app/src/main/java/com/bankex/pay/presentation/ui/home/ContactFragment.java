@@ -2,6 +2,7 @@ package com.bankex.pay.presentation.ui.home;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
+import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.domain.models.ContactModel;
 import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
@@ -73,6 +75,12 @@ public class ContactFragment extends BaseFragment implements IContactView {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        ContactsInjector.getContactsComponent(getLifecycle()).inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_contact, container, false);
@@ -101,8 +109,7 @@ public class ContactFragment extends BaseFragment implements IContactView {
         fastScroller.bindRecyclerView(recyclerView);
     }
 
-    @Override
-    public char[] convertToIndexList(List<ContactModel> list) {
+    private char[] convertToIndexList(List<ContactModel> list) {
         char[] result = new char[list.size()];
         int i = 0;
         for (ContactModel model : list) {

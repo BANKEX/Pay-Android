@@ -1,5 +1,7 @@
 package com.bankex.pay.di.contacts;
 
+import android.arch.lifecycle.Lifecycle;
+
 import com.bankex.pay.data.reporitories.ContactsDataSourceRemote;
 import com.bankex.pay.di.module.FireBaseModule;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
@@ -18,10 +20,16 @@ import dagger.Provides;
 @Module(includes = FireBaseModule.class)
 public class ContactsModule {
 
+    private final Lifecycle lifecycle;
+
+    public ContactsModule(Lifecycle lifecycle) {
+        this.lifecycle = lifecycle;
+    }
+
     @Provides
     @ContactsScope
     ContactsPresenter provideContactsPresenter() {
-        return new ContactsPresenter();
+        return new ContactsPresenter(lifecycle);
     }
 
     @Provides
