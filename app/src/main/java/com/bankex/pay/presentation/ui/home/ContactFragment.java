@@ -76,7 +76,7 @@ public class ContactFragment extends BaseFragment implements IContactView {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        ContactsInjector.getContactsComponent(getLifecycle()).inject(this);
+        ContactsInjector.getContactsComponent().inject(this);
         super.onCreate(savedInstanceState);
     }
 
