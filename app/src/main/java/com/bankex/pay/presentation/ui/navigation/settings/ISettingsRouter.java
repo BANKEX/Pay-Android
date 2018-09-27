@@ -1,4 +1,4 @@
-package com.bankex.pay.domain.navigation.settings;
+package com.bankex.pay.presentation.ui.navigation.settings;
 
 import android.content.Context;
 

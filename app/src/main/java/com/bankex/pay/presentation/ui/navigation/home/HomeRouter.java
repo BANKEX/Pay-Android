@@ -1,4 +1,4 @@
-package com.bankex.pay.domain.navigation.home;
+package com.bankex.pay.presentation.ui.navigation.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

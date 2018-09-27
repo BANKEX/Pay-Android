@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bankex.pay.R;
 import com.bankex.pay.di.settings.SettingsInjector;
-import com.bankex.pay.domain.navigation.settings.ISettingsRouter;
+import com.bankex.pay.presentation.ui.navigation.settings.ISettingsRouter;
 import com.bankex.pay.utils.dialogs.RateUsDialog;
 
 import javax.inject.Inject;

@@ -1,4 +1,4 @@
-package com.bankex.pay.domain.navigation.wallet;
+package com.bankex.pay.presentation.ui.navigation.wallet;
 
 import android.content.Context;
 import android.content.Intent;
