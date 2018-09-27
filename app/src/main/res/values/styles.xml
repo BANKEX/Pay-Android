@@ -47,5 +47,9 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="set_pin_edit_style">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/bankex_black</item>
+    </style>
 
 </resources>

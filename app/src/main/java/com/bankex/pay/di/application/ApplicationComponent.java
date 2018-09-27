@@ -1,5 +1,7 @@
 package com.bankex.pay.di.application;
 
+import android.content.Context;
+
 import com.bankex.pay.di.module.AnalyticsModule;
 import com.bankex.pay.di.module.NavigationModule;
 import com.bankex.pay.di.module.NetworkModule;
@@ -28,4 +30,6 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     UserComponent.Builder plusUserComponent();
+
+    Context getAppContext();
 }

@@ -6,4 +6,5 @@
     <dimen name="text_size_display">24sp</dimen>
 
     <dimen name="text_size_big_display">48sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
 </resources>

@@ -21,6 +21,8 @@ public class MainScreenPresenter extends BasePresenter<IMainScreenView> {
     public void checkOnboardingStatus(boolean status) {
         if (!status) {
             getViewState().showOnboarding();
+        } else {
+            getViewState().showLockScreen();
         }
     }
 }

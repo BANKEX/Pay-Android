@@ -16,4 +16,9 @@ public interface IMainScreenView extends BaseView {
      * показываем онбординг
      */
     void showOnboarding();
+
+    /**
+     * показываем локскрин
+     */
+    void showLockScreen();
 }
