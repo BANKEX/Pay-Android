@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.navigation;
+package com.bankex.pay.presentation.ui.navigation.base;
 
 import android.support.annotation.IdRes;
 import android.support.transition.Fade;
@@ -9,8 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 /**
  * Реализация {@link IBankexRouter}

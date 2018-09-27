@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 /**
  * Фрагмент экрана Импорта Создания Кошелька

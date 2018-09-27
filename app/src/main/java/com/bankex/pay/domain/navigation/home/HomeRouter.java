@@ -4,8 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
-import com.bankex.pay.presentation.ui.navigation.BaseRouter;
+import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.transactionhistory.TransactionHistoryFragment;
 
 /**
  * @author Pavel Apanovskiy on 12.09.2018.
@@ -21,10 +22,9 @@ public class HomeRouter extends BaseRouter implements IHomeRouter {
     }
 
     @Override
-    public void goToHistoryTab(FragmentActivity activity,
-                               BaseFragment fragment) {
+    public void goToHistoryTab(FragmentActivity activity) {
         runFragmentWithAnimation(activity,
-                fragment,
+                TransactionHistoryFragment.newInstance(),
                 R.id.fragment_container);
     }
 
