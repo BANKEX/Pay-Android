@@ -12,12 +12,12 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
 import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
-import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
 import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
+import com.bankex.pay.presentation.ui.view.base.BaseActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -122,7 +122,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
             case R.id.navigation_history:
                 hideKeyboard();
                 if (!item.isChecked()) {
-                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                    mRouter.goToHistoryTab(this);
                 }
                 return true;
             case R.id.navigation_contacts:

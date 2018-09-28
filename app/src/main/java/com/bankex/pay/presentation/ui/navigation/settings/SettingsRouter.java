@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.bankex.pay.presentation.ui.navigation.BaseRouter;
+import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 
 /**
  * Реализация роутера экрана настроек {@link ISettingsRouter}

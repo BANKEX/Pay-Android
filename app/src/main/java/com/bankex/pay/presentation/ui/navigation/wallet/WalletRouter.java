@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateActivity;
-import com.bankex.pay.presentation.ui.navigation.BaseRouter;
+import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 
 /**
  * Реализация роутера экрана wallet {@link IWalletRouter}

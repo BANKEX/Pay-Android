@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.base.BaseActivity;
+import com.bankex.pay.presentation.ui.view.base.BaseActivity;
 
 /**
  * Активити экрана Импорта Создания Кошелька

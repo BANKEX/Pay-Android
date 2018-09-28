@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bankex.pay.R;
 import com.bankex.pay.di.onboarding.OnboardingInjector;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 /**
  * фрагмент онбординга

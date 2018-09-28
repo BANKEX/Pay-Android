@@ -12,7 +12,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.wallet.WalletInjector;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 import javax.inject.Inject;
 

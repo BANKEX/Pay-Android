@@ -1,54 +1,45 @@
-package com.bankex.pay.presentation.ui.base;
+package com.bankex.pay.presentation.ui.view.base;
 
 import android.content.Context;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.navigation.IBankexRouter;
-
-import javax.inject.Inject;
 
 /**
- * Базовый активити приложения
+ * Базовый фрагмент приложения
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
-public class BaseActivity extends MvpAppCompatActivity {
-
-    @Inject
-    IBankexRouter mRouter;
+public class BaseFragment extends MvpAppCompatFragment {
 
     /**
-     * Запускаем фрагмент с анимацией
+     * Возвращаем BottomNavigationView или null
      *
-     * @param baseFragment BaseFragment
+     * @return BottomNavigationView
      */
-    public void runFragmentWithAnimation(BaseFragment baseFragment) {
-        mRouter.runFragmentWithAnimation(this,
-                baseFragment,
-                R.id.fragment_container);
-    }
-
-    /**
-     * Запускаем фрагмент
-     *
-     * @param fragment BaseFragment
-     */
-    public void runFragment(BaseFragment fragment) {
-        mRouter.runBankexFragment(this,
-                fragment,
-                R.id.fragment_container);
+    @Nullable
+    public BottomNavigationView getBottomNavigationView() {
+        BottomNavigationView bottomNavigationView = null;
+        if (getActivity() != null) {
+            bottomNavigationView = getActivity().findViewById(R.id.home_navigation);
+        }
+        return bottomNavigationView;
     }
 
     /**
      * Пытаемся спрятать клавиатуру
      */
     public void hideKeyboard() {
-        FragmentActivity activity = this;
+        FragmentActivity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
         final InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 
         View view = activity.getCurrentFocus();
@@ -65,6 +56,13 @@ public class BaseActivity extends MvpAppCompatActivity {
             imm.hideSoftInputFromWindow(binder, 0);
         } catch (Exception ignored) {
             //do nothing
+        }
+    }
+
+    public void finish() {
+        FragmentActivity activity = getActivity();
+        if (activity != null) {
+            activity.finish();
         }
     }
 }
