@@ -1,7 +1,5 @@
 package com.bankex.pay.di.contacts;
 
-import android.arch.lifecycle.Lifecycle;
-
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 
 /**
