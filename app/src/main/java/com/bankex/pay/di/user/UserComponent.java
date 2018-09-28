@@ -1,5 +1,6 @@
 package com.bankex.pay.di.user;
 
+import com.bankex.pay.di.importorcreate.ImportOrCreateComponent;
 import com.bankex.pay.di.mainscreen.MainScreenComponent;
 import com.bankex.pay.di.setpin.SetPinComponent;
 import com.bankex.pay.di.lockscreen.LockScreenComponent;
@@ -25,6 +26,7 @@ public interface UserComponent {
 
     MainScreenComponent.Builder plusMainScreenComponentBuilder();
 
+    ImportOrCreateComponent.Builder plusImportOrCreateComponentBuilder();
     SetPinComponent.Builder plusSetPinComponentBuilder();
     LockScreenComponent.Builder plusLockScreenComponentBuilder();
 }

@@ -1,11 +1,11 @@
 package com.bankex.pay.di.module;
 
-import com.bankex.pay.domain.navigation.home.HomeRouter;
-import com.bankex.pay.domain.navigation.home.IHomeRouter;
-import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
-import com.bankex.pay.domain.navigation.wallet.WalletRouter;
-import com.bankex.pay.presentation.ui.navigation.base.BankexRouter;
-import com.bankex.pay.presentation.ui.navigation.base.IBankexRouter;
+import com.bankex.pay.presentation.ui.navigation.home.HomeRouter;
+import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
+import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
+import com.bankex.pay.presentation.ui.navigation.wallet.WalletRouter;
+import com.bankex.pay.presentation.ui.navigation.BankexRouter;
+import com.bankex.pay.presentation.ui.navigation.IBankexRouter;
 
 import javax.inject.Singleton;
 

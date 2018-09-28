@@ -6,6 +6,7 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_medium_x">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_large_x">48dp</dimen>
     <dimen name="margin_big">56dp</dimen>
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
     <dimen name="first_screen_text_top_margin">168dp</dimen>
