@@ -15,7 +15,7 @@ import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
  */
 public class SettingsRouter extends BaseRouter implements ISettingsRouter {
 
-    private static final String EMAIL = "e-mail";
+    private static final String EMAIL = "pay@bankex.com";
     private static final String TWITTER_USER_NAME = "BANKEX";
     private static final String FACEBOOK_USER_NAME = "BankExchange";
     private static final String FACEBOOK_PAGE_ID = "428217707302739";
