@@ -52,4 +52,7 @@
         <item name="android:textColor">@color/bankex_black</item>
     </style>
 
+    <style name="ButtonAppCompat" parent="Widget.AppCompat.Button.Colored">
+    </style>
+
 </resources>

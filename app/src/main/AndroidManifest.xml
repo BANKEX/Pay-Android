@@ -48,6 +48,10 @@
         <activity
             android:name=".presentation.ui.importwallet.ImportWalletActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".presentation.ui.view.receive.ReceiveActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 
