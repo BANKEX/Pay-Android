@@ -49,6 +49,15 @@ public class BaseRouter {
                                             Fragment baseFragment,
                                             @IdRes int containerViewId) {
         FragmentManager mFragmentManager = activity.getSupportFragmentManager();
+        processAnimation(baseFragment, containerViewId, mFragmentManager);
+    }
+
+    protected void runChildFragmentWithAnimation(Fragment baseFragment,@IdRes int containerViewId) {
+        FragmentManager mFragmentManager = baseFragment.getChildFragmentManager();
+        processAnimation(baseFragment, containerViewId, mFragmentManager);
+    }
+
+    private void processAnimation(Fragment baseFragment, @IdRes int containerViewId, FragmentManager mFragmentManager) {
         Fragment previousFragment = mFragmentManager.findFragmentById(containerViewId);
 
         if (previousFragment.getId() == baseFragment.getId()) {
@@ -71,4 +80,5 @@ public class BaseRouter {
                 baseFragment);
         fragmentTransaction.commit();
     }
+
 }

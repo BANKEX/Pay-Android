@@ -1,5 +1,7 @@
 package com.bankex.pay.di.module;
 
+import com.bankex.pay.domain.navigation.contacts.ContactsRouter;
+import com.bankex.pay.domain.navigation.contacts.IContactsRouter;
 import com.bankex.pay.domain.navigation.home.HomeRouter;
 import com.bankex.pay.domain.navigation.home.IHomeRouter;
 import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
@@ -36,5 +38,11 @@ public class NavigationModule {
     @Singleton
     IWalletRouter provideWalletRouter() {
         return new WalletRouter();
+    }
+
+    @Provides
+    @Singleton
+    IContactsRouter provideContactsRouter() {
+        return new ContactsRouter();
     }
 }

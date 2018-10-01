@@ -16,10 +16,11 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.domain.models.ContactModel;
-import com.bankex.pay.domain.navigation.wallet.IWalletRouter;
+import com.bankex.pay.domain.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.home.adapter.ContactsAdapter;
+import com.bankex.pay.presentation.ui.home.addcontacts.AddContactFragment;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ import br.com.stickyindex.view.StickyIndex;
 public class ContactFragment extends BaseFragment implements IContactView {
 
     @Inject
-    IWalletRouter mRouter;
+    IContactsRouter mRouter;
 
     @Inject
     IAnalyticsManager mAnalyticsManager;
@@ -94,6 +95,11 @@ public class ContactFragment extends BaseFragment implements IContactView {
         fastScroller = inflate.findViewById(R.id.fastScroller);
         stickyIndex = inflate.findViewById(R.id.stickyIndex);
         floatingActionButton = inflate.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(this::fabListenet);
+    }
+
+    private void fabListenet(View fab) {
+        mRouter.goToAddContacts(getActivity(), AddContactFragment.newInstance());
     }
 
     @Override

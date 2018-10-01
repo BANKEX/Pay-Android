@@ -1,6 +1,7 @@
 package com.bankex.pay.di.mainscreen;
 
 import com.bankex.pay.di.contacts.ContactsComponent;
+import com.bankex.pay.di.contacts.addcontact.AddContactComponent;
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.di.settings.SettingsComponent;
 import com.bankex.pay.di.wallet.WalletComponent;
@@ -16,6 +17,8 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {MainScreenModule.class})
 @MainScreenScope
 public interface MainScreenComponent {
+
+
 
     @Subcomponent.Builder
     interface Builder {
@@ -33,4 +36,6 @@ public interface MainScreenComponent {
     WalletComponent.Builder plusWalletComponent();
 
     SettingsComponent.Builder plusSettingsComponent();
+
+    AddContactComponent.Builder plusAddContactComponent();
 }
