@@ -2,6 +2,8 @@
 <manifest package="com.bankex.pay"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -47,6 +49,10 @@
 
         <activity
             android:name=".presentation.ui.importwallet.ImportWalletActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".presentation.ui.view.qr.QRActivity"
             android:screenOrientation="portrait"/>
 
         <activity

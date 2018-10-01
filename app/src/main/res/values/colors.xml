@@ -27,4 +27,6 @@
     <color name="operation_failed">#DB333E</color>
     <color name="operation_pending">#EFC674</color>
 
+    <color name="actionbar_opacity">#33000000</color>
+
 </resources>

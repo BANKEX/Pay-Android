@@ -1,6 +1,5 @@
 package com.bankex.pay.presentation.ui.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -105,9 +104,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private Preference.OnPreferenceClickListener getWriteUsOnClickListener() {
         return preference -> {
-            Context context = getContext();
-            Toast.makeText(context, "Нужно указать валидный e-mail", Toast.LENGTH_SHORT).show();
-            mSettingsRouter.goToEmail(context);
+            mSettingsRouter.goToEmail(getContext());
             return true;
         };
     }
