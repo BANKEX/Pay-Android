@@ -116,6 +116,7 @@ dependencies {
     implementation libs.amplitude
     implementation libs.fingetprint
     implementation libs.qr
+    implementation libs.qrGenerator
 
     implementation(libs.fabric) {
         transitive = true

@@ -54,6 +54,10 @@
         <activity
             android:name=".presentation.ui.view.qr.QRActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".presentation.ui.view.receive.ReceiveActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 
