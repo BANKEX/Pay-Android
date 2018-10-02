@@ -84,7 +84,7 @@
     </style>
 
     <style name="SubheaderRegular.Grey">
-        <item name="android:textColor">@color/caption</item>
+        <item name="android:textColor">@color/bankex_grey</item>
     </style>
 
     <style name="SubheaderBold.Grey" parent="SubheaderBold">

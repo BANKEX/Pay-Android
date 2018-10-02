@@ -10,6 +10,7 @@
     <color name="bankex_black">#202326</color>
     <color name="bankex_white">#FFFFFF</color>
     <color name="bankex_grey">#C4C4C4</color>
+    <color name="bankex_background">#F9FAFC</color>
 
     <color name="caption">#8E96B0</color>
 
@@ -25,5 +26,7 @@
     <color name="operation_success">#1BBE00</color>
     <color name="operation_failed">#DB333E</color>
     <color name="operation_pending">#EFC674</color>
+
+    <color name="actionbar_opacity">#33000000</color>
 
 </resources>

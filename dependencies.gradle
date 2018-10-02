@@ -35,6 +35,7 @@ ext {
     CRASHLYTICS_VERSION = '2.9.4'
     AMPLITUDE_VERSION = '2.14.1'
     QR_VERSION = '1.9.8'
+    QR_GENERATOR_VERSION = '2.5.0'
     FP_VERSION = '0.9.0'
     JT_VERSION = '2.10'
     // endregion
@@ -129,6 +130,7 @@ ext {
 
             //QR
             qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
+            qrGenerator           : "com.github.kenglxn.QRGen:android:$QR_GENERATOR_VERSION",
 
             //Preference
             preference            : "com.android.support:preference-v14:$SUPPORT_VERSION",
