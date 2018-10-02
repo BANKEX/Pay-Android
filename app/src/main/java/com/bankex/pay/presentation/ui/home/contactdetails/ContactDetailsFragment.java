@@ -7,15 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
-import com.bankex.pay.domain.navigation.contacts.IContactsRouter;
+import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.home.adapter.ContactsAdapter;
 import com.bankex.pay.presentation.ui.home.addcontacts.IAddContactView;
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 import javax.inject.Inject;
 

@@ -1,6 +1,6 @@
 package com.bankex.pay.presentation.ui.home.contactdetails;
 
-import com.bankex.pay.presentation.ui.base.BaseView;
+import com.bankex.pay.presentation.ui.view.base.BaseView;
 
 /**
  * @author Denis Anisimov.

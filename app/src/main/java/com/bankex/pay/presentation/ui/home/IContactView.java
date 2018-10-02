@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.ui.home;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.bankex.pay.domain.models.ContactModel;
-import com.bankex.pay.presentation.ui.base.BaseView;
+import com.bankex.pay.presentation.ui.view.base.BaseView;
 
 import java.util.List;
 

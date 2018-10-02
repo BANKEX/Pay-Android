@@ -1,6 +1,7 @@
-package com.bankex.pay.domain.navigation.contacts;
+package com.bankex.pay.presentation.ui.navigation.contacts;
 
-import com.bankex.pay.presentation.ui.base.BaseFragment;
+
+import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 /**
  * @author Denis Anisimov.

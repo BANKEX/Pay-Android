@@ -117,7 +117,7 @@ ext {
             //SearchView
             searchView            : "com.lapism:searchview:$SEARCH_VIEW_VERSION",
             sticky                : "com.github.edsilfer:sticky-index:$STICKY_VERSION",
-            circularimage:        "com.pkmmte.view:circularimageview:$CIRCULAR_VERSION",
+            circularimage         : "com.pkmmte.view:circularimageview:$CIRCULAR_VERSION",
 
             //Fabric
             fabric                : "com.crashlytics.sdk.android:crashlytics:$CRASHLYTICS_VERSION@aar",
