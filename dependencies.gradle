@@ -57,6 +57,11 @@ ext {
     FIREBASE_AUTH = '16.0.3'
     //endregion
 
+
+    //region archcomp
+    ARCH_VERSION = '1.1.1'
+    //
+
     // region wallet
     WEB3J_VERSION = '3.1.1-android'
     ETHERUM_GETH_VERSION = '1.7.3'
@@ -64,6 +69,7 @@ ext {
     BIP39_VERSION = '0.1.9'
     BIP44_VERSION = '0.0.3'
     // end region
+
 
     androidSupport = [
             appcompatV7     : "com.android.support:appcompat-v7:$SUPPORT_VERSION",
@@ -147,6 +153,13 @@ ext {
             firebaseAuth          : "com.google.firebase:firebase-auth:$FIREBASE_AUTH",
             firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
             //endregion
+
+            //region archcomp
+            archruntime           :"android.arch.core:runtime:$ARCH_VERSION",
+            archcommon            :"android.arch.core:common:$ARCH_VERSION",
+            archextentions        :"android.arch.lifecycle:extensions:$ARCH_VERSION",
+            archcompiler          :"android.arch.lifecycle:compiler:$ARCH_VERSION",
+            //
 
             // region wallet
             web3j                 : "org.web3j:core:$WEB3J_VERSION",

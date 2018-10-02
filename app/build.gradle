@@ -134,6 +134,12 @@ dependencies {
     testImplementation libs.mockito
     testImplementation libs.robolectric
     testImplementation libs.hamcrest
+
+    implementation libs.archruntime
+    implementation libs.archcommon
+    implementation libs.archextentions
+    annotationProcessor libs.archcompiler
+
     androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
     androidTestImplementation androidSupport.espresso
     androidTestImplementation androidSupport.testRunner

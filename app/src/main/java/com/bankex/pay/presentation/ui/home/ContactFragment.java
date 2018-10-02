@@ -99,7 +99,7 @@ public class ContactFragment extends BaseFragment implements IContactView {
     }
 
     private void fabListenet(View fab) {
-        mRouter.goToAddContacts(getActivity(), AddContactFragment.newInstance());
+        mRouter.goToAddContacts(AddContactFragment.newInstance());
     }
 
     @Override

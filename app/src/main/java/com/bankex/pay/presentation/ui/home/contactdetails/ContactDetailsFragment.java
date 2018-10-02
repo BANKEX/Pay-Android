@@ -35,14 +35,12 @@ public class ContactDetailsFragment extends BaseFragment implements IAddContactV
     @Inject
     ContactsAdapter adapter;
 
-    @Inject
-    @InjectPresenter
     ContactsPresenter mContactsPresenter;
 
-    @ProvidePresenter
+/*    @ProvidePresenter
     ContactsPresenter providePresenter() {
         return mContactsPresenter;
-    }
+    }*/
 
     /**
      * Возвращаем инстанс фрагмента ContactFragment

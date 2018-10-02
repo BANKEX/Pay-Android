@@ -1,6 +1,7 @@
 package com.bankex.pay.di.contacts.addcontact;
 
 import com.bankex.pay.presentation.ui.home.ContactFragment;
+import com.bankex.pay.presentation.ui.home.addcontacts.AddContactFragment;
 
 import dagger.Subcomponent;
 
@@ -20,5 +21,5 @@ public interface AddContactComponent {
         AddContactComponent build();
     }
 
-    void inject(ContactFragment fragment);
+    void inject(AddContactFragment fragment);
 }

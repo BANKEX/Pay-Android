@@ -34,14 +34,14 @@ public class AddContactFragment extends BaseFragment implements IAddContactView{
     @Inject
     ContactsAdapter adapter;
 
-    @Inject
+/*    @Inject
     @InjectPresenter
     ContactsPresenter mContactsPresenter;
 
     @ProvidePresenter
     ContactsPresenter providePresenter() {
         return mContactsPresenter;
-    }
+    }*/
 
     /**
      * Возвращаем инстанс фрагмента ContactFragment
