@@ -1,16 +1,23 @@
 package com.bankex.pay.presentation.ui.home.addcontacts;
 
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
-import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
+import com.bankex.pay.presentation.presenter.contacts.AddContactPresenter;
 import com.bankex.pay.presentation.ui.home.adapter.ContactsAdapter;
+import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 import javax.inject.Inject;
@@ -20,7 +27,7 @@ import javax.inject.Inject;
  *
  * @author Denis Anisimov.
  */
-public class AddContactFragment extends BaseFragment implements IAddContactView{
+public class AddContactFragment extends BaseFragment implements IAddContactView {
 
     @Inject
     IContactsRouter mRouter;
@@ -31,14 +38,20 @@ public class AddContactFragment extends BaseFragment implements IAddContactView{
     @Inject
     ContactsAdapter adapter;
 
-/*    @Inject
+    private TextInputEditText enterFirstName;
+    private TextInputEditText enterSurnameName;
+    private TextInputEditText enterAddress;
+    private TextView pasteButton;
+
+
+    @Inject
     @InjectPresenter
-    ContactsPresenter mContactsPresenter;
+    AddContactPresenter mContactsPresenter;
 
     @ProvidePresenter
-    ContactsPresenter providePresenter() {
+    AddContactPresenter providePresenter() {
         return mContactsPresenter;
-    }*/
+    }
 
     /**
      * Возвращаем инстанс фрагмента ContactFragment
@@ -61,18 +74,30 @@ public class AddContactFragment extends BaseFragment implements IAddContactView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.fragment_contact, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_add_contact, container, false);
+        initViews(inflate);
         return inflate;
+    }
+
+    private void initViews(View inflate) {
+        enterFirstName = inflate.findViewById(R.id.enterFirstName);
+        enterSurnameName = inflate.findViewById(R.id.enterSurnameName);
+        enterAddress = inflate.findViewById(R.id.enterAddress);
+        pasteButton = inflate.findViewById(R.id.paste);
+        pasteButton.setOnClickListener(view -> {
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            mContactsPresenter.pasteAddress(clipboard);
+        });
     }
 
 
     @Override
-    public void pasteAddress() {
-
+    public void pasteAddress(String address) {
+        enterAddress.setText(address);
     }
 
     @Override
     public void saveContact() {
-
+        getChildFragmentManager().popBackStack();
     }
 }

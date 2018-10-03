@@ -16,6 +16,8 @@
 
     <color name="onboarding_temporary_background">#F2F3F5</color>
     <color name="onboarding_selected_indicator">#F6A92A</color>
+    <color name="contact_paste">#333333</color>
+    <color name="contact_common">#BDBDBD</color>
 
     <color name="tabs_inactive_white">#B2FFFFFF</color>
 

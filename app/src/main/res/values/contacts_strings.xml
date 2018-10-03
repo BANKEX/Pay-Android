@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_name">First name</string>
+    <string name="surname">Surname</string>
+    <string name="address">Address</string>
+</resources>

@@ -55,4 +55,15 @@
     <style name="ButtonAppCompat" parent="Widget.AppCompat.Button.Colored">
     </style>
 
+    <style name="paste_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_paste_contact</item>
+        <item name="android:drawablePadding">-50dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAppearance">@style/PasteContact</item>
+    </style>
+
 </resources>

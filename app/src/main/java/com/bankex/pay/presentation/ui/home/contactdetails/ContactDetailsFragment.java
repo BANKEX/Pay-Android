@@ -18,11 +18,11 @@ import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import javax.inject.Inject;
 
 /**
- * Фрагмент экрана контактов
+ * Фрагмент экрана просмотра деталей контактов
  *
  * @author Denis Anisimov.
  */
-public class ContactDetailsFragment extends BaseFragment implements IAddContactView{
+public class ContactDetailsFragment extends BaseFragment implements IContactDetailsView{
 
     @Inject
     IContactsRouter mRouter;
@@ -41,9 +41,9 @@ public class ContactDetailsFragment extends BaseFragment implements IAddContactV
     }*/
 
     /**
-     * Возвращаем инстанс фрагмента ContactFragment
+     * Возвращаем инстанс фрагмента
      *
-     * @return new ContactFragment
+     * @return new ContactDetailsFragment
      */
     public static ContactDetailsFragment newInstance() {
         return new ContactDetailsFragment();
@@ -67,12 +67,12 @@ public class ContactDetailsFragment extends BaseFragment implements IAddContactV
 
 
     @Override
-    public void pasteAddress() {
+    public void sendToAddress() {
 
     }
 
     @Override
-    public void saveContact() {
+    public void deleteContact() {
 
     }
 }

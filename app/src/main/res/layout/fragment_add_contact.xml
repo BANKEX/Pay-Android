@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/attention80_margin"
+        android:layout_height="@dimen/attention80_margin"
+        android:layout_marginLeft="140dp"
+        android:layout_marginRight="140dp"
+        android:src="@color/dodger_blue"
+        android:layout_marginTop="24dp" />
+
+    <ImageView
+        android:id="@+id/enterFirstNameImage"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/enterFirstNameBox"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:srcCompat="@drawable/ic_contact_item" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enterFirstNameBox"
+        android:layout_toRightOf="@+id/enterFirstNameImage"
+        android:layout_below="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/enterFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/first_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAppearance="@style/ContactGeneral" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enterSurnameBox"
+        android:layout_toRightOf="@+id/enterFirstNameImage"
+        android:layout_below="@+id/enterFirstNameImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/enterSurnameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/surname"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAppearance="@style/ContactGeneral" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/enterAddressImage"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/enterAddresBox"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:srcCompat="@drawable/ic_contact_item" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enterAddresBox"
+        android:layout_toRightOf="@+id/enterAddressImage"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/enterSurnameBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/enterAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAppearance="@style/ContactGeneral" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        style="@style/paste_style"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_alignStart="@id/enterAddresBox"
+        android:id="@+id/paste"
+        android:layout_below="@id/enterAddresBox"
+        android:drawableStart="@drawable/ic_paste"
+        android:text="@string/paste" />
+
+</RelativeLayout>
+
+
