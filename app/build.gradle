@@ -135,5 +135,6 @@ dependencies {
     androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
     androidTestImplementation androidSupport.espresso
     androidTestImplementation androidSupport.testRunner
+    implementation project(':tn')
 }
 
