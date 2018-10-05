@@ -3,6 +3,8 @@ package com.bankex.pay.presentation.ui.view.base;
 import android.content.Context;
 import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -65,6 +67,33 @@ public class BaseActivity extends MvpAppCompatActivity {
             imm.hideSoftInputFromWindow(binder, 0);
         } catch (Exception ignored) {
             //do nothing
+        }
+    }
+
+    /**
+     *
+     * Установка тулбара
+     *
+     * @return
+     */
+    protected Toolbar toolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            toolbar.setTitle(getTitle());
+        }
+        enableDisplayHomeAsUp();
+        return toolbar;
+    }
+
+    /**
+     *
+     * Метод показываающий стреку BACK
+     */
+    protected void enableDisplayHomeAsUp() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 }

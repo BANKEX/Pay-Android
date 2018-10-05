@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_large_x"
+        android:layout_marginTop="@dimen/margin_large_xx"
         android:text="@string/import_passphrase"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_large_x"
+        android:layout_marginTop="@dimen/margin_large_xx"
         android:text="@string/wallet_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/paste_button"/>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbarAdderessContent"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_wallet_info">
+
+    <TextView
+        android:id="@+id/addressTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:text="address"
+        android:textAppearance="@style/WalletDetailsScreen" />
+
+    <TextView
+        android:id="@+id/addressNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/addressTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:text="addressName"
+        android:textAppearance="@style/WalletDetailsScreen" />
+
+    <TextView
+        android:id="@+id/currencyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:text="ETH"
+        android:textAllCaps="true"
+        android:textAppearance="@style/WalletDetailsScreen" />
+
+</RelativeLayout>

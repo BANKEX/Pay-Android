@@ -47,23 +47,29 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="set_pin_edit_style">
-        <item name="android:textSize">@dimen/text_medium</item>
-        <item name="android:textColor">@color/bankex_black</item>
-    </style>
-
     <style name="ButtonAppCompat" parent="Widget.AppCompat.Button.Colored">
     </style>
 
-    <style name="paste_style">
+    <style name="PasteStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/ic_paste_contact</item>
-        <item name="android:drawablePadding">-50dp</item>
-        <item name="android:paddingLeft">20dp</item>
+        <item name="android:drawablePadding">@dimen/button_paste_padding</item>
+        <item name="android:paddingLeft">@dimen/button_paste_margin</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAppearance">@style/PasteContact</item>
+    </style>
+
+    <style name="SendDetail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_send_height</item>
+        <item name="android:textAppearance">@style/SendDetailText</item>
+        <item name="android:background">@color/bankex_white</item>
+    </style>
+
+    <style name="ReceiveDetail" parent="SendDetail">
+        <item name="android:textAppearance">@style/RecieveDetailText</item>
     </style>
 
 </resources>

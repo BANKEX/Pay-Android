@@ -6,7 +6,10 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_medium_x">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
-    <dimen name="margin_large_x">48dp</dimen>
+    <dimen name="margin_large_x">38dp</dimen>
+    <dimen name="margin_large_xx">48dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+
     <dimen name="margin_big">56dp</dimen>
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
     <dimen name="first_screen_text_top_margin">168dp</dimen>
@@ -19,9 +22,14 @@
     <dimen name="onboarding_image_height">280dp</dimen>
     <dimen name="login_button_margin">12dp</dimen>
 
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="detail_backdrop_height">274dp</dimen>
 
 
 
     <dimen name="button_stroke_width">1dp</dimen>
     <dimen name="button_radius">3dp</dimen>
+    <dimen name="button_paste_padding">-50dp</dimen>
+    <dimen name="button_paste_margin">20dp</dimen>
+    <dimen name="button_send_height">40dp</dimen>
 </resources>

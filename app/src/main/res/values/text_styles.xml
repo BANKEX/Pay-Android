@@ -105,10 +105,50 @@
         <item name="android:textColor">@color/contact_paste</item>
     </style>
 
-    <style name="ContactGeneral">
+
+    <style name="General">
         <item name="android:textSize">@dimen/text_size_body</item>
         <item name="android:textColor">@color/contact_common</item>
     </style>
 
+    <style name="RetrieveDataSmall" parent="General">
+
+    </style>
+
+    <style name="WalletDetailsGeneral">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textColor">@color/bankex_white</item>
+    </style>
+
+    <style name="SendDetailText" parent="General">
+        <item name="android:textColor">@color/send_button_color</item>
+    </style>
+
+    <style name="RecieveDetailText" parent="General">
+        <item name="android:textColor">@color/recieve_button_color</item>
+    </style>
+
+
+    <style name="RetrieveDataBig">
+        <item name="android:textSize">@dimen/text_size_big_display</item>
+        <item name="android:textColor">@color/splash_title_color</item>
+    </style>
+
+    <style name="SetPinTitle">
+        <item name="android:textSize">@dimen/text_size_title_small</item>
+        <item name="android:textColor">@color/bankex_black</item>
+    </style>
+
+    <style name="WalletDetailsScreen" parent="WalletDetailsGeneral">
+
+    </style>
+
+    <style name="Balance" parent="WalletDetailsGeneral">
+        <item name="android:textSize">@dimen/text_size_big_display_lite</item>
+    </style>
+
+    <style name="BalanceDesc" parent="WalletDetailsGeneral">
+        <item name="android:textSize">@dimen/text_size_body</item>
+    </style>
 
 </resources>

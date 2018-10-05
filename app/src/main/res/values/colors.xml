@@ -21,6 +21,10 @@
 
     <color name="tabs_inactive_white">#B2FFFFFF</color>
 
+    <color name="splash_title_color">#FFB900</color>
+    <color name="send_button_color">#F1361D</color>
+    <color name="recieve_button_color">#0DBA26</color>
+
     <color name="placeholder_background">#EFF2F4</color>
     <color name="placeholder_body_text">#63687D</color>
     <color name="placeholder_wrong_type_title">@color/operation_failed</color>

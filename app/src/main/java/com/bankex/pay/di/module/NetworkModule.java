@@ -1,5 +1,7 @@
 package com.bankex.pay.di.module;
 
+import com.bankex.pay.data.network.BankexRestApi;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -20,7 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
-    public static final String BASE_URL = "https://pay.bankex.com/";
+    //public static final String BASE_URL = "https://pay.bankex.com/";
+    public static final String BASE_SCAN_URL = "https://scan.bankex.com/";
     public static final String BASE_API = "api/";
 
     @Provides
@@ -36,7 +39,13 @@ public class NetworkModule {
                 .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL + BASE_API)
+                .baseUrl(BASE_SCAN_URL + BASE_API)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    BankexRestApi provideApi(Retrofit retrofit) {
+        return retrofit.create(BankexRestApi.class);
     }
 }

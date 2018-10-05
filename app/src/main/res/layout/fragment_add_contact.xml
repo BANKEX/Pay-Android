@@ -40,7 +40,7 @@
             android:hint="@string/first_name"
             android:inputType="text"
             android:padding="10dp"
-            android:textAppearance="@style/ContactGeneral" />
+            android:textAppearance="@style/General" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -57,7 +57,7 @@
             android:hint="@string/surname"
             android:inputType="text"
             android:padding="10dp"
-            android:textAppearance="@style/ContactGeneral" />
+            android:textAppearance="@style/General" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -85,11 +85,11 @@
             android:hint="@string/address"
             android:inputType="text"
             android:padding="10dp"
-            android:textAppearance="@style/ContactGeneral" />
+            android:textAppearance="@style/General" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView
-        style="@style/paste_style"
+        style="@style/PasteStyle"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_alignStart="@id/enterAddresBox"
         android:id="@+id/paste"

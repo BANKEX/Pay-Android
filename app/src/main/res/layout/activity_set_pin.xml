@@ -19,7 +19,7 @@
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/enter_your_"
-        android:textAppearance="@style/set_pin_edit_style" />
+        android:textAppearance="@style/SetPinTitle" />
 
     <EditText
         android:id="@+id/pin"
