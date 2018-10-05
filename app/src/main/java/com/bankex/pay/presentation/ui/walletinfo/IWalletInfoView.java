@@ -5,7 +5,7 @@ import com.bankex.pay.presentation.ui.view.base.BaseView;
 /**
  * Интерфейс для вьюхи подробностей кошелька
  *
- * @author Denis Anisimov.
+ * @author Denis Anisimov.3
  */
 public interface IWalletInfoView extends BaseView {
 
