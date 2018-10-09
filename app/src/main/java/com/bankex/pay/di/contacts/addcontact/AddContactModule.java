@@ -16,9 +16,9 @@ import dagger.Provides;
 public class AddContactModule {
 
 
-    /*@Provides
+    @Provides
     @AddContactScope
     AddContactPresenter provideAddContactPresenter(ContactRepository contactRepository) {
         return new AddContactPresenter(contactRepository);
-    }*/
+    }
 }

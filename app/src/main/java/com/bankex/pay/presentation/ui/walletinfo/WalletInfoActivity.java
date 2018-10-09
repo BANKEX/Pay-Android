@@ -8,15 +8,29 @@ import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
+import com.bankex.pay.presentation.presenter.walletinfo.WalletInfoPresenter;
 import com.bankex.pay.presentation.ui.navigation.send.SendRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+
+import javax.inject.Inject;
 
 public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener, View.OnClickListener, IWalletInfoView {
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.6f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
+
+    @Inject
+    @InjectPresenter
+    WalletInfoPresenter mWalletInfoPresenter;
+
+    @ProvidePresenter
+    public WalletInfoPresenter providePresenter() {
+        return mWalletInfoPresenter;
+    }
 
     private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
@@ -47,6 +61,7 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
         toolbar();
         appBarLayout.addOnOffsetChangedListener(this);
         startAlphaAnimation(toolbarAdderessContent, 0, View.INVISIBLE);
+        mWalletInfoPresenter.fetchBalance("");
     }
 
     private void bindActivity() {
@@ -132,6 +147,19 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
                 break;
         }
     }
+
+    @Override
+    public void showError(String error, String description, Throwable throwable) {
+
+   /*     mPlaceHolderWrongType.setVisibility(View.GONE);
+        mPlaceHolderNoResults.setVisibility(View.VISIBLE);
+        mErrorText.setText(error);
+        mErrorDescription.setText(description);
+        if (throwable != null) {
+            mAnalyticsManager.searchRequestErrorResult(throwable.toString());
+        }*/
+    }
+
 
     @Override
     public void setBalanceToAppBar(String value) {

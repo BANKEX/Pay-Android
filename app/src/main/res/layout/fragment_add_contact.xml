@@ -9,11 +9,11 @@
         android:id="@+id/image"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_width="@dimen/attention80_margin"
-        android:layout_height="@dimen/attention80_margin"
+        android:layout_width="@dimen/margin_80"
+        android:layout_height="@dimen/margin_80"
         android:layout_marginLeft="140dp"
         android:layout_marginRight="140dp"
-        android:src="@color/dodger_blue"
+        android:src="@color/colorPrimary"
         android:layout_marginTop="24dp" />
 
     <ImageView

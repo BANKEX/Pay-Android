@@ -9,6 +9,7 @@
     <dimen name="margin_large_x">38dp</dimen>
     <dimen name="margin_large_xx">48dp</dimen>
     <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
 
     <dimen name="margin_big">56dp</dimen>
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
