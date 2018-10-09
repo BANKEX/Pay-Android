@@ -1,6 +1,8 @@
 package com.bankex.pay.di.importorcreate;
 
 import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateFragment;
+import com.bankex.pay.presentation.ui.importwallet.passphrase.ImportPassPhraseFragment;
+import com.bankex.pay.presentation.ui.importwallet.privatekey.ImportPrivateKeyFragment;
 
 import dagger.Subcomponent;
 
@@ -21,4 +23,8 @@ public interface ImportOrCreateComponent {
     }
 
     void inject(ImportOrCreateFragment fragment);
+
+    void inject(ImportPassPhraseFragment fragment);
+
+    void inject(ImportPrivateKeyFragment fragment);
 }

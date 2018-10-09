@@ -26,4 +26,12 @@ public interface IShareDataUtils {
      * @param stringResInfo StringRes текста для toast
      */
     void copyDataToClipboard(Context context, String data, @StringRes int stringResInfo);
+
+    /**
+     * Извлекаем CharSequence из буфера обмена
+     *
+     * @param context context
+     * @return CharSequence
+     */
+    CharSequence getCharSequenceFromClipboard(Context context);
 }

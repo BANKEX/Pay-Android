@@ -50,4 +50,21 @@ public class ShareDataUtils implements IShareDataUtils {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public CharSequence getCharSequenceFromClipboard(Context context) {
+        CharSequence charSequence = null;
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+        if (clipboardManager != null) {
+            ClipData primaryClip = clipboardManager.getPrimaryClip();
+            if (primaryClip != null && primaryClip.getItemCount() > 0) {
+                ClipData.Item item = primaryClip.getItemAt(0);
+                charSequence = item.coerceToText(context);
+            }
+        }
+        return charSequence;
+    }
 }
