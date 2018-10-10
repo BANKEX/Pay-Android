@@ -1,12 +1,17 @@
 package com.bankex.pay.di.walletinfo;
 
 import com.bankex.pay.data.network.BankexRestApi;
-import com.bankex.pay.data.reporitories.ISearchByAddressRepository;
-import com.bankex.pay.data.reporitories.ITransactionListRepository;
-import com.bankex.pay.data.reporitories.SearchByAddressRepository;
-import com.bankex.pay.data.reporitories.TransactionListRepository;
-import com.bankex.pay.domain.interactor.ISearchByAddressInteractor;
-import com.bankex.pay.domain.interactor.SearchByAddressInteractor;
+import com.bankex.pay.data.network.CryptoCompareRestApi;
+import com.bankex.pay.data.reporitories.address.ISearchByAddressRepository;
+import com.bankex.pay.data.reporitories.address.SearchByAddressRepository;
+import com.bankex.pay.data.reporitories.cryptocompare.CryptoCompareRepository;
+import com.bankex.pay.data.reporitories.cryptocompare.ICryptoCompareRepository;
+import com.bankex.pay.data.reporitories.transactions.ITransactionListRepository;
+import com.bankex.pay.data.reporitories.transactions.TransactionListRepository;
+import com.bankex.pay.domain.interactor.address.ISearchByAddressInteractor;
+import com.bankex.pay.domain.interactor.address.SearchByAddressInteractor;
+import com.bankex.pay.domain.interactor.cryptocompare.ExchangeRateInteractor;
+import com.bankex.pay.domain.interactor.cryptocompare.IExchangeRateInteractor;
 import com.bankex.pay.presentation.presenter.walletinfo.WalletInfoPresenter;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 
@@ -37,6 +42,18 @@ public class WalletInfoModule {
     @WalletInfoScope
     public ISearchByAddressRepository provideSearchByAddressRepository(BankexRestApi restApi) {
         return new SearchByAddressRepository(restApi);
+    }
+
+    @Provides
+    @WalletInfoScope
+    public IExchangeRateInteractor provideSearchByAddressInteractor(ICryptoCompareRepository iCryptoCompareRepository) {
+        return new ExchangeRateInteractor(iCryptoCompareRepository);
+    }
+
+    @Provides
+    @WalletInfoScope
+    public ICryptoCompareRepository provideSearchByAddressRepository(CryptoCompareRestApi restApi) {
+        return new CryptoCompareRepository(restApi);
     }
 
     @Provides

@@ -1,4 +1,4 @@
-package com.bankex.pay.data.reporitories;
+package com.bankex.pay.data.reporitories.transactions;
 
 import com.bankex.pay.data.entity.mappers.TransactionResponseToModelConverter;
 import com.bankex.pay.data.entity.mappers.TransactionRowToModelConverter;

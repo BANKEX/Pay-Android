@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.presenter.walletinfo;
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.domain.BaseDomainBean;
 import com.bankex.pay.domain.ErrorMessage;
-import com.bankex.pay.domain.interactor.ISearchByAddressInteractor;
+import com.bankex.pay.domain.interactor.address.ISearchByAddressInteractor;
 import com.bankex.pay.domain.models.BaseBankexModel;
 import com.bankex.pay.domain.models.address.AddressModel;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;

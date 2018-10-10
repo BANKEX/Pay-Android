@@ -1,4 +1,4 @@
-package com.bankex.pay.data.reporitories;
+package com.bankex.pay.domain.interactor.address;
 
 import android.support.annotation.Nullable;
 
@@ -10,15 +10,17 @@ import java.util.List;
 import io.reactivex.Single;
 
 /**
- * @author Gevork Safaryan on 18.06.2018
+ * {@code Interactor} для поиска значений по адресу
+ *
+ * @author Gevork Safaryan on 16.06.2018
  */
-public interface ISearchByAddressRepository {
+public interface ISearchByAddressInteractor {
 
     /**
      * Получить результат поиска по адресу
      *
      * @param address - адрес
-     * @return {@link Single} над {@link List <  BaseBankexModel  >>}
+     * @return {@link Single} над {@link BaseDomainBean< List < BaseBankexModel >>}
      */
     Single<BaseDomainBean<List<BaseBankexModel>>> findByAddress(@Nullable String address);
 }

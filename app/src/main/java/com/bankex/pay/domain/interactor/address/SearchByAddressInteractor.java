@@ -1,8 +1,8 @@
-package com.bankex.pay.domain.interactor;
+package com.bankex.pay.domain.interactor.address;
 
 import android.support.annotation.Nullable;
 
-import com.bankex.pay.data.reporitories.ISearchByAddressRepository;
+import com.bankex.pay.data.reporitories.address.ISearchByAddressRepository;
 import com.bankex.pay.domain.BaseDomainBean;
 import com.bankex.pay.domain.models.BaseBankexModel;
 

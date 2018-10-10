@@ -95,12 +95,10 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
 
     private void handleToolbarTitleVisibility(float percentage) {
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
-
             if (!mIsTheTitleVisible) {
                 startAlphaAnimation(toolbarAdderessContent, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
                 mIsTheTitleVisible = true;
             }
-
         } else {
 
             if (mIsTheTitleVisible) {

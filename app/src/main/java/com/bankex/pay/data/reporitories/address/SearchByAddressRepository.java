@@ -1,4 +1,4 @@
-package com.bankex.pay.data.reporitories;
+package com.bankex.pay.data.reporitories.address;
 
 import android.support.annotation.Nullable;
 
