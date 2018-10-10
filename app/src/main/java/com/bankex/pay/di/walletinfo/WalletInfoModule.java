@@ -46,20 +46,20 @@ public class WalletInfoModule {
 
     @Provides
     @WalletInfoScope
-    public IExchangeRateInteractor provideSearchByAddressInteractor(ICryptoCompareRepository iCryptoCompareRepository) {
+    public IExchangeRateInteractor provideExchangeRateInteractor(ICryptoCompareRepository iCryptoCompareRepository) {
         return new ExchangeRateInteractor(iCryptoCompareRepository);
     }
 
     @Provides
     @WalletInfoScope
-    public ICryptoCompareRepository provideSearchByAddressRepository(CryptoCompareRestApi restApi) {
+    public ICryptoCompareRepository provideCryptoCompareRepository(CryptoCompareRestApi restApi) {
         return new CryptoCompareRepository(restApi);
     }
 
     @Provides
     @WalletInfoScope
-    public WalletInfoPresenter provideWalletInfoPresenter(ISearchByAddressInteractor iSearchByAddressInteractor, IRxSchedulersUtils iRxSchedulersUtils) {
-        return new WalletInfoPresenter(iSearchByAddressInteractor, iRxSchedulersUtils);
+    public WalletInfoPresenter provideWalletInfoPresenter(ISearchByAddressInteractor iSearchByAddressInteractor, IRxSchedulersUtils iRxSchedulersUtils, IExchangeRateInteractor iExchangeRateInteractor) {
+        return new WalletInfoPresenter(iSearchByAddressInteractor, iExchangeRateInteractor, iRxSchedulersUtils);
     }
 
 }

@@ -46,11 +46,11 @@
                 android:text="@string/receive" />
         </LinearLayout>
 
-     <!--   <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

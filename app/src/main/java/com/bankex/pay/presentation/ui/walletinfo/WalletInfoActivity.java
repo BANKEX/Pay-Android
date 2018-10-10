@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
+import com.bankex.pay.di.walletinfo.WalletInfoInjector;
 import com.bankex.pay.presentation.presenter.walletinfo.WalletInfoPresenter;
 import com.bankex.pay.presentation.ui.navigation.send.SendRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseActivity;
@@ -55,6 +56,7 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        WalletInfoInjector.getWalletInfoComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet_info);
         bindActivity();

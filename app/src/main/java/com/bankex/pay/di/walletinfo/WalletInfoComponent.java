@@ -20,5 +20,5 @@ public interface WalletInfoComponent {
         WalletInfoComponent build();
     }
 
-    void inject(WalletInfoActivity fragment);
+    void inject(WalletInfoActivity activity);
 }
