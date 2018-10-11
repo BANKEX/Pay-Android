@@ -1,4 +1,4 @@
-package com.bankex.pay.data.realm;
+package com.bankex.pay.domain.interactor;
 
 import com.bankex.pay.model.domain.PayWalletModel;
 
@@ -8,15 +8,12 @@ import io.reactivex.Completable;
 import io.reactivex.Maybe;
 
 /**
- * Интерфейс работы с базой данных
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Интерактор для работы с кошельком в БД
+ * @author Pavel Apanovskiy on 11/10/2018.
  */
-public interface IRealmService {
-
+public interface IPayWalletInteractor {
     /**
      * Сохраняем кошелек в БД
-     *
      * @param payWalletModel кошелек
      * @return Completable
      */
@@ -29,9 +26,4 @@ public interface IRealmService {
      */
     @Nullable
     Maybe<PayWalletModel> getWallet();
-
-    /**
-     * Закрыть соединение
-     */
-    void closeRealm();
 }

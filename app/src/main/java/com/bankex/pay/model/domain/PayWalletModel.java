@@ -3,20 +3,23 @@ package com.bankex.pay.model.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
-public class PayWalletModel implements Parcelable {
+@RealmClass
+public class PayWalletModel extends RealmObject implements Parcelable {
 
     /**
-     * Деволтное имя кошелька
+     * Дефолтное имя кошелька
      */
-    public static final String ETH_WALLET_NAME = "ETH Walle Name";
+    public static final String ETH_WALLET_NAME = "ETH Wallet Name";
 
     /**
      * Адресс кошелька
      */
     @PrimaryKey
-    public final String address;
+    public String address;
 
     /**
      * Название кошелька
@@ -33,6 +36,10 @@ public class PayWalletModel implements Parcelable {
      */
     private byte[] key;
 
+
+    public PayWalletModel() {
+        this.address = null;
+    }
 
     /**
      * @param address - адресс кошелька
@@ -90,6 +97,10 @@ public class PayWalletModel implements Parcelable {
     public PayWalletModel setKey(byte[] key) {
         this.key = key;
         return this;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public byte[] getKey() {
