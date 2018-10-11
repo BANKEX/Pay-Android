@@ -52,6 +52,6 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
         return mPasswordStoreRepository.generatePassword()
                 .flatMap(password -> mImportWalletFromPrivateKeyRepository.importStoreByPrivateKey(privateKey, password)
                         .flatMap(store -> mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
-                .flatMap(payWalletModel -> io.reactivex.Single.fromCallable(() -> new PayWalletModel(walletName)));
+                .flatMap(payWalletModel -> Single.fromCallable(() -> payWalletModel.setName(walletName)));
     }
 }

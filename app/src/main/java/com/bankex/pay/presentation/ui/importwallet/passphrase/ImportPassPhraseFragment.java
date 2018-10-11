@@ -158,8 +158,10 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
     }
 
     private View.OnClickListener getImportButtonClickListener() {
-        String passPhrase = mPassPhraseEditText.getText().toString();
-        String walletName = mWalletNameEditText.getText().toString();
-        return view -> mImportPassPhrasePresenter.importWalletFromPassPhrase(passPhrase, walletName);
+        return view -> {
+            String passPhrase = mPassPhraseEditText.getText().toString();
+            String walletName = mWalletNameEditText.getText().toString();
+            mImportPassPhrasePresenter.importWalletFromPassPhrase(passPhrase, walletName);
+        };
     }
 }
