@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.view.contacts.ContactsFragment;
 import com.bankex.pay.presentation.ui.view.transactionhistory.TransactionHistoryFragment;
 
 /**
@@ -29,10 +30,9 @@ public class HomeRouter extends BaseRouter implements IHomeRouter {
     }
 
     @Override
-    public void goToContactsTab(FragmentActivity activity,
-                                BaseFragment fragment) {
+    public void goToContactsTab(FragmentActivity activity) {
         runFragmentWithAnimation(activity,
-                fragment,
+                ContactsFragment.newInstance(),
                 R.id.fragment_container);
     }
 

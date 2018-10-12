@@ -10,11 +10,11 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
-import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
 import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
+import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
 import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
 import com.bankex.pay.presentation.ui.view.base.BaseActivity;
@@ -128,7 +128,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
             case R.id.navigation_contacts:
                 hideKeyboard();
                 if (!item.isChecked()) {
-                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                    mRouter.goToContactsTab(this);
                 }
                 return true;
             case R.id.navigation_settings:

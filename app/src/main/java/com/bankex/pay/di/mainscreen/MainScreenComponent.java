@@ -1,5 +1,6 @@
 package com.bankex.pay.di.mainscreen;
 
+import com.bankex.pay.di.contacts.ContactsComponent;
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.di.settings.SettingsComponent;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryComponent;
@@ -33,4 +34,6 @@ public interface MainScreenComponent {
     SettingsComponent.Builder plusSettingsComponent();
 
     TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
+
+    ContactsComponent.Builder plusContactsComponentBuilder();
 }
