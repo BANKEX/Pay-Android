@@ -15,8 +15,7 @@ public interface IHomeRouter {
 
     void goToHistoryTab(FragmentActivity activity);
 
-    void goToContactsTab(FragmentActivity activity,
-                         BaseFragment fragment);
+    void goToContactsTab(FragmentActivity activity);
 
     void goToSettingsTab(FragmentActivity activity,
                          Fragment fragment);
