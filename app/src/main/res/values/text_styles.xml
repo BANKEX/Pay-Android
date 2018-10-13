@@ -151,4 +151,19 @@
         <item name="android:textSize">@dimen/text_size_body</item>
     </style>
 
+    <style name="WalletTarnsactionItemTop">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/wallet_tarnsaction_indicator</item>
+    </style>
+
+    <style name="WalletTarnsactionItemBottom">
+        <item name="android:textSize">@dimen/text_size_caption_s</item>
+        <item name="android:textColor">@color/wallet_tarnsaction_address</item>
+    </style>
+
+    <style name="WalletTarnsactionHistoryTitle" parent="WalletTarnsactionItemTop">
+        <item name="android:textColor">@color/wallet_tarnsaction_history_title</item>
+    </style>
+
 </resources>

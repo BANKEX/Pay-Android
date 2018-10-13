@@ -1,4 +1,5 @@
 <resources>
+    <dimen name="text_size_caption_s">12sp</dimen>
     <dimen name="text_size_caption">12sp</dimen>
     <dimen name="text_size_body">14sp</dimen>
     <dimen name="text_size_subheader">16sp</dimen>

@@ -2,6 +2,7 @@ package com.bankex.pay.presentation.ui.walletinfo;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -12,9 +13,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.walletinfo.WalletInfoInjector;
+import com.bankex.pay.domain.models.BaseBankexModel;
 import com.bankex.pay.presentation.presenter.walletinfo.WalletInfoPresenter;
 import com.bankex.pay.presentation.ui.navigation.send.SendRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.ui.walletinfo.adapter.TransactionsAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,12 +41,11 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
     private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
 
-    //private CoordinatorLayout titleContainer;
-    //private TextView title;
     private AppBarLayout appBarLayout;
     private RelativeLayout toolbarAdderessContent;
     private RelativeLayout appBarContainer;
     private Toolbar toolbar;
+    private RecyclerView recyclerView;
 
     private TextView send;
     private TextView recieve;
@@ -53,6 +57,8 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
 
     private TextView addressNameTitle;
 
+    private String addressParameter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,7 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
         toolbar();
         appBarLayout.addOnOffsetChangedListener(this);
         startAlphaAnimation(toolbarAdderessContent, 0, View.INVISIBLE);
-        mWalletInfoPresenter.fetchBalance("");
+        mWalletInfoPresenter.fetchBalance("e18cf576cdb5fc79f9f47f6d733efe3ef2fae907");
     }
 
     private void bindActivity() {
@@ -83,8 +89,8 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
         //titleContainer = findViewById(R.id.main_content);
         appBarContainer = findViewById(R.id.app_bar_content);
         appBarLayout = findViewById(R.id.appbar);
+        recyclerView = findViewById(R.id.recyclerView);
     }
-
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
@@ -169,5 +175,10 @@ public class WalletInfoActivity extends BaseActivity implements AppBarLayout.OnO
     @Override
     public void setBalanceInUSD(String balanceInUSD) {
         balanceUSD.setText(balanceInUSD);
+    }
+
+    @Override
+    public void setTransactionsPreview(List<BaseBankexModel> transactionsPreview) {
+        recyclerView.setAdapter(new TransactionsAdapter(transactionsPreview));
     }
 }

@@ -137,7 +137,7 @@ ext {
 
             //FingerPrint
             fingetprint           : "com.elegion.littlefinger:littlefinger:$FP_VERSION",
-            time                  : "joda-time:joda-time:2.10:$JT_VERSION",
+            time                  : "joda-time:joda-time:$JT_VERSION",
 
             // region testing
             junit                 : "junit:junit:$JUNIT_VERSION",

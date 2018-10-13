@@ -120,6 +120,7 @@ dependencies {
     implementation libs.lottie
     implementation libs.amplitude
     implementation libs.fingetprint
+    implementation libs.time
     implementation libs.qr
     implementation libs.qrGenerator
 

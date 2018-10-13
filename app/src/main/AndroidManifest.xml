@@ -53,6 +53,7 @@
 
         <activity
             android:name=".presentation.ui.walletinfo.WalletInfoActivity"
+            android:parentActivityName=".presentation.ui.mainscreen.MainScreenActivity"
             android:screenOrientation="portrait" />
 
         <activity

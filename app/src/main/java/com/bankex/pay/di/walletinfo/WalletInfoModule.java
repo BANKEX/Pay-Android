@@ -12,6 +12,8 @@ import com.bankex.pay.domain.interactor.address.ISearchByAddressInteractor;
 import com.bankex.pay.domain.interactor.address.SearchByAddressInteractor;
 import com.bankex.pay.domain.interactor.cryptocompare.ExchangeRateInteractor;
 import com.bankex.pay.domain.interactor.cryptocompare.IExchangeRateInteractor;
+import com.bankex.pay.domain.interactor.transactions.ITransactionListInteractor;
+import com.bankex.pay.domain.interactor.transactions.TransactionListInteractor;
 import com.bankex.pay.presentation.presenter.walletinfo.WalletInfoPresenter;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 
@@ -30,6 +32,12 @@ public class WalletInfoModule {
     @WalletInfoScope
     public ITransactionListRepository provideTransactionListRepository(BankexRestApi restApi) {
         return new TransactionListRepository(restApi);
+    }
+
+    @Provides
+    @WalletInfoScope
+    public ITransactionListInteractor provideTransactionListInteractor(ITransactionListRepository iTransactionListRepository) {
+        return new TransactionListInteractor(iTransactionListRepository);
     }
 
     @Provides
@@ -58,8 +66,8 @@ public class WalletInfoModule {
 
     @Provides
     @WalletInfoScope
-    public WalletInfoPresenter provideWalletInfoPresenter(ISearchByAddressInteractor iSearchByAddressInteractor, IRxSchedulersUtils iRxSchedulersUtils, IExchangeRateInteractor iExchangeRateInteractor) {
-        return new WalletInfoPresenter(iSearchByAddressInteractor, iExchangeRateInteractor, iRxSchedulersUtils);
+    public WalletInfoPresenter provideWalletInfoPresenter(ISearchByAddressInteractor iSearchByAddressInteractor, IRxSchedulersUtils iRxSchedulersUtils, IExchangeRateInteractor iExchangeRateInteractor, ITransactionListInteractor transactionListInteractor) {
+        return new WalletInfoPresenter(iSearchByAddressInteractor, iExchangeRateInteractor, transactionListInteractor, iRxSchedulersUtils);
     }
 
 }

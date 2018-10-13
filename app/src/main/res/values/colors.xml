@@ -13,11 +13,13 @@
     <color name="bankex_background">#F9FAFC</color>
 
     <color name="caption">#8E96B0</color>
-
     <color name="onboarding_temporary_background">#F2F3F5</color>
     <color name="onboarding_selected_indicator">#F6A92A</color>
     <color name="contact_paste">#333333</color>
     <color name="contact_common">#BDBDBD</color>
+    <color name="wallet_tarnsaction_indicator">#2E3640</color>
+    <color name="wallet_tarnsaction_address">#9DA6B3</color>
+    <color name="wallet_tarnsaction_history_title">#757575</color>
 
     <color name="tabs_inactive_white">#B2FFFFFF</color>
 

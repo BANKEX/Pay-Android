@@ -28,6 +28,7 @@
 
 
 
+    <dimen name="transaction_indicator_size">24dp</dimen>
     <dimen name="button_stroke_width">1dp</dimen>
     <dimen name="button_radius">3dp</dimen>
     <dimen name="button_paste_padding">-50dp</dimen>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="date_with_plurals" formatted="false">%s %s ago, %s EST</string>
+    <string name="cost_format" formatted="false">%s ETH</string>
+    <string name="actions_format" formatted="false">%s %s %s</string>
+    <string name="balance_format" formatted="false">%s %s</string>
+
+    <plurals name="minutes">
+        <item quantity="zero">minutes</item>
+        <item quantity="one">minute</item>
+        <item quantity="two">minutes</item>
+        <item quantity="few">minutes</item>
+        <item quantity="many">minutes</item>
+        <item quantity="other">minutes</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="zero">hours</item>
+        <item quantity="one">hour</item>
+        <item quantity="two">hours</item>
+        <item quantity="few">hours</item>
+        <item quantity="many">hours</item>
+        <item quantity="other">hours</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="zero">days</item>
+        <item quantity="one">day</item>
+        <item quantity="two">days</item>
+        <item quantity="few">days</item>
+        <item quantity="many">days</item>
+        <item quantity="other">days</item>
+    </plurals>
+
+    <plurals name="weaks">
+        <item quantity="zero">weaks</item>
+        <item quantity="one">weak</item>
+        <item quantity="two">weaks</item>
+        <item quantity="few">weaks</item>
+        <item quantity="many">weaks</item>
+        <item quantity="other">weaks</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="zero">months</item>
+        <item quantity="one">month</item>
+        <item quantity="two">months</item>
+        <item quantity="few">months</item>
+        <item quantity="many">months</item>
+        <item quantity="other">months</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="zero">years</item>
+        <item quantity="one">year</item>
+        <item quantity="two">years</item>
+        <item quantity="few">years</item>
+        <item quantity="many">years</item>
+        <item quantity="other">years</item>
+    </plurals>
+
+</resources>

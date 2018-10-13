@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_small">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6"/>
+
+    <ImageView
+        android:id="@+id/address_transactions_indicator"
+        android:layout_marginStart="@dimen/margin_medium_x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="@dimen/transaction_indicator_size"
+        android:layout_height="@dimen/transaction_indicator_size"
+        android:src="@drawable/ic_recieve"
+        />
+
+    <TextView
+        android:id="@+id/address_transaction_to_text_view"
+        style="@style/WalletTarnsactionItemBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        tools:text="To: 0xd343245...2095"
+        app:layout_constraintStart_toEndOf="@id/address_transactions_indicator"
+        app:layout_constraintTop_toBottomOf="@id/address_transactions_indicator_text_view"/>
+
+    <TextView
+        android:id="@+id/address_transactions_indicator_text_view"
+        style="@style/WalletTarnsactionItemTop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="Recieved"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toEndOf="@id/address_transactions_indicator"
+        app:layout_constraintTop_toTopOf="parent"
+/>
+
+    <TextView
+        android:id="@+id/address_transactions_transaction_balance_text_view"
+        style="@style/WalletTarnsactionItemTop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:ellipsize="middle"
+        android:gravity="end"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="+ 1.246625 ETH"/>
+
+
+    <TextView
+        android:id="@+id/address_transactions_transaction_date_text_view"
+        style="@style/WalletTarnsactionItemBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/address_transaction_to_text_view"
+        tools:text="2 Jan, 2018 12:53:11"/>
+
+    <!-- <View
+         android:id="@+id/divider"
+         android:layout_width="0dp"
+         android:layout_height="@dimen/margin_little_x"
+         android:layout_marginTop="@dimen/margin_medium"
+         android:background="@color/bankex_grey"
+         android:contentDescription="@null"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/address_transactions_transaction_block_title_text_view"/>-->
+
+</android.support.constraint.ConstraintLayout>

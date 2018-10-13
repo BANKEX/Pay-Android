@@ -6,9 +6,13 @@ import com.bankex.pay.domain.BaseDomainBean;
 import com.bankex.pay.domain.ErrorMessage;
 import com.bankex.pay.domain.interactor.address.ISearchByAddressInteractor;
 import com.bankex.pay.domain.interactor.cryptocompare.IExchangeRateInteractor;
+import com.bankex.pay.domain.interactor.transactions.ITransactionListInteractor;
 import com.bankex.pay.domain.models.BaseBankexModel;
 import com.bankex.pay.domain.models.address.AddressModel;
 import com.bankex.pay.domain.models.network.BaseHeadResponse;
+import com.bankex.pay.domain.models.transaction.ListType;
+import com.bankex.pay.domain.models.transaction.ModuleDestinationType;
+import com.bankex.pay.domain.models.transaction.TransactionModel;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.walletinfo.IWalletInfoView;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
@@ -21,13 +25,18 @@ import java.util.List;
 @InjectViewState
 public class WalletInfoPresenter extends BasePresenter<IWalletInfoView> {
 
+    private static final int PAGE = 1;
+    private static final int TRANSACTIONS_LIST_SIZE = 5;
+
     private final ISearchByAddressInteractor mSearchByAddressInteractor;
     private final IExchangeRateInteractor mIExchangeRateInteractor;
+    private final ITransactionListInteractor mTransactionListInteractor;
     private final IRxSchedulersUtils mRxSchedulersUtils;
 
-    public WalletInfoPresenter(ISearchByAddressInteractor searchByAddressInteractor, IExchangeRateInteractor iExchangeRateInteractor, IRxSchedulersUtils rxSchedulersUtils) {
+    public WalletInfoPresenter(ISearchByAddressInteractor searchByAddressInteractor, IExchangeRateInteractor iExchangeRateInteractor, ITransactionListInteractor transactionListInteractor, IRxSchedulersUtils rxSchedulersUtils) {
         mSearchByAddressInteractor = searchByAddressInteractor;
         mIExchangeRateInteractor = iExchangeRateInteractor;
+        mTransactionListInteractor = transactionListInteractor;
         mRxSchedulersUtils = rxSchedulersUtils;
     }
 
@@ -63,11 +72,24 @@ public class WalletInfoPresenter extends BasePresenter<IWalletInfoView> {
         List<BaseBankexModel> successObject = listBaseDomainBean.getSuccessObject();
         if (successObject != null && !haveErrors) {
             AddressModel addressModel = (AddressModel) successObject.get(0);
+            fetchExchangeRate(text);
             getViewState().setBalanceToAppBar(String.valueOf(addressModel.getBalance()));
+            mTransactionListInteractor.loadTransactions(ListType.ETH,
+                    ModuleDestinationType.ADDRESS,
+                    text,
+                    PAGE,
+                    TRANSACTIONS_LIST_SIZE)
+                    .subscribeOn(mRxSchedulersUtils.getIOScheduler())
+                    .observeOn(mRxSchedulersUtils.getMainThreadScheduler())
+                    .subscribe(throwable -> updateAdapter(successObject));
         }
         if (haveErrors) {
             getViewState().showError("No results\nfound", "Try searching something else", null);
         }
+    }
+
+    private void updateAdapter(List<BaseBankexModel> successObject) {
+       getViewState().setTransactionsPreview(successObject);
     }
 
     void fetchBalanceInUSD() {
