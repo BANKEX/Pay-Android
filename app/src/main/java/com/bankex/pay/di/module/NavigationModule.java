@@ -2,8 +2,8 @@ package com.bankex.pay.di.module;
 
 import com.bankex.pay.presentation.ui.navigation.base.BankexRouter;
 import com.bankex.pay.presentation.ui.navigation.base.IBankexRouter;
-import com.bankex.pay.presentation.ui.navigation.home.HomeRouter;
-import com.bankex.pay.presentation.ui.navigation.home.IHomeRouter;
+import com.bankex.pay.presentation.ui.navigation.home.IMainRouter;
+import com.bankex.pay.presentation.ui.navigation.home.MainRouter;
 import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.navigation.wallet.WalletRouter;
 
@@ -28,8 +28,8 @@ public class NavigationModule {
 
     @Provides
     @Singleton
-    IHomeRouter provideHomeRouter() {
-        return new HomeRouter();
+    IMainRouter provideHomeRouter() {
+        return new MainRouter();
     }
 
     @Provides

@@ -1,9 +1,12 @@
 package com.bankex.pay.presentation.ui.navigation.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.bankex.pay.R;
+import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateActivity;
 import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import com.bankex.pay.presentation.ui.view.contacts.ContactsFragment;
@@ -12,7 +15,7 @@ import com.bankex.pay.presentation.ui.view.transactionhistory.TransactionHistory
 /**
  * @author Pavel Apanovskiy on 12.09.2018.
  */
-public class HomeRouter extends BaseRouter implements IHomeRouter {
+public class MainRouter extends BaseRouter implements IMainRouter {
 
     @Override
     public void goToWalletTab(FragmentActivity activity,
@@ -42,5 +45,15 @@ public class HomeRouter extends BaseRouter implements IHomeRouter {
         runFragmentWithAnimation(activity,
                 fragment,
                 R.id.fragment_container);
+    }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public void openImportOrCreate(Context context) {
+        Intent intent = ImportOrCreateActivity.newIntent(context);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 }

@@ -21,4 +21,9 @@ public interface IMainScreenView extends BaseView {
      * показываем локскрин
      */
     void showLockScreen();
+
+    /**
+     * Открываем экран импорта/создания кошелька
+     */
+    void openImportOrCreate();
 }

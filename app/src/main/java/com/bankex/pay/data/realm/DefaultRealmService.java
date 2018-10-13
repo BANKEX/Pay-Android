@@ -3,7 +3,7 @@ package com.bankex.pay.data.realm;
 import com.bankex.pay.model.domain.PayWalletModel;
 
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 import io.realm.Realm;
 
 /**
@@ -32,8 +32,8 @@ public class DefaultRealmService implements IRealmService {
      * {@inheritDoc }
      */
     @Override
-    public Maybe<PayWalletModel> getWallet() {
-        return Maybe.fromCallable(() -> {
+    public Single<PayWalletModel> getWallet() {
+        return Single.fromCallable(() -> {
             PayWalletModel payWalletModel = Realm.getDefaultInstance().where(PayWalletModel.class).findFirst();
             PayWalletModel walletModel = null;
             if (payWalletModel != null) {
@@ -42,7 +42,6 @@ public class DefaultRealmService implements IRealmService {
             }
             return walletModel;
         });
-
     }
 
     @Override

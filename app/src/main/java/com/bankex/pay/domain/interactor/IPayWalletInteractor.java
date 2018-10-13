@@ -5,7 +5,7 @@ import com.bankex.pay.model.domain.PayWalletModel;
 import javax.annotation.Nullable;
 
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Интерактор для работы с кошельком в БД
@@ -25,5 +25,5 @@ public interface IPayWalletInteractor {
      * @return кошелек
      */
     @Nullable
-    Maybe<PayWalletModel> getWallet();
+    Single<PayWalletModel> getWallet();
 }

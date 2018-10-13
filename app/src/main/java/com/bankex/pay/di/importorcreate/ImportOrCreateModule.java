@@ -2,23 +2,18 @@ package com.bankex.pay.di.importorcreate;
 
 import android.content.Context;
 
-import com.bankex.pay.data.realm.IRealmService;
 import com.bankex.pay.data.repository.IImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPrivateKeyRepository;
 import com.bankex.pay.data.repository.IPasswordStoreRepository;
-import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.data.repository.ImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPrivateKeyRepository;
 import com.bankex.pay.data.repository.PasswordStoreRepository;
-import com.bankex.pay.data.repository.PayWalletRepository;
 import com.bankex.pay.domain.interactor.IImportWalletFromPassPhraseInteractor;
 import com.bankex.pay.domain.interactor.IImportWalletFromPrivateKeyInteractor;
-import com.bankex.pay.domain.interactor.IPayWalletInteractor;
 import com.bankex.pay.domain.interactor.ImportWalletFromPassPhraseInteractor;
 import com.bankex.pay.domain.interactor.ImportWalletFromPrivateKeyInteractor;
-import com.bankex.pay.domain.interactor.PayWalletInteractor;
 import com.bankex.pay.presentation.presenter.importwallet.passphrase.ImportPassPhrasePresenter;
 import com.bankex.pay.presentation.presenter.importwallet.privatekey.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.ui.navigation.importorcreate.IImportWalletRouter;
@@ -77,18 +72,6 @@ public class ImportOrCreateModule {
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
                                                                                       IPasswordStoreRepository passwordStoreRepository) {
         return new ImportWalletFromPassPhraseInteractor(importWalletFromPassPhraseRepository, importWalletFromKeyStoreRepository, passwordStoreRepository);
-    }
-
-     @Provides
-    @ImportOrCreateScope
-     IPayWalletRepository provideSaveWalletRepository(IRealmService realmService) {
-        return new PayWalletRepository(realmService);
-    }
-
-    @Provides
-    @ImportOrCreateScope
-    IPayWalletInteractor provideSaveWalletInteractor(IPayWalletRepository saveWalletRepository) {
-        return new PayWalletInteractor(saveWalletRepository);
     }
 
     @Provides
