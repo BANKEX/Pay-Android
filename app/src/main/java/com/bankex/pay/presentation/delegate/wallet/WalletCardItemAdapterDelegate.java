@@ -46,8 +46,8 @@ public class WalletCardItemAdapterDelegate extends AbsListItemAdapterDelegate<Wa
 
     @Override
     protected void onBindViewHolder(@NonNull WalletCardModel item, @NonNull WalletCardViewHolder viewHolder, @NonNull List<Object> payloads) {
-        viewHolder.getWalletNameTextView().setText("mega text");
-        viewHolder.getWalletBalanceTextView().setText("super balance");
+        viewHolder.getWalletNameTextView().setText(item.getTitle());
+        viewHolder.getWalletBalanceTextView().setText(String.valueOf(item.getValue()));
         viewHolder.getWalletLogoImageView().setImageDrawable(mContext.getDrawable(R.drawable.ic_home_black_24dp));
 
         viewHolder.getWalletLogoImageView().setOnClickListener(getLogoClickListener());
@@ -55,10 +55,10 @@ public class WalletCardItemAdapterDelegate extends AbsListItemAdapterDelegate<Wa
     }
 
     private View.OnClickListener getLogoClickListener() {
-        return view -> Toast.makeText(mContext, "logo пыщ-пыщ", Toast.LENGTH_SHORT).show();
+        return view -> Toast.makeText(mContext, "coming soon", Toast.LENGTH_SHORT).show();
     }
 
     private View.OnClickListener getRightArrowClickListener() {
-        return view -> Toast.makeText(mContext, "стрелка пыщ-пыщ", Toast.LENGTH_SHORT).show();
+        return view -> Toast.makeText(mContext, "coming soon", Toast.LENGTH_SHORT).show();
     }
 }

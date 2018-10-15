@@ -10,16 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.wallet.WalletInjector;
 import com.bankex.pay.domain.BaseBankexModel;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
 import com.bankex.pay.domain.model.base.BaseTitleModel;
 import com.bankex.pay.domain.model.wallet.WalletCardModel;
+import com.bankex.pay.model.domain.PayWalletModel;
 import com.bankex.pay.presentation.adapter.wallet.WalletAdapter;
+import com.bankex.pay.presentation.presenter.wallet.WalletPresenter;
 import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +35,20 @@ import javax.inject.Inject;
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
-public class WalletFragment extends BaseFragment {
-
-    private Button mImportOrCreateButton;
-    private RecyclerView mRecyclerView;
-    private WalletAdapter mWalletAdapter;
+public class WalletFragment extends BaseFragment implements IWalletView {
 
     @Inject
     IWalletRouter mRouter;
+
+    @Inject
+    @InjectPresenter
+    WalletPresenter mWalletPresenter;
+
     @Inject
     IAnalyticsManager mAnalyticsManager;
+    private Button mImportOrCreateButton;
+    private RecyclerView mRecyclerView;
+    private WalletAdapter mWalletAdapter;
 
     /**
      * Возвращаем инстанс фрагмента WalletFragment
@@ -48,6 +57,12 @@ public class WalletFragment extends BaseFragment {
      */
     public static WalletFragment newInstance() {
         return new WalletFragment();
+    }
+
+
+    @ProvidePresenter
+    public WalletPresenter provideWalletPresenter() {
+        return mWalletPresenter;
     }
 
     @Override
@@ -68,7 +83,43 @@ public class WalletFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         setAdapterParameters(view);
-        setTestData();
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showError(String error) {
+
+    }
+
+    @Override
+    public void showEmptyView() {
+
+    }
+
+    @Override
+    public void loadData(PayWalletModel payWalletModel) {
+        List<BaseBankexModel> baseBankexModelList = new ArrayList<>();
+
+        BaseTitleModel baseTitleModel = new BaseTitleModel();
+        baseTitleModel.setTitle(payWalletModel.getName());
+        baseTitleModel.setAddButtonTitle("ADD");
+        baseBankexModelList.add(baseTitleModel);
+
+        WalletCardModel walletCardModel = new WalletCardModel();
+        walletCardModel.setTitle(payWalletModel.getAddress());
+        walletCardModel.setValue(BigInteger.valueOf(0));
+        baseBankexModelList.add(walletCardModel);
+
+        mWalletAdapter.setItems(baseBankexModelList);
     }
 
     private void initViews(View view) {
@@ -84,21 +135,8 @@ public class WalletFragment extends BaseFragment {
         mRecyclerView.setAdapter(mWalletAdapter);
     }
 
-    private void setTestData() {
-        List<BaseBankexModel> baseBankexModelList = new ArrayList<>();
-
-        BaseTitleModel baseTitleModel = new BaseTitleModel();
-        baseBankexModelList.add(baseTitleModel);
-
-        WalletCardModel walletCardModel = new WalletCardModel();
-        baseBankexModelList.add(walletCardModel);
-
-        mWalletAdapter.setItems(baseBankexModelList);
-    }
 
     private void onClick(View view) {
         mRouter.openImportOrCreate(getContext());
     }
-
-
 }
