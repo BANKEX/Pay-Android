@@ -46,14 +46,14 @@ public class BaseTitleItemAdapterDelegate extends AbsListItemAdapterDelegate<Bas
 
     @Override
     protected void onBindViewHolder(@NonNull BaseTitleModel item, @NonNull BaseTitleViewHolder viewHolder, @NonNull List<Object> payloads) {
-        viewHolder.getTitleTextView().setText("giper title");
-        viewHolder.getAddTextView().setText("duper button");
+        viewHolder.getTitleTextView().setText(item.getTitle());
+        viewHolder.getAddTextView().setText(item.getAddButtonTitle());
         viewHolder.getAddTextView().setVisibility(View.VISIBLE);
 
         viewHolder.getAddTextView().setOnClickListener(getAddClickListener());
     }
 
     private View.OnClickListener getAddClickListener() {
-        return view -> Toast.makeText(mContext, "add пыщ-пыщ", Toast.LENGTH_SHORT).show();
+        return view -> Toast.makeText(mContext, "coming soon", Toast.LENGTH_SHORT).show();
     }
 }
