@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.bankex.pay.data.repository.IImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPrivateKeyRepository;
 import com.bankex.pay.data.repository.IPasswordStoreRepository;
+import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.model.domain.PayWalletModel;
 
 import dagger.internal.Preconditions;
@@ -20,6 +21,7 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
     private final IImportWalletFromPrivateKeyRepository mImportWalletFromPrivateKeyRepository;
     private final IImportWalletFromKeyStoreRepository mImportWalletFromKeyStoreRepository;
     private final IPasswordStoreRepository mPasswordStoreRepository;
+    private final IPayWalletRepository mPayWalletRepository;
 
     /**
      * @param importWalletFromPrivateKeyRepository {@link IImportWalletFromPrivateKeyRepository}
@@ -28,7 +30,8 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
      */
     public ImportWalletFromPrivateKeyInteractor(@NonNull IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
                                                 @NonNull IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
-                                                @NonNull IPasswordStoreRepository passwordStoreRepository) {
+                                                @NonNull IPasswordStoreRepository passwordStoreRepository,
+                                                @NonNull IPayWalletRepository payWalletRepository) {
         mImportWalletFromPrivateKeyRepository = Preconditions.checkNotNull(
                 importWalletFromPrivateKeyRepository,
                 "IImportWalletFromPrivateKeyRepository must be not null");
@@ -38,6 +41,9 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
         mPasswordStoreRepository = Preconditions.checkNotNull(
                 passwordStoreRepository,
                 "IPasswordStoreRepository must be not null");
+        mPayWalletRepository = Preconditions.checkNotNull(
+                payWalletRepository,
+                "IPayWalletRepository must be not null");
     }
 
     /**
@@ -52,6 +58,7 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
         return mPasswordStoreRepository.generatePassword()
                 .flatMap(password -> mImportWalletFromPrivateKeyRepository.importStoreByPrivateKey(privateKey, password)
                         .flatMap(store -> mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
-                .flatMap(payWalletModel -> Single.fromCallable(() -> payWalletModel.setName(walletName)));
+                .flatMap(payWalletModel -> Single.fromCallable(() -> payWalletModel.setName(walletName)))
+                .doAfterSuccess(mPayWalletRepository::saveWallet);
     }
 }

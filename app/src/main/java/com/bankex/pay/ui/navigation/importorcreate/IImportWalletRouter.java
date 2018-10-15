@@ -22,4 +22,11 @@ public interface IImportWalletRouter {
      * @param context {@link Context}
      */
     void openCreateWalletScreen(Context context);
+
+    /**
+     * Открыть главный экран
+     *
+     * @param context {@link Context}
+     */
+    void openMainActivityScreen(Context context);
 }

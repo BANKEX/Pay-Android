@@ -6,6 +6,7 @@ import com.bankex.pay.data.repository.IImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPrivateKeyRepository;
 import com.bankex.pay.data.repository.IPasswordStoreRepository;
+import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.data.repository.ImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPrivateKeyRepository;
@@ -62,16 +63,18 @@ public class ImportOrCreateModule {
     @ImportOrCreateScope
     IImportWalletFromPrivateKeyInteractor provideImportWalletFromPrivateKeyInteractor(IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
-                                                                                      IPasswordStoreRepository passwordStoreRepository) {
-        return new ImportWalletFromPrivateKeyInteractor(importWalletFromPrivateKeyRepository, importWalletFromKeyStoreRepository, passwordStoreRepository);
+                                                                                      IPasswordStoreRepository passwordStoreRepository,
+                                                                                      IPayWalletRepository payWalletRepository) {
+        return new ImportWalletFromPrivateKeyInteractor(importWalletFromPrivateKeyRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
     }
 
     @Provides
     @ImportOrCreateScope
     IImportWalletFromPassPhraseInteractor provideImportWalletFromPassPhraseInteractor(IImportWalletFromPassPhraseRepository importWalletFromPassPhraseRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
-                                                                                      IPasswordStoreRepository passwordStoreRepository) {
-        return new ImportWalletFromPassPhraseInteractor(importWalletFromPassPhraseRepository, importWalletFromKeyStoreRepository, passwordStoreRepository);
+                                                                                      IPasswordStoreRepository passwordStoreRepository,
+                                                                                      IPayWalletRepository payWalletRepository) {
+        return new ImportWalletFromPassPhraseInteractor(importWalletFromPassPhraseRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
     }
 
     @Provides
