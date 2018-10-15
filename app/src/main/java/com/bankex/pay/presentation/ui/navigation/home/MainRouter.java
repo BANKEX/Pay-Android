@@ -53,7 +53,7 @@ public class MainRouter extends BaseRouter implements IMainRouter {
     @Override
     public void openImportOrCreate(Context context) {
         Intent intent = ImportOrCreateActivity.newIntent(context);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 }

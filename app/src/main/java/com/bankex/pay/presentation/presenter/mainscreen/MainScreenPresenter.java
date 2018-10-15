@@ -44,14 +44,10 @@ public class MainScreenPresenter extends BasePresenter<IMainScreenView> {
         mPayWalletInteractor.getWallet()
                 .subscribeOn(mRxSchedulersUtils.getIOScheduler())
                 .observeOn(mRxSchedulersUtils.getMainThreadScheduler())
-                .subscribe((payWalletModel, throwable) -> {
-                    if (throwable instanceof NullPointerException){
-                        getViewState().openImportOrCreate();
-                    }else {
-                        // TODO: 13/10/2018
+                .subscribe(payWalletModel -> {
 
-                        //do nothing
-                    }
+                }, throwable -> {
+                    getViewState().openImportOrCreate();
                 });
     }
 }

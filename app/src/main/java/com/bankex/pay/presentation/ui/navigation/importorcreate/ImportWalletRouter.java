@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.bankex.pay.presentation.ui.importwallet.ImportWalletActivity;
+import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 
 /**
  * Роутер перехода с экрана Импорта или Создания
@@ -30,5 +31,10 @@ public class ImportWalletRouter implements IImportWalletRouter {
     @Override
     public void openCreateWalletScreen(Context context) {
         //todo
+    }
+
+    @Override
+    public void openMainActivityScreen(Context context) {
+        context.startActivity(new Intent(context,MainScreenActivity.class));
     }
 }

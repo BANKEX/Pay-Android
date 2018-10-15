@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.bankex.pay.data.repository.IImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.IPasswordStoreRepository;
+import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.model.domain.PayWalletModel;
 
 import dagger.internal.Preconditions;
@@ -20,6 +21,7 @@ public class ImportWalletFromPassPhraseInteractor implements IImportWalletFromPa
     private final IImportWalletFromPassPhraseRepository mImportWalletFromPassPhraseRepository;
     private final IImportWalletFromKeyStoreRepository mImportWalletFromKeyStoreRepository;
     private final IPasswordStoreRepository mPasswordStoreRepository;
+    private final IPayWalletRepository mPayWalletRepository;
 
     /**
      * @param importWalletFromPassPhraseRepository {@link IImportWalletFromPassPhraseRepository}
@@ -28,7 +30,8 @@ public class ImportWalletFromPassPhraseInteractor implements IImportWalletFromPa
      */
     public ImportWalletFromPassPhraseInteractor(@NonNull IImportWalletFromPassPhraseRepository importWalletFromPassPhraseRepository,
                                                 @NonNull IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
-                                                @NonNull IPasswordStoreRepository passwordStoreRepository) {
+                                                @NonNull IPasswordStoreRepository passwordStoreRepository,
+                                                @NonNull IPayWalletRepository payWalletRepository) {
         mImportWalletFromPassPhraseRepository = Preconditions.checkNotNull(
                 importWalletFromPassPhraseRepository,
                 "IImportWalletFromPassPhraseRepository must be not null");
@@ -38,6 +41,9 @@ public class ImportWalletFromPassPhraseInteractor implements IImportWalletFromPa
         mPasswordStoreRepository = Preconditions.checkNotNull(
                 passwordStoreRepository,
                 "IPasswordStoreRepository must be not null");
+        mPayWalletRepository = Preconditions.checkNotNull(
+                payWalletRepository,
+                "IPayWalletRepository must be not null");
     }
 
     /**
@@ -51,6 +57,7 @@ public class ImportWalletFromPassPhraseInteractor implements IImportWalletFromPa
     public Single<PayWalletModel> importWalletFromPassPhrase(String passPhrase, String walletName) {
         return mPasswordStoreRepository.generatePassword()
                 .flatMap(password -> mImportWalletFromPassPhraseRepository.importWalletFromKeyStore(passPhrase, password))
-                .flatMap(credentials -> Single.fromCallable(() -> new PayWalletModel(credentials.getAddress(), walletName)));
+                .flatMap(credentials -> Single.fromCallable(() -> new PayWalletModel(credentials.getAddress(), walletName)))
+                .doAfterSuccess(mPayWalletRepository::saveWallet);
     }
 }

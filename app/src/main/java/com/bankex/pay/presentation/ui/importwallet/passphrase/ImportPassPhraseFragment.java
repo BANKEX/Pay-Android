@@ -20,6 +20,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
 import com.bankex.pay.presentation.presenter.importwallet.passphrase.ImportPassPhrasePresenter;
+import com.bankex.pay.presentation.ui.navigation.importorcreate.IImportWalletRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import com.bankex.pay.utils.share.IShareDataUtils;
 import com.bankex.pay.utils.share.ShareDataUtils;
@@ -33,22 +34,25 @@ import javax.inject.Inject;
  */
 public class ImportPassPhraseFragment extends BaseFragment implements IImportPassPhraseView {
 
-    private Button mImportButton;
-    private EditText mPassPhraseEditText;
-    private EditText mWalletNameEditText;
-    private Button mPasteButton;
+    @Inject
+    IImportWalletRouter mImportWalletRouter;
 
     @Inject
     @InjectPresenter
     ImportPassPhrasePresenter mImportPassPhrasePresenter;
 
-    @ProvidePresenter
-    public ImportPassPhrasePresenter provideImportPassPhrasePresenter() {
-        return mImportPassPhrasePresenter;
-    }
+    private Button mImportButton;
+    private EditText mPassPhraseEditText;
+    private EditText mWalletNameEditText;
+    private Button mPasteButton;
 
     public static ImportPassPhraseFragment newInstance() {
         return new ImportPassPhraseFragment();
+    }
+
+    @ProvidePresenter
+    public ImportPassPhrasePresenter provideImportPassPhrasePresenter() {
+        return mImportPassPhrasePresenter;
     }
 
     @Override
@@ -77,13 +81,14 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
 
     @Override
     public void doSomethingGood() {
-        Toast.makeText(getActivity(), "good", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Import Success", Toast.LENGTH_SHORT).show();
+        mImportWalletRouter.openMainActivityScreen(getActivity());
     }
 
     @Override
     public void showError(Throwable throwable) {
         Log.e("error ", throwable.getMessage(), throwable);
-        Toast.makeText(getActivity(), "bad", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Import Error", Toast.LENGTH_SHORT).show();
     }
 
     private void initViews(View view) {

@@ -36,13 +36,42 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
     @Inject
     @InjectPresenter
     MainScreenPresenter mMainScreenPresenter;
+    private BottomNavigationView mBottomNavigationView;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+        switch (item.getItemId()) {
+            case R.id.navigation_wallet:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
+                }
+                return true;
+            case R.id.navigation_history:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToHistoryTab(this);
+                }
+                return true;
+            case R.id.navigation_contacts:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToContactsTab(this);
+                }
+                return true;
+            case R.id.navigation_settings:
+                hideKeyboard();
+                if (!item.isChecked()) {
+                    mRouter.goToSettingsTab(this, SettingsFragment.newInstance());
+                }
+                return true;
+        }
+        return false;
+    };
 
     @ProvidePresenter
     public MainScreenPresenter providePresenter() {
         return mMainScreenPresenter;
     }
-
-    private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +124,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 
     @Override
     public void openImportOrCreate() {
+        finish();
         mRouter.openImportOrCreate(this);
     }
 
@@ -117,35 +147,4 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
         Intent intent = LockScreenActivity.newIntent(this);
         startActivityForResult(intent, ONBOARDING_REQUEST);
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
-        switch (item.getItemId()) {
-            case R.id.navigation_wallet:
-                hideKeyboard();
-                if (!item.isChecked()) {
-                    mRouter.goToWalletTab(this, WalletFragment.newInstance());
-                }
-                return true;
-            case R.id.navigation_history:
-                hideKeyboard();
-                if (!item.isChecked()) {
-                    mRouter.goToHistoryTab(this);
-                }
-                return true;
-            case R.id.navigation_contacts:
-                hideKeyboard();
-                if (!item.isChecked()) {
-                    mRouter.goToContactsTab(this);
-                }
-                return true;
-            case R.id.navigation_settings:
-                hideKeyboard();
-                if (!item.isChecked()) {
-                    mRouter.goToSettingsTab(this, SettingsFragment.newInstance());
-                }
-                return true;
-        }
-        return false;
-    };
 }
