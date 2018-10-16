@@ -4,7 +4,6 @@ package com.bankex.pay.data.repository;
 import com.bankex.pay.data.realm.IRealmService;
 import com.bankex.pay.model.domain.PayWalletModel;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 
 /**
@@ -24,7 +23,7 @@ public class PayWalletRepository implements IPayWalletRepository {
      * {@inheritDoc }
      */
     @Override
-    public Completable saveWallet(PayWalletModel payWalletModel) {
+    public Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel) {
         return mRealmService.saveWallet(payWalletModel);
     }
 

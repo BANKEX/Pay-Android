@@ -3,7 +3,6 @@ package com.bankex.pay.domain.interactor;
 import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.model.domain.PayWalletModel;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 
 /**
@@ -21,7 +20,7 @@ public class PayWalletInteractor implements IPayWalletInteractor {
      * {@inheritDoc }
      */
     @Override
-    public Completable saveWallet(PayWalletModel payWalletModel) {
+    public Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel) {
         return mSaveWalletRepository.saveWallet(payWalletModel);
     }
 

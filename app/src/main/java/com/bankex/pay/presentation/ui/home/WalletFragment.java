@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.wallet.WalletInjector;
 import com.bankex.pay.domain.BaseBankexModel;
@@ -126,6 +127,7 @@ public class WalletFragment extends BaseFragment implements IWalletView {
         mImportOrCreateButton = view.findViewById(R.id.create_button);
         mRecyclerView = view.findViewById(R.id.wallet_recycler_view);
 
+        mImportOrCreateButton.setVisibility(BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
         mImportOrCreateButton.setOnClickListener(this::onClick);
     }
 

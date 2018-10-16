@@ -58,6 +58,6 @@ public class ImportWalletFromPassPhraseInteractor implements IImportWalletFromPa
         return mPasswordStoreRepository.generatePassword()
                 .flatMap(password -> mImportWalletFromPassPhraseRepository.importWalletFromKeyStore(passPhrase, password))
                 .flatMap(credentials -> Single.fromCallable(() -> new PayWalletModel(credentials.getAddress(), walletName)))
-                .doAfterSuccess(mPayWalletRepository::saveWallet);
+                .flatMap(mPayWalletRepository::saveWallet);
     }
 }

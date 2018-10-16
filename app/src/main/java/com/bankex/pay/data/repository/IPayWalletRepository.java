@@ -4,7 +4,6 @@ import com.bankex.pay.model.domain.PayWalletModel;
 
 import javax.annotation.Nullable;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 
 /**
@@ -20,7 +19,7 @@ public interface IPayWalletRepository {
      * @param payWalletModel кошелек
      * @return Completable
      */
-    Completable saveWallet(PayWalletModel payWalletModel);
+    Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
 
     /**
      * Пытаемся получить кошелек из БД
