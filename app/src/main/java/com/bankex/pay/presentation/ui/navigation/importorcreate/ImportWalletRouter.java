@@ -35,6 +35,6 @@ public class ImportWalletRouter implements IImportWalletRouter {
 
     @Override
     public void openMainActivityScreen(Context context) {
-        context.startActivity(new Intent(context,MainScreenActivity.class));
+        context.startActivity(new Intent(context, MainScreenActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

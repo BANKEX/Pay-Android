@@ -4,7 +4,6 @@ import com.bankex.pay.model.domain.PayWalletModel;
 
 import javax.annotation.Nullable;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 
 /**
@@ -18,9 +17,9 @@ public interface IRealmService {
      * Сохраняем кошелек в БД
      *
      * @param payWalletModel кошелек
-     * @return Completable
+     * @return Single<PayWalletModel>
      */
-    Completable saveWallet(PayWalletModel payWalletModel);
+    Single<PayWalletModel>  saveWallet(PayWalletModel payWalletModel);
 
     /**
      * Пытаемся получить кошелек из БД

@@ -2,7 +2,6 @@ package com.bankex.pay.data.realm;
 
 import com.bankex.pay.model.domain.PayWalletModel;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.realm.Realm;
 
@@ -16,15 +15,13 @@ public class DefaultRealmService implements IRealmService {
      * {@inheritDoc }
      */
     @Override
-    public Completable saveWallet(PayWalletModel payWalletModel) {
-        return Completable.fromCallable(() -> {
+    public Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel) {
+        return Single.fromCallable(() -> {
             Realm realm = Realm.getDefaultInstance();
-            if (realm.where(PayWalletModel.class).equalTo("address", payWalletModel.getAddress()).findFirst() == null) {
-                realm.beginTransaction();
-                realm.copyToRealmOrUpdate(payWalletModel);
-                realm.commitTransaction();
-            }
-            return null;
+            realm.beginTransaction();
+            realm.copyToRealmOrUpdate(payWalletModel);
+            realm.commitTransaction();
+            return payWalletModel;
         });
     }
 
