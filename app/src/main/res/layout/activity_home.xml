@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bankex_background"
-    tools:context=".presentation.ui.mainscreen.MainScreenActivity">
-
+    tools:context=".presentation.ui.mainscreen.MainScreenActivity"
+    >
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toTopOf="@id/home_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/home_navigation"
@@ -28,6 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation_menu"/>
+        app:menu="@menu/navigation_menu"
+        />
 
 </android.support.constraint.ConstraintLayout>

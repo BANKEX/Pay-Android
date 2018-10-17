@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bankex_background">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/bankex_background"
+  >
 
-    <ImageView
-        android:id="@+id/onboarding_custom_network_view"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/onboarding_image_height"
-        android:layout_marginLeft="@dimen/onboarding_left_right_margin"
-        android:layout_marginRight="@dimen/onboarding_left_right_margin"
-        android:layout_marginTop="@dimen/onboarding_top_margin"
-        android:src="@drawable/ic_network"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+  <ImageView
+    android:id="@+id/onboarding_custom_network_view"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/onboarding_image_height"
+    android:layout_marginLeft="@dimen/onboarding_left_right_margin"
+    android:layout_marginRight="@dimen/onboarding_left_right_margin"
+    android:layout_marginTop="@dimen/onboarding_top_margin"
+    android:src="@drawable/ic_network"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
 
+  <TextView
+    android:id="@+id/onboarding_what_is_it_title_text_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_big"
+    android:text="@string/onboarding_custom_network_title"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/onboarding_custom_network_view"
+    style="@style/TitleBold"
+    />
 
-    <TextView
-        android:id="@+id/onboarding_what_is_it_title_text_view"
-        style="@style/TitleBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_big"
-        android:text="@string/onboarding_custom_network_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboarding_custom_network_view"/>
-
-    <TextView
-        android:id="@+id/onboarding_what_is_it_body_text_view"
-        style="@style/SubheaderRegular.PlaceHolder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/onboarding_left_right_margin"
-        android:layout_marginRight="@dimen/onboarding_left_right_margin"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:gravity="center"
-        android:lineSpacingMultiplier="1.2"
-        android:text="@string/onboarding_custom_network_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboarding_what_is_it_title_text_view"/>
-
-
+  <TextView
+    android:id="@+id/onboarding_what_is_it_body_text_view"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/onboarding_left_right_margin"
+    android:layout_marginRight="@dimen/onboarding_left_right_margin"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:gravity="center"
+    android:lineSpacingMultiplier="1.2"
+    android:text="@string/onboarding_custom_network_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/onboarding_what_is_it_title_text_view"
+    style="@style/SubheaderRegular.PlaceHolder"
+    />
 </android.support.constraint.ConstraintLayout>
