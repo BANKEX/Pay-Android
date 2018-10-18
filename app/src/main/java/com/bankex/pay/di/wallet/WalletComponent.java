@@ -1,11 +1,11 @@
 package com.bankex.pay.di.wallet;
 
-import com.bankex.pay.presentation.ui.home.WalletFragment;
+import com.bankex.pay.presentation.ui.wallet.WalletFragment;
 
 import dagger.Subcomponent;
 
 /**
- * Сабкомпонент главного экрана
+ * Subcomponent for Wallet screen
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

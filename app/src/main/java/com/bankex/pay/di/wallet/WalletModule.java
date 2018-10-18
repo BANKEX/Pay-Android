@@ -3,7 +3,7 @@ package com.bankex.pay.di.wallet;
 import dagger.Module;
 
 /**
- * Модуль главного экрана кошелька
+ * Module for Wallet screen
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

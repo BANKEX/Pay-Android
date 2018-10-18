@@ -117,6 +117,7 @@ dependencies {
     implementation libs.fingetprint
     implementation libs.qr
     implementation libs.qrGenerator
+    implementation libs.timber
 
     implementation(libs.fabric) {
         transitive = true

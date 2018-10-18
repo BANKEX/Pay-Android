@@ -49,7 +49,7 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
         LockScreenInjector.getLockScreenComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
-        editText = findViewById(R.id.pin);
+        editText = findViewById(R.id.et_pin);
     }
 
     @Override

@@ -11,7 +11,7 @@ import dagger.Provides;
 import javax.inject.Singleton;
 
 /**
- * Navigation
+ * Navigation module
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

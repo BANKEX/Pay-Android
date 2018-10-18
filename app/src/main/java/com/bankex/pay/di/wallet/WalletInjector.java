@@ -3,7 +3,7 @@ package com.bankex.pay.di.wallet;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 
 /**
- * Инжектор компонента {@link WalletComponent}
+ * Injector for {@link WalletComponent}
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

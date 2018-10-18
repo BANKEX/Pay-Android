@@ -49,7 +49,7 @@ public class SetPinActivity extends BaseActivity implements ISetPinView {
         SetPinInjector.getSetPinComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_pin);
-        editText = findViewById(R.id.pin);
+        editText = findViewById(R.id.et_pin);
     }
 
     @Override

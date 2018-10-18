@@ -1,24 +1,23 @@
 package com.bankex.pay.di.setpin;
 
 import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
-
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент для эркана установки пин кода
+ * Temporary subcomponent for pin code setting
  *
  * @author Denis Anisimov.
  */
-@Subcomponent(modules = {SetPinModule.class})
+@Subcomponent(modules = { SetPinModule.class })
 @SetPinScope
 public interface SetPinComponent {
 
-    @Subcomponent.Builder
-    interface Builder {
-        SetPinComponent.Builder makeSetPinModule(SetPinModule module);
+	@Subcomponent.Builder
+	interface Builder {
+		SetPinComponent.Builder makeSetPinModule(SetPinModule module);
 
-        SetPinComponent build();
-    }
+		SetPinComponent build();
+	}
 
-    void inject(SetPinActivity activity);
+	void inject(SetPinActivity activity);
 }

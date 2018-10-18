@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.home;
+package com.bankex.pay.presentation.ui.settings;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,12 +14,11 @@ import com.bankex.pay.utils.dialogs.RateUsDialog;
 import javax.inject.Inject;
 
 /**
- * Фрагмент экрана настроек
+ * Settings screen fragment
  *
  * @author Pavel Apanovskiy on 12.09.2018.
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
-
 	@Inject
 	ISettingsRouter mSettingsRouter;
 
@@ -70,21 +69,21 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 	private Preference.OnPreferenceClickListener getNetworkOnClickListener() {
 		return preference -> {
-			Toast.makeText(getActivity(), "network", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "Network", Toast.LENGTH_SHORT).show();
 			return true;
 		};
 	}
 
 	private Preference.OnPreferenceClickListener getWalletsOnClickListener() {
 		return preference -> {
-			Toast.makeText(getActivity(), "wallets", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "Wallet", Toast.LENGTH_SHORT).show();
 			return true;
 		};
 	}
 
 	private Preference.OnPreferenceClickListener getSecurityOnClickListener() {
 		return preference -> {
-			Toast.makeText(getActivity(), "security", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "Security", Toast.LENGTH_SHORT).show();
 			return true;
 		};
 	}

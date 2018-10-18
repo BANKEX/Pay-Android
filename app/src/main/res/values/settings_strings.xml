@@ -6,7 +6,7 @@
     <string name="settings_network_title">Network</string>
 
     <string name="settings_wallets_key">pref_settings_wallets</string>
-    <string name="settings_wallets_title">Wallets</string>
+    <string name="settings_wallets_title">Wallet</string>
 
     <string name="settings_security_key">pref_settings_security</string>
     <string name="settings_security_title">Security</string>
@@ -26,4 +26,7 @@
 
     <string name="settings_facebook_key">pref_settings_facebook</string>
     <string name="settings_facebook_title">Facebook</string>
+
+    <!-- Router strings -->
+    <string name="settings_screen_error_no_email">No apps can perform this action</string>
 </resources>

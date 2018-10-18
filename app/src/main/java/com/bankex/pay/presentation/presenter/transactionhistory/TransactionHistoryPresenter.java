@@ -5,17 +5,17 @@ import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.view.transactionhistory.ITransactionHistoryView;
 
 /**
- * Презентер экрана истории транзакций
+ * Presenter for transactions history screen
  *
  * @author Pavel Apanovskiy on 27/09/2018.
  */
 @InjectViewState
 public class TransactionHistoryPresenter extends BasePresenter<ITransactionHistoryView> {
 
-    public TransactionHistoryPresenter() {
-    }
+	public TransactionHistoryPresenter() {
+	}
 
-    public void doMagic() {
-        getViewState().showToast();
-    }
+	public void doMagic() {
+		getViewState().showToast();
+	}
 }

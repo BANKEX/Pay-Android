@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Скоуп экрана истории транзакций
+ * Scope for Transaction history screen
  *
  * @author Pavel Apanovskiy on 27/09/2018.
  */

@@ -2,25 +2,23 @@ package com.bankex.pay.presentation.ui.importorcreate;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.view.base.BaseActivity;
 
 /**
- * Активити экрана Импорта Создания Кошелька
+ * Import or create wallet activity
  *
  * @author Gevork Safaryan on 18.09.2018
  */
 public class ImportOrCreateActivity extends BaseActivity {
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_import_or_create_wallet);
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_import_or_create_wallet);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, new ImportOrCreateFragment())
-                .commit();
-    }
+		getSupportFragmentManager()
+				.beginTransaction()
+				.replace(R.id.fragment_container, new ImportOrCreateFragment())
+				.commit();
+	}
 }

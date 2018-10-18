@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Скоуп главного экрана кошелька
+ * Scope for Wallet screen
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

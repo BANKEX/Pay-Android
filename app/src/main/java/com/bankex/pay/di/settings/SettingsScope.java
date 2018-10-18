@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Скоуп экрана настроек
+ * Scope for Settings screen
  *
  * @author Pavel Apanovskiy on 19.09.2018.
  */

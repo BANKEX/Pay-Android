@@ -33,6 +33,6 @@
         android:layout_marginTop="60dp"
         android:gravity="center"
         android:inputType="number"
-        tools:ignore="TextFields"
+        tools:ignore="Autofill,LabelFor,TextFields"
         />
 </LinearLayout>

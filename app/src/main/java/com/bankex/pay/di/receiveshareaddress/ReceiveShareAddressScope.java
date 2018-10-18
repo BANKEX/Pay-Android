@@ -1,16 +1,15 @@
-package com.bankex.pay.di.receive;
+package com.bankex.pay.di.receiveshareaddress;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import javax.inject.Scope;
 
 /**
- * Скоуп экрана получения
+ * Scope for Receive/Share Address screen
  *
  * @author Pavel Apanovskiy on 30/09/2018.
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ReceiveScope {
+public @interface ReceiveShareAddressScope {
 }
