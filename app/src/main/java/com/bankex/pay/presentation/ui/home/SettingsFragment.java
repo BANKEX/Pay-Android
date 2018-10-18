@@ -8,6 +8,7 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.settings.SettingsInjector;
 import com.bankex.pay.presentation.ui.navigation.settings.ISettingsRouter;
@@ -69,6 +70,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         writeUs.setOnPreferenceClickListener(getWriteUsOnClickListener());
         twitter.setOnPreferenceClickListener(getTwitterOnClickListener());
         facebook.setOnPreferenceClickListener(getFacebookOnClickListener());
+
+        if (!BuildConfig.DEBUG){
+            Preference general = findPreference(getString(R.string.settings_general_key));
+            general.setVisible(false);
+            network.setVisible(false);
+            wallets.setVisible(false);
+            security.setVisible(false);
+        }
     }
 
     private Preference.OnPreferenceClickListener getNetworkOnClickListener() {

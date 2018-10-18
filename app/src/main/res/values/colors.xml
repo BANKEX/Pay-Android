@@ -29,4 +29,7 @@
 
     <color name="actionbar_opacity">#33000000</color>
 
+    <color name="body">#718093</color>
+    <color name="body_black">#000000</color>
+
 </resources>

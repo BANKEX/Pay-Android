@@ -8,14 +8,28 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
+import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
+import com.bankex.pay.presentation.presenter.importwallet.privatekey.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import com.bankex.pay.presentation.ui.view.qr.QRActivity;
+import com.bankex.pay.utils.share.IShareDataUtils;
+import com.bankex.pay.utils.share.ShareDataUtils;
+
+import javax.inject.Inject;
 
 import static android.app.Activity.RESULT_OK;
 import static com.bankex.pay.presentation.ui.view.qr.QRActivity.QR_SCANNER_RESULT;
@@ -25,13 +39,34 @@ import static com.bankex.pay.presentation.ui.view.qr.QRActivity.QR_SCANNER_RESUL
  *
  * @author Gevork Safaryan on 22.09.2018
  */
-public class ImportPrivateKeyFragment extends BaseFragment {
+public class ImportPrivateKeyFragment extends BaseFragment implements IImportPrivateKeyView {
 
     private static final int PERMISSION_CAMERA = 123;
     private static final int QR_SCANNER_REQUEST_CODE = 147;
 
+    private EditText mPrivateKeyEditText;
+    private EditText mWalletNameEditText;
+    private Button mPasteButton;
+    private Button mImportButton;
+    private View mQrButton;
+
+    @Inject
+    @InjectPresenter
+    ImportPrivateKeyPresenter mImportPrivateKeyPresenter;
+
+    @ProvidePresenter
+    public ImportPrivateKeyPresenter provideImportPrivateKeyPresenter() {
+        return mImportPrivateKeyPresenter;
+    }
+
     public static ImportPrivateKeyFragment newInstance() {
         return new ImportPrivateKeyFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        ImportOrCreateInjector.getImportOrCreateComponent().inject(this);
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -47,12 +82,19 @@ public class ImportPrivateKeyFragment extends BaseFragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ImportOrCreateInjector.clearImportOrCreateComponent();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == QR_SCANNER_REQUEST_CODE) {
             String text;
             if (resultCode == RESULT_OK) {
                 text = data.getStringExtra(QR_SCANNER_RESULT);
+                mPrivateKeyEditText.setText(text);
             } else {
                 // TODO: 28/09/2018 Убрать или поставить осмысленный текст
                 text = "что-то пошло не так";
@@ -72,9 +114,29 @@ public class ImportPrivateKeyFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void doSomethingGood() {
+        Toast.makeText(getActivity(), "good", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        Log.e("error ", throwable.getMessage(), throwable);
+        Toast.makeText(getActivity(), "bad", Toast.LENGTH_SHORT).show();
+    }
+
     private void initViews(View view) {
-        View qrButton = view.findViewById(R.id.qr_button);
-        qrButton.setOnClickListener(getQrClickListener());
+        mPrivateKeyEditText = view.findViewById(R.id.private_key_edit_text);
+        mWalletNameEditText = view.findViewById(R.id.wallet_name_edit_text);
+        mPasteButton = view.findViewById(R.id.paste_button);
+        mQrButton = view.findViewById(R.id.qr_button);
+        mImportButton = view.findViewById(R.id.import_button);
+
+        mPrivateKeyEditText.addTextChangedListener(getPrivateKeyTextChangedListener());
+        mWalletNameEditText.addTextChangedListener(getWalletNameTextChangedListener());
+        mPasteButton.setOnClickListener(getPasteButtonClickListener());
+        mQrButton.setOnClickListener(getQrButtonClickListener());
+        mImportButton.setOnClickListener(getImportButtonClickListener());
     }
 
     private void checkCameraPermission() {
@@ -95,7 +157,74 @@ public class ImportPrivateKeyFragment extends BaseFragment {
         startActivityForResult(intent, QR_SCANNER_REQUEST_CODE);
     }
 
-    private View.OnClickListener getQrClickListener() {
+    private TextWatcher getPrivateKeyTextChangedListener() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //do nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //do nothing
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!TextUtils.isEmpty(editable.toString()) &&
+                        !TextUtils.isEmpty(mWalletNameEditText.getText().toString())) {
+                    mImportButton.setEnabled(true);
+                } else {
+                    mImportButton.setEnabled(false);
+                }
+            }
+        };
+    }
+
+    private TextWatcher getWalletNameTextChangedListener() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //do nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //do nothing
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!TextUtils.isEmpty(editable.toString()) &&
+                        !TextUtils.isEmpty(mPrivateKeyEditText.getText().toString())) {
+                    mImportButton.setEnabled(true);
+                } else {
+                    mImportButton.setEnabled(false);
+                }
+            }
+        };
+    }
+
+    private View.OnClickListener getPasteButtonClickListener() {
+        return view -> {
+            FragmentActivity activity = getActivity();
+            if (activity != null) {
+                IShareDataUtils shareDataUtils = new ShareDataUtils();
+                CharSequence sequenceFromClipboard = shareDataUtils.getCharSequenceFromClipboard(activity);
+                mPrivateKeyEditText.setText(sequenceFromClipboard);
+            }
+        };
+    }
+
+    private View.OnClickListener getQrButtonClickListener() {
         return view -> checkCameraPermission();
+    }
+
+    private View.OnClickListener getImportButtonClickListener() {
+        return view -> {
+            String privateKey = mPrivateKeyEditText.getText().toString();
+            String walletName = mWalletNameEditText.getText().toString();
+            mImportPrivateKeyPresenter.magic(privateKey, walletName);
+        };
     }
 }

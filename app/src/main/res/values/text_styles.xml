@@ -54,7 +54,11 @@
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">@dimen/text_size_body</item>
         <item name="android:textAppearance">@style/BodyMedium</item>
-        <item name="android:textColor">@color/caption</item>
+        <item name="android:textColor">@color/body</item>
+    </style>
+
+    <style name="BodyRegular" parent="BodyMedium">
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     //Кастомщина к различным сценариям
@@ -100,5 +104,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-
+    <style name="BodyRegular.Black">
+        <item name="android:textColor">@color/body_black</item>
+    </style>
 </resources>

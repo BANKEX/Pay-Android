@@ -62,6 +62,9 @@
     <string name="enter_your_">Enter your PIN</string>
     <string name="at_the_rate">$689 913 at the rate of Binance</string>
 
+    <string name="unlock_screen_title_android">Unlock screen</string>
+    <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
+
 </resources>
 
 

@@ -56,6 +56,7 @@ public class ImportOrCreateFragment extends BaseFragment {
         mImportWallet = view.findViewById(R.id.import_button);
         mImportWallet.setOnClickListener(this::onImportWalletClick);
         mCreateWallet = view.findViewById(R.id.create_button);
+        mCreateWallet.setEnabled(false);
         mCreateWallet.setOnClickListener(this::onCreateWalletClick);
     }
 

@@ -10,9 +10,9 @@ import android.content.Context;
 public interface IWalletRouter {
 
     /**
-     * Метод перехода на экран Импорта Создания
+     * Открываем экран импорта/создания кошелька
      *
-     * @param context контекст
+     * @param context context
      */
     void openImportOrCreate(Context context);
 }
