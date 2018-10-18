@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <View
-        android:id="@+id/logo"
+        android:id="@+id/view_logo"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="54dp"
         android:layout_marginStart="@dimen/margin_medium"
-        android:background="@drawable/ic_lock_open" />
+        android:layout_marginTop="54dp"
+        android:background="@drawable/ic_lock_open"
+        />
 
     <TextView
-        android:id="@+id/enter_your_pin"
+        android:id="@+id/tv_enter_your_pin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/enter_your_"
-        android:textAppearance="@style/set_pin_edit_style" />
+        android:textAppearance="@style/set_pin_edit_style"
+        />
 
     <EditText
-        android:id="@+id/pin"
+        android:id="@+id/et_pin"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:inputType="number"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp" />
-
+        tools:ignore="TextFields"
+        />
 </LinearLayout>

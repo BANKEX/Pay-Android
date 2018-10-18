@@ -25,6 +25,6 @@ public class ImportPassPhraseFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.import_wallet_pass_phrase_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_import_wallet_pass_phrase, container, false);
     }
 }

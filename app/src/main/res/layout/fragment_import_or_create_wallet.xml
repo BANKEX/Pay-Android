@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bankex_background">
+    android:background="@color/bankex_background"
+    >
 
     <ImageView
         android:id="@+id/logo"
@@ -16,11 +17,11 @@
         app:layout_collapseMode="parallax"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Button
         android:id="@+id/create_button"
-        style="@style/ButtonPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_large"
@@ -29,11 +30,12 @@
         android:text="@string/create_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/import_button"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/ButtonPrimary"
+        />
 
     <Button
         android:id="@+id/import_button"
-        style="@style/ButtonOutlinePrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_large"
@@ -42,6 +44,8 @@
         android:text="@string/import_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/create_button"/>
+        app:layout_constraintRight_toLeftOf="@+id/create_button"
+        style="@style/ButtonOutlinePrimary"
+        />
 
 </android.support.constraint.ConstraintLayout>

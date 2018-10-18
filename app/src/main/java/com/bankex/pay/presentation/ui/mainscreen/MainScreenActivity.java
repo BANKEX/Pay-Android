@@ -49,7 +49,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
     protected void onCreate(Bundle savedInstanceState) {
         MainScreenInjector.getMainScreenComponent().inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.activity_home);
         if (BuildConfig.DEBUG) {
             Log.d("Firebase", "token " + FirebaseInstanceId.getInstance().getToken());
         }
