@@ -1,9 +1,9 @@
 package com.bankex.pay.di.onboarding;
 
-import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingFastAndEasyFragment;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingTalkToUsFragment;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingWhatIsItFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingActivity;
+import com.bankex.pay.presentation.view.onboarding.OnboardingFastAndEasyFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingTalkToUsFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingWhatIsItFragment;
 import dagger.Subcomponent;
 
 /**

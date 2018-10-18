@@ -1,6 +1,6 @@
 package com.bankex.pay.di.transactionhistory;
 
-import com.bankex.pay.presentation.ui.view.transactionhistory.TransactionHistoryFragment;
+import com.bankex.pay.presentation.view.transactionhistory.TransactionHistoryFragment;
 import dagger.Subcomponent;
 
 /**

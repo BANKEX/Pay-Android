@@ -2,7 +2,7 @@ package com.bankex.pay.presentation.presenter.transactionhistory;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.ui.view.transactionhistory.ITransactionHistoryView;
+import com.bankex.pay.presentation.view.transactionhistory.ITransactionHistoryView;
 
 /**
  * Presenter for transactions history screen

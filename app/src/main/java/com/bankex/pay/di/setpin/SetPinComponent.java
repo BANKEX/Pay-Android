@@ -1,6 +1,6 @@
 package com.bankex.pay.di.setpin;
 
-import com.bankex.pay.presentation.ui.setpin.SetPinActivity;
+import com.bankex.pay.presentation.view.setpin.SetPinActivity;
 import dagger.Subcomponent;
 
 /**

@@ -4,14 +4,15 @@ import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
-import com.bankex.pay.presentation.ui.setpin.ISetPinView;
+import com.bankex.pay.presentation.view.setpin.ISetPinView;
+import com.bankex.pay.presentation.view.setpin.SetPinActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;
 import com.elegion.littlefinger.crypto.CryptoAlgorithm;
 import com.elegion.littlefinger.fingerprint.AuthResult;
 
 /**
- * Presenter for pin code setting screen {@link com.bankex.pay.presentation.ui.setpin.SetPinActivity}
+ * Presenter for pin code setting screen {@link SetPinActivity}
  *
  * @author Denis Anisimov.
  */

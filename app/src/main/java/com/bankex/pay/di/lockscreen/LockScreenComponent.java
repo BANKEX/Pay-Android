@@ -1,6 +1,6 @@
 package com.bankex.pay.di.lockscreen;
 
-import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
+import com.bankex.pay.presentation.view.lockscreen.LockScreenActivity;
 import dagger.Subcomponent;
 
 /**

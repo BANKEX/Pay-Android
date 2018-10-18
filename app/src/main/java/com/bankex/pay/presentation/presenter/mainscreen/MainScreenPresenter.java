@@ -2,8 +2,8 @@ package com.bankex.pay.presentation.presenter.mainscreen;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.ui.mainscreen.IMainScreenView;
-import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
+import com.bankex.pay.presentation.view.mainscreen.IMainScreenView;
+import com.bankex.pay.presentation.view.mainscreen.MainScreenActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 
 /**

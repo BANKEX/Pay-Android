@@ -1,6 +1,6 @@
 package com.bankex.pay.di.settings;
 
-import com.bankex.pay.presentation.ui.settings.SettingsFragment;
+import com.bankex.pay.presentation.view.settings.SettingsFragment;
 import dagger.Subcomponent;
 
 /**

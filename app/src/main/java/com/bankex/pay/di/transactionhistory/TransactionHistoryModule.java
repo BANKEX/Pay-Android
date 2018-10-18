@@ -1,8 +1,8 @@
 package com.bankex.pay.di.transactionhistory;
 
 import com.bankex.pay.presentation.presenter.transactionhistory.TransactionHistoryPresenter;
-import com.bankex.pay.presentation.ui.navigation.transactionhistory.ITransactionHistoryRouter;
-import com.bankex.pay.presentation.ui.navigation.transactionhistory.TransactionHistoryRouter;
+import com.bankex.pay.presentation.navigation.transactionhistory.ITransactionHistoryRouter;
+import com.bankex.pay.presentation.navigation.transactionhistory.TransactionHistoryRouter;
 import dagger.Module;
 import dagger.Provides;
 

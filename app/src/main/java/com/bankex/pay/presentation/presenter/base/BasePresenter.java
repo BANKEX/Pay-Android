@@ -1,7 +1,7 @@
 package com.bankex.pay.presentation.presenter.base;
 
 import com.arellomobile.mvp.MvpPresenter;
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.view.base.BaseView;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**

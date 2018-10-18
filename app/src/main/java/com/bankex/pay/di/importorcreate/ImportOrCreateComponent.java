@@ -1,6 +1,6 @@
 package com.bankex.pay.di.importorcreate;
 
-import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateFragment;
+import com.bankex.pay.presentation.view.importorcreate.ImportOrCreateFragment;
 import dagger.Subcomponent;
 
 /**
