@@ -2,11 +2,11 @@ package com.bankex.pay.di.lockscreen;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import javax.inject.Scope;
 
 /**
- * Скоуп для лок скрина
+ * Scope for lock screen
+ *
  * @author Denis Anisimov.
  */
 @Scope

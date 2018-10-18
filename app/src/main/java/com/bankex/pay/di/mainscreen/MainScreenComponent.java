@@ -5,32 +5,31 @@ import com.bankex.pay.di.settings.SettingsComponent;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryComponent;
 import com.bankex.pay.di.wallet.WalletComponent;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
-
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент для варианта "чтобы быстро и работало"
+ * Temporary subcomponent for MainScreen
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
-@Subcomponent(modules = {MainScreenModule.class})
+@Subcomponent(modules = { MainScreenModule.class })
 @MainScreenScope
 public interface MainScreenComponent {
 
-    @Subcomponent.Builder
-    interface Builder {
-        MainScreenComponent.Builder makeMainScreenModule(MainScreenModule module);
+	@Subcomponent.Builder
+	interface Builder {
+		MainScreenComponent.Builder makeMainScreenModule(MainScreenModule module);
 
-        MainScreenComponent build();
-    }
+		MainScreenComponent build();
+	}
 
-    void inject(MainScreenActivity activity);
+	void inject(MainScreenActivity activity);
 
-    OnboardingComponent.Builder plusOnboardingComponent();
+	OnboardingComponent.Builder plusOnboardingComponent();
 
-    WalletComponent.Builder plusWalletComponent();
+	WalletComponent.Builder plusWalletComponent();
 
-    SettingsComponent.Builder plusSettingsComponent();
+	SettingsComponent.Builder plusSettingsComponent();
 
-    TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
+	TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
 }

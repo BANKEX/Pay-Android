@@ -10,16 +10,16 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Основоной модуль Application
+ * Main module of Application
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
 @Module
 public class ApplicationModule {
 
-    @Provides
-    @Singleton
-    Context provideContext() {
-        return BankexPayApplication.getInstance().getApplicationContext();
-    }
+	@Provides
+	@Singleton
+	Context provideContext() {
+		return BankexPayApplication.getInstance().getApplicationContext();
+	}
 }

@@ -2,11 +2,10 @@ package com.bankex.pay.di.importorcreate;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import javax.inject.Scope;
 
 /**
- * Скоуп экрана Импорта/Создания
+ * Scpoe for screen Import/Create wallet
  *
  * @author Gevork Safaryan on 19.09.2018.
  */

@@ -1,11 +1,10 @@
 package com.bankex.pay.di.lockscreen;
 
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
-
 import dagger.Subcomponent;
 
 /**
- * Временный сабкомпонент лок скрина
+ * Temporary subcomponent for lock screen
  *
  * @author Denis Anisimov.
  */
@@ -13,12 +12,12 @@ import dagger.Subcomponent;
 @LockScreenScope
 public interface LockScreenComponent {
 
-    @Subcomponent.Builder
-    interface Builder {
-        LockScreenComponent.Builder makeLockScreenModule(LockScreenModule module);
+	@Subcomponent.Builder
+	interface Builder {
+		LockScreenComponent.Builder makeLockScreenModule(LockScreenModule module);
 
-        LockScreenComponent build();
-    }
+		LockScreenComponent build();
+	}
 
-    void inject(LockScreenActivity activity);
+	void inject(LockScreenActivity activity);
 }

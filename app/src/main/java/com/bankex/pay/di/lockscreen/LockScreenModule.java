@@ -8,15 +8,16 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Module for lock screen
  *
  * @author Denis Anisimov.
  */
 @Module(includes = LittleFingerModule.class)
 public class LockScreenModule {
 
-    @Provides
-    @LockScreenScope
-    LockScreenPresenter provideLockScreenPresenter(LittleFinger littleFinger) {
-        return new LockScreenPresenter(littleFinger);
-    }
+	@Provides
+	@LockScreenScope
+	LockScreenPresenter provideLockScreenPresenter(LittleFinger littleFinger) {
+		return new LockScreenPresenter(littleFinger);
+	}
 }
