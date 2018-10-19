@@ -56,7 +56,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presentation.view.receive.ReceiveActivity"
+            android:name=".presentation.view.receiveshareaddress.ReceiveShareAddressActivity"
             android:screenOrientation="portrait"/>
     </application>
 

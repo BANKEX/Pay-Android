@@ -3,27 +3,26 @@ package com.bankex.pay.presentation.view.setpin;
 import com.bankex.pay.presentation.view.base.BaseView;
 
 /**
- * Интерфейс для вью установки пина
+ * Set pin view interface
  *
  * @author Denis Anisimov.
  */
 public interface ISetPinView extends BaseView {
 
-    /**
-     * Метод установки пин кода
-     */
-    void setPin();
+	/**
+	 * Method for pin setting
+	 */
+	void setPin();
 
-    /***
-     * Отображение сообщение об ошибке
-     * @param message
-     */
-    void showMessage(String message);
+	/***
+	 * Method showing error message
+	 * @param message - error message string
+	 */
+	void showMessage(String message);
 
-
-    /**
-     * Отображение состояние сенсора
-     * @param messageRes
-     */
-    void setSensorStateMessage(int messageRes);
+	/**
+	 * Method setting sensor state message
+	 * @param messageRes - state message id
+	 */
+	void setSensorStateMessage(int messageRes);
 }

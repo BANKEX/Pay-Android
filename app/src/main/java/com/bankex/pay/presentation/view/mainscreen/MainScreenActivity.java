@@ -21,7 +21,7 @@ import javax.inject.Inject;
 import timber.log.Timber;
 
 /**
- * Корневая активити
+ * Main activity
  */
 public class MainScreenActivity extends BaseActivity implements IMainScreenView {
 	private static final int ONBOARDING_REQUEST = 0;

@@ -15,18 +15,16 @@ import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 
 /**
- * Диалог с призывом поставить приложению рейтинг
+ * Rate us dialog for settings screen
  *
  * @author Pavel Apanovskiy on 03.09.2018.
  */
 public class RateUsDialog extends DialogFragment {
-
 	private FragmentActivity mActivity;
 
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-
 		mActivity = getActivity();
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
@@ -48,7 +46,7 @@ public class RateUsDialog extends DialogFragment {
 		try {
 			startActivity(myAppLinkToMarket);
 		} catch (ActivityNotFoundException e) {
-			Toast.makeText(getActivity(), " unable to find market app", Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), "unable to find market app", Toast.LENGTH_LONG).show();
 		}
 	}
 

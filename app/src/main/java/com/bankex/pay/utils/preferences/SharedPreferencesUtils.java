@@ -5,12 +5,12 @@ import android.preference.PreferenceManager;
 import com.bankex.pay.BankexPayApplication;
 
 /**
- * Утилитный класс для работы с SharedPreferences
+ * Utility class to work with SharedPreferences
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
 public class SharedPreferencesUtils {
-	private static final String SHOWED_ONBOARDING_BEFORE = "SHOWED_ONBOARDING_BEFORE";
+	private static final String IS_ONBOARDING_SHOWED_BEFORE = "IS_ONBOARDING_SHOWED_BEFORE";
 	private static final String KEY_PIN = "KEY_PIN";
 	private static final String KEY_ENCODED_PIN = "KEY_ENCODED_PIN";
 
@@ -19,31 +19,31 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Получаем статус - показывали ли онбординг
+	 * Getter for variable that indicates if onboarding has been showed before
 	 *
-	 * @return статус boolean
+	 * @return onboarding status boolean
 	 */
 	public static boolean getOnboardingPreferenceStatus() {
 		SharedPreferences preferences = getDefaultSharedPreferences();
-		return preferences.getBoolean(SHOWED_ONBOARDING_BEFORE, false);
+		return preferences.getBoolean(IS_ONBOARDING_SHOWED_BEFORE, false);
 	}
 
 	/**
-	 * Задаем статус - показывали ли онбординг
+	 * Setter for variable that indicates if onboarding was shown before
 	 *
-	 * @param status статус boolean
+	 * @param status onboarding status boolean
 	 */
 	public static void setOnboardingPreferenceStatus(boolean status) {
 		SharedPreferences preferences = getDefaultSharedPreferences();
 		preferences.edit()
-				.putBoolean(SHOWED_ONBOARDING_BEFORE, status)
+				.putBoolean(IS_ONBOARDING_SHOWED_BEFORE, status)
 				.apply();
 	}
 
 	/**
-	 * Проверка записан ли шифрованный пальцем пин
+	 * Getter for variable that shows if pin was encoded
 	 *
-	 * @return статус boolean
+	 * @return pin status boolean
 	 */
 	public static boolean isPinEncoded() {
 		SharedPreferences preferences = getDefaultSharedPreferences();
@@ -51,9 +51,9 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Проверка записан ли пин
+	 * Getter for variable that shows if was saved
 	 *
-	 * @return статус boolean
+	 * @return pin saved status boolean
 	 */
 	public static boolean isPinSaved() {
 		SharedPreferences preferences = getDefaultSharedPreferences();
@@ -61,9 +61,9 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Получаем пин
+	 * Getter for saved pin
 	 *
-	 * @return Пин
+	 * @return pin String
 	 */
 	public static String pin() {
 		SharedPreferences preferences = getDefaultSharedPreferences();
@@ -71,9 +71,9 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Получаем шифрованный пальцем пин
+	 * Getter for encoded pin
 	 *
-	 * @return Пин
+	 * @return encoded pin String
 	 */
 	public static String encodedPin() {
 		SharedPreferences preferences = getDefaultSharedPreferences();
@@ -81,7 +81,7 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Устанавливаем шифрованый пальцем пин
+	 * Setter for encoded pin
 	 */
 	public static void setEncodedPin(String pin) {
 		SharedPreferences preferences = getDefaultSharedPreferences();
@@ -89,11 +89,10 @@ public class SharedPreferencesUtils {
 	}
 
 	/**
-	 * Устанавливаем пин
+	 * Setter for saved pin
 	 */
 	public static void setPin(String pin) {
 		SharedPreferences preferences = getDefaultSharedPreferences();
 		preferences.edit().putString(KEY_PIN, pin).apply();
 	}
-
 }

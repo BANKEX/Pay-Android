@@ -41,7 +41,6 @@
                     android:src="@drawable/ic_bankex_pay"
                     app:layout_collapseMode="parallax"
                     />
-
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -52,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:shadowColor="@color/colorPrimary"
-        android:text="Import Wallet"
+        android:text="@string/wallet_home_scree_btn"
         style="@style/ButtonOutlinePrimary"
         />
 </android.support.design.widget.CoordinatorLayout>

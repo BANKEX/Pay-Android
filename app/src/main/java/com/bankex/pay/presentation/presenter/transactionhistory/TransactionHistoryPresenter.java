@@ -14,8 +14,4 @@ public class TransactionHistoryPresenter extends BasePresenter<ITransactionHisto
 
 	public TransactionHistoryPresenter() {
 	}
-
-	public void doMagic() {
-		getViewState().showToast();
-	}
 }

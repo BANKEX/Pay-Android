@@ -3,26 +3,28 @@ package com.bankex.pay.presentation.view.lockscreen;
 import com.bankex.pay.presentation.view.base.BaseView;
 
 /**
- * Интерфейс для вью блокировки экрана
+ * Interface for lock screen view
  *
  * @author Denis Anisimov.
  */
 public interface ILockScreenView extends BaseView {
 
     /**
-     * Метод снятия блокировки с экрана
+	 * Screen unlock method
      */
     void unlock();
 
     /***
-     * Отображение сообщение об ошибке
+     * Show error message method
+	 *
      * @param message - message to show
      */
     void showMessage(int message);
 
     /**
-     * Отображение состояние сенсора
-     * @param messageRes
+     * Method to display sensor status
+	 *
+     * @param messageRes - message string id
      */
     void setSensorStateMessage(int messageRes);
 }

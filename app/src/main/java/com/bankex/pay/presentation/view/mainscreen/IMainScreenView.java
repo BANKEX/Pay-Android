@@ -5,7 +5,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.bankex.pay.presentation.view.base.BaseView;
 
 /**
- * Интерфейс вьюхи для корневой активити {@link MainScreenActivity}
+ * Interface for main activity view {@link MainScreenActivity}
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
@@ -13,12 +13,12 @@ import com.bankex.pay.presentation.view.base.BaseView;
 public interface IMainScreenView extends BaseView {
 
     /**
-     * показываем онбординг
+     * Method to show onboarding
      */
     void showOnboarding();
 
     /**
-     * показываем локскрин
+     * Method to show lock screen
      */
     void showLockScreen();
 }

@@ -1,9 +1,9 @@
 package com.bankex.pay.di.onboarding;
 
 import com.bankex.pay.presentation.view.onboarding.OnboardingActivity;
-import com.bankex.pay.presentation.view.onboarding.OnboardingFastAndEasyFragment;
-import com.bankex.pay.presentation.view.onboarding.OnboardingTalkToUsFragment;
-import com.bankex.pay.presentation.view.onboarding.OnboardingWhatIsItFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingSecondScreenFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingFirstScreenFragment;
+import com.bankex.pay.presentation.view.onboarding.OnboardingThirdScreenFragment;
 import dagger.Subcomponent;
 
 /**
@@ -14,7 +14,6 @@ import dagger.Subcomponent;
 @OnboardingScope
 @Subcomponent(modules = { OnboardingModule.class })
 public interface OnboardingComponent {
-
 	@Subcomponent.Builder
 	interface Builder {
 		OnboardingComponent.Builder onboardingModule(OnboardingModule module);
@@ -24,9 +23,9 @@ public interface OnboardingComponent {
 
 	void inject(OnboardingActivity activity);
 
-	void inject(OnboardingWhatIsItFragment fragment);
+	void inject(OnboardingFirstScreenFragment fragment);
 
-	void inject(OnboardingFastAndEasyFragment fragment);
+	void inject(OnboardingSecondScreenFragment fragment);
 
-	void inject(OnboardingTalkToUsFragment fragment);
+	void inject(OnboardingThirdScreenFragment fragment);
 }

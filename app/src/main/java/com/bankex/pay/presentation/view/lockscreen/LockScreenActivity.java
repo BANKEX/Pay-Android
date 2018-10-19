@@ -15,7 +15,7 @@ import com.bankex.pay.presentation.view.base.BaseActivity;
 import javax.inject.Inject;
 
 /**
- * Активити блокировки приложения
+ * Activity that shows after unlock screen
  *
  * @author Denis Anisimov on 13.09.2018.
  */
@@ -32,10 +32,10 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
 	private EditText editText;
 
 	/**
-	 * Возвращает интент LockScreenActivity
+	 * Method to return LockScreenActivity intent
 	 *
 	 * @param context Context
-	 * @return intent
+	 * @return LockScreenActivity intent
 	 */
 	public static Intent newIntent(Context context) {
 		return new Intent(context, LockScreenActivity.class);
@@ -86,6 +86,5 @@ public class LockScreenActivity extends BaseActivity implements ILockScreenView 
 
 	@Override
 	public void setSensorStateMessage(int messageRes) {
-
 	}
 }

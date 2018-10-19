@@ -5,15 +5,15 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.bankex.pay.presentation.view.base.BaseView;
 
 /**
- * Интерфейс вью для экрана истории транзакций {@link TransactionHistoryFragment}
+ * Interface for transaction history view {@link TransactionHistoryFragment}
  *
  * @author Pavel Apanovskiy on 27/09/2018.
  */
 public interface ITransactionHistoryView extends BaseView {
 
-    /**
-     * Показать Toast
-     */
-    @StateStrategyType(OneExecutionStateStrategy.class)
-    void showToast();
+	/**
+	 * Method showing toast message just one first time
+	 */
+	@StateStrategyType(OneExecutionStateStrategy.class)
+	void showToast();
 }

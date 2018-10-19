@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.view.base;
 import com.arellomobile.mvp.MvpView;
 
 /**
- * Базовый интерфейс для вью
+ * Base view interface
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

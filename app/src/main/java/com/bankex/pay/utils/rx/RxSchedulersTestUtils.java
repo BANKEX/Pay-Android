@@ -6,7 +6,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Реализация класса {@link RxSchedulersUtils} для тестов
+ * Implementation of {@link RxSchedulersUtils} for tests
  *
  * @author Gevork Safaryan on 11.09.2018.
  */

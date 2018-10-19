@@ -27,7 +27,7 @@ public class WalletFragment extends BaseFragment {
 	/**
 	 * Method to open Wallet main screen fragment
 	 *
-	 * @return new WalletFragment
+	 * @return new WalletFragment instance
 	 */
 	public static WalletFragment newInstance() {
 		return new WalletFragment();
@@ -42,7 +42,7 @@ public class WalletFragment extends BaseFragment {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_home, container, false);
+		return inflater.inflate(R.layout.fragment_home_wallet, container, false);
 	}
 
 	@Override
@@ -53,10 +53,10 @@ public class WalletFragment extends BaseFragment {
 
 	private void initViews(View view) {
 		mImportOrCreateButton = view.findViewById(R.id.create_button);
-		mImportOrCreateButton.setOnClickListener(this::onImportOrCreateClicked);
+		mImportOrCreateButton.setOnClickListener(v -> onImportOrCreateClicked());
 	}
 
-	private void onImportOrCreateClicked(View view) {
+	private void onImportOrCreateClicked() {
 		mRouter.openImportOrCreate(getContext());
 	}
 }
