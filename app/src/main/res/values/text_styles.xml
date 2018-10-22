@@ -51,10 +51,11 @@
     </style>
 
     <style name="BodyMedium" parent="BaseTextStyle">
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">font/Roboto-Regular</item>
         <item name="android:textSize">@dimen/text_size_body</item>
         <item name="android:textAppearance">@style/BodyMedium</item>
-        <item name="android:textColor">@color/body</item>
+        <item name="android:textColor">@color/text_body</item>
+        <item name="android:lineHeight">20dp</item>
     </style>
 
     <style name="BodyRegular" parent="BodyMedium">
@@ -88,7 +89,7 @@
     </style>
 
     <style name="SubheaderRegular.Grey">
-        <item name="android:textColor">@color/bankex_grey</item>
+        <item name="android:textColor">@color/silver</item>
     </style>
 
     <style name="SubheaderBold.Grey" parent="SubheaderBold">
@@ -105,6 +106,10 @@
     </style>
 
     <style name="BodyRegular.Black">
-        <item name="android:textColor">@color/body_black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="EmptyView.Grey" parent="BodyMedium">
+        <item name="android:textColor">@color/empty_state_text</item>
     </style>
 </resources>

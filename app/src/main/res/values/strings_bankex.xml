@@ -65,6 +65,8 @@
     <string name="unlock_screen_title_android">Unlock screen</string>
     <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
 
+    <!-- Contacts screen -->
+    <string name="contacts_string_empty_view">You don`t have\nany contacts yet</string>
 </resources>
 
 

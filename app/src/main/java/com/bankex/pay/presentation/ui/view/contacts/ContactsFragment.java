@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -14,7 +13,6 @@ import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
-
 import javax.inject.Inject;
 
 /**
@@ -23,49 +21,53 @@ import javax.inject.Inject;
  * @author Pavel Apanovskiy on 12/10/2018.
  */
 public class ContactsFragment extends BaseFragment implements IContactsView {
+	@Inject
+	IContactsRouter mContactsRouter;
 
-    @Inject
-    IContactsRouter mContactsRouter;
+	@Inject
+	@InjectPresenter
+	ContactsPresenter mContactsPresenter;
 
-    @Inject
-    @InjectPresenter
-    ContactsPresenter mContactsPresenter;
+	private android.support.v7.widget.Toolbar mToolbar;
 
-    @ProvidePresenter
-    public ContactsPresenter providePresenter() {
-        return mContactsPresenter;
-    }
+	@ProvidePresenter
+	public ContactsPresenter providePresenter() {
+		return mContactsPresenter;
+	}
 
-    public static ContactsFragment newInstance() {
-        return new ContactsFragment();
-    }
+	public static ContactsFragment newInstance() {
+		return new ContactsFragment();
+	}
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        ContactsInjector.getContactsComponent().inject(this);
-        super.onCreate(savedInstanceState);
-    }
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		ContactsInjector.getContactsComponent().inject(this);
+		super.onCreate(savedInstanceState);
+	}
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.contacts_fragment_layout, container, false);
-    }
+	@Nullable
+	@Override
+	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.contacts_fragment_layout, container, false);
+	}
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mContactsPresenter.doMagic();
-    }
+	@Override
+	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		mContactsPresenter.doMagic();
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        ContactsInjector.clearContactsComponent();
-    }
+		mToolbar = view.findViewById(R.id.contacts_toolbar);
+		mToolbar.setTitle("Contacts");
+	}
 
-    @Override
-    public void showToast() {
-       // Toast.makeText(getActivity(), "Contacts", Toast.LENGTH_SHORT).show();
-    }
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		ContactsInjector.clearContactsComponent();
+	}
+
+	@Override
+	public void showToast() {
+		// Toast.makeText(getActivity(), "Contacts", Toast.LENGTH_SHORT).show();
+	}
 }

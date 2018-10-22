@@ -17,8 +17,8 @@
     <dimen name="onboarding_top_margin">64dp</dimen>
     <dimen name="onboarding_left_right_margin">40dp</dimen>
     <dimen name="onboarding_image_height">280dp</dimen>
-    <dimen name="login_button_margin">12dp</dimen>
 
+    <dimen name="login_button_margin">12dp</dimen>
 
     <dimen name="button_stroke_width">1dp</dimen>
     <dimen name="button_radius">3dp</dimen>

@@ -83,7 +83,7 @@ public class OnboardingActivity extends AppIntro {
     }
 
     private void setOnboardingParameters() {
-        setBarColor(getColor(R.color.bankex_white));
+        setBarColor(getColor(R.color.white));
         showSeparator(false);
 
         int color = getColor(R.color.placeholder_body_text);
