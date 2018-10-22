@@ -1,7 +1,7 @@
 package com.bankex.pay.di.importorcreate;
 
-import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
-import com.bankex.pay.presentation.navigation.importorcreate.ImportWalletRouter;
+import com.bankex.pay.ui.navigation.importorcreate.IImportWalletRouter;
+import com.bankex.pay.ui.navigation.importorcreate.ImportWalletRouter;
 import dagger.Module;
 import dagger.Provides;
 

@@ -1,6 +1,6 @@
 package com.bankex.pay.di.mainscreen;
 
-import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
+import com.bankex.pay.ui.presenter.mainscreen.MainScreenPresenter;
 import dagger.Module;
 import dagger.Provides;
 

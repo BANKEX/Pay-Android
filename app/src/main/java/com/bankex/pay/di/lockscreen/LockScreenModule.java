@@ -1,7 +1,7 @@
 package com.bankex.pay.di.lockscreen;
 
 import com.bankex.pay.di.module.LittleFingerModule;
-import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
+import com.bankex.pay.ui.presenter.lockscreen.LockScreenPresenter;
 import com.elegion.littlefinger.LittleFinger;
 
 import dagger.Module;

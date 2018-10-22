@@ -4,7 +4,7 @@ import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.di.settings.SettingsComponent;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryComponent;
 import com.bankex.pay.di.wallet.WalletComponent;
-import com.bankex.pay.presentation.view.mainscreen.MainScreenActivity;
+import com.bankex.pay.ui.view.mainscreen.MainScreenActivity;
 import dagger.Subcomponent;
 
 /**

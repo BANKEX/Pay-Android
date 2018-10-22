@@ -1,9 +1,9 @@
 package com.bankex.pay.di.onboarding;
 
-import com.bankex.pay.presentation.view.onboarding.OnboardingActivity;
-import com.bankex.pay.presentation.view.onboarding.OnboardingSecondScreenFragment;
-import com.bankex.pay.presentation.view.onboarding.OnboardingFirstScreenFragment;
-import com.bankex.pay.presentation.view.onboarding.OnboardingThirdScreenFragment;
+import com.bankex.pay.ui.view.onboarding.OnboardingActivity;
+import com.bankex.pay.ui.view.onboarding.OnboardingSecondScreenFragment;
+import com.bankex.pay.ui.view.onboarding.OnboardingFirstScreenFragment;
+import com.bankex.pay.ui.view.onboarding.OnboardingThirdScreenFragment;
 import dagger.Subcomponent;
 
 /**

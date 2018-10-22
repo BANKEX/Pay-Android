@@ -1,6 +1,6 @@
 package com.bankex.pay.di.wallet;
 
-import com.bankex.pay.presentation.view.wallet.WalletFragment;
+import com.bankex.pay.ui.view.wallet.WalletFragment;
 
 import dagger.Subcomponent;
 
