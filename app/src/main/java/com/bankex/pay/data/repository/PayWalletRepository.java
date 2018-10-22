@@ -5,7 +5,7 @@ import com.bankex.pay.data.realm.IRealmService;
 import com.bankex.pay.model.domain.PayWalletModel;
 
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Реализация репозитория {@link IPayWalletRepository}
@@ -32,7 +32,7 @@ public class PayWalletRepository implements IPayWalletRepository {
      * {@inheritDoc }
      */
     @Override
-    public Maybe<PayWalletModel> getWallet() {
+    public Single<PayWalletModel> getWallet() {
         return mRealmService.getWallet();
     }
 }

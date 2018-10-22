@@ -1,7 +1,6 @@
 package com.bankex.pay.ui.navigation.wallet;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.bankex.pay.ui.view.importorcreate.ImportOrCreateActivity;
 import com.bankex.pay.ui.navigation.base.BaseRouter;
@@ -20,6 +19,6 @@ public class WalletRouter extends BaseRouter implements IWalletRouter {
      */
     @Override
     public void openImportOrCreate(Context context) {
-        context.startActivity(new Intent(context, ImportOrCreateActivity.class));
+        context.startActivity(ImportOrCreateActivity.newIntent(context));
     }
 }

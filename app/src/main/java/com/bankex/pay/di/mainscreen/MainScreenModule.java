@@ -1,20 +1,23 @@
 package com.bankex.pay.di.mainscreen;
 
-import com.bankex.pay.ui.presenter.mainscreen.MainScreenPresenter;
+import com.bankex.pay.domain.interactor.IPayWalletInteractor;
+import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
+import com.bankex.pay.utils.rx.IRxSchedulersUtils;
+
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * Temporary module for Main screen
+ * Временный модуль для варианта "чтобы быстро и работало"
  *
  * @author Gevork Safaryan on 11.09.2018.
  */
 @Module
 public class MainScreenModule {
 
-	@Provides
-	@MainScreenScope
-	MainScreenPresenter provideMainScreenPresenter() {
-		return new MainScreenPresenter();
-	}
+    @Provides
+    @MainScreenScope
+    MainScreenPresenter provideMainScreenPresenter(IPayWalletInteractor payWalletInteractor, IRxSchedulersUtils rxSchedulersUtils) {
+        return new MainScreenPresenter(payWalletInteractor, rxSchedulersUtils);
+    }
 }

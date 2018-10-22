@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="settings_general_key">pref_settings_general</string>
     <string name="settings_general_title">GENERAL</string>
 
     <string name="settings_network_key">pref_settings_network</string>

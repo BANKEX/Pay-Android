@@ -5,7 +5,7 @@ import com.bankex.pay.model.domain.PayWalletModel;
 import javax.annotation.Nullable;
 
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Интерфейс работы с базой данных
@@ -28,7 +28,7 @@ public interface IRealmService {
      * @return кошелек
      */
     @Nullable
-    Maybe<PayWalletModel> getWallet();
+    Single<PayWalletModel> getWallet();
 
     /**
      * Закрыть соединение
