@@ -5,135 +5,144 @@ apply plugin: 'realm-android'
 apply plugin: 'com.google.gms.google-services'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+  maven { url 'https://maven.fabric.io/public' }
 }
 
-
-
 android {
-    signingConfigs {
-        debug {
-            storeFile file('keystore/debug.jks')
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storePassword 'android'
-        }
+  signingConfigs {
+    debug {
+      storeFile file('keystore/debug.jks')
+      keyAlias 'androiddebugkey'
+      keyPassword 'android'
+      storePassword 'android'
+    }
+  }
+
+  dexOptions {
+    javaMaxHeapSize "2g"
+  }
+
+  realm {
+    syncEnabled = true
+  }
+
+  lintOptions {
+    checkReleaseBuilds false
+    abortOnError false
+  }
+
+  compileSdkVersion COMPILE_SDK_VERSION
+  buildToolsVersion(BUILD_TOOLS_VERSION)
+
+  defaultConfig {
+    applicationId "com.bankex.pay"
+    minSdkVersion MIN_SDK_VERSION
+    targetSdkVersion TARGET_SDK_VERSION
+
+    versionCode System.getenv("BUILD_NUMBER") as Integer ?: 0
+    versionName computeVersionName(versionCode)
+
+    multiDexEnabled true
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    javaCompileOptions {
+      annotationProcessorOptions {
+        includeCompileClasspath true
+      }
+    }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      debuggable false
+      zipAlignEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      //signingConfig signingConfigs.release
+
+      buildConfigField "boolean", "AUTHORIZATION_ENABLED", "false"
     }
 
-    dexOptions {
-        javaMaxHeapSize "2g"
+    debug {
+      applicationIdSuffix ".dev"
+      minifyEnabled false
+      debuggable true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+      signingConfig signingConfigs.debug
+
+      buildConfigField "boolean", "AUTHORIZATION_ENABLED", "true"
     }
-
-    realm {
-        syncEnabled = true
-    }
-
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
-    compileSdkVersion COMPILE_SDK_VERSION
-    defaultConfig {
-        applicationId "com.bankex.pay"
-        minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion TARGET_SDK_VERSION
-
-        versionCode System.getenv("BUILD_NUMBER") as Integer ?: 0
-        versionName computeVersionName(versionCode)
-
-        multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            debuggable false
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //signingConfig signingConfigs.release
-
-            buildConfigField "boolean", "AUTHORIZATION_ENABLED", "false"
-        }
-
-        debug {
-            applicationIdSuffix ".dev"
-            minifyEnabled false
-            debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            signingConfig signingConfigs.debug
-
-            buildConfigField "boolean", "AUTHORIZATION_ENABLED", "true"
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    productFlavors {
-    }
-    defaultConfig {
-        // Other values set here
-        manifestPlaceholders = [fabric_io_id: "5b2cfd1743e96d92261c59fb94482a93c8ec4e13"]
-    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  productFlavors {
+  }
+  defaultConfig {
+    // Other values set here
+    manifestPlaceholders = [fabric_io_id: "5b2cfd1743e96d92261c59fb94482a93c8ec4e13"]
+  }
 }
 
 def computeVersionName(int versionCode) {
-    if (VERSION_HOTFIX > 0) {
-        return String.format('%d.%d.%d', VERSION_MAJOR, VERSION_MINOR, VERSION_HOTFIX)
-    } else {
-        return String.format('%d.%d', VERSION_MAJOR, VERSION_MINOR)
-    }
+  if (VERSION_HOTFIX > 0) {
+    return String.format('%d.%d.%d', VERSION_MAJOR, VERSION_MINOR, VERSION_HOTFIX)
+  } else {
+    return String.format('%d.%d', VERSION_MAJOR, VERSION_MINOR)
+  }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation libs.firebase
-    implementation libs.firebaseDynamicLink
-    implementation libs.firebaseCloudMessaging
-    implementation libs.firebaseAppIndexing
-    implementation androidSupport.appcompatV7
-    implementation androidSupport.design
-    implementation androidSupport.constraintLayout
-    implementation libs.dagger
-    annotationProcessor libs.daggerCompiler
-    annotationProcessor libs.daggerProcessor
-    implementation libs.moxy
-    implementation libs.moxyAppCompat
-    annotationProcessor libs.moxyCompiler
-    implementation libs.rxJava
-    implementation libs.rxAndroid
-    implementation libs.retrofit
-    implementation libs.retrofitConverter
-    implementation libs.retrofitRxAdapter
-    implementation libs.okHttpInterceptor
-    implementation libs.appintro
-    implementation libs.adapterDelegates
-    implementation libs.guava
-    implementation libs.searchView
-    implementation libs.lottie
-    implementation libs.amplitude
-    implementation libs.fingetprint
-    implementation libs.qr
-    implementation libs.qrGenerator
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation libs.firebase
+  implementation libs.firebaseDynamicLink
+  implementation libs.firebaseCloudMessaging
+  implementation libs.firebaseAppIndexing
+  implementation androidSupport.appcompatV7
+  implementation androidSupport.design
+  implementation androidSupport.constraintLayout
+  implementation libs.dagger
+  annotationProcessor libs.daggerCompiler
+  annotationProcessor libs.daggerProcessor
+  implementation libs.moxy
+  implementation libs.moxyAppCompat
+  annotationProcessor libs.moxyCompiler
+  implementation libs.rxJava
+  implementation libs.rxAndroid
+  implementation libs.retrofit
+  implementation libs.retrofitConverter
+  implementation libs.retrofitRxAdapter
+  implementation libs.okHttpInterceptor
+  implementation libs.appintro
+  implementation libs.adapterDelegates
+  implementation libs.guava
+  implementation libs.searchView
+  implementation libs.lottie
+  implementation libs.amplitude
+  implementation libs.fingetprint
+  implementation libs.qr
+  implementation libs.qrGenerator
+  compileOnly libs.lombok
+  annotationProcessor libs.lombok
+  implementation libs.stetho
 
-    implementation(libs.fabric) {
-        transitive = true
-    }
-    implementation libs.preference
-    implementation libs.web3j
-    implementation libs.ethereum
-    implementation libs.bip32
-    implementation libs.bip39
-    implementation libs.bip44
-    testImplementation libs.junit
-    testImplementation libs.mockito
-    testImplementation libs.robolectric
-    testImplementation libs.hamcrest
-    androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
-    androidTestImplementation androidSupport.espresso
-    androidTestImplementation androidSupport.testRunner
-    implementation project(':tn')
+  implementation(libs.fabric) {
+    transitive = true
+  }
+  implementation libs.preference
+  implementation libs.web3j
+  implementation libs.ethereum
+  implementation libs.bip32
+  implementation libs.bip39
+  implementation libs.bip44
+  testImplementation libs.junit
+  testImplementation libs.mockito
+  testImplementation libs.robolectric
+  testImplementation libs.hamcrest
+  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
+  androidTestImplementation androidSupport.espresso
+  androidTestImplementation androidSupport.testRunner
+  implementation project(':tn')
 }
 

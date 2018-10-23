@@ -70,4 +70,12 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	public void showToast() {
 		// Toast.makeText(getActivity(), "Contacts", Toast.LENGTH_SHORT).show();
 	}
+
+	@Override public void showContactsList() {
+
+	}
+
+	@Override public void hideContactsList() {
+
+	}
 }
