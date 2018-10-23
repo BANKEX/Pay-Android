@@ -31,4 +31,7 @@
     <color name="actionbar_opacity">@color/gray_light_dark</color>
     <color name="bankex_background">@color/catskill_white</color>
     <color name="caption">@color/bali_hai</color>
+
+    <!-- Contacts -->
+    <color name="bg_color_avatar">@color/blue_royal</color>
 </resources>

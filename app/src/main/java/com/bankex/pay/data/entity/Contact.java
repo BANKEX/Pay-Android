@@ -10,8 +10,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Contact extends RealmObject implements Parcelable {
-	@PrimaryKey
+
 	private String name;
+
+	private String surname;
+
+	@PrimaryKey
 	private String address;
 
 	public Contact() {

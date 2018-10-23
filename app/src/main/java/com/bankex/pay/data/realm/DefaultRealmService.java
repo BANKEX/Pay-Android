@@ -1,9 +1,11 @@
 package com.bankex.pay.data.realm;
 
+import com.bankex.pay.data.entity.Contact;
 import com.bankex.pay.model.domain.PayWalletModel;
 
 import io.reactivex.Single;
 import io.realm.Realm;
+import javax.annotation.Nullable;
 
 /**
  * Реализация {@link DefaultRealmService}
@@ -44,5 +46,21 @@ public class DefaultRealmService implements IRealmService {
     @Override
     public void closeRealm() {
         //todo
+    }
+
+    @Nullable @Override public Contact getContactById(String id) {
+        return null;
+    }
+
+    @Nullable @Override public Single<Contact> getAllContacts() {
+        return null;
+    }
+
+    @Override public void addContact(Contact contact) {
+
+    }
+
+    @Override public void deleteContactById(String id) {
+
     }
 }

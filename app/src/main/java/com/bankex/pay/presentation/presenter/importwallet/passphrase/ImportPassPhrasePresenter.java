@@ -14,21 +14,20 @@ import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 @InjectViewState
 public class ImportPassPhrasePresenter extends BasePresenter<IImportPassPhraseView> {
 
-    private final IImportWalletFromPassPhraseInteractor mImportWalletFromPassPhraseInteractor;
-    private final IRxSchedulersUtils mRxSchedulersUtils;
+	private final IImportWalletFromPassPhraseInteractor mImportWalletFromPassPhraseInteractor;
+	private final IRxSchedulersUtils mRxSchedulersUtils;
 
-    public ImportPassPhrasePresenter(IImportWalletFromPassPhraseInteractor importWalletFromPassPhraseInteractor,
-                                     IRxSchedulersUtils rxSchedulersUtils) {
-        mImportWalletFromPassPhraseInteractor = importWalletFromPassPhraseInteractor;
-        mRxSchedulersUtils = rxSchedulersUtils;
-    }
+	public ImportPassPhrasePresenter(IImportWalletFromPassPhraseInteractor importWalletFromPassPhraseInteractor,
+			IRxSchedulersUtils rxSchedulersUtils) {
+		mImportWalletFromPassPhraseInteractor = importWalletFromPassPhraseInteractor;
+		mRxSchedulersUtils = rxSchedulersUtils;
+	}
 
-
-    public void importWalletFromPassPhrase(String passPhrase, String walletName) {
-        mImportWalletFromPassPhraseInteractor.importWalletFromPassPhrase(passPhrase, walletName)
-                .subscribeOn(mRxSchedulersUtils.getIOScheduler())
-                .observeOn(mRxSchedulersUtils.getMainThreadScheduler())
-                .subscribe(payWalletModel -> getViewState().doSomethingGood(),
-                        throwable -> getViewState().showError(throwable));
-    }
+	public void importWalletFromPassPhrase(String passPhrase, String walletName) {
+		mImportWalletFromPassPhraseInteractor.importWalletFromPassPhrase(passPhrase, walletName)
+				.subscribeOn(mRxSchedulersUtils.getIOScheduler())
+				.observeOn(mRxSchedulersUtils.getMainThreadScheduler())
+				.subscribe(payWalletModel -> getViewState().doSomethingGood(),
+						throwable -> getViewState().showError(throwable));
+	}
 }

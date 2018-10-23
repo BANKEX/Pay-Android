@@ -8,18 +8,25 @@ import com.bankex.pay.presentation.ui.view.base.BaseView;
  * @author Pavel Apanovskiy on 12/10/2018.
  */
 public interface IContactsView extends BaseView {
-	/**
-	 * Тестовый метод
-	 */
-	void showToast();
 
 	/**
-	 * Method that shows contacts list recycler and hides empty view
+	 *  Method that shows contacts list recycler
+	 *
+	 * @param isShow - boolean
+	 * if true - shows contacts, otherwise - hides
 	 */
-	void showContactsList();
+	void showContactsList(boolean isShow);
 
 	/**
-	 * Method that hides contacts list recycler and shows empty view
+	 * Method that shows empty view
+	 *
+	 * @param isShow - boolean
+	 * if true - shows empty view, otherwise - hides
 	 */
-	void hideContactsList();
+	void showEmptyView(boolean isShow);
+
+	/**
+	 * Method to show message to user in view
+	 */
+	void showMessage();
 }

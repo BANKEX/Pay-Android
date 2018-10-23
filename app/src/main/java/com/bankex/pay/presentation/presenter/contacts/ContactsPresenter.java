@@ -17,6 +17,6 @@ public class ContactsPresenter extends BasePresenter<IContactsView> {
 	}
 
 	public void doMagic() {
-		getViewState().showToast();
+		getViewState().showMessage();
 	}
 }
