@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import com.bankex.pay.R;
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 
 /**
  * View holder for user Contacts list
@@ -20,7 +20,7 @@ public class ContactsViewHolder extends RecyclerView.ViewHolder {
 		mContactName = itemView.findViewById(R.id.tv_contact_name);
 	}
 
-	public void bind(Contact contact) {
+	public void bind(ContactModel contact) {
 		mContactName.setText(contact.getName());
 		mContactAvatar.setText(getContactInitials(contact.getName(), contact.getSurname()));
 	}

@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.bankex.pay.R;
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
 	@NonNull
-	private List<Contact> mContacts;
+	private List<ContactModel> mContacts;
 
-	public ContactsAdapter(@NonNull List<Contact> mContacts) {
+	public ContactsAdapter(@NonNull List<ContactModel> mContacts) {
 		this.mContacts = mContacts;
 	}
 
@@ -30,7 +30,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
 		return mContacts.size();
 	}
 
-	public void setContacts(List<Contact> contacts) {
+	public void setContacts(List<ContactModel> contacts) {
 		mContacts.clear();
 		mContacts.addAll(contacts);
 		notifyDataSetChanged();

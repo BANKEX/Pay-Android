@@ -1,7 +1,8 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 import io.reactivex.Single;
+import io.realm.RealmResults;
 
 /**
  * TODO write comments
@@ -9,15 +10,14 @@ import io.reactivex.Single;
 public interface IContactsRepository {
 
 	/**
-	 *
 	 * @param id - contact`s address
-	 * @return Contact - full contact info
+	 * @return ContactModel - full contact info
 	 */
-	Contact getContactById(String id);
+	ContactModel getContactById(String id);
 
-	Single<Contact> getAllContacts();
+	RealmResults<ContactModel> getAllContacts();
 
-	void addContact(Contact contact);
+	Single<ContactModel> addContact(ContactModel contact);
 
 	void deleteContactById(String id);
 }

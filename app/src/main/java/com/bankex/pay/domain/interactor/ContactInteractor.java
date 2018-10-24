@@ -1,6 +1,6 @@
 package com.bankex.pay.domain.interactor;
 
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 import java.util.List;
 
 /**
@@ -8,11 +8,11 @@ import java.util.List;
  */
 public class ContactInteractor implements IContactsInteractor {
 
-	@Override public List<Contact> getSavedContacts() {
+	@Override public List<ContactModel> getSavedContacts() {
 		return null;
 	}
 
-	@Override public void addContact(Contact contact) {
+	@Override public void addContact(ContactModel contact) {
 
 	}
 

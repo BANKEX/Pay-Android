@@ -1,21 +1,21 @@
 package com.bankex.pay.domain.interactor;
 
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 import java.util.List;
 
 public interface IContactsInteractor {
 
 	/**
 	 * Method that gets all user`s contacts from database
-	 * @return List<Contact> - contact list
+	 * @return List<ContactModel> - contact list
 	 */
-	List<Contact> getSavedContacts();
+	List<ContactModel> getSavedContacts();
 
 	/**
 	 * Method that saves only one contact to database
 	 * @param contact - new created contact
 	 */
-	void addContact(Contact contact);
+	void addContact(ContactModel contact);
 
 	/**
 	 * Method that deletes chosen contact

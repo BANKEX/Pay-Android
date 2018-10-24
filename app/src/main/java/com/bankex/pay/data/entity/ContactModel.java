@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Contact extends RealmObject implements Parcelable {
+public class ContactModel extends RealmObject implements Parcelable {
 
 	private String name;
 
@@ -18,23 +18,23 @@ public class Contact extends RealmObject implements Parcelable {
 	@PrimaryKey
 	private String address;
 
-	public Contact() {
+	public ContactModel() {
 	}
 
-	protected Contact(Parcel in) {
+	protected ContactModel(Parcel in) {
 		in.writeString(name);
 		in.writeString(address);
 	}
 
-	public static final Creator<Contact> CREATOR = new Creator<Contact>() {
+	public static final Creator<ContactModel> CREATOR = new Creator<ContactModel>() {
 		@Override
-		public Contact createFromParcel(Parcel in) {
-			return new Contact(in);
+		public ContactModel createFromParcel(Parcel in) {
+			return new ContactModel(in);
 		}
 
 		@Override
-		public Contact[] newArray(int size) {
-			return new Contact[size];
+		public ContactModel[] newArray(int size) {
+			return new ContactModel[size];
 		}
 	};
 

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.data.entity.Contact;
+import com.bankex.pay.data.entity.ContactModel;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
@@ -70,7 +70,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 
 		mToolbar.setTitle("Contacts");
 
-		List<Contact> contacts = new ArrayList<>();
+		List<ContactModel> contacts = new ArrayList<>();
 		// Recycler
 		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 		mContactsAdapter = new ContactsAdapter(contacts);
