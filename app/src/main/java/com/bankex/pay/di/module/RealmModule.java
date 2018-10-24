@@ -6,6 +6,8 @@ import com.bankex.pay.data.repository.ContactsRepository;
 import com.bankex.pay.data.repository.IContactsRepository;
 import com.bankex.pay.data.repository.IPayWalletRepository;
 import com.bankex.pay.data.repository.PayWalletRepository;
+import com.bankex.pay.domain.interactor.ContactInteractor;
+import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.domain.interactor.IPayWalletInteractor;
 import com.bankex.pay.domain.interactor.PayWalletInteractor;
 import dagger.Module;
@@ -37,5 +39,10 @@ public class RealmModule {
 	@Provides
 	IContactsRepository provideContactsRepository(IRealmService realmService) {
 		return new ContactsRepository(realmService);
+	}
+
+	@Provides
+	IContactsInteractor provideContactsInteractor(IContactsRepository contactsRepository) {
+		return new ContactInteractor(contactsRepository);
 	}
 }

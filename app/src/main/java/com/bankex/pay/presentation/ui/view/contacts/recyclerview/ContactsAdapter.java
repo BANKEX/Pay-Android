@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.bankex.pay.R;
 import com.bankex.pay.data.entity.ContactModel;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
-	@NonNull
 	private List<ContactModel> mContacts;
 
-	public ContactsAdapter(@NonNull List<ContactModel> mContacts) {
-		this.mContacts = mContacts;
+	public ContactsAdapter() {
+		this.mContacts = new ArrayList<>();
 	}
 
 	@NonNull @Override public ContactsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -31,7 +31,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
 	}
 
 	public void setContacts(List<ContactModel> contacts) {
-		mContacts.clear();
 		mContacts.addAll(contacts);
 		notifyDataSetChanged();
 	}

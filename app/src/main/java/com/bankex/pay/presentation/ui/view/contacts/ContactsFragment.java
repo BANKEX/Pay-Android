@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -19,12 +21,11 @@ import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import com.bankex.pay.presentation.ui.view.contacts.recyclerview.ContactsAdapter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
 /**
- * User Contacts screen
+ * User Contacts screen.
  */
 public class ContactsFragment extends BaseFragment implements IContactsView {
 	@Inject
@@ -34,10 +35,13 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@InjectPresenter
 	ContactsPresenter mContactsPresenter;
 
-	private android.support.v7.widget.Toolbar mToolbar;
-	private RecyclerView mContactsList;
+	@BindView(R.id.contacts_toolbar) android.support.v7.widget.Toolbar mToolbar;
+	@BindView(R.id.recycler_contacts_list) RecyclerView mContactsList;
+	@BindView(R.id.contacts_empty_view) TextView mEmptyView;
+
+	@BindString(R.string.contacts_screen_title) String title;
+
 	private ContactsAdapter mContactsAdapter;
-	private TextView mEmptyView;
 
 	@ProvidePresenter
 	public ContactsPresenter providePresenter() {
@@ -57,24 +61,16 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.contacts_fragment_layout, container, false);
+		View view = inflater.inflate(R.layout.contacts_fragment_layout, container, false);
+		ButterKnife.bind(this, view);
+		return view;
 	}
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
-		mToolbar = view.findViewById(R.id.contacts_toolbar);
-		mContactsList = view.findViewById(R.id.recycler_contacts_list);
-		mEmptyView = view.findViewById(R.id.contacts_empty_view);
-
-		mToolbar.setTitle("Contacts");
-
-		List<ContactModel> contacts = new ArrayList<>();
-		// Recycler
-		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-		mContactsAdapter = new ContactsAdapter(contacts);
-		mContactsList.setAdapter(mContactsAdapter);
+		mToolbar.setTitle(title);
+		initRecycler();
 	}
 
 	@Override
@@ -91,8 +87,14 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 		mEmptyView.setVisibility(isShow ? View.VISIBLE : View.GONE);
 	}
 
-	@Override
-	public void showMessage() {
-		Toast.makeText(getActivity(), "Message", Toast.LENGTH_SHORT).show();
+	@Override public void setContacts(List<ContactModel> contacts) {
+		mContactsAdapter.setContacts(contacts);
+		mContactsAdapter.notifyDataSetChanged();
+	}
+
+	private void initRecycler() {
+		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+		mContactsAdapter = new ContactsAdapter();
+		mContactsList.setAdapter(mContactsAdapter);
 	}
 }

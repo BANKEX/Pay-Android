@@ -34,4 +34,6 @@
 
     <!-- Contacts -->
     <color name="bg_color_avatar">@color/blue_royal</color>
+
+    <color name="ic_launcher_background">@color/white</color>
 </resources>

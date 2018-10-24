@@ -64,6 +64,7 @@ ext {
 
     //region helpers
     LOMBOK_VERSION              = '1.16.22'
+    BUTTER_KNIFE_VERSION        = '9.0.0-rc1'
     //end region
 
     androidSupport = [
@@ -154,6 +155,9 @@ ext {
 
             // helpers region
             lombok                : "org.projectlombok:lombok:$LOMBOK_VERSION",
+
+            butterKnife           : "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION",
+            butterKnifeProcessor  : "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION",
             //end region
     ]
 }

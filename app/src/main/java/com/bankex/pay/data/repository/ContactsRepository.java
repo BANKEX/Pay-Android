@@ -4,9 +4,10 @@ import com.bankex.pay.data.entity.ContactModel;
 import com.bankex.pay.data.realm.IRealmService;
 import io.reactivex.Single;
 import io.realm.RealmResults;
+import javax.annotation.Nullable;
 
 /**
- * // TODO write comments
+ * {@link IContactsRepository} repository implementation.
  */
 public class ContactsRepository implements IContactsRepository {
 	private final IRealmService mRealmService;
@@ -18,6 +19,7 @@ public class ContactsRepository implements IContactsRepository {
 	/**
 	 * {@inheritDoc }
 	 */
+	@Nullable
 	@Override public ContactModel getContactById(String id) {
 		return mRealmService.getContactById(id);
 	}
