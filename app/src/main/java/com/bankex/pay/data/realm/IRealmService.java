@@ -39,6 +39,7 @@ public interface IRealmService {
 	// =====================
 	// CONTACTS
 	// =====================
+
 	/**
 	 *
 	 * @param id

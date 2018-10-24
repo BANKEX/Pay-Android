@@ -64,7 +64,6 @@ ext {
 
     //region helpers
     LOMBOK_VERSION              = '1.16.22'
-    STETHO_VERSION              = '1.5.0'
     //end region
 
     androidSupport = [
@@ -155,7 +154,6 @@ ext {
 
             // helpers region
             lombok                : "org.projectlombok:lombok:$LOMBOK_VERSION",
-            stetho                : "com.facebook.stetho:stetho:$STETHO_VERSION"
             //end region
     ]
 }

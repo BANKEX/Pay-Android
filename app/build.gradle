@@ -125,7 +125,6 @@ dependencies {
   implementation libs.qrGenerator
   compileOnly libs.lombok
   annotationProcessor libs.lombok
-  implementation libs.stetho
 
   implementation(libs.fabric) {
     transitive = true

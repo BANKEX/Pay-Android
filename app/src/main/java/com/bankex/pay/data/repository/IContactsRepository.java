@@ -4,7 +4,7 @@ import com.bankex.pay.data.entity.Contact;
 import io.reactivex.Single;
 
 /**
- * // TODO write comments
+ * TODO write comments
  */
 public interface IContactsRepository {
 
