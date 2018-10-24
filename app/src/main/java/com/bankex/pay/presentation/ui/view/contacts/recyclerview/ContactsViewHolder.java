@@ -4,20 +4,19 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import butterknife.BindView;
 import com.bankex.pay.R;
 import com.bankex.pay.data.entity.ContactModel;
 
 /**
- * View holder for user Contacts list
+ * View holder for user Contacts list.
  */
 public class ContactsViewHolder extends RecyclerView.ViewHolder {
-	private TextView mContactAvatar;
-	private TextView mContactName;
+	@BindView(R.id.iv_contact_avatar) TextView mContactAvatar;
+	@BindView(R.id.tv_contact_name) TextView mContactName;
 
 	public ContactsViewHolder(@NonNull View itemView) {
 		super(itemView);
-		mContactAvatar = itemView.findViewById(R.id.iv_contact_avatar);
-		mContactName = itemView.findViewById(R.id.tv_contact_name);
 	}
 
 	public void bind(ContactModel contact) {

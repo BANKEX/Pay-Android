@@ -12,6 +12,8 @@ import android.widget.TextView;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -42,6 +44,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@BindString(R.string.contacts_screen_title) String title;
 
 	private ContactsAdapter mContactsAdapter;
+	private Unbinder binder;
 
 	@ProvidePresenter
 	public ContactsPresenter providePresenter() {
@@ -58,11 +61,10 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 		super.onCreate(savedInstanceState);
 	}
 
-	@Nullable
-	@Override
+	@Nullable @Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.contacts_fragment_layout, container, false);
-		ButterKnife.bind(this, view);
+		binder = ButterKnife.bind(this, view);
 		return view;
 	}
 
@@ -79,6 +81,11 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 		ContactsInjector.clearContactsComponent();
 	}
 
+	@Override public void onDestroyView() {
+		super.onDestroyView();
+		binder.unbind();
+	}
+
 	@Override public void showContactsList(boolean isShow) {
 		mContactsList.setVisibility(isShow ? View.VISIBLE : View.GONE);
 	}
@@ -90,6 +97,10 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@Override public void setContacts(List<ContactModel> contacts) {
 		mContactsAdapter.setContacts(contacts);
 		mContactsAdapter.notifyDataSetChanged();
+	}
+
+	@OnClick(R.id.fab_add_contact)
+	public void onAddContactClicked() {
 	}
 
 	private void initRecycler() {

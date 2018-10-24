@@ -17,11 +17,12 @@ public class ContactsPresenter extends BasePresenter<IContactsView> {
 	private IContactsInteractor mContactsInteractor;
 	private IRxSchedulersUtils mRxSchedulersUtils;
 
-	List<ContactModel> contacts = new ArrayList<>();
+	private List<ContactModel> contacts;
 
 	public ContactsPresenter(IContactsInteractor mContactsInteractor, IRxSchedulersUtils mRxSchedulersUtils) {
 		this.mContactsInteractor = mContactsInteractor;
 		this.mRxSchedulersUtils = mRxSchedulersUtils;
+		contacts = new ArrayList<>();
 	}
 
 	@Override public void attachView(IContactsView view) {
