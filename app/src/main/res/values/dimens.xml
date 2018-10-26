@@ -8,7 +8,10 @@
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_large_x">48dp</dimen>
     <dimen name="margin_big">56dp</dimen>
+    <dimen name="margin_big_x">72dp</dimen>
+
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
+
     <dimen name="first_screen_text_top_margin">168dp</dimen>
     <dimen name="first_screen_search_top_margin">88dp</dimen>
     <dimen name="first_screen_search_left_margin">64dp</dimen>
@@ -22,4 +25,10 @@
 
     <dimen name="button_stroke_width">1dp</dimen>
     <dimen name="button_radius">3dp</dimen>
+
+    <dimen name="elevation_little">4dp</dimen>
+
+    <!-- Contacts -->
+    <dimen name="contact_list_fab_margin">30dp</dimen>
+    <dimen name="contact_list_recycler_margin_top">120dp</dimen>
 </resources>

@@ -5,12 +5,12 @@ import com.bankex.pay.model.domain.PayWalletModel;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Реализация {@link DefaultRealmService}
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Implementation of interface {@link DefaultRealmService}.
  */
 public class DefaultRealmService implements IRealmService {
 	/**
@@ -53,8 +53,28 @@ public class DefaultRealmService implements IRealmService {
 	/**
 	 * {@inheritDoc }
 	 */
-	@Nullable @Override public RealmResults<ContactModel> getAllContacts() {
-		return Realm.getDefaultInstance().where(ContactModel.class).findAll();
+	@Nullable @Override public List<ContactModel> getAllContacts() {
+		RealmResults<ContactModel> realmResults = Realm.getDefaultInstance()
+				.where(ContactModel.class)
+				.sort("name", Sort.ASCENDING)
+				.findAll();
+
+		List<ContactModel> contactModels = Realm.getDefaultInstance().copyFromRealm(realmResults);
+		if (!contactModels.isEmpty()) {
+			Character groupFirstLetter = contactModels.get(0).getName().charAt(0);
+			contactModels.get(0).setGroupLetterMarker(groupFirstLetter.toString());
+
+			for (int i = 1; i < contactModels.size(); i++) {
+				if (groupFirstLetter.equals(contactModels.get(i).getName().charAt(0))) {
+					contactModels.get(i).setGroupLetterMarker("");
+				} else {
+					groupFirstLetter = contactModels.get(i).getName().charAt(0);
+					contactModels.get(i).setGroupLetterMarker(groupFirstLetter.toString());
+				}
+			}
+		}
+
+		return contactModels;
 	}
 
 	/**

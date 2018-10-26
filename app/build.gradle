@@ -145,5 +145,7 @@ dependencies {
   androidTestImplementation androidSupport.espresso
   androidTestImplementation androidSupport.testRunner
   implementation project(':tn')
+
+  implementation 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
 }
 

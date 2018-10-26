@@ -27,10 +27,10 @@
     <color name="toolbar_text_color">@color/silver</color>
 
     <!-- Other -->
-    <color name="tabs_inactive_white">@color/gray_light</color>
     <color name="actionbar_opacity">@color/gray_light_dark</color>
-    <color name="bankex_background">@color/catskill_white</color>
     <color name="caption">@color/bali_hai</color>
+    <color name="tabs_inactive_white">@color/gray_light</color>
+    <color name="bankex_background">@color/catskill_white</color>
 
     <!-- Contacts -->
     <color name="bg_color_avatar">@color/blue_royal</color>

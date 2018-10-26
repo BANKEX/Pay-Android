@@ -31,7 +31,9 @@ public class ContactsPresenter extends BasePresenter<IContactsView> {
 	}
 
 	private void loadContacts() {
-		contacts.addAll(mContactsInteractor.getSavedContacts());
+		contacts = mContactsInteractor.getSavedContacts();
+		getViewState().setContacts(contacts);
+
 		if (contacts.size() == 0) {
 			getViewState().showContactsList(false);
 			getViewState().showEmptyView(true);
@@ -39,6 +41,5 @@ public class ContactsPresenter extends BasePresenter<IContactsView> {
 			getViewState().showContactsList(true);
 			getViewState().showEmptyView(false);
 		}
-		getViewState().setContacts(mContactsInteractor.getSavedContacts());
 	}
 }

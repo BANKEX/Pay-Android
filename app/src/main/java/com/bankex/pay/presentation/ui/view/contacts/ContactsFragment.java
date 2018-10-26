@@ -38,8 +38,9 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	ContactsPresenter mContactsPresenter;
 
 	@BindView(R.id.contacts_toolbar) android.support.v7.widget.Toolbar mToolbar;
-	@BindView(R.id.recycler_contacts_list) RecyclerView mContactsList;
 	@BindView(R.id.contacts_empty_view) TextView mEmptyView;
+	@BindView(R.id.recycler_contacts_list) RecyclerView mContactsList;
+	@BindView(R.id.search) android.support.v7.widget.SearchView mSearchView;
 
 	@BindString(R.string.contacts_screen_title) String title;
 
@@ -63,7 +64,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 
 	@Nullable @Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.contacts_fragment_layout, container, false);
+		View view = inflater.inflate(R.layout.fragment_contacts_list, container, false);
 		binder = ButterKnife.bind(this, view);
 		return view;
 	}
@@ -104,8 +105,9 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	}
 
 	private void initRecycler() {
-		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 		mContactsAdapter = new ContactsAdapter();
+		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+		mContactsList.setHasFixedSize(true);
 		mContactsList.setAdapter(mContactsAdapter);
 	}
 }

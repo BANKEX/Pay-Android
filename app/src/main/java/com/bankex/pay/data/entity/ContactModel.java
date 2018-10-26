@@ -2,21 +2,27 @@ package com.bankex.pay.data.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * TODO write comments
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ContactModel extends RealmObject implements Parcelable {
+
+	@PrimaryKey
+	private String address;
 
 	private String name;
 
 	private String surname;
 
-	@PrimaryKey
-	private String address;
+	private String groupLetterMarker;
 
 	public ContactModel() {
 	}
@@ -44,6 +50,8 @@ public class ContactModel extends RealmObject implements Parcelable {
 
 	@Override public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(name);
+		dest.writeString(surname);
 		dest.writeString(address);
+		dest.writeString(String.valueOf(groupLetterMarker));
 	}
 }

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">BANKEX Pay</string>
+
+    <string name="favorite_list">Favorite list</string>
+    <string name="ERC20_standart">ERC20 standart</string>
+    <string name="custom_network">Custom network</string>
+
+    <string name="qr">Scan QR</string>
+    <string name="paste">Paste</string>
+    <string name="enter_your_">Enter your PIN</string>
+
+    <string name="unlock_screen_title_android">Unlock screen</string>
+    <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
+
+    <!-- Contacts screen -->
+    <string name="contacts_screen_empty_view">You don`t have\nany contacts yet</string>
+    <string name="contacts_screen_title">Contacts</string>
+    <string name="contacts_screen_search_hint">0xde0b295669a9fd93d5f28d9ec81af…</string>
 </resources>

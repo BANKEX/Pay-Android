@@ -2,7 +2,7 @@ package com.bankex.pay.data.repository;
 
 import com.bankex.pay.data.entity.ContactModel;
 import io.reactivex.Single;
-import io.realm.RealmResults;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -24,7 +24,7 @@ public interface IContactsRepository {
 	 *
 	 * @return contact list
 	 */
-	RealmResults<ContactModel> getAllContacts();
+	List<ContactModel> getAllContacts();
 
 	/**
 	 * Method to insert contact item in database.

@@ -10,19 +10,22 @@ import com.bankex.pay.data.entity.ContactModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
+/**
+ * Adapter for user contacts list.
+ */
+public class ContactsAdapter extends RecyclerView.Adapter<ContactItemViewHolder> {
 	private List<ContactModel> mContacts;
 
 	public ContactsAdapter() {
 		this.mContacts = new ArrayList<>();
 	}
 
-	@NonNull @Override public ContactsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+	@NonNull @Override public ContactItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_contact, viewGroup, false);
-		return new ContactsViewHolder(view);
+		return new ContactItemViewHolder(view);
 	}
 
-	@Override public void onBindViewHolder(@NonNull ContactsViewHolder contactsViewHolder, int i) {
+	@Override public void onBindViewHolder(@NonNull ContactItemViewHolder contactsViewHolder, int i) {
 		contactsViewHolder.bind(mContacts.get(i));
 	}
 
