@@ -53,6 +53,7 @@ public class DefaultRealmService implements IRealmService {
 	/**
 	 * {@inheritDoc }
 	 */
+	// TODO add asynchronous
 	@Nullable @Override public List<ContactModel> getAllContacts() {
 		RealmResults<ContactModel> realmResults = Realm.getDefaultInstance()
 				.where(ContactModel.class)

@@ -30,6 +30,7 @@ public class ContactsPresenter extends BasePresenter<IContactsView> {
 		loadContacts();
 	}
 
+	// TODO add asynchronous
 	private void loadContacts() {
 		contacts = mContactsInteractor.getSavedContacts();
 		getViewState().setContacts(contacts);
