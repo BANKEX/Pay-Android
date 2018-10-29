@@ -2,7 +2,7 @@ package com.bankex.pay.presentation.presenter.contacts;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.ui.view.contacts.IContactsView;
+import com.bankex.pay.presentation.ui.contacts.IContactsView;
 
 /**
  * Презентер экрана контактов

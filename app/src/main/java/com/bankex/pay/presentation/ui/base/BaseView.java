@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.base;
+package com.bankex.pay.presentation.ui.base;
 
 import com.arellomobile.mvp.MvpView;
 

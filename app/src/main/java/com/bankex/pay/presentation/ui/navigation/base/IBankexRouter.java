@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.ui.navigation.base;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
 
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
  * Интерфейс роутера для навигации между экранами

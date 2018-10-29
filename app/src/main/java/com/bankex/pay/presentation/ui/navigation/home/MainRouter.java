@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
-import com.bankex.pay.presentation.ui.view.contacts.ContactsFragment;
-import com.bankex.pay.presentation.ui.view.transactionhistory.TransactionHistoryFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.contacts.ContactsFragment;
+import com.bankex.pay.presentation.ui.transactionhistory.TransactionHistoryFragment;
 
 /**
  * @author Pavel Apanovskiy on 12.09.2018.

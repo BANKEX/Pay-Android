@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.receive;
+package com.bankex.pay.presentation.ui.receiveaddress;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.utils.share.IShareDataUtils;
 import com.bankex.pay.utils.share.ShareDataUtils;
 

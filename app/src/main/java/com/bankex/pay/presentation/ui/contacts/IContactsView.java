@@ -1,6 +1,6 @@
-package com.bankex.pay.presentation.ui.view.contacts;
+package com.bankex.pay.presentation.ui.contacts;
 
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
  * Вью экрана контактов

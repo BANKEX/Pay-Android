@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.transactionhistory;
+package com.bankex.pay.presentation.ui.transactionhistory;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,8 +12,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryInjector;
 import com.bankex.pay.presentation.presenter.transactionhistory.TransactionHistoryPresenter;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.navigation.transactionhistory.ITransactionHistoryRouter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 
 import javax.inject.Inject;
 

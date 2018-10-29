@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
  * Реализация {@link IBankexRouter}
