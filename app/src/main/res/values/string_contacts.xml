@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Add contact screen -->
+    <string name="add_contact_first_name">First name</string>
+    <string name="add_contact_surname">Surname</string>
+    <string name="add_contact_address">Address</string>
+</resources>
