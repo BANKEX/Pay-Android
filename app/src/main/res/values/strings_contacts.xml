@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Add contact screen -->
+    <string name="add_contact_first_name">First name</string>
+    <string name="add_contact_surname">Surname</string>
+    <string name="add_contact_address">Address</string>
+    <string name="add_contact_error_first_name">Invalid name. Please try again.</string>
+    <string name="add_contact_error_surname">Invalid surname. Please try again.</string>
+    <string name="add_contact_error_address">Invalid address. Please try again.</string>
+    <string name="add_contact_save_text">Save</string>
+</resources>

@@ -14,6 +14,7 @@
     <style name="Toolbar" parent="AppTheme">
         <item name="android:background">@color/bankex_background</item>
         <item name="android:textColorPrimary">@color/bankex_black</item>
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
     </style>
 
     <style name="ViewPagerToolbar" parent="AppTheme">

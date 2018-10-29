@@ -3,7 +3,7 @@ package com.bankex.pay.presentation.ui.view.addcontact;
 import com.bankex.pay.presentation.ui.view.base.BaseView;
 
 public interface IAddContactView extends BaseView {
-	void showError();
+	void showError(int fieldId, int errorMessageId);
 
-	void hideError();
+	void hideError(int fieldId);
 }
