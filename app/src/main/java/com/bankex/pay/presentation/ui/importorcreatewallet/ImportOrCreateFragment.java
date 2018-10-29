@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.importorcreate;
+package com.bankex.pay.presentation.ui.importorcreatewallet;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,7 +1,6 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.model.domain.PayWalletModel;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -12,27 +11,27 @@ import io.reactivex.Single;
  */
 public interface IPasswordStoreRepository {
 
-    /**
-     * Получить пароль для кошелька
-     *
-     * @param wallet - кошелек
-     * @return {@link Single} над {@link String}
-     */
-    Single<String> loadPassword(PayWalletModel wallet);
+	/**
+	 * Получить пароль для кошелька
+	 *
+	 * @param wallet - кошелек
+	 * @return {@link Single} над {@link String}
+	 */
+	Single<String> loadPassword(PayWalletModel wallet);
 
-    /**
-     * Сохранить пароль для кошелька
-     *
-     * @param wallet   - кошелек
-     * @param password - пароль
-     * @return {@link Completable}
-     */
-    Completable savePassword(PayWalletModel wallet, String password);
+	/**
+	 * Сохранить пароль для кошелька
+	 *
+	 * @param wallet - кошелек
+	 * @param password - пароль
+	 * @return {@link Completable}
+	 */
+	Completable savePassword(PayWalletModel wallet, String password);
 
-    /**
-     * Сгенерировать пароль
-     *
-     * @return {@link Single} над {@link String}
-     */
-    Single<String> generatePassword();
+	/**
+	 * Сгенерировать пароль
+	 *
+	 * @return {@link Single} над {@link String}
+	 */
+	Single<String> generatePassword();
 }

@@ -1,7 +1,6 @@
 package com.bankex.pay.domain.interactor;
 
-import com.bankex.pay.model.domain.PayWalletModel;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
@@ -11,12 +10,12 @@ import io.reactivex.Single;
  */
 public interface IImportWalletFromPassPhraseInteractor {
 
-    /**
-     * Импортировать кошелек по фразе
-     *
-     * @param passPhrase - фраза
-     * @param walletName - имя кошелька
-     * @return {@link Single} над {@link PayWalletModel}
-     */
-    Single<PayWalletModel> importWalletFromPassPhrase(String passPhrase, String walletName);
+	/**
+	 * Импортировать кошелек по фразе
+	 *
+	 * @param passPhrase - фраза
+	 * @param walletName - имя кошелька
+	 * @return {@link Single} над {@link PayWalletModel}
+	 */
+	Single<PayWalletModel> importWalletFromPassPhrase(String passPhrase, String walletName);
 }

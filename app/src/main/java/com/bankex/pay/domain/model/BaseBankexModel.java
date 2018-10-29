@@ -1,4 +1,4 @@
-package com.bankex.pay.domain;
+package com.bankex.pay.domain.model;
 
 /**
  * Базовый абстрактный класс моделей

@@ -1,7 +1,6 @@
 package com.bankex.pay.data.realm;
 
-import com.bankex.pay.model.domain.PayWalletModel;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 import io.realm.Realm;
 

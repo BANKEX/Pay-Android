@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateActivity;
+import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.view.base.BaseFragment;
 import com.bankex.pay.presentation.ui.view.contacts.ContactsFragment;
