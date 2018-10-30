@@ -1,0 +1,1 @@
+* WALLET-488. Сделать ручное обновление release_notes для Crashlytics.
