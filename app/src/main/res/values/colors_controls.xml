@@ -22,7 +22,11 @@
     <color name="caption">@color/bali_hai</color>
     <color name="bankex_background">@color/light_page_background</color>
 
+    <!-- Buttons -->
     <color name="primary_button_disabled">@color/silver</color>
+    <color name="primary_button_stroke_selected">@color/colorPrimaryDark</color>
+    <color name="primary_button_bg_selected">@color/colorPrimaryDark</color>
+    <color name="primary_button_selected">@color/colorPrimaryDark</color>
 
     <!-- Contacts -->
     <color name="bg_color_avatar">@color/colorPrimary</color>
