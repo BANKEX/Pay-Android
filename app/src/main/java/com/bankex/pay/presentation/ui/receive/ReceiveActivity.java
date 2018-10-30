@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.receiveaddress;
+package com.bankex.pay.presentation.ui.receive;
 
 import android.content.Context;
 import android.content.Intent;

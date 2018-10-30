@@ -69,7 +69,7 @@
             />
 
         <activity
-            android:name=".presentation.ui.receiveaddress.ReceiveActivity"
+            android:name=".presentation.ui.receive.ReceiveActivity"
             android:screenOrientation="portrait"
             />
     </application>
