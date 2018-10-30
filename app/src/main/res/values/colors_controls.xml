@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Android Basic -->
-    <color name="colorPrimary">@color/blue_picton</color>
-    <color name="colorPrimaryDark">@color/blue_topaz</color>
-    <color name="colorAccent">@color/blue_picton</color>
-    <color name="colorPrimaryShadow">@color/blue_dark</color>
-    <color name="colorPrimaryDarkShadow">@color/blue_darker</color>
-
     <!-- Onboarding -->
-    <color name="onboarding_selected_indicator">@color/sea_buckthorn</color>
+    <color name="onboarding_selected_indicator">@color/gray_shuttle</color>
 
     <!-- Placeholders -->
     <color name="placeholder_body_text">@color/gray_shuttle</color>
-
-    <!-- Operation statuses -->
-    <color name="operation_success">@color/green</color>
-    <color name="operation_pending">@color/rob_roy</color>
+    <color name="settings_placeholders_background">@color/silver</color>
 
     <!-- FAB -->
-    <color name="contacts_fab_background">@color/blue_royal</color>
+    <color name="contacts_fab_background">@color/colorPrimary</color>
 
     <!-- Text colors -->
-    <color name="empty_state_text">@color/loblolly</color>
-    <color name="text_body">@color/gray_slate</color>
+    <color name="empty_state_text">@color/input_text_hint</color>
+    <color name="text_body">@color/gray</color>
     <color name="bankex_black">@color/shark</color>
     <color name="toolbar_text_color">@color/silver</color>
+    <color name="search_view_activated">@color/input_text_hint</color>
 
     <!-- Other -->
     <color name="actionbar_opacity">@color/gray_light_dark</color>
     <color name="caption">@color/bali_hai</color>
-    <color name="tabs_inactive_white">@color/gray_light</color>
-    <color name="bankex_background">@color/catskill_white</color>
+    <color name="bankex_background">@color/light_page_background</color>
+
+    <color name="primary_button_disabled">@color/silver</color>
 
     <!-- Contacts -->
-    <color name="bg_color_avatar">@color/blue_royal</color>
+    <color name="bg_color_avatar">@color/colorPrimary</color>
 
     <color name="ic_launcher_background">@color/white</color>
 </resources>

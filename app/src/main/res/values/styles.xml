@@ -14,7 +14,7 @@
     </style>
 
     <style name="WallSearchStyle" parent="Widget.AppCompat.SearchView">
-        <item name="colorControlActivated">@color/blue_dark</item>
+        <item name="colorControlActivated">@color/search_view_activated</item>
         <item name="iconifiedByDefault">false</item>
         <item name="android:textSize">@dimen/text_size_body</item>
     </style>
