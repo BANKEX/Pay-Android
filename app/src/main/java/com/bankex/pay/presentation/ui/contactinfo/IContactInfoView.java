@@ -1,4 +1,12 @@
 package com.bankex.pay.presentation.ui.contactinfo;
 
-public interface IContactInfoView {
+import com.bankex.pay.presentation.ui.view.base.BaseView;
+
+/**
+ * Interface for contact info screen.
+ */
+public interface IContactInfoView extends BaseView {
+
+	void onDeleteContactCLicked();
+	void onSendClicked();
 }
