@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bankex.pay.R;
-import com.bankex.pay.domain.BaseBankexModel;
+import com.bankex.pay.domain.model.BaseBankexModel;
 import com.bankex.pay.domain.model.base.BaseTitleModel;
 import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.viewholder.base.BaseTitleViewHolder;

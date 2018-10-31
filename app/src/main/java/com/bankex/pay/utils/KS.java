@@ -9,10 +9,8 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.security.keystore.UserNotAuthenticatedException;
 import android.util.Log;
-
 import com.bankex.pay.R;
-import com.bankex.pay.model.domain.ServiceErrorException;
-
+import com.bankex.pay.domain.model.ServiceErrorException;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +25,6 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
@@ -36,11 +33,11 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
-import static com.bankex.pay.model.domain.ServiceErrorException.INVALID_KEY;
-import static com.bankex.pay.model.domain.ServiceErrorException.IV_OR_ALIAS_NO_ON_DISK;
-import static com.bankex.pay.model.domain.ServiceErrorException.KEY_IS_GONE;
-import static com.bankex.pay.model.domain.ServiceErrorException.KEY_STORE_ERROR;
-import static com.bankex.pay.model.domain.ServiceErrorException.USER_NOT_AUTHENTICATED;
+import static com.bankex.pay.domain.model.ServiceErrorException.INVALID_KEY;
+import static com.bankex.pay.domain.model.ServiceErrorException.IV_OR_ALIAS_NO_ON_DISK;
+import static com.bankex.pay.domain.model.ServiceErrorException.KEY_IS_GONE;
+import static com.bankex.pay.domain.model.ServiceErrorException.KEY_STORE_ERROR;
+import static com.bankex.pay.domain.model.ServiceErrorException.USER_NOT_AUTHENTICATED;
 
 @TargetApi(23)
 public class KS {
@@ -142,7 +139,7 @@ public class KS {
 			keyStore.load(null);
 			SecretKey secretKey = (SecretKey) keyStore.getKey(alias, null);
 			if (secretKey == null) {
-                /* no such key, the key is just simply not there */
+				/* no such key, the key is just simply not there */
 				boolean fileExists = new File(encryptedDataFilePath).exists();
 				if (!fileExists) {
 					return null;/* file also not there, fine then */
@@ -178,12 +175,13 @@ public class KS {
 			return readBytesFromStream(cipherInputStream);
 		} catch (InvalidKeyException e) {
 			if (e instanceof UserNotAuthenticatedException) {
-//				showAuthenticationScreen(context, requestCode);
+				//				showAuthenticationScreen(context, requestCode);
 				throw new ServiceErrorException(USER_NOT_AUTHENTICATED);
 			} else {
 				throw new ServiceErrorException(INVALID_KEY);
 			}
-		} catch (IOException | CertificateException | KeyStoreException | UnrecoverableKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException e) {
+		} catch (IOException | CertificateException | KeyStoreException | UnrecoverableKeyException | NoSuchAlgorithmException |
+				NoSuchPaddingException | InvalidAlgorithmParameterException e) {
 			throw new ServiceErrorException(KEY_STORE_ERROR);
 		}
 	}
@@ -250,10 +248,12 @@ public class KS {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			if (in != null) try {
-				in.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		// and then we can return your byte array.
@@ -274,11 +274,11 @@ public class KS {
 	}
 
 	public static void put(Context context, String address, String password) throws ServiceErrorException {
-		setData(context, password.getBytes(), address, address, address+"iv");
+		setData(context, password.getBytes(), address, address, address + "iv");
 	}
 
 	public static byte[] get(Context context, String address) throws ServiceErrorException {
-		return getData(context, address, address, address+"iv");
+		return getData(context, address, address, address + "iv");
 	}
 
 	public static void showAuthenticationScreen(Context context, int requestCode) {

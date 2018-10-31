@@ -1,6 +1,6 @@
 package com.bankex.pay.domain.model.wallet;
 
-import com.bankex.pay.domain.BaseBankexModel;
+import com.bankex.pay.domain.model.BaseBankexModel;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

@@ -1,6 +1,6 @@
 package com.bankex.pay.presentation.ui.importwallet.privatekey;
 
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
  * Вью для экрана импорта по ключу

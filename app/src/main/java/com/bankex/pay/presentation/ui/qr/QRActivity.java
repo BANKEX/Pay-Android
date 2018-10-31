@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.qr;
+package com.bankex.pay.presentation.ui.qr;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;

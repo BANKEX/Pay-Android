@@ -2,7 +2,7 @@ package com.bankex.pay.presentation.ui.navigation.wallet;
 
 import android.content.Context;
 
-import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateActivity;
+import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
 
 /**

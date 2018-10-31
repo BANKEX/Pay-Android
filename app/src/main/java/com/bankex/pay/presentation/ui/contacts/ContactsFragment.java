@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.contacts;
+package com.bankex.pay.presentation.ui.contacts;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 

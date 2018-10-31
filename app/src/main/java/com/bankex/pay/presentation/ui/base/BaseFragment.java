@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.base;
+package com.bankex.pay.presentation.ui.base;
 
 import android.content.Context;
 import android.os.IBinder;

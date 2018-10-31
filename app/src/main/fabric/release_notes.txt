@@ -1,1 +1,2 @@
 * WALLET-488. Сделать ручное обновление release_notes для Crashlytics.
+* WALLET-520. Перенос пакетов с классами.

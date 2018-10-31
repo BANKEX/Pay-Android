@@ -1,6 +1,6 @@
 package com.bankex.pay.di.contacts;
 
-import com.bankex.pay.presentation.ui.view.contacts.ContactsFragment;
+import com.bankex.pay.presentation.ui.contacts.ContactsFragment;
 
 import dagger.Subcomponent;
 

@@ -1,6 +1,6 @@
 package com.bankex.pay.presentation.ui.setpin;
 
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
  * Интерфейс для вью установки пина

@@ -1,10 +1,8 @@
 package com.bankex.pay.data.realm;
 
-import com.bankex.pay.model.domain.PayWalletModel;
-
-import javax.annotation.Nullable;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
+import javax.annotation.Nullable;
 
 /**
  * Интерфейс работы с базой данных
@@ -13,24 +11,24 @@ import io.reactivex.Single;
  */
 public interface IRealmService {
 
-    /**
-     * Сохраняем кошелек в БД
-     *
-     * @param payWalletModel кошелек
-     * @return Single<PayWalletModel>
-     */
-    Single<PayWalletModel>  saveWallet(PayWalletModel payWalletModel);
+	/**
+	 * Сохраняем кошелек в БД
+	 *
+	 * @param payWalletModel кошелек
+	 * @return Single<PayWalletModel>
+	 */
+	Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
 
-    /**
-     * Пытаемся получить кошелек из БД
-     *
-     * @return кошелек
-     */
-    @Nullable
-    Single<PayWalletModel> getWallet();
+	/**
+	 * Пытаемся получить кошелек из БД
+	 *
+	 * @return кошелек
+	 */
+	@Nullable
+	Single<PayWalletModel> getWallet();
 
-    /**
-     * Закрыть соединение
-     */
-    void closeRealm();
+	/**
+	 * Закрыть соединение
+	 */
+	void closeRealm();
 }

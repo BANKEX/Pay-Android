@@ -2,7 +2,7 @@ package com.bankex.pay.presentation.adapter.wallet;
 
 import android.content.Context;
 
-import com.bankex.pay.domain.BaseBankexModel;
+import com.bankex.pay.domain.model.BaseBankexModel;
 import com.bankex.pay.presentation.delegate.base.BaseTitleItemAdapterDelegate;
 import com.bankex.pay.presentation.delegate.wallet.WalletCardItemAdapterDelegate;
 import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;

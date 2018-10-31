@@ -6,8 +6,8 @@ import com.bankex.pay.data.repository.IImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.IImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.IPasswordStoreRepository;
 import com.bankex.pay.data.repository.IPayWalletRepository;
-import com.bankex.pay.model.domain.PayWalletModel;
 
+import com.bankex.pay.domain.model.PayWalletModel;
 import dagger.internal.Preconditions;
 import io.reactivex.Single;
 
