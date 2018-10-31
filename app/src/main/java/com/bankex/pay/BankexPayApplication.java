@@ -11,6 +11,7 @@ import com.bankex.pay.di.module.RxModule;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * Application класс приложения
@@ -25,6 +26,13 @@ public class BankexPayApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		sInstance = this;
+
+		buildAppComponent();
+		initRealm();
+		initFabric();
+	}
+
+	private void buildAppComponent() {
 		sApplicationComponent = DaggerApplicationComponent.builder()
 				.networkModule(new NetworkModule())
 				.rxModule(new RxModule())
@@ -32,12 +40,19 @@ public class BankexPayApplication extends Application {
 				.navigationModule(new NavigationModule())
 				.analyticsModule(new AnalyticsModule())
 				.build();
-		Fabric.with(this, new Crashlytics());
-		initRealm();
 	}
 
 	private void initRealm() {
 		Realm.init(getApplicationContext());
+		RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+				.name("bankex-pay.realm")
+				.schemaVersion(0)
+				.build();
+		Realm.setDefaultConfiguration(realmConfiguration);
+	}
+
+	private void initFabric() {
+		Fabric.with(getApplicationContext(), new Crashlytics());
 	}
 
 	public static BankexPayApplication getInstance() {

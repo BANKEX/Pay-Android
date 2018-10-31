@@ -32,6 +32,8 @@ android {
   }
 
   compileSdkVersion COMPILE_SDK_VERSION
+  buildToolsVersion(BUILD_TOOLS_VERSION)
+
   defaultConfig {
     applicationId "com.bankex.pay"
     minSdkVersion MIN_SDK_VERSION
@@ -42,6 +44,12 @@ android {
 
     multiDexEnabled true
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    javaCompileOptions {
+      annotationProcessorOptions {
+        includeCompileClasspath true
+      }
+    }
   }
 
   buildTypes {
@@ -119,6 +127,10 @@ dependencies {
   implementation libs.fingetprint
   implementation libs.qr
   implementation libs.qrGenerator
+  compileOnly libs.lombok
+  annotationProcessor libs.lombok
+  implementation libs.butterKnife
+  annotationProcessor libs.butterKnifeProcessor
 
   implementation(libs.fabric) {
     transitive = true
