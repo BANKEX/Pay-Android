@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;

@@ -1,6 +1,6 @@
 package com.bankex.pay.domain.interactor;
 
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.data.repository.IContactsRepository;
 import java.util.List;
 

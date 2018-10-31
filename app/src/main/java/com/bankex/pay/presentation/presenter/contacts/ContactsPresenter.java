@@ -1,7 +1,7 @@
 package com.bankex.pay.presentation.presenter.contacts;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.contacts.IContactsView;

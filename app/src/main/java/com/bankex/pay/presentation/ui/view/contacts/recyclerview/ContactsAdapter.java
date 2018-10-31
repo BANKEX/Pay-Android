@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.bankex.pay.R;
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.bankex.pay.presentation.ui.contacts;
 
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.ui.base.BaseView;
 import java.util.List;
 

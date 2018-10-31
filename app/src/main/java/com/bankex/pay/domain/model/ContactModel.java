@@ -1,8 +1,7 @@
-package com.bankex.pay.data.entity;
+package com.bankex.pay.domain.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import lombok.Data;
