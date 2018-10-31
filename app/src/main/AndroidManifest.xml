@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.bankex.pay"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bankex.pay"
+    >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -12,7 +13,8 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true"
+        />
 
     <application
         android:name=".BankexPayApplication"
@@ -21,11 +23,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:name">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        tools:replace="android:name"
+        >
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabric_io_id}"/>
+            android:value="${fabric_io_id}"
+            />
 
         <activity android:name=".presentation.ui.mainscreen.MainScreenActivity">
             <intent-filter>
@@ -37,30 +42,36 @@
 
         <activity
             android:name=".presentation.ui.setpin.SetPinActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".presentation.ui.lockscreen.LockScreenActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".presentation.ui.onboarding.OnboardingActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
 
         <activity
-            android:name=".presentation.ui.importorcreate.ImportOrCreateActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".presentation.ui.importorcreatewallet.ImportOrCreateActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity
             android:name=".presentation.ui.importwallet.ImportWalletActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
 
         <activity
-            android:name=".presentation.ui.view.qr.QRActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".presentation.ui.qr.QRActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity
-            android:name=".presentation.ui.view.receive.ReceiveActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".presentation.ui.receive.ReceiveActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
-
 
 </manifest>

@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#48A6F8</color>
-    <color name="colorPrimaryDark">#2b6394</color>
-    <color name="colorAccent">#48A6F8</color>
+    <!-- Android Basic -->
+    <color name="colorPrimary">#3975E8</color>
+    <color name="colorPrimaryDark">#004ab5</color>
+    <color name="colorAccent">#3975E8</color>
 
-    <color name="colorPrimaryShadow">#6648A6F8</color>
-    <color name="colorPrimaryDarkShadow">#662b6394</color>
+    <!-- Basic -->
+    <color name="white">#FFFFFF</color>
+    <color name="light_page_background">#F9FAFC</color>
+    <color name="silver">#C4C4C4</color>
+    <color name="input_text_hint">#B8BFC9</color>
+    <color name="bali_hai">#8E96B0</color>
+    <color name="gray_shuttle">#63687D</color>
+    <color name="gray">#718093</color>
+    <color name="gray_light_dark">#33000000</color>
+    <color name="shark">#202326</color>
 
-    <color name="bankex_black">#202326</color>
-    <color name="bankex_white">#FFFFFF</color>
-    <color name="bankex_grey">#C4C4C4</color>
-    <color name="bankex_background">#F9FAFC</color>
-
-    <color name="caption">#8E96B0</color>
-
-    <color name="onboarding_temporary_background">#F2F3F5</color>
-    <color name="onboarding_selected_indicator">#F6A92A</color>
-
-    <color name="tabs_inactive_white">#B2FFFFFF</color>
-
-    <color name="placeholder_background">#EFF2F4</color>
-    <color name="placeholder_body_text">#63687D</color>
-    <color name="placeholder_wrong_type_title">@color/operation_failed</color>
-
-    <color name="operation_success">#1BBE00</color>
-    <color name="operation_failed">#DB333E</color>
-    <color name="operation_pending">#EFC674</color>
-
-    <color name="actionbar_opacity">#33000000</color>
-
-    <color name="body">#718093</color>
-    <color name="body_black">#000000</color>
-
+    <!-- Other -->
+    <color name="ui_green">#0DBA26</color>
+    <color name="ui_red">#F1361D</color>
+    <color name="ui_yellow">#EFD00C</color>
 </resources>

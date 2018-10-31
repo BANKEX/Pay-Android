@@ -1,10 +1,8 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.model.domain.PayWalletModel;
-
-import javax.annotation.Nullable;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
+import javax.annotation.Nullable;
 
 /**
  * Репозиторий работы с кошельком в БД
@@ -13,19 +11,19 @@ import io.reactivex.Single;
  */
 public interface IPayWalletRepository {
 
-    /**
-     * Сохраняем кошелек в БД
-     *
-     * @param payWalletModel кошелек
-     * @return Completable
-     */
-    Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
+	/**
+	 * Сохраняем кошелек в БД
+	 *
+	 * @param payWalletModel кошелек
+	 * @return Completable
+	 */
+	Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
 
-    /**
-     * Пытаемся получить кошелек из БД
-     *
-     * @return кошелек
-     */
-    @Nullable
-    Single<PayWalletModel> getWallet();
+	/**
+	 * Пытаемся получить кошелек из БД
+	 *
+	 * @return кошелек
+	 */
+	@Nullable
+	Single<PayWalletModel> getWallet();
 }

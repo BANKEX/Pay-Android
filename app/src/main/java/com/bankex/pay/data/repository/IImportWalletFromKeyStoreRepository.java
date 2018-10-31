@@ -1,8 +1,6 @@
 package com.bankex.pay.data.repository;
 
-
-import com.bankex.pay.model.domain.PayWalletModel;
-
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
@@ -12,13 +10,13 @@ import io.reactivex.Single;
  */
 public interface IImportWalletFromKeyStoreRepository {
 
-    /**
-     * Импортировать Кошелек
-     *
-     * @param store       хранилище
-     * @param password    старый пароль
-     * @param newPassword новый пароль
-     * @return обвязка {@link Single} над {@link PayWalletModel}
-     */
-    Single<PayWalletModel> importWalletFromKeyStore(String store, String password, String newPassword);
+	/**
+	 * Импортировать Кошелек
+	 *
+	 * @param store хранилище
+	 * @param password старый пароль
+	 * @param newPassword новый пароль
+	 * @return обвязка {@link Single} над {@link PayWalletModel}
+	 */
+	Single<PayWalletModel> importWalletFromKeyStore(String store, String password, String newPassword);
 }

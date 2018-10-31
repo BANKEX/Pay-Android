@@ -16,7 +16,7 @@ import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.ui.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
-import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 

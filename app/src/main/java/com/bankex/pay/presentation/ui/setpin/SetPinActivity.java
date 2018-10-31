@@ -12,7 +12,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.setpin.SetPinInjector;
 import com.bankex.pay.presentation.presenter.setpin.SetPinPresenter;
-import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
