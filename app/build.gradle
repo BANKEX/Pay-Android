@@ -61,6 +61,8 @@ android {
       //signingConfig signingConfigs.release
 
       buildConfigField "boolean", "AUTHORIZATION_ENABLED", "false"
+
+      ext.betaDistributionReleaseNotesFilePath = 'release_notes.txt'
     }
 
     debug {
@@ -71,6 +73,8 @@ android {
       signingConfig signingConfigs.debug
 
       buildConfigField "boolean", "AUTHORIZATION_ENABLED", "true"
+
+      ext.betaDistributionReleaseNotesFilePath = 'release_notes.txt'
     }
   }
   compileOptions {

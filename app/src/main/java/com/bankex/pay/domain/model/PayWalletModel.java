@@ -1,4 +1,4 @@
-package com.bankex.pay.model.domain;
+package com.bankex.pay.domain.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

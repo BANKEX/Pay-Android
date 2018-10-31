@@ -4,7 +4,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.data.entity.ContactModel;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.ui.view.contacts.IContactsView;
+import com.bankex.pay.presentation.ui.contacts.IContactsView;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 import java.util.ArrayList;
 import java.util.List;

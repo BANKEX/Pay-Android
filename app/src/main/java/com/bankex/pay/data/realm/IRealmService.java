@@ -1,10 +1,9 @@
 package com.bankex.pay.data.realm;
 
 import com.bankex.pay.data.entity.ContactModel;
-import com.bankex.pay.model.domain.PayWalletModel;
+import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
 
 /**

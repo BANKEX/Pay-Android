@@ -1,6 +1,6 @@
-package com.bankex.pay.presentation.ui.view.receive;
+package com.bankex.pay.presentation.ui.receive;
 
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
  * Интерфейс экрана получения

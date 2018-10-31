@@ -1,13 +1,13 @@
 package com.bankex.pay.data.realm;
 
+import android.support.annotation.Nullable;
+import com.bankex.pay.domain.model.PayWalletModel;
 import com.bankex.pay.data.entity.ContactModel;
-import com.bankex.pay.model.domain.PayWalletModel;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
 import java.util.List;
-import javax.annotation.Nullable;
 
 /**
  * Implementation of interface {@link DefaultRealmService}.

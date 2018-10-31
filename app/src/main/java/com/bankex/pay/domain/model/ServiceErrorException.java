@@ -1,4 +1,4 @@
-package com.bankex.pay.model.domain;
+package com.bankex.pay.domain.model;
 
 import android.support.annotation.Nullable;
 

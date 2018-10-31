@@ -54,7 +54,7 @@
             />
 
         <activity
-            android:name=".presentation.ui.importorcreate.ImportOrCreateActivity"
+            android:name=".presentation.ui.importorcreatewallet.ImportOrCreateActivity"
             android:screenOrientation="portrait"
             />
 
@@ -64,13 +64,14 @@
             />
 
         <activity
-            android:name=".presentation.ui.view.qr.QRActivity"
+            android:name=".presentation.ui.qr.QRActivity"
             android:screenOrientation="portrait"
             />
 
         <activity
-            android:name=".presentation.ui.view.receive.ReceiveActivity"
+            android:name=".presentation.ui.receive.ReceiveActivity"
             android:screenOrientation="portrait"
             />
     </application>
+
 </manifest>
