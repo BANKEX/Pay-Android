@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.model.BaseBankexModel;
 import com.bankex.pay.domain.model.BaseTitleModel;
-import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
+import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.viewholder.base.BaseTitleViewHolder;
 import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate;
 

@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.bankex.pay.R;
-import com.bankex.pay.presentation.ui.navigation.base.IBankexRouter;
+import com.bankex.pay.presentation.navigation.base.IBankexRouter;
 
 import javax.inject.Inject;
 

@@ -3,6 +3,7 @@ package com.bankex.pay.presentation.ui.base;
 import android.content.Context;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -12,14 +13,17 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.bankex.pay.R;
 
 /**
- * Базовый фрагмент приложения
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Base fragment for application.
+ * Base functions:
+ * - show bottom navigation view;
+ * - hide keyboard;
+ * - show message Toast;
+ * - return String bt its` resId.
  */
 public class BaseFragment extends MvpAppCompatFragment {
 
 	/**
-	 * Возвращаем BottomNavigationView или null
+	 * Method to return bottom navigation or null.
 	 *
 	 * @return BottomNavigationView
 	 */
@@ -33,7 +37,7 @@ public class BaseFragment extends MvpAppCompatFragment {
 	}
 
 	/**
-	 * Пытаемся спрятать клавиатуру
+	 * Method to hide keyboard.
 	 */
 	public void hideKeyboard() {
 		FragmentActivity activity = getActivity();
@@ -53,12 +57,17 @@ public class BaseFragment extends MvpAppCompatFragment {
 			return;
 		}
 		try {
-			imm.hideSoftInputFromWindow(binder, 0);
+			if (imm != null) {
+				imm.hideSoftInputFromWindow(binder, 0);
+			}
 		} catch (Exception ignored) {
 			//do nothing
 		}
 	}
 
+	/**
+	 * Method to finish an activity.
+	 */
 	public void finish() {
 		FragmentActivity activity = getActivity();
 		if (activity != null) {
@@ -73,5 +82,15 @@ public class BaseFragment extends MvpAppCompatFragment {
 	 */
 	public void showMessageToast(String message) {
 		Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+	}
+
+	/**
+	 * Method to get string by its` id.
+	 *
+	 * @param resId - int string id from resources.
+	 * @return - String from resources.
+	 */
+	public String string(@StringRes int resId) {
+		return getResources().getString(resId);
 	}
 }

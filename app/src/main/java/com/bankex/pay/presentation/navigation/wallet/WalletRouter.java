@@ -1,9 +1,9 @@
-package com.bankex.pay.presentation.ui.navigation.wallet;
+package com.bankex.pay.presentation.navigation.wallet;
 
 import android.content.Context;
 
 import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
-import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
+import com.bankex.pay.presentation.navigation.base.BaseRouter;
 
 /**
  * Реализация роутера экрана wallet {@link IWalletRouter}

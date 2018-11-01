@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.navigation.importorcreate;
+package com.bankex.pay.presentation.navigation.importorcreate;
 
 import android.content.Context;
 import android.content.Intent;

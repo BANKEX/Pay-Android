@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.navigation.settings;
+package com.bankex.pay.presentation.navigation.settings;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
+import com.bankex.pay.presentation.navigation.base.BaseRouter;
 
 /**
  * Реализация роутера экрана настроек {@link ISettingsRouter}

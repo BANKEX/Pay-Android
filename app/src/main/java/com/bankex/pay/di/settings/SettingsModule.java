@@ -1,7 +1,7 @@
 package com.bankex.pay.di.settings;
 
-import com.bankex.pay.presentation.ui.navigation.settings.ISettingsRouter;
-import com.bankex.pay.presentation.ui.navigation.settings.SettingsRouter;
+import com.bankex.pay.presentation.navigation.settings.ISettingsRouter;
+import com.bankex.pay.presentation.navigation.settings.SettingsRouter;
 
 import dagger.Module;
 import dagger.Provides;

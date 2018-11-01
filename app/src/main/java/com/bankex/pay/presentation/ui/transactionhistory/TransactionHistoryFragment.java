@@ -13,7 +13,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryInjector;
 import com.bankex.pay.presentation.presenter.transactionhistory.TransactionHistoryPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
-import com.bankex.pay.presentation.ui.navigation.transactionhistory.ITransactionHistoryRouter;
+import com.bankex.pay.presentation.navigation.transactionhistory.ITransactionHistoryRouter;
 
 import javax.inject.Inject;
 

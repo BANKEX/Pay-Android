@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.navigation.base;
+package com.bankex.pay.presentation.navigation.base;
 
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;

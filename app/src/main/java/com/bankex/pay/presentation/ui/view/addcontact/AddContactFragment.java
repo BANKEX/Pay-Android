@@ -14,13 +14,10 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.addcontact.AddContactPresenter;
-import com.bankex.pay.presentation.ui.navigation.addcontact.IAddContactRouter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 import javax.inject.Inject;
 
 public class AddContactFragment extends BaseFragment implements IAddContactView {
-	@Inject
-	IAddContactRouter mAddContactRouter;
 
 	@Inject
 	@InjectPresenter
@@ -50,7 +47,9 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 	}
 
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		getActivity().getMenuInflater().inflate(R.menu.add_contact_menu, menu);
+		if (getActivity() != null) {
+			getActivity().getMenuInflater().inflate(R.menu.add_contact_menu, menu);
+		}
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
@@ -65,7 +64,7 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 		super.onDestroy();
 	}
 
-	@Override public void showError(int fieldId, int errorMessageId) {
+	@Override public void showTextInputError(int fieldId, int errorMessageId) {
 		if (getView() != null) {
 			TextInputLayout textInputLayout = getView().findViewById(fieldId);
 			textInputLayout.setError(string(errorMessageId));
@@ -73,7 +72,7 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 		}
 	}
 
-	@Override public void hideError(int fieldId) {
+	@Override public void hideTextInputError(int fieldId) {
 		if (getView() != null) {
 			TextInputLayout textInputLayout = getView().findViewById(fieldId);
 			textInputLayout.setError(null);

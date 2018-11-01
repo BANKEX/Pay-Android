@@ -22,7 +22,7 @@ import com.bankex.pay.domain.model.BaseTitleModel;
 import com.bankex.pay.domain.model.WalletCardModel;
 import com.bankex.pay.presentation.adapter.wallet.WalletAdapter;
 import com.bankex.pay.presentation.presenter.wallet.WalletPresenter;
-import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
+import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 import java.math.BigInteger;

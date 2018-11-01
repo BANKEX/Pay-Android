@@ -20,7 +20,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
-import com.bankex.pay.presentation.ui.navigation.contacts.IContactsRouter;
+import com.bankex.pay.presentation.navigation.contacts.IContactsRouter;
 import com.bankex.pay.presentation.ui.view.contacts.recyclerview.ContactsAdapter;
 import java.util.List;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
@@ -103,6 +103,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 
 	@OnClick(R.id.fab_add_contact)
 	public void onAddContactClicked() {
+		mContactsRouter.openAddContactFragment(getActivity(), getContext());
 	}
 
 	private void initRecycler() {

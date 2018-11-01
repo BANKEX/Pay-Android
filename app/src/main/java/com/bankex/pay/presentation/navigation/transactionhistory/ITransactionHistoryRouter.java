@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.navigation.transactionhistory;
+package com.bankex.pay.presentation.navigation.transactionhistory;
 
 /**
  * Роутер экрана истории транзакций

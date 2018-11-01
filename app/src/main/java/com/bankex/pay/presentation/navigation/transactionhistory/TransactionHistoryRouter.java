@@ -1,6 +1,6 @@
-package com.bankex.pay.presentation.ui.navigation.transactionhistory;
+package com.bankex.pay.presentation.navigation.transactionhistory;
 
-import com.bankex.pay.presentation.ui.navigation.base.BaseRouter;
+import com.bankex.pay.presentation.navigation.base.BaseRouter;
 
 /**
  * Реализация роутера экрана истори транзакций {@link ITransactionHistoryRouter}

@@ -5,7 +5,7 @@ import android.content.Context;
 import com.bankex.pay.domain.model.BaseBankexModel;
 import com.bankex.pay.presentation.delegate.base.BaseTitleItemAdapterDelegate;
 import com.bankex.pay.presentation.delegate.wallet.WalletCardItemAdapterDelegate;
-import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
+import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
 import com.hannesdorfmann.adapterdelegates3.ListDelegationAdapter;
 
 import java.util.List;
