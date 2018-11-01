@@ -66,7 +66,7 @@ public class QRActivity extends BaseActivity implements ZXingScannerView.ResultH
     }
 
     private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.add_contact_toolbar);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
         if (ab != null) {

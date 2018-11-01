@@ -1,5 +1,6 @@
 package com.bankex.pay.di.mainscreen;
 
+import com.bankex.pay.di.addcontact.AddContactComponent;
 import com.bankex.pay.di.contacts.ContactsComponent;
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.di.settings.SettingsComponent;
@@ -10,8 +11,8 @@ import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 import dagger.Subcomponent;
 
 /**
+ * TODO fix this mess
  * Временный сабкомпонент для варианта "чтобы быстро и работало"
- *
  * @author Gevork Safaryan on 11.09.2018.
  */
 @Subcomponent(modules = {MainScreenModule.class})
@@ -36,4 +37,6 @@ public interface MainScreenComponent {
     TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
 
     ContactsComponent.Builder plusContactsComponentBuilder();
+
+    AddContactComponent.Builder plusAddContactBuilder();
 }

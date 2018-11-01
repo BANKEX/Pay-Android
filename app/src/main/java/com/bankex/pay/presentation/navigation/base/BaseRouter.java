@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentTransaction;
  * Базовый роутер для навигации между экранами
  */
 public class BaseRouter {
-
 	private static final long FADE_DEFAULT_TIME = 100;
 
 	/**
@@ -22,8 +21,7 @@ public class BaseRouter {
 	 * @param context Context
 	 * @param intent Intent
 	 */
-	void startActivity(Context context,
-			Intent intent) {
+	void startActivity(Context context, Intent intent) {
 		context.startActivity(intent);
 	}
 
@@ -34,9 +32,7 @@ public class BaseRouter {
 	 * @param fragment Fragment, который необходимо запустить
 	 * @param containerViewId Id контейнера
 	 */
-	void runFragment(FragmentActivity activity,
-			Fragment fragment,
-			@IdRes int containerViewId) {
+	void runFragment(FragmentActivity activity, Fragment fragment, @IdRes int containerViewId) {
 		activity.getSupportFragmentManager()
 				.beginTransaction()
 				.replace(containerViewId, fragment)
@@ -45,9 +41,9 @@ public class BaseRouter {
 
 	protected void runFragmentWithAnimation(FragmentActivity activity, Fragment baseFragment, @IdRes int containerViewId) {
 		FragmentManager mFragmentManager = activity.getSupportFragmentManager();
-		Fragment previousFragment = mFragmentManager.findFragmentById(containerViewId);
+		Fragment mPreviousFragment = mFragmentManager.findFragmentById(containerViewId);
 
-		if (previousFragment.getId() == baseFragment.getId()) {
+		if (mPreviousFragment.getId() == baseFragment.getId()) {
 			return;
 		}
 
@@ -56,14 +52,19 @@ public class BaseRouter {
 		// 1. Exit for Previous Fragment
 		Fade exitFade = new Fade();
 		exitFade.setDuration(FADE_DEFAULT_TIME);
-		previousFragment.setExitTransition(exitFade);
+		mPreviousFragment.setExitTransition(exitFade);
 
 		// 2. Enter for New Fragment
 		Fade enterFade = new Fade();
 		enterFade.setDuration(FADE_DEFAULT_TIME);
 		baseFragment.setEnterTransition(enterFade);
 
-		fragmentTransaction.replace(containerViewId, baseFragment);
-		fragmentTransaction.commit();
+		fragmentTransaction.replace(containerViewId, baseFragment)
+				.addToBackStack(null)
+				.commit();
+	}
+
+	public void popBackStack(FragmentActivity activity) {
+		activity.getSupportFragmentManager().popBackStack();
 	}
 }

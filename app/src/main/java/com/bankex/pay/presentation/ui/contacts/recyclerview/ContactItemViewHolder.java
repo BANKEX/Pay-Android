@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.view.contacts.recyclerview;
+package com.bankex.pay.presentation.ui.contacts.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

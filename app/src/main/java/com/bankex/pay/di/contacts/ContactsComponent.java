@@ -10,7 +10,6 @@ import dagger.Subcomponent;
 @Subcomponent(modules = { ContactsModule.class })
 @ContactsScope
 public interface ContactsComponent {
-
 	@Subcomponent.Builder
 	interface Builder {
 		ContactsComponent.Builder makeContactsModule(ContactsModule module);

@@ -64,7 +64,7 @@ public class ReceiveActivity extends BaseActivity implements IReceiveView {
     }
 
     private void initViews() {
-        mToolbar = findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.add_contact_toolbar);
         mCopyButton = findViewById(R.id.copy_button);
         mQrImageView = findViewById(R.id.qr_image_view);
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Contacts list screen -->
-    <string name="contacts_screen_empty_view">You don`t have\nany contacts yet</string>
-    <string name="contacts_screen_title">Contacts</string>
-    <string name="contacts_screen_search_hint">0xde0b295669a9fd93d5f28d9ec81af…</string>
-</resources>

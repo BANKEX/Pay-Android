@@ -17,14 +17,13 @@ import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.di.contacts.ContactsInjector;
-import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.navigation.contacts.IContactsRouter;
-import com.bankex.pay.presentation.ui.view.contacts.recyclerview.ContactsAdapter;
-import java.util.List;
+import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
-
+import com.bankex.pay.presentation.ui.contacts.recyclerview.ContactsAdapter;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -46,7 +45,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@BindString(R.string.contacts_screen_title) String title;
 
 	private ContactsAdapter mContactsAdapter;
-	private Unbinder binder;
+	private Unbinder mBinder;
 
 	@ProvidePresenter
 	public ContactsPresenter providePresenter() {
@@ -66,7 +65,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	@Nullable @Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_contacts_list, container, false);
-		binder = ButterKnife.bind(this, view);
+		mBinder = ButterKnife.bind(this, view);
 		return view;
 	}
 
@@ -85,7 +84,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 
 	@Override public void onDestroyView() {
 		super.onDestroyView();
-		binder.unbind();
+		mBinder.unbind();
 	}
 
 	@Override public void showContactsList(boolean isShow) {
@@ -97,6 +96,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 	}
 
 	@Override public void setContacts(List<ContactModel> contacts) {
+		mContactsAdapter.clearContacts();
 		mContactsAdapter.setContacts(contacts);
 		mContactsAdapter.notifyDataSetChanged();
 	}
