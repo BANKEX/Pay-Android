@@ -103,15 +103,18 @@ dependencies {
   implementation libs.firebaseDynamicLink
   implementation libs.firebaseCloudMessaging
   implementation libs.firebaseAppIndexing
+
   implementation androidSupport.appcompatV7
   implementation androidSupport.design
   implementation androidSupport.constraintLayout
+
   implementation libs.dagger
   annotationProcessor libs.daggerCompiler
   annotationProcessor libs.daggerProcessor
   implementation libs.moxy
   implementation libs.moxyAppCompat
   annotationProcessor libs.moxyCompiler
+
   implementation libs.rxJava
   implementation libs.rxAndroid
   implementation libs.retrofit

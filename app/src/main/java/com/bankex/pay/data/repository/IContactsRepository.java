@@ -1,6 +1,6 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import io.reactivex.Single;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -30,9 +30,8 @@ public interface IContactsRepository {
 	 * Method to insert contact item in database.
 	 *
 	 * @param contact - item to inset in database.
-	 * @return added item.
 	 */
-	Single<ContactModel> addContact(ContactModel contact);
+	void addContact(ContactModel contact);
 
 	/**
 	 * Method to delete contact item by its` id.

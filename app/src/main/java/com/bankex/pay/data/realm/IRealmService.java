@@ -1,6 +1,6 @@
 package com.bankex.pay.data.realm;
 
-import com.bankex.pay.data.entity.ContactModel;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 import java.util.List;
@@ -56,7 +56,7 @@ public interface IRealmService {
 	 *
 	 * @param contact - contact to insert in table.
 	 */
-	Single<ContactModel> addContact(ContactModel contact);
+	void addContact(ContactModel contact);
 
 	/**
 	 * Method to delete existed contact item from table.

@@ -1,8 +1,8 @@
 package com.bankex.pay.data.realm;
 
 import android.support.annotation.Nullable;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.domain.model.PayWalletModel;
-import com.bankex.pay.data.entity.ContactModel;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -53,7 +53,7 @@ public class DefaultRealmService implements IRealmService {
 	/**
 	 * {@inheritDoc }
 	 */
-	// TODO add asynchronous
+	// TODO add asynchronous.
 	@Nullable @Override public List<ContactModel> getAllContacts() {
 		RealmResults<ContactModel> realmResults = Realm.getDefaultInstance()
 				.where(ContactModel.class)
@@ -81,15 +81,11 @@ public class DefaultRealmService implements IRealmService {
 	/**
 	 * {@inheritDoc }
 	 */
-	@Override public Single<ContactModel> addContact(ContactModel contact) {
-		return Single.create(singleEmitter -> {
-			Realm realmInstance = Realm.getDefaultInstance();
-			realmInstance.executeTransaction(realm -> {
-				realm.copyToRealmOrUpdate(contact);
-				singleEmitter.onSuccess(contact);
-			});
-			realmInstance.commitTransaction();
-		});
+	@Override public void addContact(ContactModel contact) {
+		Realm realmInstance = Realm.getDefaultInstance();
+		realmInstance.executeTransaction(
+				realm -> realm.insertOrUpdate(contact)
+		);
 	}
 
 	/**

@@ -62,7 +62,7 @@ public class ImportWalletFragment extends BaseFragment {
     }
 
     private void initToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        Toolbar toolbar = view.findViewById(R.id.add_contact_toolbar);
         toolbar.setTitle(getContext().getString(R.string.import_wallet));
         toolbar.setNavigationIcon(getContext().getDrawable(R.drawable.ic_arrow_left_black_24dp));
     }

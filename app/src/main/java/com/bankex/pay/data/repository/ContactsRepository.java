@@ -1,8 +1,7 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.data.entity.ContactModel;
 import com.bankex.pay.data.realm.IRealmService;
-import io.reactivex.Single;
+import com.bankex.pay.domain.model.ContactModel;
 import java.util.List;
 import javax.annotation.Nullable;
 
@@ -34,8 +33,8 @@ public class ContactsRepository implements IContactsRepository {
 	/**
 	 * {@inheritDoc }
 	 */
-	@Override public Single<ContactModel> addContact(ContactModel contact) {
-		return mRealmService.addContact(contact);
+	@Override public void addContact(ContactModel contact) {
+		mRealmService.addContact(contact);
 	}
 
 	/**

@@ -19,7 +19,7 @@ public class ImportPrivateKeyPresenter extends BasePresenter<IImportPrivateKeyVi
 
     public ImportPrivateKeyPresenter(IImportWalletFromPrivateKeyInteractor importWalletFromPrivateKeyInteractor,
                                      IRxSchedulersUtils rxSchedulersUtils) {
-        mImportWalletFromPrivateKeyInteractor = importWalletFromPrivateKeyInteractor;
+		mImportWalletFromPrivateKeyInteractor = importWalletFromPrivateKeyInteractor;
         mRxSchedulersUtils = rxSchedulersUtils;
     }
 

@@ -20,7 +20,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
 import com.bankex.pay.presentation.presenter.importwallet.passphrase.ImportPassPhrasePresenter;
-import com.bankex.pay.presentation.ui.navigation.importorcreate.IImportWalletRouter;
+import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.utils.share.IShareDataUtils;
 import com.bankex.pay.utils.share.ShareDataUtils;
@@ -82,7 +82,7 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
     @Override
     public void doSomethingGood() {
         Toast.makeText(getActivity(), "Import Success", Toast.LENGTH_SHORT).show();
-        mImportWalletRouter.openMainActivityScreen(getActivity());
+        mImportWalletRouter.startMainActivityScreen(getActivity());
     }
 
     @Override
