@@ -28,7 +28,7 @@ public class LockScreenPresenter extends BasePresenter<ILockScreenView> {
     private LittleFinger littleFinger;
 
     public LockScreenPresenter(LittleFinger littleFinger) {
-        this.littleFinger = littleFinger;
+		this.littleFinger = littleFinger;
     }
 
     /**

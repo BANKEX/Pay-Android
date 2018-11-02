@@ -82,7 +82,7 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
     @Override
     public void doSomethingGood() {
         Toast.makeText(getActivity(), "Import Success", Toast.LENGTH_SHORT).show();
-        mImportWalletRouter.openMainActivityScreen(getActivity());
+        mImportWalletRouter.startMainActivityScreen(getActivity());
     }
 
     @Override

@@ -20,7 +20,7 @@ public class MainScreenPresenter extends BasePresenter<IMainScreenView> {
 
     public MainScreenPresenter(IPayWalletInteractor payWalletInteractor,
                                IRxSchedulersUtils rxSchedulersUtils) {
-        mPayWalletInteractor = payWalletInteractor;
+		mPayWalletInteractor = payWalletInteractor;
         mRxSchedulersUtils = rxSchedulersUtils;
     }
 

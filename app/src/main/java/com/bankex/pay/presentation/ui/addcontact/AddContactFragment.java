@@ -3,6 +3,7 @@ package com.bankex.pay.presentation.ui.addcontact;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,6 +96,10 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 			textInputLayout.setError(null);
 			textInputLayout.setErrorEnabled(false);
 		}
+	}
+
+	@Override public void showMessage(@StringRes int messageId) {
+		showMessageToast(string(messageId));
 	}
 
 	@Override public void popBackStack() {

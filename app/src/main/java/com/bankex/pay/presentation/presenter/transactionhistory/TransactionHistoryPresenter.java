@@ -13,7 +13,7 @@ import com.bankex.pay.presentation.ui.transactionhistory.ITransactionHistoryView
 public class TransactionHistoryPresenter extends BasePresenter<ITransactionHistoryView> {
 
     public TransactionHistoryPresenter() {
-    }
+	}
 
     public void doMagic() {
         getViewState().showToast();

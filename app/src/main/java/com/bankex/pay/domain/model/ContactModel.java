@@ -8,19 +8,33 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * TODO write comments
+ * Class to save into and get from Realm database information about contacts.
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ContactModel extends RealmObject implements Parcelable {
-
+	/**
+	 * Address of the stored contact.
+	 * In database is used as primary key, because it`s unique data.
+	 */
 	@PrimaryKey
 	private String address;
 
+	/**
+	 * Contacts` name.
+	 */
 	private String name;
 
+	/**
+	 * Contacts` surname.
+	 */
 	private String surname;
 
+	/**
+	 * Extra data.
+	 * Unnecessary when saving new contact to database.
+	 * Needs when showing contact list and group contacts in alphabetical groups.
+	 */
 	private String groupLetterMarker;
 
 	public ContactModel() {

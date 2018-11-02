@@ -56,7 +56,7 @@ public interface IRealmService {
 	 *
 	 * @param contact - contact to insert in table.
 	 */
-	Single<ContactModel> addContact(ContactModel contact);
+	void addContact(ContactModel contact);
 
 	/**
 	 * Method to delete existed contact item from table.

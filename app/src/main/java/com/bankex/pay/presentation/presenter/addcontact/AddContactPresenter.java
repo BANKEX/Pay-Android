@@ -14,24 +14,28 @@ import com.bankex.pay.presentation.ui.addcontact.IAddContactView;
 public class AddContactPresenter extends BasePresenter<IAddContactView> {
 	private final IContactsInteractor mContactsInteractor;
 
-	public AddContactPresenter(IContactsInteractor mContactsInteractor) {
-		this.mContactsInteractor = mContactsInteractor;
+	public AddContactPresenter(IContactsInteractor сontactsInteractor) {
+		this.mContactsInteractor = сontactsInteractor;
 	}
 
 	public void onSaveContactClicked(String name, String surname, String address) {
-		if (name == null || name.isEmpty()) {
+		if (name.isEmpty()) {
 			getViewState().showTextInputError(R.id.til_first_name, R.string.add_contact_error_first_name);
-		} else if (surname == null || surname.isEmpty()) {
+		}
+		if (surname.isEmpty()) {
 			getViewState().showTextInputError(R.id.til_surname, R.string.add_contact_error_surname);
-		} else if (address == null || address.isEmpty()) {
+		}
+		if (address.isEmpty()) {
 			getViewState().showTextInputError(R.id.til_address, R.string.add_contact_error_address);
-		} else {
+		}
+		if (!name.isEmpty() && !surname.isEmpty() && !address.isEmpty()) {
 			ContactModel mContactModel = new ContactModel();
 			mContactModel.setName(name);
 			mContactModel.setSurname(surname);
 			mContactModel.setAddress(address);
-
+			mContactModel.setGroupLetterMarker("");
 			mContactsInteractor.addContact(mContactModel);
+			getViewState().showMessage(R.string.add_contact_added_success);
 			getViewState().popBackStack();
 		}
 	}

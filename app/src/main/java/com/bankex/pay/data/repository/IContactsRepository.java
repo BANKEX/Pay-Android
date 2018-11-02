@@ -30,9 +30,8 @@ public interface IContactsRepository {
 	 * Method to insert contact item in database.
 	 *
 	 * @param contact - item to inset in database.
-	 * @return added item.
 	 */
-	Single<ContactModel> addContact(ContactModel contact);
+	void addContact(ContactModel contact);
 
 	/**
 	 * Method to delete contact item by its` id.

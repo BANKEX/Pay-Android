@@ -28,5 +28,5 @@ public interface IImportWalletRouter {
      *
      * @param context {@link Context}
      */
-    void openMainActivityScreen(Context context);
+    void startMainActivityScreen(Context context);
 }

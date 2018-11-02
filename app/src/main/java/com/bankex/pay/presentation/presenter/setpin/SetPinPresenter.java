@@ -21,7 +21,7 @@ public class SetPinPresenter extends BasePresenter<ISetPinView> {
     private LittleFinger littleFinger;
 
     public SetPinPresenter(LittleFinger littleFinger) {
-        this.littleFinger = littleFinger;
+		this.littleFinger = littleFinger;
     }
 
     /**
