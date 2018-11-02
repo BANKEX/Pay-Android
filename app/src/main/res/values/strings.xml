@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BANKEX Pay</string>
+
+    <string name="paste">Paste</string>
+    <string name="enter_your_pin">Enter your PIN</string>
+    <string name="unlock_screen_title_android">Unlock screen</string>
+    <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
 </resources>

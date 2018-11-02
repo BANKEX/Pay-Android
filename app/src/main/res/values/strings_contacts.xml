@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Contacts list screen -->
+    <string name="contacts_screen_title">Contacts</string>
+    <string name="contacts_screen_empty_view">You don`t have\nany contacts yet</string>
+    <string name="contacts_screen_search_hint">0xde0b295669a9fd93d5f28d9ec81af…</string>
+
+    <!-- Add contact screen -->
+    <string name="add_contact_title">Create contact</string>
+    <string name="add_contact_first_name">First name</string>
+    <string name="add_contact_surname">Surname</string>
+    <string name="add_contact_address">Address</string>
+    <string name="add_contact_error_first_name">Invalid name. Please try again.</string>
+    <string name="add_contact_error_surname">Invalid surname. Please try again.</string>
+    <string name="add_contact_error_address">Invalid address. Please try again.</string>
+    <string name="add_contact_save_text">Save</string>
+    <string name="add_contact_added_success">Contact successfully added</string>
+
+    <!-- Contact Info screen -->
+    <string name="contact_info_title">Contact</string>
+    <string name="contact_info_btn_send_tokens">send</string>
+    <string name="contact_info_title_transactions">Transaction History</string>
+</resources>

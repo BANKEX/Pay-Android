@@ -1,6 +1,6 @@
 package com.bankex.pay.di.importorcreate;
 
-import com.bankex.pay.presentation.ui.importorcreate.ImportOrCreateFragment;
+import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateFragment;
 import com.bankex.pay.presentation.ui.importwallet.passphrase.ImportPassPhraseFragment;
 import com.bankex.pay.presentation.ui.importwallet.privatekey.ImportPrivateKeyFragment;
 

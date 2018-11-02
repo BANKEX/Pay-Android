@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/onboarding_fast_and_easy_body_text_view"
-        style="@style/SubheaderRegular.PlaceHolder"
+        style="@style/SubHeaderRegular.PlaceHolder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/onboarding_left_right_margin"

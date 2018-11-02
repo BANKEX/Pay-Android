@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.importwallet.adapter.ImportWalletFragmentPagerAdapter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
  * Экран импорта кошелька
@@ -62,7 +62,7 @@ public class ImportWalletFragment extends BaseFragment {
     }
 
     private void initToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        Toolbar toolbar = view.findViewById(R.id.add_contact_toolbar);
         toolbar.setTitle(getContext().getString(R.string.import_wallet));
         toolbar.setNavigationIcon(getContext().getDrawable(R.drawable.ic_arrow_left_black_24dp));
     }

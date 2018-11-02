@@ -1,0 +1,150 @@
+<resources>
+    <!-- Basic styles -->
+    <style name="BaseTextStyle">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textColor">@color/bankex_black</item>
+    </style>
+
+    <style name="DisplayMediumBlack" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:textAppearance">@style/DisplayBold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DisplayBold" parent="BaseTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:textAppearance">@style/DisplayBold</item>
+    </style>
+
+    <style name="TitleRegular" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textAppearance">@style/TitleRegular</item>
+    </style>
+
+    <style name="TitleBold" parent="TitleRegular">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextLargeRegular" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:fontFamily">@font/roboto_medium_local</item>
+    </style>
+
+    <style name="SubHeaderRegular" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_subheader</item>
+        <item name="android:textAppearance">@style/SubHeaderRegular</item>
+    </style>
+
+    <style name="SubHeaderBold" parent="SubHeaderRegular">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeaderMedium" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="android:textSize">@dimen/text_size_subheader</item>
+        <item name="android:textAppearance">@style/SubHeaderMedium</item>
+    </style>
+
+    <style name="CaptionBold" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textAppearance">@style/CaptionBold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/caption</item>
+    </style>
+
+    <style name="CaptionRegular" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textAppearance">@style/CaptionRegular</item>
+        <item name="android:textColor">@color/caption</item>
+    </style>
+
+    <style name="BodyMedium" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/roboto_regular_local</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/text_body</item>
+        <item name="android:lineHeight">20dp</item>
+        <item name="android:textAppearance">@style/BodyMedium</item>
+    </style>
+
+    <style name="BodyRegular" parent="BodyMedium">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Custom styles -->
+    <style name="FirstScreenText" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_big_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/FirstScreenText</item>
+    </style>
+
+    <style name="OnboardingTitle" parent="TitleRegular">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textAppearance">@style/OnboardingTitle</item>
+    </style>
+
+    <style name="SubHeaderRegular.PlaceHolder">
+        <item name="android:textColor">@color/placeholder_body_text</item>
+    </style>
+
+    <style name="SubHeaderMedium.Link">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SubHeaderBold.Link">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SubHeaderRegular.Grey">
+        <item name="android:textColor">@color/silver</item>
+    </style>
+
+    <style name="SubheaderBold.Grey" parent="SubHeaderBold">
+        <item name="android:textColor">@color/caption</item>
+    </style>
+
+    <style name="CaptionBold.Link">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="BodyMedium.Link">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="BodyRegular.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="EmptyView.Grey" parent="BodyMedium">
+        <item name="android:textColor">@color/empty_state_text</item>
+    </style>
+
+    <style name="BoldTextBlack" parent="CaptionBold">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextLargeRegular.White" parent="TextLargeRegular">
+        <item name="android:textColor">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="BodyMedium.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Toolbars text -->
+    <style name="ToolBarBoldSmall" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="ToolBarBoldSmall.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ToolbarMedium" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">@dimen/text_size_subheader</item>
+        <item name="android:fontFamily">@font/roboto_medium_local</item>
+    </style>
+</resources>

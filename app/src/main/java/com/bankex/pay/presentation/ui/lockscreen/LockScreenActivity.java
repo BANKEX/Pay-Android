@@ -11,8 +11,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.lockscreen.LockScreenInjector;
-import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
-import com.bankex.pay.presentation.ui.view.base.BaseActivity;
+import com.bankex.pay.presentation.presenter.LockScreenPresenter;
+import com.bankex.pay.presentation.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 

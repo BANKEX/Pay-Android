@@ -23,16 +23,16 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
-import com.bankex.pay.presentation.presenter.importwallet.privatekey.ImportPrivateKeyPresenter;
-import com.bankex.pay.presentation.ui.view.base.BaseFragment;
-import com.bankex.pay.presentation.ui.view.qr.QRActivity;
+import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
+import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.bankex.pay.presentation.ui.qr.QRActivity;
 import com.bankex.pay.utils.share.IShareDataUtils;
 import com.bankex.pay.utils.share.ShareDataUtils;
 
 import javax.inject.Inject;
 
 import static android.app.Activity.RESULT_OK;
-import static com.bankex.pay.presentation.ui.view.qr.QRActivity.QR_SCANNER_RESULT;
+import static com.bankex.pay.presentation.ui.qr.QRActivity.QR_SCANNER_RESULT;
 
 /**
  * Экран экспорта по ключу

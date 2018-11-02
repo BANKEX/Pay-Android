@@ -3,9 +3,7 @@ package com.bankex.pay.di.contacts;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
 
 /**
- * Инжектор экрана контактов
- *
- * @author Pavel Apanovskiy on 12/10/2018.
+ * Injector for contacts screen.
  */
 public class ContactsInjector {
     private static ContactsComponent sContactsComponent;

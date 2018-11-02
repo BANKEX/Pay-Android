@@ -4,6 +4,7 @@
         android:color="@android:color/transparent"/>
     <corners android:radius="@dimen/button_radius"/>
     <stroke
+        android:color="@color/primary_button_bg_selected"
         android:width="@dimen/button_stroke_width"
-        android:color="@color/colorPrimaryDark"/>
+        />
 </shape>

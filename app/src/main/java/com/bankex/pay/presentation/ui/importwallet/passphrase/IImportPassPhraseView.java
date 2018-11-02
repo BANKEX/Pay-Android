@@ -1,6 +1,6 @@
 package com.bankex.pay.presentation.ui.importwallet.passphrase;
 
-import com.bankex.pay.presentation.ui.view.base.BaseView;
+import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
  * Вью экрана импорта по фразе

@@ -15,10 +15,10 @@ import com.bankex.pay.domain.interactor.IImportWalletFromPassPhraseInteractor;
 import com.bankex.pay.domain.interactor.IImportWalletFromPrivateKeyInteractor;
 import com.bankex.pay.domain.interactor.ImportWalletFromPassPhraseInteractor;
 import com.bankex.pay.domain.interactor.ImportWalletFromPrivateKeyInteractor;
-import com.bankex.pay.presentation.presenter.importwallet.passphrase.ImportPassPhrasePresenter;
-import com.bankex.pay.presentation.presenter.importwallet.privatekey.ImportPrivateKeyPresenter;
-import com.bankex.pay.presentation.ui.navigation.importorcreate.IImportWalletRouter;
-import com.bankex.pay.presentation.ui.navigation.importorcreate.ImportWalletRouter;
+import com.bankex.pay.presentation.presenter.ImportPassPhrasePresenter;
+import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
+import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
+import com.bankex.pay.presentation.navigation.importorcreate.ImportWalletRouter;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 
 import java.io.File;

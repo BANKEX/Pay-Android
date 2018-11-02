@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.6"/>
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/add_contact_toolbar"
         layout="@layout/toolbar"/>
 
     <ImageView
@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/add_contact_toolbar"
         tools:src="@drawable/ic_network"/>
 
     <TextView
@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/token_address_text_view"
-        style="@style/SubheaderRegular.Grey"
+        style="@style/SubHeaderRegular.Grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_medium_x"

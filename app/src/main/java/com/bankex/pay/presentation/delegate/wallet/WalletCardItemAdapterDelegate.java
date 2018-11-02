@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bankex.pay.R;
-import com.bankex.pay.domain.BaseBankexModel;
-import com.bankex.pay.domain.model.wallet.WalletCardModel;
-import com.bankex.pay.presentation.ui.navigation.wallet.IWalletRouter;
+import com.bankex.pay.domain.model.BaseBankexModel;
+import com.bankex.pay.domain.model.WalletCardModel;
+import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.ui.viewholder.wallet.WalletCardViewHolder;
 import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate;
 
