@@ -93,6 +93,12 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 		mToolbar.inflateMenu(R.menu.delete_contact_menu);
 		mToolbar.setOnMenuItemClickListener(menuItem -> {
 			switch (menuItem.getItemId()) {
+				case R.id.edit_contact:
+					showMessageToast("On edit clicked");
+					return true;
+				case R.id.share_contact:
+					showMessageToast("On share clicked");
+					return true;
 				case R.id.delete_contact:
 					showMessageToast("On delete clicked");
 					return true;

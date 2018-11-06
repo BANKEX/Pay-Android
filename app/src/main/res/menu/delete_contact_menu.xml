@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <item
+        android:id="@+id/edit_contact"
+        android:icon="@null"
+        android:title="@string/action_title_edit_contact"
+        />
+
+    <item
+        android:id="@+id/share_contact"
+        android:icon="@null"
+        android:title="@string/action_title_share_contact"
+        />
+
+    <item
         android:id="@+id/delete_contact"
-        android:icon="@drawable/ic_delete"
+        android:icon="@null"
         android:title="@string/action_title_delete_contact"
-        app:showAsAction="always"
         />
 </menu>

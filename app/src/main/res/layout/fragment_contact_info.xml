@@ -12,14 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="233dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/colorWhite"
+        android:background="@color/colorPrimary"
         >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="164dp"
-            android:background="#0DA9FF"
             app:contentScrim="?attr/colorAccent"
             app:expandedTitleMarginStart="52dp"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
@@ -32,55 +31,84 @@
                 app:layout_collapseMode="pin"
                 app:title="Toolbar title"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_contact_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    tools:text="Crypto Kaffe RelativeOverlapRelativeOverlapRelativeOverlapRelativeOverlap"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_contact_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    tools:text="Address: 0xd55…06d73"
+                    />
+            </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingStart="16dp"
-            tools:ignore="RtlSymmetry"
-            >
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:paddingStart="16dp"-->
+        <!--tools:ignore="RtlSymmetry"-->
+        <!--&gt;-->
 
-            <TextView
-                android:id="@+id/tv_contact_full_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ellipsize="marquee"
-                android:singleLine="true"
-                android:maxLength="40"
-                tools:text="Crypto Kaffe RelativeOverlapRelativeOverlapRelativeOverlapRelativeOverlap"
-                />
+        <!--<TextView-->
+        <!--android:id="@+id/tv_contact_full_name"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:ellipsize="marquee"-->
+        <!--android:singleLine="true"-->
+        <!--android:maxLength="40"-->
+        <!--tools:text="Crypto Kaffe RelativeOverlapRelativeOverlapRelativeOverlapRelativeOverlap"-->
+        <!--/>-->
 
-            <TextView
-                android:id="@+id/tv_contact_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_contact_full_name"
-                android:ellipsize="marquee"
-                tools:text="Address: 0xd55…06d73"
-                />
+        <!--<TextView-->
+        <!--android:id="@+id/tv_contact_address"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tv_contact_full_name"-->
+        <!--android:ellipsize="marquee"-->
+        <!--tools:text="Address: 0xd55…06d73"-->
+        <!--/>-->
 
-            <TextView
-                android:id="@+id/tv_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                android:text="@string/contact_info_btn_send_tokens"
-                android:textAllCaps="true"
-                tools:ignore="RelativeOverlap"
-                />
-        </RelativeLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/tv_send"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+        <!--android:padding="16dp"-->
+        <!--android:text="@string/contact_info_btn_send_tokens"-->
+        <!--android:textAllCaps="true"-->
+        <!--tools:ignore="RelativeOverlap"-->
+        <!--/>-->
+        <!--</RelativeLayout>-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:background="#E0E0E0"
-            />
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:background="#E0E0E0"-->
+        <!--/>-->
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
