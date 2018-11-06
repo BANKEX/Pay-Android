@@ -23,7 +23,7 @@ import javax.inject.Inject;
 /**
  * Full contact info screen.
  * Shows contact name, address, transaction history and allow to send
- * tokens to shown contact.
+ * tokens to chosen contact.
  */
 public class ContactInfoFragment extends BaseFragment implements IContactInfoView {
 	@Inject
@@ -57,13 +57,14 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 			@Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_contact_info, container, false);
-		mBinder = ButterKnife.bind(view);
+		mBinder = ButterKnife.bind(this, view);
 		return view;
 	}
 
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initToolbar();
+		mContactAddress.setText(getString(R.string.contact_info_address, "Test"));
 	}
 
 	@Override public void onDestroyView() {
@@ -86,15 +87,14 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	}
 
 	private void initToolbar() {
-		// TODO cannot find toolbar
-		//mToolbar.setTitle(string(R.string.contact_info_title));
-		mToolbar.setTitle(getResources().getString(R.string.contact_info_title));
+		mToolbar.setTitle(string(R.string.contact_info_title));
 		mToolbar.setNavigationIcon(R.drawable.ic_arrow_left_black_24dp);
 		mToolbar.setNavigationOnClickListener(v -> mContactsRouter.popBackStack(getActivity()));
 		mToolbar.inflateMenu(R.menu.delete_contact_menu);
 		mToolbar.setOnMenuItemClickListener(menuItem -> {
 			switch (menuItem.getItemId()) {
 				case R.id.delete_contact:
+					showMessageToast("On delete clicked");
 					return true;
 			}
 			return false;
