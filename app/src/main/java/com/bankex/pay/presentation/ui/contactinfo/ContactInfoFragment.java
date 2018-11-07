@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -33,9 +32,9 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@Inject ContactsRouter mContactsRouter;
 
 	@BindView(R.id.toolbar) android.support.v7.widget.Toolbar mToolbar;
-	@BindView(R.id.tv_contact_full_name) TextView mContactFullName;
+	//@BindView(R.id.tv_contact_full_name) TextView mContactFullName;
 	@BindView(R.id.tv_contact_address) TextView mContactAddress;
-	@BindView(R.id.tv_send) TextView mBtnSend;
+	//@BindView(R.id.tv_send) TextView mBtnSend;
 
 	private Unbinder mBinder;
 
@@ -64,7 +63,7 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initToolbar();
-		mContactAddress.setText(getString(R.string.contact_info_address, "Test"));
+		mContactAddress.setText("0xd55…06d73");
 	}
 
 	@Override public void onDestroyView() {
@@ -81,16 +80,16 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 		mContactsRouter.popBackStack(getActivity());
 	}
 
-	@OnClick(R.id.tv_send)
-	public void inSendTokensClicked() {
-		showMessageToast("Go to send some");
-	}
+	//@OnClick(R.id.tv_send)
+	//public void inSendTokensClicked() {
+	//	showMessageToast("Go to send some");
+	//}
 
 	private void initToolbar() {
 		mToolbar.setTitle(string(R.string.contact_info_title));
-		mToolbar.setNavigationIcon(R.drawable.ic_arrow_left_black_24dp);
+		mToolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_24dp);
 		mToolbar.setNavigationOnClickListener(v -> mContactsRouter.popBackStack(getActivity()));
-		mToolbar.inflateMenu(R.menu.delete_contact_menu);
+		mToolbar.inflateMenu(R.menu.contact_info_toolbar_menu);
 		mToolbar.setOnMenuItemClickListener(menuItem -> {
 			switch (menuItem.getItemId()) {
 				case R.id.edit_contact:

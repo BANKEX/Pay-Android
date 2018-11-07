@@ -17,8 +17,9 @@
     <string name="add_contact_added_success">Contact successfully added</string>
 
     <!-- Contact Info screen -->
-    <string name="contact_info_title">Contact</string>
+    <string name="contact_info_title">Alex Crypto</string>
+    <string name="contact_info_address_title">Address:</string>
     <string name="contact_info_btn_send_tokens">send</string>
     <string name="contact_info_title_transactions">Transaction History</string>
-    <string name="contact_info_address">Address: (%1$s)</string>
+    <string name="contact_info_address">Address: \n%1$s</string>
 </resources>

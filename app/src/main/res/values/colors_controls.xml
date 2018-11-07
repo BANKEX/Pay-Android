@@ -9,6 +9,7 @@
 
     <!-- FAB -->
     <color name="contacts_fab_background">@color/colorPrimary</color>
+    <color name="contact_fab_send_tokens">@color/ui_orange</color>
 
     <!-- Text colors -->
     <color name="empty_state_text">@color/input_text_hint</color>
