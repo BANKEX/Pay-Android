@@ -24,6 +24,13 @@ public class ContactInteractor implements IContactsInteractor {
 	/**
 	 * {@inheritDoc }
 	 */
+	@Override public ContactModel getSavedContacts(String contactId) {
+		return contactsRepository.getContactById(contactId);
+	}
+
+	/**
+	 * {@inheritDoc }
+	 */
 	@Override public void addContact(ContactModel contact) {
 		contactsRepository.addContact(contact);
 	}

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.model.ContactModel;
+import com.bankex.pay.presentation.ui.contacts.ContactsListClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import java.util.List;
  */
 public class ContactsAdapter extends RecyclerView.Adapter<ContactItemViewHolder> {
 	private List<ContactModel> mContacts;
+	private ContactsListClickListener mOnItemClickListener;
 
-	public ContactsAdapter() {
+	public ContactsAdapter(ContactsListClickListener onItemClickListener) {
+		this.mOnItemClickListener = onItemClickListener;
 		this.mContacts = new ArrayList<>();
 	}
 
@@ -26,7 +29,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactItemViewHolder>
 	}
 
 	@Override public void onBindViewHolder(@NonNull ContactItemViewHolder contactsViewHolder, int i) {
-		contactsViewHolder.bind(mContacts.get(i));
+		contactsViewHolder.bind(mContacts.get(i), mOnItemClickListener);
 	}
 
 	@Override public int getItemCount() {

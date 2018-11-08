@@ -12,6 +12,8 @@
 
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
 
+    <dimen name="bottom_navigation_bar_height">56dp</dimen>
+
     <!-- Elevations -->
     <dimen name="elevation_little">4dp</dimen>
 
@@ -32,4 +34,5 @@
     <!-- Contacts -->
     <dimen name="contact_list_fab_margin">30dp</dimen>
     <dimen name="contact_list_recycler_margin_top">120dp</dimen>
+
 </resources>

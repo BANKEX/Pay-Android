@@ -3,20 +3,27 @@ package com.bankex.pay.presentation.ui.contactinfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.contactinfo.ContactInfoInjector;
+import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.navigation.contacts.ContactsRouter;
 import com.bankex.pay.presentation.presenter.ContactInfoPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
+import icepick.State;
 import javax.inject.Inject;
 
 /**
@@ -24,7 +31,10 @@ import javax.inject.Inject;
  * Shows contact name, address, transaction history and allow to send
  * tokens to chosen contact.
  */
+@FragmentWithArgs
 public class ContactInfoFragment extends BaseFragment implements IContactInfoView {
+	@Arg @State String contactId;
+
 	@Inject
 	@InjectPresenter
 	ContactInfoPresenter mContactInfoPresenter;
@@ -32,9 +42,9 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@Inject ContactsRouter mContactsRouter;
 
 	@BindView(R.id.toolbar) android.support.v7.widget.Toolbar mToolbar;
-	//@BindView(R.id.tv_contact_full_name) TextView mContactFullName;
 	@BindView(R.id.tv_contact_address) TextView mContactAddress;
-	//@BindView(R.id.tv_send) TextView mBtnSend;
+	@BindView(R.id.transactions_empty_view) TextView mEmptyTransactions;
+	@BindView(R.id.recycler_transactions_list) RecyclerView mTransactionHistoryList;
 
 	private Unbinder mBinder;
 
@@ -43,12 +53,9 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 		return mContactInfoPresenter;
 	}
 
-	public static ContactInfoFragment newInstance() {
-		return new ContactInfoFragment();
-	}
-
 	@Override public void onCreate(Bundle savedInstanceState) {
-		ContactInfoInjector.getContactsComponent();
+		ContactInfoInjector.getContactsComponent().inject(this);
+		FragmentArgs.inject(this);
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
@@ -63,7 +70,9 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initToolbar();
-		mContactAddress.setText("0xd55…06d73");
+		setData(mContactInfoPresenter.setContactInfo(contactId));
+		showContactsList(false);
+		showEmptyView(true);
 	}
 
 	@Override public void onDestroyView() {
@@ -80,13 +89,20 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 		mContactsRouter.popBackStack(getActivity());
 	}
 
-	//@OnClick(R.id.tv_send)
-	//public void inSendTokensClicked() {
-	//	showMessageToast("Go to send some");
-	//}
+	@Override public void showContactsList(boolean isShow) {
+		mTransactionHistoryList.setVisibility(isShow ? View.VISIBLE : View.GONE);
+	}
+
+	@Override public void showEmptyView(boolean isShow) {
+		mEmptyTransactions.setVisibility(isShow ? View.VISIBLE : View.GONE);
+	}
+
+	@OnClick(R.id.fab_send_tokens)
+	public void OnSendTokensClicked() {
+		showMessageToast("Go to send some");
+	}
 
 	private void initToolbar() {
-		mToolbar.setTitle(string(R.string.contact_info_title));
 		mToolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_24dp);
 		mToolbar.setNavigationOnClickListener(v -> mContactsRouter.popBackStack(getActivity()));
 		mToolbar.inflateMenu(R.menu.contact_info_toolbar_menu);
@@ -104,5 +120,10 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 			}
 			return false;
 		});
+	}
+
+	private void setData(ContactModel contactInfo) {
+		mToolbar.setTitle(contactInfo.getName() + contactInfo.getSurname());
+		mContactAddress.setText(contactInfo.getAddress());
 	}
 }

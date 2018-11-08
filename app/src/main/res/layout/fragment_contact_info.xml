@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    tools:text="Address: 0xd55…06d73"
+                    tools:text="0xd55…06d73"
                     style="@style/BodyRegular.White"
                     />
             </LinearLayout>
@@ -68,16 +68,14 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:background="@color/ui_orange"
+        android:layout_marginBottom="@dimen/bottom_navigation_bar_height"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-        <RelativeLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/ui_red"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:paddingTop="16dp"
             >
 
@@ -90,36 +88,35 @@
                 />
 
             <TextView
-                android:id="@+id/contacts_empty_view"
+                android:id="@+id/transactions_empty_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/contacts_screen_empty_view"
-                android:visibility="gone"
+                android:text="@string/contact_info_empty_transaction_history"
                 style="@style/EmptyView.Grey"
                 />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_contacts_list"
+                android:id="@+id/recycler_transactions_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="50dp"
                 android:background="@color/bankex_background"
+                android:clipToPadding="true"
                 />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_send_tokens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
+                android:layout_gravity="end|bottom"
                 android:layout_margin="@dimen/contact_list_fab_margin"
                 android:tint="@color/colorWhite"
                 app:backgroundTint="@color/contact_fab_send_tokens"
                 app:fabSize="normal"
                 app:srcCompat="@drawable/ic_transaction_send"
                 />
-        </RelativeLayout>
+        </android.support.design.widget.CoordinatorLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

@@ -72,7 +72,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.import_wallet_private_key_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_import_wallet_private_key, container, false);
     }
 
     @Override

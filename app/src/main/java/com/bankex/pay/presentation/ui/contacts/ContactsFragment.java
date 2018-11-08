@@ -29,7 +29,7 @@ import javax.inject.Inject;
 /**
  * User Contacts screen.
  */
-public class ContactsFragment extends BaseFragment implements IContactsView {
+public class ContactsFragment extends BaseFragment implements IContactsView, ContactsListClickListener {
 	@Inject
 	IContactsRouter mContactsRouter;
 
@@ -101,18 +101,17 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 		mContactsAdapter.notifyDataSetChanged();
 	}
 
+	@Override public void onItemClicked(@NonNull String contactId) {
+		mContactsRouter.openContactFragment(getActivity(), getContext(), contactId);
+	}
+
 	@OnClick(R.id.fab_add_contact)
 	public void onAddContactClicked() {
 		mContactsRouter.openAddContactFragment(getActivity(), getContext());
 	}
 
-	@OnClick(R.id.test)
-	public void onTestClicked() {
-		mContactsRouter.openContactFragment(getActivity(), getContext(), null);
-	}
-
 	private void initRecycler() {
-		mContactsAdapter = new ContactsAdapter();
+		mContactsAdapter = new ContactsAdapter(this);
 		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 		mContactsList.setHasFixedSize(true);
 		mContactsList.setAdapter(mContactsAdapter);

@@ -32,7 +32,7 @@ public class ImportOrCreateFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.import_or_create_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_import_or_create_wallet, container, false);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class ContactInfoInjector {
 		if (sContactInfoComponent == null) {
 			sContactInfoComponent = MainScreenInjector.getMainScreenComponent()
 					.plusContactInfoBuilder()
-					.makeContactInfotModule(new ContactInfoModule())
+					.makeContactInfoModule(new ContactInfoModule())
 					.build();
 		}
 		return sContactInfoComponent;
@@ -22,4 +22,3 @@ public class ContactInfoInjector {
 		sContactInfoComponent = null;
 	}
 }
-

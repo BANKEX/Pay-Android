@@ -49,7 +49,7 @@ public class TransactionHistoryFragment extends BaseFragment implements ITransac
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.transaction_history_fragment_layout, container, false);
+        return inflater.inflate(R.layout.fragment_transaction_history, container, false);
     }
 
     @Override

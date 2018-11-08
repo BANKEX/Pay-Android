@@ -41,7 +41,7 @@ public class WalletCardItemAdapterDelegate extends AbsListItemAdapterDelegate<Wa
     @NonNull
     @Override
     protected WalletCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
-        return new WalletCardViewHolder(mInflater.inflate(R.layout.wallet_card_item, parent, false));
+        return new WalletCardViewHolder(mInflater.inflate(R.layout.item_wallet_card, parent, false));
     }
 
     @Override

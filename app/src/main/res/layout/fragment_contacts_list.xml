@@ -28,19 +28,6 @@
         android:background="@color/bankex_background"
         />
 
-    <!-- TODO: Temporary -->
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/contact_list_recycler_margin_top"
-        android:padding="8dp"
-        android:text="ContactInfo"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        />
-    <!-- TODO: Temporary -->
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.addcontact.AddContactFragment;
-import com.bankex.pay.presentation.ui.contactinfo.ContactInfoFragment;
+import com.bankex.pay.presentation.ui.contactinfo.ContactInfoFragmentBuilder;
 import javax.inject.Inject;
 
 /**
@@ -21,7 +21,7 @@ public class ContactsRouter extends BaseRouter implements IContactsRouter {
 	}
 
 	@Override public void openContactFragment(FragmentActivity activity, Context context, String contactId) {
-		runFragmentWithAnimation(activity, ContactInfoFragment.newInstance(), R.id.fragment_container);
+		runFragmentWithAnimation(activity, ContactInfoFragmentBuilder.newContactInfoFragment(contactId), R.id.fragment_container);
 	}
 
 	@Override public void openDeleteContactDialog(FragmentActivity activity, Context context, String contactId) {

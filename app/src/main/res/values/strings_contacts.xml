@@ -22,4 +22,5 @@
     <string name="contact_info_btn_send_tokens">send</string>
     <string name="contact_info_title_transactions">Transaction History</string>
     <string name="contact_info_address">Address: \n%1$s</string>
+    <string name="contact_info_empty_transaction_history">You don`t have\ntransaction history\nwith this contact</string>
 </resources>

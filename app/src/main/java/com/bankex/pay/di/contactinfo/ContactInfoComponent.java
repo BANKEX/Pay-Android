@@ -11,7 +11,7 @@ import dagger.Subcomponent;
 public interface ContactInfoComponent {
 	@Subcomponent.Builder
 	interface Builder {
-		ContactInfoComponent.Builder makeContactInfotModule(ContactInfoModule module);
+		ContactInfoComponent.Builder makeContactInfoModule(ContactInfoModule module);
 
 		ContactInfoComponent build();
 	}

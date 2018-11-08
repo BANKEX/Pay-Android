@@ -13,6 +13,14 @@ public interface IContactsInteractor {
 	List<ContactModel> getSavedContacts();
 
 	/**
+	 * Method that gets certain contact from database
+	 * by its` id.
+	 *
+	 * @return List<ContactModel> - contact list.
+	 */
+	ContactModel getSavedContacts(String contactId);
+
+	/**
 	 * Method that saves only one contact to database.
 	 *
 	 * @param contact - new created contact.
