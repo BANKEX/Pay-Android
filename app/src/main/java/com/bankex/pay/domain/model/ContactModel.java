@@ -4,14 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import io.realm.annotations.RealmClass;
 
 /**
  * Class to save into and get from Realm database information about contacts.
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
+@RealmClass
 public class ContactModel extends RealmObject implements Parcelable {
 	/**
 	 * Address of the stored contact.
@@ -38,6 +36,38 @@ public class ContactModel extends RealmObject implements Parcelable {
 	private String groupLetterMarker;
 
 	public ContactModel() {
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getGroupLetterMarker() {
+		return groupLetterMarker;
+	}
+
+	public void setGroupLetterMarker(String groupLetterMarker) {
+		this.groupLetterMarker = groupLetterMarker;
 	}
 
 	protected ContactModel(Parcel in) {

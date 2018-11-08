@@ -20,7 +20,7 @@ import com.bankex.pay.R;
 import com.bankex.pay.di.contacts.ContactsInjector;
 import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.navigation.contacts.IContactsRouter;
-import com.bankex.pay.presentation.presenter.contacts.ContactsPresenter;
+import com.bankex.pay.presentation.presenter.ContactsPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.contacts.recyclerview.ContactsAdapter;
 import java.util.List;
@@ -29,7 +29,7 @@ import javax.inject.Inject;
 /**
  * User Contacts screen.
  */
-public class ContactsFragment extends BaseFragment implements IContactsView {
+public class ContactsFragment extends BaseFragment implements IContactsView, ContactsListClickListener {
 	@Inject
 	IContactsRouter mContactsRouter;
 
@@ -101,13 +101,17 @@ public class ContactsFragment extends BaseFragment implements IContactsView {
 		mContactsAdapter.notifyDataSetChanged();
 	}
 
+	@Override public void onItemClicked(@NonNull String contactId) {
+		mContactsRouter.openContactFragment(getActivity(), getContext(), contactId);
+	}
+
 	@OnClick(R.id.fab_add_contact)
 	public void onAddContactClicked() {
 		mContactsRouter.openAddContactFragment(getActivity(), getContext());
 	}
 
 	private void initRecycler() {
-		mContactsAdapter = new ContactsAdapter();
+		mContactsAdapter = new ContactsAdapter(this);
 		mContactsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 		mContactsList.setHasFixedSize(true);
 		mContactsList.setAdapter(mContactsAdapter);

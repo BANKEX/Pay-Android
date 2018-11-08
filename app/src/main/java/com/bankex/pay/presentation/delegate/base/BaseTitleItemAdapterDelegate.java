@@ -41,7 +41,7 @@ public class BaseTitleItemAdapterDelegate extends AbsListItemAdapterDelegate<Bas
     @NonNull
     @Override
     protected BaseTitleViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
-        return new BaseTitleViewHolder(mInflater.inflate(R.layout.base_title_item, parent, false));
+        return new BaseTitleViewHolder(mInflater.inflate(R.layout.item_base_title, parent, false));
     }
 
     @Override

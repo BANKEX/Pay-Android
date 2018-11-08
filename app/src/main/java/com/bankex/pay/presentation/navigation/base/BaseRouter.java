@@ -16,7 +16,7 @@ public class BaseRouter {
 	private static final long FADE_DEFAULT_TIME = 100;
 
 	/**
-	 * Стартуем активити
+	 * Start an Activity.
 	 *
 	 * @param context Context
 	 * @param intent Intent
@@ -26,7 +26,7 @@ public class BaseRouter {
 	}
 
 	/**
-	 * Запускаем фрагмент
+	 * Run the Fragment.
 	 *
 	 * @param activity Activity
 	 * @param fragment Fragment, который необходимо запустить

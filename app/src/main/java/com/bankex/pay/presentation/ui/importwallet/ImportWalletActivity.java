@@ -14,7 +14,7 @@ public class ImportWalletActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.import_activity);
+        setContentView(R.layout.activity_import_wallet);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new ImportWalletFragment())

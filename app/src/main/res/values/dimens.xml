@@ -10,7 +10,20 @@
     <dimen name="margin_big">56dp</dimen>
     <dimen name="margin_big_x">72dp</dimen>
 
+    <dimen name="padding_little_xx">1dp</dimen>
+    <dimen name="padding_little_x">2dp</dimen>
+    <dimen name="padding_little">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_medium_x">24dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_large_x">48dp</dimen>
+    <dimen name="padding_big">56dp</dimen>
+    <dimen name="padding_big_x">72dp</dimen>
+
     <dimen name="import_or_export_logo_top_margin">127dp</dimen>
+
+    <dimen name="bottom_navigation_bar_height">56dp</dimen>
 
     <!-- Elevations -->
     <dimen name="elevation_little">4dp</dimen>
@@ -32,4 +45,9 @@
     <!-- Contacts -->
     <dimen name="contact_list_fab_margin">30dp</dimen>
     <dimen name="contact_list_recycler_margin_top">120dp</dimen>
+
+    <dimen name="add_contact_name_top_margin">38dp</dimen>
+
+    <dimen name="contact_info_app_bar_height">175dp</dimen>
+    <dimen name="contact_info_transactions_padding_top">50dp</dimen>
 </resources>

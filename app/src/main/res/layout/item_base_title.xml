@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/title_text_view"
-        style="@style/BodyMedium"
+        style="@style/BodyRegular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/margin_medium_x"
@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/add_text_view"
-        style="@style/BodyMedium.Link"
+        style="@style/BodyRegular.Link"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"

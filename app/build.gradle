@@ -58,7 +58,6 @@ android {
       debuggable false
       zipAlignEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      //signingConfig signingConfigs.release
 
       buildConfigField "boolean", "AUTHORIZATION_ENABLED", "false"
 
@@ -77,12 +76,15 @@ android {
       ext.betaDistributionReleaseNotesFilePath = 'release_notes.txt'
     }
   }
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+
   productFlavors {
   }
+
   defaultConfig {
     // Other values set here
     manifestPlaceholders = [fabric_io_id: "5b2cfd1743e96d92261c59fb94482a93c8ec4e13"]
@@ -130,8 +132,6 @@ dependencies {
   implementation libs.fingetprint
   implementation libs.qr
   implementation libs.qrGenerator
-  compileOnly libs.lombok
-  annotationProcessor libs.lombok
   implementation libs.butterKnife
   annotationProcessor libs.butterKnifeProcessor
 
@@ -152,5 +152,8 @@ dependencies {
   androidTestImplementation androidSupport.espresso
   androidTestImplementation androidSupport.testRunner
   implementation project(':tn')
+
+  implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
+  annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
 }
 

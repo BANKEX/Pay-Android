@@ -22,7 +22,7 @@ public class ImportOrCreateActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.import_or_create_activity);
+        setContentView(R.layout.activity_import_or_create_wallet);
 
         getSupportFragmentManager()
                 .beginTransaction()

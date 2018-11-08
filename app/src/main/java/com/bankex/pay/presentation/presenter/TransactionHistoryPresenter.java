@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.presenter.transactionhistory;
+package com.bankex.pay.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;

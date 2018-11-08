@@ -9,6 +9,7 @@
 
     <!-- FAB -->
     <color name="contacts_fab_background">@color/colorPrimary</color>
+    <color name="contact_fab_send_tokens">@color/ui_orange</color>
 
     <!-- Text colors -->
     <color name="empty_state_text">@color/input_text_hint</color>
@@ -16,11 +17,6 @@
     <color name="bankex_black">@color/shark</color>
     <color name="toolbar_text_color">@color/silver</color>
     <color name="search_view_activated">@color/input_text_hint</color>
-
-    <!-- Other -->
-    <color name="actionbar_opacity">@color/gray_light_dark</color>
-    <color name="caption">@color/bali_hai</color>
-    <color name="bankex_background">@color/light_page_background</color>
 
     <!-- Buttons -->
     <color name="primary_button_disabled">@color/silver</color>
@@ -31,5 +27,11 @@
     <!-- Contacts -->
     <color name="bg_color_avatar">@color/colorPrimary</color>
 
+    <!-- Other -->
+    <color name="actionbar_opacity">@color/gray_light_dark</color>
+    <color name="caption">@color/bali_hai</color>
+    <color name="bankex_background">@color/light_page_background</color>
+    <color name="received_transaction_ic_color">@color/ui_green</color>
+    <color name="sent_transaction_ic_color">@color/ui_orange</color>
     <color name="ic_launcher_background">@color/white</color>
 </resources>

@@ -1,7 +1,6 @@
 package com.bankex.pay.data.repository;
 
 import com.bankex.pay.domain.model.ContactModel;
-import io.reactivex.Single;
 import java.util.List;
 import javax.annotation.Nullable;
 

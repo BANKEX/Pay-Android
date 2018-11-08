@@ -1,7 +1,7 @@
 package com.bankex.pay.di.wallet;
 
 import com.bankex.pay.domain.interactor.IPayWalletInteractor;
-import com.bankex.pay.presentation.presenter.wallet.WalletPresenter;
+import com.bankex.pay.presentation.presenter.WalletPresenter;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 
 import dagger.Module;

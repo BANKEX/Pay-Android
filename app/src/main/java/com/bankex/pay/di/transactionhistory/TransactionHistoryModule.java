@@ -1,6 +1,6 @@
 package com.bankex.pay.di.transactionhistory;
 
-import com.bankex.pay.presentation.presenter.transactionhistory.TransactionHistoryPresenter;
+import com.bankex.pay.presentation.presenter.TransactionHistoryPresenter;
 import com.bankex.pay.presentation.navigation.transactionhistory.ITransactionHistoryRouter;
 import com.bankex.pay.presentation.navigation.transactionhistory.TransactionHistoryRouter;
 

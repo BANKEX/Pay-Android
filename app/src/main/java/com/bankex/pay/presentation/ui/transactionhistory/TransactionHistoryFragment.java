@@ -11,7 +11,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryInjector;
-import com.bankex.pay.presentation.presenter.transactionhistory.TransactionHistoryPresenter;
+import com.bankex.pay.presentation.presenter.TransactionHistoryPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.navigation.transactionhistory.ITransactionHistoryRouter;
 
@@ -49,7 +49,7 @@ public class TransactionHistoryFragment extends BaseFragment implements ITransac
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.transaction_history_fragment_layout, container, false);
+        return inflater.inflate(R.layout.fragment_transaction_history, container, false);
     }
 
     @Override

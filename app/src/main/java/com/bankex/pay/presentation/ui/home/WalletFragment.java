@@ -21,7 +21,7 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import com.bankex.pay.domain.model.WalletCardModel;
 import com.bankex.pay.presentation.adapter.wallet.WalletAdapter;
 import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
-import com.bankex.pay.presentation.presenter.wallet.WalletPresenter;
+import com.bankex.pay.presentation.presenter.WalletPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class WalletFragment extends BaseFragment implements IWalletView {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.wallet_fragment, container, false);
+		return inflater.inflate(R.layout.fragment_wallet, container, false);
 	}
 
 	@Override

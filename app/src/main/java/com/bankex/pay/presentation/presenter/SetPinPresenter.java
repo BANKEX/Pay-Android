@@ -1,9 +1,9 @@
-package com.bankex.pay.presentation.presenter.setpin;
+package com.bankex.pay.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
-import com.bankex.pay.presentation.presenter.lockscreen.LockScreenPresenter;
+import com.bankex.pay.presentation.presenter.LockScreenPresenter;
 import com.bankex.pay.presentation.ui.setpin.ISetPinView;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.elegion.littlefinger.LittleFinger;

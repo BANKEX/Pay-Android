@@ -9,7 +9,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
-import com.bankex.pay.presentation.presenter.mainscreen.MainScreenPresenter;
+import com.bankex.pay.presentation.presenter.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
@@ -73,7 +73,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 	protected void onCreate(Bundle savedInstanceState) {
 		MainScreenInjector.getMainScreenComponent().inject(this);
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_activity);
+		setContentView(R.layout.activity_home);
 		if (BuildConfig.DEBUG) {
 			Log.d("Firebase", "token " + FirebaseInstanceId.getInstance().getToken());
 		}

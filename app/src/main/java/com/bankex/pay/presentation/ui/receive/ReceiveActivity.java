@@ -37,7 +37,7 @@ public class ReceiveActivity extends BaseActivity implements IReceiveView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.receive_activity_layout);
+        setContentView(R.layout.activity_receive_tokens);
         initViews();
         setToolbarParameters();
         setQrParameters();

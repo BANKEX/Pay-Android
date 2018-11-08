@@ -1,42 +1,45 @@
 package com.bankex.pay.di.mainscreen;
 
 import com.bankex.pay.di.addcontact.AddContactComponent;
+import com.bankex.pay.di.contactinfo.ContactInfoComponent;
 import com.bankex.pay.di.contacts.ContactsComponent;
 import com.bankex.pay.di.onboarding.OnboardingComponent;
 import com.bankex.pay.di.settings.SettingsComponent;
 import com.bankex.pay.di.transactionhistory.TransactionHistoryComponent;
 import com.bankex.pay.di.wallet.WalletComponent;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
-
 import dagger.Subcomponent;
 
 /**
  * TODO fix this mess
  * Временный сабкомпонент для варианта "чтобы быстро и работало"
+ *
  * @author Gevork Safaryan on 11.09.2018.
  */
-@Subcomponent(modules = {MainScreenModule.class})
+@Subcomponent(modules = { MainScreenModule.class })
 @MainScreenScope
 public interface MainScreenComponent {
 
-    @Subcomponent.Builder
-    interface Builder {
-        MainScreenComponent.Builder makeMainScreenModule(MainScreenModule module);
+	@Subcomponent.Builder
+	interface Builder {
+		MainScreenComponent.Builder makeMainScreenModule(MainScreenModule module);
 
-        MainScreenComponent build();
-    }
+		MainScreenComponent build();
+	}
 
-    void inject(MainScreenActivity activity);
+	void inject(MainScreenActivity activity);
 
-    OnboardingComponent.Builder plusOnboardingComponent();
+	OnboardingComponent.Builder plusOnboardingComponent();
 
-    WalletComponent.Builder plusWalletComponent();
+	WalletComponent.Builder plusWalletComponent();
 
-    SettingsComponent.Builder plusSettingsComponent();
+	SettingsComponent.Builder plusSettingsComponent();
 
-    TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
+	TransactionHistoryComponent.Builder plusTransactionHistoryComponent();
 
-    ContactsComponent.Builder plusContactsComponentBuilder();
+	ContactsComponent.Builder plusContactsComponentBuilder();
 
-    AddContactComponent.Builder plusAddContactBuilder();
+	AddContactComponent.Builder plusAddContactBuilder();
+
+	ContactInfoComponent.Builder plusContactInfoBuilder();
 }

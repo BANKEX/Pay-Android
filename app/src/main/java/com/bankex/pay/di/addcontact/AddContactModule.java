@@ -1,7 +1,7 @@
 package com.bankex.pay.di.addcontact;
 
 import com.bankex.pay.domain.interactor.IContactsInteractor;
-import com.bankex.pay.presentation.presenter.addcontact.AddContactPresenter;
+import com.bankex.pay.presentation.presenter.AddContactPresenter;
 import dagger.Module;
 import dagger.Provides;
 

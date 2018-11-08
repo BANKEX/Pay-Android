@@ -19,7 +19,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
-import com.bankex.pay.presentation.presenter.importwallet.passphrase.ImportPassPhrasePresenter;
+import com.bankex.pay.presentation.presenter.ImportPassPhrasePresenter;
 import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.utils.share.IShareDataUtils;
@@ -64,7 +64,7 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.import_wallet_pass_phrase_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_import_wallet_pass_phrase, container, false);
     }
 
     @Override

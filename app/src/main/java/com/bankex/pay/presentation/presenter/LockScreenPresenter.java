@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.presenter.lockscreen;
+package com.bankex.pay.presentation.presenter;
 
 
 import android.util.Log;

@@ -42,6 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/margin_little"
-        style="@style/BodyMedium.Black"
+        style="@style/BodyRegular.Black"
         />
 </LinearLayout>

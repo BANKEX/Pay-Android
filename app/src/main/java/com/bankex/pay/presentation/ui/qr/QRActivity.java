@@ -27,7 +27,7 @@ public class QRActivity extends BaseActivity implements ZXingScannerView.ResultH
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.qr_activity_layout);
+        setContentView(R.layout.activity_qr);
 
         setupToolbar();
         initViews();

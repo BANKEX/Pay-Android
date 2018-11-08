@@ -15,9 +15,11 @@
     <color name="gray">#718093</color>
     <color name="gray_light_dark">#33000000</color>
     <color name="shark">#202326</color>
+    <color name="black_almost">#DE000000</color>
 
     <!-- Other -->
     <color name="ui_green">#0DBA26</color>
     <color name="ui_red">#F1361D</color>
     <color name="ui_yellow">#EFD00C</color>
+    <color name="ui_orange">#FFB900</color>
 </resources>

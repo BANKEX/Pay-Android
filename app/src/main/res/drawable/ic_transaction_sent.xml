@@ -1,0 +1,20 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="26dp"
+    android:viewportHeight="26"
+    android:viewportWidth="26"
+    android:width="26dp"
+    >
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M20.6599,20.6608L6.9102,6.911"
+        android:strokeColor="@color/sent_transaction_ic_color"
+        android:strokeWidth="2"
+        />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M16.7319,6.911H6.9106V16.7322"
+        android:strokeColor="@color/sent_transaction_ic_color"
+        android:strokeLineCap="square"
+        android:strokeWidth="2"
+        />
+</vector>

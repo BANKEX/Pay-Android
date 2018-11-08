@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/wallet_balance_text_view"
-            style="@style/BodyMedium.Link"
+            style="@style/BodyRegular.Link"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_medium_x"

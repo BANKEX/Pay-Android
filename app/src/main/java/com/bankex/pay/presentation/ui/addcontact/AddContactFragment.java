@@ -18,7 +18,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.addcontact.AddContactInjector;
 import com.bankex.pay.presentation.navigation.contacts.ContactsRouter;
-import com.bankex.pay.presentation.presenter.addcontact.AddContactPresenter;
+import com.bankex.pay.presentation.presenter.AddContactPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import javax.inject.Inject;
 
@@ -63,7 +63,6 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 			@Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_add_contact, container, false);
 		mBinder = ButterKnife.bind(this, view);
-		setHasOptionsMenu(true);
 		return view;
 	}
 

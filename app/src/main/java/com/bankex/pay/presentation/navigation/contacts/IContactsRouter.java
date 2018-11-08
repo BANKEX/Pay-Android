@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
  * Router for whole contact branch.
  */
 public interface IContactsRouter {
-
 	/**
 	 * Opens fragment for creating new contact.
 	 */

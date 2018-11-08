@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.presenter.importwallet.privatekey;
+package com.bankex.pay.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.domain.interactor.IImportWalletFromPrivateKeyInteractor;

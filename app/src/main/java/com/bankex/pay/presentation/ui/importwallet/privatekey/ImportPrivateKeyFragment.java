@@ -23,7 +23,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
-import com.bankex.pay.presentation.presenter.importwallet.privatekey.ImportPrivateKeyPresenter;
+import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.qr.QRActivity;
 import com.bankex.pay.utils.share.IShareDataUtils;
@@ -72,7 +72,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.import_wallet_private_key_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_import_wallet_private_key, container, false);
     }
 
     @Override

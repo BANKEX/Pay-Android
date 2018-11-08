@@ -9,6 +9,7 @@
     android:isScrollContainer="true"
     >
 
+    <!-- TODO hardcoded resources -> need to redesign screen first -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,16 +20,16 @@
             android:id="@+id/add_contact_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
+            android:elevation="@dimen/elevation_little"
             android:theme="@style/Toolbar"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginEnd="@dimen/margin_large_x"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="38dp"
             android:orientation="horizontal"
             >
 
