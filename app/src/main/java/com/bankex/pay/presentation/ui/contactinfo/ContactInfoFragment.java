@@ -23,7 +23,6 @@ import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.hannesdorfmann.fragmentargs.FragmentArgs;
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-import icepick.State;
 import javax.inject.Inject;
 
 /**
@@ -33,7 +32,7 @@ import javax.inject.Inject;
  */
 @FragmentWithArgs
 public class ContactInfoFragment extends BaseFragment implements IContactInfoView {
-	@Arg @State String contactId;
+	@Arg String contactId;
 
 	@Inject
 	@InjectPresenter
