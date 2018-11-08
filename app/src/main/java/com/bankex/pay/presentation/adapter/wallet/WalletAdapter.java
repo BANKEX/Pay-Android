@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * Адаптер для экрана кошелька
- *
- * @author Pavel Apanovskiy on 13/10/2018.
  */
 public class WalletAdapter extends ListDelegationAdapter<List<BaseBankexModel>> {
 
