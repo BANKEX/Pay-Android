@@ -24,7 +24,7 @@
         android:id="@+id/recycler_contacts_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="@dimen/contact_list_recycler_margin_top"
         android:background="@color/bankex_background"
         />
 
