@@ -31,8 +31,9 @@ public class ContactsRouter extends BaseRouter implements IContactsRouter {
 	@Override public void openDeleteContactDialog(FragmentActivity activity, Context context, @NonNull String contactId) {
 		Bundle args = new Bundle();
 		args.putString("contact_id", contactId);
-
+		//
 		DialogFragment dialogFragment = new DeleteContactDialog();
+		//DialogFragment dialogFragment = DeleteContactDialog.newDeleteContactDialog(contactId);
 		dialogFragment.setArguments(args);
 		dialogFragment.show(activity.getSupportFragmentManager(), DeleteContactDialog.class.getName());
 	}

@@ -17,7 +17,8 @@ public class DeleteContactPresenter extends BasePresenter<IDeleteContactView> {
 	}
 
 	public void onDeleteClicked(String contactId) {
-		mContactsInteractor.deleteContact(contactId);
-		getViewState().openContactsListFragment();
+		getViewState().showMessage();
+		//mContactsInteractor.deleteContact(contactId);
+		//getViewState().openContactsListFragment();
 	}
 }

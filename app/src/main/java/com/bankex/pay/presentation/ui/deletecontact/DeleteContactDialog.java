@@ -1,8 +1,6 @@
 package com.bankex.pay.presentation.ui.deletecontact;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.deletecontact.DeleteContactInjector;
@@ -29,7 +29,9 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 	@Inject
 	IMainRouter mMainRouter;
 
-	@Inject DeleteContactPresenter mDeleteContactPresenter;
+	@Inject
+	@InjectPresenter
+	DeleteContactPresenter mDeleteContactPresenter;
 
 	private Unbinder mBinder;
 
@@ -39,7 +41,7 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 	}
 
 	@Override public void onCreate(@Nullable Bundle savedInstanceState) {
-		DeleteContactInjector.getsDeleteContactComponent().inject(this);
+		DeleteContactInjector.getDeleteContactComponent().inject(this);
 		super.onCreate(savedInstanceState);
 		//FragmentArgs.inject(this);
 
@@ -53,7 +55,7 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 
 	@Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 			@Nullable Bundle savedInstanceState) {
-		setCancelable(false);
+		//setCancelable(false);
 		View view = inflater.inflate(R.layout.dialog_delete_contact, container, false);
 		mBinder = ButterKnife.bind(this, view);
 
@@ -85,7 +87,12 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 	}
 
 	@Override public void openContactsListFragment() {
+		Toast.makeText(getContext(), "TETETETETETETE", Toast.LENGTH_SHORT).show();
 		dismissAllowingStateLoss();
 		mMainRouter.goToContactsTab(getActivity());
+	}
+
+	@Override public void showMessage() {
+		Toast.makeText(getDialog().getContext(), "TETETETETETETE", Toast.LENGTH_SHORT).show();
 	}
 }

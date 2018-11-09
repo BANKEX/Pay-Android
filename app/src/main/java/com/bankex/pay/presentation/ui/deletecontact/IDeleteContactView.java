@@ -8,4 +8,6 @@ import com.bankex.pay.presentation.ui.base.BaseView;
 public interface IDeleteContactView extends BaseView {
 
 	void openContactsListFragment();
+
+	void showMessage();
 }

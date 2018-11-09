@@ -8,7 +8,7 @@ import com.bankex.pay.di.mainscreen.MainScreenInjector;
 public class DeleteContactInjector {
 	private static DeleteContactComponent sDeleteContactComponent;
 
-	public static DeleteContactComponent getsDeleteContactComponent() {
+	public static DeleteContactComponent getDeleteContactComponent() {
 		if (sDeleteContactComponent == null) {
 			sDeleteContactComponent = MainScreenInjector.getMainScreenComponent()
 					.plusDeleteContactBuilder()

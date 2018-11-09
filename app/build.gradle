@@ -113,6 +113,7 @@ dependencies {
   implementation libs.dagger
   annotationProcessor libs.daggerCompiler
   annotationProcessor libs.daggerProcessor
+
   implementation libs.moxy
   implementation libs.moxyAppCompat
   annotationProcessor libs.moxyCompiler

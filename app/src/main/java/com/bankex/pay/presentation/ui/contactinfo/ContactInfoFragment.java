@@ -114,7 +114,6 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 					showMessageToast("On share clicked");
 					return true;
 				case R.id.delete_contact:
-					showMessageToast("On delete clicked");
 					mContactsRouter.openDeleteContactDialog(getActivity(), getContext(), contactId);
 					return true;
 			}
