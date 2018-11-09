@@ -20,7 +20,7 @@ import com.bankex.pay.R;
  * - show message Toast;
  * - return String bt its` resId.
  */
-public class BaseFragment extends MvpAppCompatFragment {
+public abstract class BaseFragment extends MvpAppCompatFragment {
 
 	/**
 	 * Method to return bottom navigation or null.

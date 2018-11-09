@@ -40,9 +40,8 @@ import static com.bankex.pay.domain.model.ServiceErrorException.KEY_STORE_ERROR;
 import static com.bankex.pay.domain.model.ServiceErrorException.USER_NOT_AUTHENTICATED;
 
 @TargetApi(23)
-public class KS {
-	private static final String TAG = "KS";
-
+public class KeyStoreLocal {
+	private static final String TAG = "KeyStoreLocal";
 	private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
 	private static final String BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC;
 	private static final String PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7;
@@ -58,9 +57,9 @@ public class KS {
 			throw new ServiceErrorException(
 					ServiceErrorException.INVALID_DATA, "keystore insert data is null");
 		}
-		KeyStore keyStore;
+		java.security.KeyStore keyStore;
 		try {
-			keyStore = KeyStore.getInstance(ANDROID_KEY_STORE);
+			keyStore = java.security.KeyStore.getInstance(ANDROID_KEY_STORE);
 			keyStore.load(null);
 			// Create the keys if necessary
 			if (!keyStore.containsAlias(alias)) {
@@ -68,7 +67,7 @@ public class KS {
 						KeyProperties.KEY_ALGORITHM_AES,
 						ANDROID_KEY_STORE);
 
-				// Set the alias of the entry in Android KeyStore where the key will appear
+				// Set the alias of the entry in Android KeyStoreLocal where the key will appear
 				// and the constrains (purposes) in the constructor of the Builder
 				keyGenerator.init(new KeyGenParameterSpec.Builder(
 						alias,
@@ -132,10 +131,10 @@ public class KS {
 			String aliasFile,
 			String aliasIV)
 			throws ServiceErrorException {
-		KeyStore keyStore;
+		java.security.KeyStore keyStore;
 		String encryptedDataFilePath = getFilePath(context, aliasFile);
 		try {
-			keyStore = KeyStore.getInstance(ANDROID_KEY_STORE);
+			keyStore = java.security.KeyStore.getInstance(ANDROID_KEY_STORE);
 			keyStore.load(null);
 			SecretKey secretKey = (SecretKey) keyStore.getKey(alias, null);
 			if (secretKey == null) {
@@ -175,7 +174,6 @@ public class KS {
 			return readBytesFromStream(cipherInputStream);
 		} catch (InvalidKeyException e) {
 			if (e instanceof UserNotAuthenticatedException) {
-				//				showAuthenticationScreen(context, requestCode);
 				throw new ServiceErrorException(USER_NOT_AUTHENTICATED);
 			} else {
 				throw new ServiceErrorException(INVALID_KEY);
@@ -216,9 +214,9 @@ public class KS {
 	}
 
 	private synchronized static void removeAliasAndFiles(Context context, String alias, String dataFileName, String ivFileName) {
-		KeyStore keyStore;
+		java.security.KeyStore keyStore;
 		try {
-			keyStore = KeyStore.getInstance(ANDROID_KEY_STORE);
+			keyStore = java.security.KeyStore.getInstance(ANDROID_KEY_STORE);
 			keyStore.load(null);
 			keyStore.deleteEntry(alias);
 			new File(getFilePath(context, dataFileName)).delete();

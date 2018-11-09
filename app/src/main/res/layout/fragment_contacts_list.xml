@@ -50,7 +50,7 @@
             android:layout_marginBottom="@dimen/margin_small"
             android:layout_marginLeft="@dimen/margin_medium"
             android:layout_marginRight="@dimen/margin_medium"
-            android:background="@drawable/bg_search_view"
+            android:background="@drawable/bg_rounded_corners"
             android:elevation="@dimen/elevation_little"
             android:theme="@style/WallSearchStyle"
             app:queryBackground="@android:color/transparent"

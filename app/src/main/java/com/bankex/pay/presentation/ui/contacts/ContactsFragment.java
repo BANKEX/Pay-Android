@@ -77,14 +77,15 @@ public class ContactsFragment extends BaseFragment implements IContactsView, Con
 	}
 
 	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		mBinder.unbind();
+	}
+
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		ContactsInjector.clearContactsComponent();
-	}
-
-	@Override public void onDestroyView() {
-		super.onDestroyView();
-		mBinder.unbind();
 	}
 
 	@Override public void showContactsList(boolean isShow) {
