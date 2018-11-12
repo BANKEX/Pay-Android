@@ -43,7 +43,7 @@ android {
     versionName computeVersionName(versionCode)
 
     multiDexEnabled true
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     javaCompileOptions {
       annotationProcessorOptions {
@@ -106,9 +106,9 @@ dependencies {
   implementation libs.firebaseCloudMessaging
   implementation libs.firebaseAppIndexing
 
-  implementation androidSupport.appcompatV7
-  implementation androidSupport.design
-  implementation androidSupport.constraintLayout
+  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'com.google.android.material:material:1.1.0-alpha01'
+  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
   implementation libs.dagger
   annotationProcessor libs.daggerCompiler
@@ -136,7 +136,7 @@ dependencies {
   implementation(libs.fabric) {
     transitive = true
   }
-  implementation libs.preference
+  implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
   implementation libs.web3j
   implementation libs.ethereum
   implementation libs.bip32
@@ -146,9 +146,9 @@ dependencies {
   testImplementation libs.mockito
   testImplementation libs.robolectric
   testImplementation libs.hamcrest
-//  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
-  androidTestImplementation androidSupport.espresso
-  androidTestImplementation androidSupport.testRunner
+  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+  androidTestImplementation 'androidx.test:runner:1.1.0'
   implementation project(':tn')
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"

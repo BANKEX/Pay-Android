@@ -20,12 +20,13 @@
     <application
         android:name=".BankexPayApplication"
         android:allowBackup="true"
+        android:appComponentFactory="@string/action_settings"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
-        tools:replace="android:name"
+        tools:replace="android:appComponentFactory,android:name"
         >
 
         <meta-data

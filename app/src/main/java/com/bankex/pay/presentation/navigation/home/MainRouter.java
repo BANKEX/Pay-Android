@@ -5,17 +5,16 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.R;
+import com.bankex.pay.presentation.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.contacts.ContactsFragment;
 import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
-import com.bankex.pay.presentation.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.ui.transactionhistory.TransactionHistoryFragment;
 
 /**
  * Provides methods to navigate to the different screens in the application.
  */
 public class MainRouter extends BaseRouter implements IMainRouter {
-
 	@Override
 	public void goToWalletTab(FragmentActivity activity, BaseFragment fragment) {
 		runFragmentWithAnimation(activity, fragment, R.id.fragment_container);

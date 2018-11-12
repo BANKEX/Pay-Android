@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.bankex.pay.di.addcontact.AddContactInjector;
 import com.bankex.pay.presentation.navigation.contacts.ContactsRouter;
 import com.bankex.pay.presentation.presenter.AddContactPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
+import com.google.android.material.textfield.TextInputLayout;
 import javax.inject.Inject;
 
 /**

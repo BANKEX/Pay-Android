@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.bankex.pay.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * Base fragment for application.
