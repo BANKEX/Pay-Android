@@ -27,4 +27,6 @@
     <string name="delete_contact_message">You are going to delete your contact.</string>
     <string name="delete_contact_confirm">Continue</string>
     <string name="delete_contact_cancel">Cancel</string>
+    <string name="delete_contact_success_message">Contact successfully deleted</string>
+    <string name="delete_contact_error_message">Error occurred. Contact was not deleted.</string>
 </resources>

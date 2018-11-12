@@ -118,8 +118,8 @@ dependencies {
   implementation libs.moxyAppCompat
   annotationProcessor libs.moxyCompiler
 
-  implementation libs.rxJava
-  implementation libs.rxAndroid
+  implementation libs.rxJava2
+  implementation libs.rxAndroid2
   implementation libs.retrofit
   implementation libs.retrofitConverter
   implementation libs.retrofitRxAdapter
@@ -128,7 +128,6 @@ dependencies {
   implementation libs.adapterDelegates
   implementation libs.guava
   implementation libs.searchView
-  implementation libs.lottie
   implementation libs.amplitude
   implementation libs.fingetprint
   implementation libs.qr

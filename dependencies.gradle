@@ -15,11 +15,11 @@ ext {
   // endregion
 
   // region main lib versions
-  DAGGER_VERSION              = '2.14.1'
-  MOXY_VERSION                = '1.5.3'
+  DAGGER_2_VERSION            = '2.16'
+  MOXY_VERSION                = '1.5.5'
   SUPPORT_VERSION             = '28.0.0'
-  CONSTRAINT_LAYOUT_VERSION   = '1.0.2'
-  RX_JAVA_VERSION             = '2.1.9'
+  CONSTRAINT_LAYOUT_VERSION   = '1.1.0'
+  RX_JAVA_2_VERSION             = '2.1.9'
   RX_ANDROID_VERSION          = '2.0.1'
   LIFECYCLE_VERSION           = '1.1.0'
   RETROFIT_VERSION            = '2.3.0'
@@ -29,7 +29,6 @@ ext {
   GUAVA_VERSION               = '23.4'
   JODA_TIME_ANDROID_VERSION   = '2.9.9.4'
   SEARCH_VIEW_VERSION         = '27.1.1.0.0'
-  LOTTIE_VERSION              = '2.5.4'
   CRASHLYTICS_VERSION         = '2.9.4'
   AMPLITUDE_VERSION           = '2.14.1'
   QR_VERSION                  = '1.9.8'
@@ -64,7 +63,7 @@ ext {
 
   //region helpers
   BUTTER_KNIFE_VERSION        = '9.0.0-rc1'
-  FRAGMNETARGS_VERSION        = '3.0.2'
+  FRAGMNETARGS_VERSION        = '4.0.0-RC1'
 
   //end region
 
@@ -81,13 +80,13 @@ ext {
 
   libs = [
       // dagger
-      dagger                : "com.google.dagger:dagger-android-support:$DAGGER_VERSION",
-      daggerCompiler        : "com.google.dagger:dagger-compiler:$DAGGER_VERSION",
-      daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_VERSION",
+      dagger                : "com.google.dagger:dagger-android-support:$DAGGER_2_VERSION",
+      daggerCompiler        : "com.google.dagger:dagger-compiler:$DAGGER_2_VERSION",
+      daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_2_VERSION",
 
       // rxJava
-      rxJava                : "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION",
-      rxAndroid             : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
+      rxJava2               : "io.reactivex.rxjava2:rxjava:$RX_JAVA_2_VERSION",
+      rxAndroid2            : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
 
       //region "Moxy"
       moxy                  : "com.arello-mobile:moxy:$MOXY_VERSION",
@@ -114,9 +113,6 @@ ext {
 
       //Fabric
       fabric                : "com.crashlytics.sdk.android:crashlytics:$CRASHLYTICS_VERSION@aar",
-
-      //Lottie
-      lottie                : "com.airbnb.android:lottie:$LOTTIE_VERSION",
 
       //Amplitude
       amplitude             : "com.amplitude:android-sdk:$AMPLITUDE_VERSION",

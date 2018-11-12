@@ -1,6 +1,7 @@
 package com.bankex.pay.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
+import com.bankex.pay.R;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.deletecontact.IDeleteContactView;
@@ -17,8 +18,8 @@ public class DeleteContactPresenter extends BasePresenter<IDeleteContactView> {
 	}
 
 	public void onDeleteClicked(String contactId) {
-		getViewState().showMessage();
-		//mContactsInteractor.deleteContact(contactId);
-		//getViewState().openContactsListFragment();
+		mContactsInteractor.deleteContact(contactId);
+		getViewState().showMessage(R.string.delete_contact_success_message);
+		getViewState().openContactsListFragment();
 	}
 }

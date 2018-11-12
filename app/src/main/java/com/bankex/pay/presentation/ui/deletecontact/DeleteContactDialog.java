@@ -4,27 +4,30 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDialogFragment;
+import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import com.arellomobile.mvp.MvpAppCompatDialogFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
 import com.bankex.pay.di.deletecontact.DeleteContactInjector;
 import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.presenter.DeleteContactPresenter;
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import javax.inject.Inject;
 
-//@FragmentWithArgs
-public class DeleteContactDialog extends AppCompatDialogFragment implements IDeleteContactView {
-	//@Arg String mContactId;
-	private String mContactId;
+@FragmentWithArgs
+public class DeleteContactDialog extends MvpAppCompatDialogFragment implements IDeleteContactView {
+	@Arg String mContactId;
+	//private String mContactId;
 
 	@Inject
 	IMainRouter mMainRouter;
@@ -43,10 +46,10 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 	@Override public void onCreate(@Nullable Bundle savedInstanceState) {
 		DeleteContactInjector.getDeleteContactComponent().inject(this);
 		super.onCreate(savedInstanceState);
-		//FragmentArgs.inject(this);
+		FragmentArgs.inject(this);
 
-		Bundle mArgs = getArguments();
-		mContactId = mArgs.getString("contact_id");
+		//Bundle mArgs = getArguments();
+		//mContactId = mArgs.getString("contact_id");
 	}
 
 	@NonNull @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -55,13 +58,9 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 
 	@Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 			@Nullable Bundle savedInstanceState) {
-		//setCancelable(false);
+		setCancelable(false);
 		View view = inflater.inflate(R.layout.dialog_delete_contact, container, false);
 		mBinder = ButterKnife.bind(this, view);
-
-		if (getDialog() != null && getDialog().getWindow() != null) {
-			getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-		}
 
 		return view;
 	}
@@ -87,12 +86,11 @@ public class DeleteContactDialog extends AppCompatDialogFragment implements IDel
 	}
 
 	@Override public void openContactsListFragment() {
-		Toast.makeText(getContext(), "TETETETETETETE", Toast.LENGTH_SHORT).show();
-		dismissAllowingStateLoss();
 		mMainRouter.goToContactsTab(getActivity());
+		dismissAllowingStateLoss();
 	}
 
-	@Override public void showMessage() {
-		Toast.makeText(getDialog().getContext(), "TETETETETETETE", Toast.LENGTH_SHORT).show();
+	@Override public void showMessage(@StringRes int messageId) {
+		Toast.makeText(getContext(), getString(messageId), Toast.LENGTH_SHORT).show();
 	}
 }
