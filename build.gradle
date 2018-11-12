@@ -1,15 +1,15 @@
 buildscript {
   ext {
-    ANDROID_PLUGIN_VERSION = '3.2.1'
-    FABRIC_PLUGIN_VERSION = '1.+'
-    REALM_PLUGIN_VERSION = '5.7.0'
-    GOOGLE_SERVICES_PLUGIN_VERSION = "4.0.0"
+    androidPluginVersion = '3.2.1'
+    fabricPluginVersion = '1.+'
+    realmPluginVersion = '5.7.0'
+    googleServicesPluginVersion = "4.0.0"
 
     pluginLibs = [
-        android       : "com.android.tools.build:gradle:$ANDROID_PLUGIN_VERSION",
-        fabric        : "io.fabric.tools:gradle:$FABRIC_PLUGIN_VERSION",
-        realm         : "io.realm:realm-gradle-plugin:$REALM_PLUGIN_VERSION",
-        googleServices: "com.google.gms:google-services:$GOOGLE_SERVICES_PLUGIN_VERSION",
+        android       : "com.android.tools.build:gradle:$androidPluginVersion",
+        fabric        : "io.fabric.tools:gradle:$fabricPluginVersion",
+        realm         : "io.realm:realm-gradle-plugin:$realmPluginVersion",
+        googleServices: "com.google.gms:google-services:$googleServicesPluginVersion",
     ]
   }
 
