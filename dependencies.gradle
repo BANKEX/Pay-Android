@@ -1,71 +1,56 @@
-// project dependencies
-
 ext {
-  // region android versions
-  COMPILE_SDK_VERSION   = 28
-  TARGET_SDK_VERSION = 28
-  MIN_SDK_VERSION = 23
-  BUILD_TOOLS_VERSION = '28.0.3'
-  // endregion
+  COMPILE_SDK_VERSION        = 28
+  TARGET_SDK_VERSION         = 28
+  MIN_SDK_VERSION            = 23
+  BUILD_TOOLS_VERSION        = '28.0.3'
 
-  //region version
-  VERSION_MAJOR = 1
-  VERSION_MINOR = 0
-  VERSION_HOTFIX = 0
-  // endregion
+  VERSION_MAJOR              = 1
+  VERSION_MINOR              = 0
+  VERSION_HOTFIX             = 0
 
-  // region main lib versions
   DAGGER_2_VERSION            = '2.16'
   MOXY_VERSION                = '1.5.5'
   SUPPORT_VERSION             = '28.0.0'
   CONSTRAINT_LAYOUT_VERSION   = '1.1.0'
-  RX_JAVA_2_VERSION             = '2.1.9'
-  RX_ANDROID_VERSION          = '2.0.1'
-  LIFECYCLE_VERSION           = '1.1.0'
-  RETROFIT_VERSION            = '2.3.0'
-  OK_HTTP_VERSION             = '3.6.0'
-  APPINTRO_VERSION            = '4.2.3'
+
+  RX_JAVA_2_VERSION           = '2.2.3'
+  RX_ANDROID_VERSION          = '2.1.0'
+
+  RETROFIT_2_VERSION          = '2.4.0'
+  OK_HTTP_VERSION             = '3.11.0'
+  APPINTRO_VERSION            = '5.1.0'
+
   ADAPTER_DELEGATES_VERSION   = '3.0.1'
-  GUAVA_VERSION               = '23.4'
-  JODA_TIME_ANDROID_VERSION   = '2.9.9.4'
-  SEARCH_VIEW_VERSION         = '27.1.1.0.0'
+  GUAVA_VERSION               = '27.0'
+
   CRASHLYTICS_VERSION         = '2.9.4'
-  AMPLITUDE_VERSION           = '2.14.1'
+
   QR_VERSION                  = '1.9.8'
   QR_GENERATOR_VERSION        = '2.5.0'
-  FP_VERSION                  = '0.9.0'
-  JT_VERSION                  = '2.10'
-  // endregion
 
-  // region test lib versions
+  FP_VERSION                  = '0.9.0'
+  JT_VERSION                  = '2.10.1'
+
   JUNIT_VERSION               = '4.12'
   HAMCREST_VERSION            = '1.3'
   MOCKITO_VERSION             = '2.13.0'
-  ROBOLECTRIC_VERSION         = '3.6.1'
-  ESPRESSO_VERSION            = '3.0.1'
-  TEST_RUNNER_VERSION         = '1.0.1'
-  // endregion
+  ROBOLECTRIC_VERSION         = '4.0.2'
+  ESPRESSO_VERSION            = '3.1.0'
+  TEST_RUNNER_VERSION         = '1.1.0'
 
-  // region firebase
-  FIREBASE_VERSION            = '16.0.1'
-  FIREBASE_DYNAMIC_LINKS      = '16.0.1'
-  FIREBASE_CLOUD_MESSANGING   = '17.1.0'
-  FIREBASE_APP_INDEXING       = '16.0.1'
-  //endregion
+  FIREBASE_VERSION            = '16.0.4'
+  FIREBASE_DYNAMIC_LINKS      = '16.1.2'
+  FIREBASE_CLOUD_MESSANGING   = '17.3.4'
+  FIREBASE_APP_INDEXING       = '16.0.2'
 
-  // region wallet
   WEB3J_VERSION               = '3.3.1-android'
   ETHERUM_GETH_VERSION        = '1.7.3'
   BIP32_VERSION               = '0.0.9'
   BIP39_VERSION               = '0.1.9'
   BIP44_VERSION               = '0.0.3'
-  // end region
 
-  //region helpers
   BUTTER_KNIFE_VERSION        = '9.0.0-rc1'
   FRAGMNETARGS_VERSION        = '4.0.0-RC1'
-
-  //end region
 
   androidSupport = [
       appcompatV7           : "com.android.support:appcompat-v7:$SUPPORT_VERSION",
@@ -73,86 +58,60 @@ ext {
       constraintLayout      : "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION",
       preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
 
-      // testing
       espresso              : "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION",
       testRunner            : "com.android.support.test:runner:$TEST_RUNNER_VERSION"
   ]
 
   libs = [
-      // dagger
       dagger                : "com.google.dagger:dagger-android-support:$DAGGER_2_VERSION",
       daggerCompiler        : "com.google.dagger:dagger-compiler:$DAGGER_2_VERSION",
       daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_2_VERSION",
 
-      // rxJava
       rxJava2               : "io.reactivex.rxjava2:rxjava:$RX_JAVA_2_VERSION",
       rxAndroid2            : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
 
-      //region "Moxy"
       moxy                  : "com.arello-mobile:moxy:$MOXY_VERSION",
       moxyAppCompat         : "com.arello-mobile:moxy-app-compat:$MOXY_VERSION",
       moxyCompiler          : "com.arello-mobile:moxy-compiler:$MOXY_VERSION",
-      //endregion
 
-      retrofit              : "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION",
-      retrofitConverter     : "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION",
-      retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION",
+      retrofit              : "com.squareup.retrofit2:retrofit:$RETROFIT_2_VERSION",
+      retrofitConverter     : "com.squareup.retrofit2:converter-gson:$RETROFIT_2_VERSION",
+      retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_2_VERSION",
       okHttpInterceptor     : "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION",
 
-      //Onboarding
-      appintro              : "com.github.apl-devs:appintro:v$APPINTRO_VERSION",
+      appintro              : "com.github.paolorotolo:appintro:v$APPINTRO_VERSION",
 
-      //AdapterDelegates
       adapterDelegates      : "com.hannesdorfmann:adapterdelegates3:$ADAPTER_DELEGATES_VERSION",
 
-      //Guava
       guava                 : "com.google.guava:guava:$GUAVA_VERSION-android",
 
-      //SearchView
-      searchView            : "com.lapism:searchview:$SEARCH_VIEW_VERSION",
-
-      //Fabric
       fabric                : "com.crashlytics.sdk.android:crashlytics:$CRASHLYTICS_VERSION@aar",
 
-      //Amplitude
-      amplitude             : "com.amplitude:android-sdk:$AMPLITUDE_VERSION",
-
-      //QR
       qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
       qrGenerator           : "com.github.kenglxn.QRGen:android:$QR_GENERATOR_VERSION",
 
-      //Preference
       preference            : "com.android.support:preference-v14:$SUPPORT_VERSION",
 
-      //FingerPrint
       fingetprint           : "com.elegion.littlefinger:littlefinger:$FP_VERSION",
-      time                  : "joda-time:joda-time:2.10:$JT_VERSION",
+      time                  : "joda-time:joda-time:$JT_VERSION",
 
-      // region testing
       junit                 : "junit:junit:$JUNIT_VERSION",
       hamcrest              : "org.hamcrest:hamcrest-library:$HAMCREST_VERSION",
       mockito               : "org.mockito:mockito-core:$MOCKITO_VERSION",
       robolectric           : "org.robolectric:robolectric:$ROBOLECTRIC_VERSION",
-      // endregion
 
-      // region firebase
       firebase              : "com.google.firebase:firebase-core:$FIREBASE_VERSION",
       firebaseDynamicLink   : "com.google.firebase:firebase-dynamic-links:$FIREBASE_DYNAMIC_LINKS",
       firebaseCloudMessaging: "com.google.firebase:firebase-messaging:$FIREBASE_CLOUD_MESSANGING",
       firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
-      //endregion
 
-      // region wallet
       web3j                 : "org.web3j:core:$WEB3J_VERSION",
       ethereum              : "org.ethereum:geth:$ETHERUM_GETH_VERSION",
       bip32                 : "io.github.novacrypto:BIP32:$BIP32_VERSION",
       bip39                 : "io.github.novacrypto:BIP39:$BIP39_VERSION",
       bip44                 : "io.github.novacrypto:BIP44:$BIP44_VERSION",
-      // end region
 
-      // helpers region
       butterKnife           : "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION",
       butterKnifeProcessor  : "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION",
-      //end region
   ]
 }

@@ -127,8 +127,6 @@ dependencies {
   implementation libs.appintro
   implementation libs.adapterDelegates
   implementation libs.guava
-  implementation libs.searchView
-  implementation libs.amplitude
   implementation libs.fingetprint
   implementation libs.qr
   implementation libs.qrGenerator
@@ -148,12 +146,14 @@ dependencies {
   testImplementation libs.mockito
   testImplementation libs.robolectric
   testImplementation libs.hamcrest
-  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
+//  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
   androidTestImplementation androidSupport.espresso
   androidTestImplementation androidSupport.testRunner
   implementation project(':tn')
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
   annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
+
+  implementation 'com.google.android.material:material:1.0.0'
 }
 

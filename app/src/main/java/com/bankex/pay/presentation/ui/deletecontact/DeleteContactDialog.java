@@ -24,10 +24,10 @@ import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import javax.inject.Inject;
 
+// TODO make base fragmentDialog
 @FragmentWithArgs
 public class DeleteContactDialog extends MvpAppCompatDialogFragment implements IDeleteContactView {
 	@Arg String mContactId;
-	//private String mContactId;
 
 	@Inject
 	IMainRouter mMainRouter;
@@ -47,9 +47,6 @@ public class DeleteContactDialog extends MvpAppCompatDialogFragment implements I
 		DeleteContactInjector.getDeleteContactComponent().inject(this);
 		super.onCreate(savedInstanceState);
 		FragmentArgs.inject(this);
-
-		//Bundle mArgs = getArguments();
-		//mContactId = mArgs.getString("contact_id");
 	}
 
 	@NonNull @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -61,7 +58,6 @@ public class DeleteContactDialog extends MvpAppCompatDialogFragment implements I
 		setCancelable(false);
 		View view = inflater.inflate(R.layout.dialog_delete_contact, container, false);
 		mBinder = ButterKnife.bind(this, view);
-
 		return view;
 	}
 
