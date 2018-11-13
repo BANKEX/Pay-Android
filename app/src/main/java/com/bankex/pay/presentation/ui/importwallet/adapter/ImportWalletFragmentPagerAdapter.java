@@ -15,7 +15,6 @@ import com.bankex.pay.presentation.ui.importwallet.privatekey.ImportPrivateKeyFr
  * @author Gevork Safaryan on 22.09.2018
  */
 public class ImportWalletFragmentPagerAdapter extends FragmentPagerAdapter {
-
 	private static final int PAGE_COUNT = 2;
 
 	private final Context mContext;

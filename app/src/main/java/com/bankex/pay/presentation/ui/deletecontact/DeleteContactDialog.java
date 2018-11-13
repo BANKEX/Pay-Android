@@ -24,7 +24,6 @@ import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import javax.inject.Inject;
 
-// TODO make base fragmentDialog
 @FragmentWithArgs
 public class DeleteContactDialog extends MvpAppCompatDialogFragment implements IDeleteContactView {
 	@Arg String mContactId;
