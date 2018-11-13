@@ -74,6 +74,7 @@ ext {
       constraintLayout      : "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION",
       preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
 
+
       // testing
       espresso              : "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION",
       testRunner            : "com.android.support.test:runner:$TEST_RUNNER_VERSION"
@@ -86,8 +87,8 @@ ext {
       daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_VERSION",
 
       // rxJava
-      rxJava                : "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION",
-      rxAndroid             : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
+      rxJava2               : "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION",
+      rxAndroid2            : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
 
       //region "Moxy"
       moxy                  : "com.arello-mobile:moxy:$MOXY_VERSION",

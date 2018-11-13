@@ -7,15 +7,18 @@
 
         <Preference
             android:key="@string/settings_network_key"
-            android:title="@string/settings_network_title"/>
+            android:title="@string/settings_network_title"
+            />
 
         <Preference
             android:key="@string/settings_wallets_key"
-            android:title="@string/settings_wallets_title"/>
+            android:title="@string/settings_wallets_title"
+            />
 
         <Preference
             android:key="pref_settings_security"
-            android:title="@string/settings_security_title"/>
+            android:title="@string/settings_security_title"
+            />
 
     </PreferenceCategory>
 
@@ -23,12 +26,13 @@
 
         <Preference
             android:key="@string/settings_rate_us_key"
-            android:title="@string/settings_rate_us_title"/>
+            android:title="@string/settings_rate_us_title"
+            />
 
         <Preference
             android:key="@string/settings_write_us_key"
-            android:title="@string/settings_write_us_title"/>
-
+            android:title="@string/settings_write_us_title"
+            />
 
     </PreferenceCategory>
 
@@ -37,13 +41,14 @@
         <Preference
             android:icon="@drawable/ic_twitter_grey_24dp"
             android:key="@string/settings_twitter_key"
-            android:title="@string/settings_twitter_title"/>
+            android:title="@string/settings_twitter_title"
+            />
 
         <Preference
             android:icon="@drawable/ic_facebook_grey_24dp"
             android:key="@string/settings_facebook_key"
-            android:title="@string/settings_facebook_title"/>
+            android:title="@string/settings_facebook_title"
+            />
 
     </PreferenceCategory>
-
 </PreferenceScreen>

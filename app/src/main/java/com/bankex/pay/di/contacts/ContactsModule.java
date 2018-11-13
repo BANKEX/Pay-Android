@@ -9,9 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль экрана контактов
- *
- * @author Pavel Apanovskiy on 12/10/2018.
+ * Module for contacts list screen.
  */
 @Module
 public class ContactsModule {

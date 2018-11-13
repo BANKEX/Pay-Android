@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bankex_background">
+    android:background="@color/bankex_background"
+    >
 
     <ImageView
         android:id="@+id/onboarding_erc20_view"
@@ -13,26 +14,26 @@
         android:layout_marginLeft="@dimen/onboarding_left_right_margin"
         android:layout_marginRight="@dimen/onboarding_left_right_margin"
         android:layout_marginTop="@dimen/onboarding_top_margin"
-        android:src="@drawable/ic_erc20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_erc20"
+        />
 
     <TextView
         android:id="@+id/onboarding_talk_to_us_title_text_view"
-        style="@style/TitleBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_big"
         android:text="@string/onboarding_erc20_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboarding_erc20_view"/>
+        app:layout_constraintTop_toBottomOf="@id/onboarding_erc20_view"
+        style="@style/TitleBold"
+        />
 
     <TextView
         android:id="@+id/onboarding_talk_to_us_body_text_view"
-        style="@style/SubHeaderRegular.PlaceHolder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/onboarding_left_right_margin"
@@ -43,7 +44,7 @@
         android:text="@string/onboarding_erc20_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboarding_talk_to_us_title_text_view"/>
-
-
+        app:layout_constraintTop_toBottomOf="@id/onboarding_talk_to_us_title_text_view"
+        style="@style/SubHeaderRegular.PlaceHolder"
+        />
 </android.support.constraint.ConstraintLayout>

@@ -3,36 +3,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5"
+        />
 
     <ImageView
-        android:layout_margin="@dimen/margin_medium"
         android:id="@+id/place_holder_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_medium"
         android:contentDescription="@null"
-        android:src="@drawable/ic_progress_clock_24dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_progress_clock_24dp"
+        />
 
     <TextView
-        style="@style/TitleBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"
         android:text="Soon will be here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/place_holder_image_view"/>
-
-
+        app:layout_constraintTop_toBottomOf="@id/place_holder_image_view"
+        style="@style/TitleBold"
+        />
 </android.support.constraint.ConstraintLayout>

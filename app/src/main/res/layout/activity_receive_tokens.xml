@@ -4,18 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.6"
+        />
 
     <include
+        layout="@layout/toolbar"
         android:id="@+id/add_contact_toolbar"
-        layout="@layout/toolbar"/>
+        />
 
     <ImageView
         android:id="@+id/qr_image_view"
@@ -26,39 +29,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/add_contact_toolbar"
-        tools:src="@drawable/ic_network"/>
+        tools:src="@drawable/ic_network"
+        />
 
     <TextView
         android:id="@+id/title_text_view"
-        style="@style/TitleBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_medium"
         android:layout_marginLeft="@dimen/margin_medium"
         app:layout_constraintBottom_toTopOf="@id/token_address_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Wallet name"/>
+        tools:text="Wallet name"
+        style="@style/TitleBold"
+        />
 
     <TextView
         android:id="@+id/token_address_text_view"
-        style="@style/SubHeaderRegular.Grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_medium_x"
         android:layout_marginLeft="@dimen/margin_medium"
         app:layout_constraintBottom_toTopOf="@id/copy_button"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="j2l4tho35to23ih4tlk5ti5t3i5hih2423wg"/>
+        tools:text="j2l4tho35to23ih4tlk5ti5t3i5hih2423wg"
+        style="@style/SubHeaderRegular.Grey"
+        />
 
     <Button
         android:id="@+id/copy_button"
-        style="@style/ButtonAppCompat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_medium_x"
         android:text="@string/receive_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/ButtonAppCompat"
+        />
 
 </android.support.constraint.ConstraintLayout>

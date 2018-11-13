@@ -3,9 +3,7 @@ package com.bankex.pay.presentation.ui.base;
 import com.arellomobile.mvp.MvpView;
 
 /**
- * Базовый интерфейс для вью
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Base interface for MVP View.
  */
 public interface BaseView extends MvpView {
 }

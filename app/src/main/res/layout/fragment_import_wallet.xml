@@ -4,26 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bankex_background">
+    android:background="@color/bankex_background"
+    >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <include layout="@layout/toolbar"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/import_wallet_tab_layout"
-            style="@style/ViewPagerToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bankex_background"
             app:tabGravity="fill"
-            app:tabMode="fixed"/>
+            app:tabMode="fixed"
+            style="@style/ViewPagerToolbar"
+            />
 
     </android.support.design.widget.AppBarLayout>
-
 
     <android.support.v4.view.ViewPager
         android:id="@+id/import_wallet_view_pager"
@@ -32,6 +34,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"/>
-
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        />
 </android.support.constraint.ConstraintLayout>

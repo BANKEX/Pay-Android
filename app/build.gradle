@@ -106,19 +106,22 @@ dependencies {
   implementation libs.firebaseCloudMessaging
   implementation libs.firebaseAppIndexing
 
+//  implementation androidSupport.support
   implementation androidSupport.appcompatV7
   implementation androidSupport.design
   implementation androidSupport.constraintLayout
+  implementation androidSupport.preference
 
   implementation libs.dagger
   annotationProcessor libs.daggerCompiler
   annotationProcessor libs.daggerProcessor
+
   implementation libs.moxy
   implementation libs.moxyAppCompat
   annotationProcessor libs.moxyCompiler
 
-  implementation libs.rxJava
-  implementation libs.rxAndroid
+  implementation libs.rxJava2
+  implementation libs.rxAndroid2
   implementation libs.retrofit
   implementation libs.retrofitConverter
   implementation libs.retrofitRxAdapter
@@ -126,14 +129,12 @@ dependencies {
   implementation libs.appintro
   implementation libs.adapterDelegates
   implementation libs.guava
-  implementation libs.searchView
-  implementation libs.lottie
-  implementation libs.amplitude
   implementation libs.fingetprint
   implementation libs.qr
   implementation libs.qrGenerator
   implementation libs.butterKnife
   annotationProcessor libs.butterKnifeProcessor
+
 
   implementation(libs.fabric) {
     transitive = true
@@ -144,6 +145,7 @@ dependencies {
   implementation libs.bip32
   implementation libs.bip39
   implementation libs.bip44
+
   testImplementation libs.junit
   testImplementation libs.mockito
   testImplementation libs.robolectric
@@ -155,5 +157,6 @@ dependencies {
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
   annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
+  androidTestImplementation 'junit:junit:4.12'
 }
 
