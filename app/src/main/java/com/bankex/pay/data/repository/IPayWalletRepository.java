@@ -5,24 +5,22 @@ import io.reactivex.Single;
 import javax.annotation.Nullable;
 
 /**
- * Репозиторий работы с кошельком в БД
- *
- * @author Pavel Apanovskiy on 11/10/2018.
+ * Interface for wallet saved in database.
  */
 public interface IPayWalletRepository {
 
 	/**
-	 * Сохраняем кошелек в БД
+	 * Method to save wallet into database.
 	 *
-	 * @param payWalletModel кошелек
-	 * @return Completable
+	 * @param payWalletModel wallet to save
+	 * @return saved wallet as {@link Single}
 	 */
 	Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
 
 	/**
-	 * Пытаемся получить кошелек из БД
+	 * Method to get wallet from database.
 	 *
-	 * @return кошелек
+	 * @return if there is one wallet, we get it
 	 */
 	@Nullable
 	Single<PayWalletModel> getWallet();

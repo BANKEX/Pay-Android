@@ -1,22 +1,18 @@
 package com.bankex.pay.data.repository;
 
-import org.web3j.crypto.Wallet;
-
 import io.reactivex.Single;
 
 /**
- * Репозиторий импорта кошелька по ключу
- *
- * @author Gevork Safaryan on 27/09/2018
+ * Interface for repository to import wallet by private key.
  */
 public interface IImportWalletFromPrivateKeyRepository {
 
-    /**
-     * Импортировать строку
-     *
-     * @param privateKey приватный ключ
-     * @param password   пароль
-     * @return обвязка {@link Single} над {@link Wallet}
-     */
-    Single<String> importStoreByPrivateKey(String privateKey, final String password);
+	/**
+	 * Import Ethereum wallet file.
+	 *
+	 * @param privateKey user private key
+	 * @param password user password
+	 * @return wallet in String format
+	 */
+	Single<String> importStoreByPrivateKey(String privateKey, final String password);
 }

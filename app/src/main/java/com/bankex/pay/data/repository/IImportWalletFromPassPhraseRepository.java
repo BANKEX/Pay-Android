@@ -1,19 +1,18 @@
 package com.bankex.pay.data.repository;
 
-import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 import org.web3j.crypto.Credentials;
 
 /**
- * Репозиторий импорта кошелька по фразе
+ * Interface for repository to import wallet from key store by password-phrase.
  */
 public interface IImportWalletFromPassPhraseRepository {
 
 	/**
-	 * Импортировать Кошелек
+	 * Import the wallet.
 	 *
-	 * @param passPhrase - фраза
-	 * @return обвязка {@link Single} над {@link PayWalletModel}
+	 * @param passPhrase secret password-phrase
+	 * @return credentials for import operation
 	 */
 	Single<Credentials> importWalletFromKeyStore(String passPhrase, String password);
 }

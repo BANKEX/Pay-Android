@@ -5,33 +5,31 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 
 /**
- * Интерфейс репозитория паролей
- *
- * @author Gevork Safaryan on 27.09.2018
+ * Interface for password storage repository.
  */
 public interface IPasswordStoreRepository {
 
 	/**
-	 * Получить пароль для кошелька
+	 * Method to get password for entered wallet.
 	 *
-	 * @param wallet - кошелек
-	 * @return {@link Single} над {@link String}
+	 * @param wallet wallet which password is needed
+	 * @return password as {@link Single}
 	 */
-	Single<String> loadPassword(PayWalletModel wallet);
+	Single<String> getPassword(PayWalletModel wallet);
 
 	/**
-	 * Сохранить пароль для кошелька
+	 * Method to save pair: wallet and its` password.
 	 *
-	 * @param wallet - кошелек
-	 * @param password - пароль
+	 * @param wallet {@link PayWalletModel}
+	 * @param password user password
 	 * @return {@link Completable}
 	 */
 	Completable savePassword(PayWalletModel wallet, String password);
 
 	/**
-	 * Сгенерировать пароль
+	 * Method to generate password for wallet.
 	 *
-	 * @return {@link Single} над {@link String}
+	 * @return password as {@link Single} {@link String}
 	 */
 	Single<String> generatePassword();
 }

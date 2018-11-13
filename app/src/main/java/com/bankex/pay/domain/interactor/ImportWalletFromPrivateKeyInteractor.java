@@ -15,7 +15,6 @@ import io.reactivex.Single;
  * @author Gevork Safaryan on 27.09.2018
  */
 public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPrivateKeyInteractor {
-
 	private final IImportWalletFromPrivateKeyRepository mImportWalletFromPrivateKeyRepository;
 	private final IImportWalletFromKeyStoreRepository mImportWalletFromKeyStoreRepository;
 	private final IPasswordStoreRepository mPasswordStoreRepository;
@@ -31,17 +30,13 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
 			@NonNull IPasswordStoreRepository passwordStoreRepository,
 			@NonNull IPayWalletRepository payWalletRepository) {
 		mImportWalletFromPrivateKeyRepository = Preconditions.checkNotNull(
-				importWalletFromPrivateKeyRepository,
-				"IImportWalletFromPrivateKeyRepository must be not null");
+				importWalletFromPrivateKeyRepository, "IImportWalletFromPrivateKeyRepository must be not null");
 		mImportWalletFromKeyStoreRepository = Preconditions.checkNotNull(
-				importWalletFromKeyStoreRepository,
-				"IImportWalletFromKeyStoreRepository must be not null");
+				importWalletFromKeyStoreRepository, "IImportWalletFromKeyStoreRepository must be not null");
 		mPasswordStoreRepository = Preconditions.checkNotNull(
-				passwordStoreRepository,
-				"IPasswordStoreRepository must be not null");
+				passwordStoreRepository, "IPasswordStoreRepository must be not null");
 		mPayWalletRepository = Preconditions.checkNotNull(
-				payWalletRepository,
-				"IPayWalletRepository must be not null");
+				payWalletRepository, "IPayWalletRepository must be not null");
 	}
 
 	/**
@@ -54,8 +49,11 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
 	@Override
 	public Single<PayWalletModel> importStoreByPrivateKey(String privateKey, String walletName) {
 		return mPasswordStoreRepository.generatePassword()
-				.flatMap(password -> mImportWalletFromPrivateKeyRepository.importStoreByPrivateKey(privateKey, password)
-						.flatMap(store -> mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
+				.flatMap(password ->
+						mImportWalletFromPrivateKeyRepository
+								.importStoreByPrivateKey(privateKey, password)
+								.flatMap(store ->
+										mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
 				.flatMap(payWalletModel -> Single.fromCallable(() -> payWalletModel.setName(walletName)))
 				.doAfterSuccess(mPayWalletRepository::saveWallet);
 	}
