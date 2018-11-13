@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
+import com.bankex.pay.di.importorcreatewallet.ImportOrCreateWalletInjector;
 import com.bankex.pay.presentation.presenter.ImportPassPhrasePresenter;
 import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
@@ -57,7 +57,7 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        ImportOrCreateInjector.getImportOrCreateComponent().inject(this);
+        ImportOrCreateWalletInjector.getImportOrCreateComponent().inject(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -76,7 +76,7 @@ public class ImportPassPhraseFragment extends BaseFragment implements IImportPas
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ImportOrCreateInjector.clearImportOrCreateComponent();
+        ImportOrCreateWalletInjector.clearImportOrCreateComponent();
     }
 
     @Override

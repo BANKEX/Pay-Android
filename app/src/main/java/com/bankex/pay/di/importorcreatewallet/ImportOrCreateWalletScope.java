@@ -1,4 +1,4 @@
-package com.bankex.pay.di.lockscreen;
+package com.bankex.pay.di.importorcreatewallet;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Scope for lock screen.
+ * Scope for impoet or create wallet screen.
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface LockScreenScope {
+public @interface ImportOrCreateWalletScope {
 }

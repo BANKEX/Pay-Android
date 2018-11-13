@@ -1,4 +1,4 @@
-package com.bankex.pay.di.receive;
+package com.bankex.pay.di.receiveaddress;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -6,11 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Скоуп экрана получения
- *
- * @author Pavel Apanovskiy on 30/09/2018.
+ * Scope for receive address screen.
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ReceiveScope {
+public @interface ReceiveAddressScope {
 }

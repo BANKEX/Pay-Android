@@ -1,4 +1,4 @@
-package com.bankex.pay.di.module;
+package com.bankex.pay.di.applicationmodules;
 
 import com.bankex.pay.domain.analytics.AnalyticsManager;
 import com.bankex.pay.domain.analytics.IAnalyticsManager;
@@ -9,11 +9,10 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * @author Gevork Safaryan on 11.09.2018.
+ * Analytics module.
  */
 @Module
 public class AnalyticsModule {
-
     @Provides
     @Singleton
     IAnalyticsManager provideAnalyticsManager() {

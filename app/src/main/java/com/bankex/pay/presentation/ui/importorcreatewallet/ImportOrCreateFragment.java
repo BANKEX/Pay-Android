@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.bankex.pay.R;
-import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
+import com.bankex.pay.di.importorcreatewallet.ImportOrCreateWalletInjector;
 import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 
@@ -43,7 +43,7 @@ public class ImportOrCreateFragment extends BaseFragment {
 
     @Override
     public void onAttach(Context context) {
-        ImportOrCreateInjector.getImportOrCreateComponent().inject(this);
+        ImportOrCreateWalletInjector.getImportOrCreateComponent().inject(this);
         super.onAttach(context);
     }
 

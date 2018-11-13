@@ -1,24 +1,20 @@
 package com.bankex.pay.di.transactionhistory;
 
 import com.bankex.pay.presentation.ui.transactionhistory.TransactionHistoryFragment;
-
 import dagger.Subcomponent;
 
 /**
- * Сабкомпонент экрана истории транзакций
- *
- * @author Pavel Apanovskiy on 27/09/2018.
+ * Sub component for transaction history screen.
  */
-@Subcomponent(modules = {TransactionHistoryModule.class})
+@Subcomponent(modules = { TransactionHistoryModule.class })
 @TransactionHistoryScope
 public interface TransactionHistoryComponent {
+	@Subcomponent.Builder
+	interface Builder {
+		TransactionHistoryComponent.Builder makeTransactionHistoryModule(TransactionHistoryModule module);
 
-    @Subcomponent.Builder
-    interface Builder {
-        TransactionHistoryComponent.Builder makeTransactionHistoryModule(TransactionHistoryModule module);
+		TransactionHistoryComponent build();
+	}
 
-        TransactionHistoryComponent build();
-    }
-
-    void inject(TransactionHistoryFragment fragment);
+	void inject(TransactionHistoryFragment fragment);
 }

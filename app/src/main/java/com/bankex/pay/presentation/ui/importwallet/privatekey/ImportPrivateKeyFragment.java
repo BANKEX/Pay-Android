@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
+import com.bankex.pay.di.importorcreatewallet.ImportOrCreateWalletInjector;
 import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.qr.QRActivity;
@@ -62,7 +62,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		ImportOrCreateInjector.getImportOrCreateComponent().inject(this);
+		ImportOrCreateWalletInjector.getImportOrCreateComponent().inject(this);
 		super.onCreate(savedInstanceState);
 	}
 
@@ -81,7 +81,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ImportOrCreateInjector.clearImportOrCreateComponent();
+		ImportOrCreateWalletInjector.clearImportOrCreateComponent();
 	}
 
 	@Override

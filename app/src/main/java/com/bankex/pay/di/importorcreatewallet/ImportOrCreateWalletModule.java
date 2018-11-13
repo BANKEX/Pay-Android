@@ -1,4 +1,4 @@
-package com.bankex.pay.di.importorcreate;
+package com.bankex.pay.di.importorcreatewallet;
 
 import android.content.Context;
 
@@ -27,40 +27,37 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль экрана Создания/Импорта
- *
- * @author Gevork Safaryan on 19.09.2018.
+ * Module for import or create wallet screen.
  */
 @Module
-public class ImportOrCreateModule {
-
+public class ImportOrCreateWalletModule {
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromKeyStoreRepository provideImportWalletFromKeyStoreRepository(Context context) {
         File file = new File(context.getFilesDir(), "keystore/keystore");
         return new ImportWalletFromKeyStoreRepository(file);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IPasswordStoreRepository providePasswordStoreRepository(Context context) {
         return new PasswordStoreRepository(context);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPrivateKeyRepository provideImportWalletFromPrivateKeyRepository() {
         return new ImportWalletFromPrivateKeyRepository();
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPassPhraseRepository provideImportWalletFromPassPhraseRepository() {
         return new ImportWalletFromPassPhraseRepository();
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPrivateKeyInteractor provideImportWalletFromPrivateKeyInteractor(IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
                                                                                       IPasswordStoreRepository passwordStoreRepository,
@@ -69,7 +66,7 @@ public class ImportOrCreateModule {
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPassPhraseInteractor provideImportWalletFromPassPhraseInteractor(IImportWalletFromPassPhraseRepository importWalletFromPassPhraseRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
                                                                                       IPasswordStoreRepository passwordStoreRepository,
@@ -78,20 +75,20 @@ public class ImportOrCreateModule {
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletRouter provideImportWalletRouter() {
         return new ImportWalletRouter();
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     ImportPassPhrasePresenter provideImportPassPhrasePresenter(IImportWalletFromPassPhraseInteractor importWalletFromPassPhraseInteractor,
                                                                IRxSchedulersUtils rxSchedulersUtils) {
         return new ImportPassPhrasePresenter(importWalletFromPassPhraseInteractor, rxSchedulersUtils);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     ImportPrivateKeyPresenter provideImportPrivateKeyPresenter(IImportWalletFromPrivateKeyInteractor importWalletFromPrivateKeyInteractor,
                                                                IRxSchedulersUtils rxSchedulersUtils) {
         return new ImportPrivateKeyPresenter(importWalletFromPrivateKeyInteractor, rxSchedulersUtils);

@@ -8,22 +8,19 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль экрана истории транзакций
- *
- * @author Pavel Apanovskiy on 27/09/2018.
+ * Module for transaction history screen.
  */
 @Module
 public class TransactionHistoryModule {
+	@Provides
+	@TransactionHistoryScope
+	ITransactionHistoryRouter provideTransactionHistoryRouter() {
+		return new TransactionHistoryRouter();
+	}
 
-    @Provides
-    @TransactionHistoryScope
-    ITransactionHistoryRouter provideTransactionHistoryRouter() {
-        return new TransactionHistoryRouter();
-    }
-
-    @Provides
-    @TransactionHistoryScope
-    TransactionHistoryPresenter provideTransactionHistoryPresenter() {
-        return new TransactionHistoryPresenter();
-    }
+	@Provides
+	@TransactionHistoryScope
+	TransactionHistoryPresenter provideTransactionHistoryPresenter() {
+		return new TransactionHistoryPresenter();
+	}
 }

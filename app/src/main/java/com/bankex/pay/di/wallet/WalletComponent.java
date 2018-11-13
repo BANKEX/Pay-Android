@@ -5,9 +5,7 @@ import com.bankex.pay.presentation.ui.home.WalletFragment;
 import dagger.Subcomponent;
 
 /**
- * Сабкомпонент главного экрана
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Sub component for wallet main screen.
  */
 @Subcomponent(modules = {WalletModule.class})
 @WalletScope
