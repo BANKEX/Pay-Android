@@ -43,7 +43,7 @@ android {
     versionName computeVersionName(versionCode)
 
     multiDexEnabled true
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     javaCompileOptions {
       annotationProcessorOptions {
@@ -106,9 +106,11 @@ dependencies {
   implementation libs.firebaseCloudMessaging
   implementation libs.firebaseAppIndexing
 
-  implementation 'androidx.appcompat:appcompat:1.0.2'
-  implementation 'com.google.android.material:material:1.1.0-alpha01'
-  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+//  implementation androidSupport.support
+  implementation androidSupport.appcompatV7
+  implementation androidSupport.design
+  implementation androidSupport.constraintLayout
+  implementation androidSupport.preference
 
   implementation libs.dagger
   annotationProcessor libs.daggerCompiler
@@ -133,27 +135,28 @@ dependencies {
   implementation libs.butterKnife
   annotationProcessor libs.butterKnifeProcessor
 
+
   implementation(libs.fabric) {
     transitive = true
   }
-  implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
+  implementation libs.preference
   implementation libs.web3j
   implementation libs.ethereum
   implementation libs.bip32
   implementation libs.bip39
   implementation libs.bip44
+
   testImplementation libs.junit
   testImplementation libs.mockito
   testImplementation libs.robolectric
   testImplementation libs.hamcrest
   androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-  androidTestImplementation 'androidx.test:runner:1.1.0'
+  androidTestImplementation androidSupport.espresso
+  androidTestImplementation androidSupport.testRunner
   implementation project(':tn')
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
   annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
-
-  implementation 'com.google.android.material:material:1.0.0'
+  androidTestImplementation 'junit:junit:4.12'
 }
 

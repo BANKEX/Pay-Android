@@ -2,6 +2,7 @@ package com.bankex.pay.presentation.ui.mainscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -16,7 +17,6 @@ import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import javax.inject.Inject;
 

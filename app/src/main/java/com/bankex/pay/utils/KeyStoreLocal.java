@@ -1,13 +1,13 @@
 package com.bankex.pay.utils;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.security.keystore.UserNotAuthenticatedException;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.model.ServiceErrorException;
@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
@@ -283,8 +282,8 @@ public class KeyStoreLocal {
 		// Create the Confirm Credentials screen. You can customize the title and description. Or
 		// we will provide a generic one for you if you leave it null
 		Log.e(TAG, "showAuthenticationScreen: ");
-		if (context instanceof Activity) {
-			Activity app = (Activity) context;
+		if (context instanceof AppCompatActivity) {
+			AppCompatActivity app = (AppCompatActivity) context;
 			KeyguardManager mKeyguardManager = (KeyguardManager) app.getSystemService(Context.KEYGUARD_SERVICE);
 			if (mKeyguardManager == null) {
 				return;

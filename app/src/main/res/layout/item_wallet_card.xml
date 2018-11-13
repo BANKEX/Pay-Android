@@ -7,11 +7,13 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
-    app:cardCornerRadius="6dp">
+    app:cardCornerRadius="6dp"
+    >
 
-    <androidx.constraintlayout.ConstraintLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ImageView
             android:id="@+id/wallet_logo_image_view"
@@ -24,11 +26,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_add_black_24dp"/>
+            tools:src="@drawable/ic_add_black_24dp"
+            />
 
         <TextView
             android:id="@+id/wallet_name_text_view"
-            style="@style/BodyRegular.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_medium_x"
@@ -39,11 +41,12 @@
             app:layout_constraintEnd_toStartOf="@id/wallet_arrow_right_image_view"
             app:layout_constraintStart_toEndOf="@id/wallet_logo_image_view"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Super Wallet Name"/>
+            tools:text="Super Wallet Name"
+            style="@style/BodyRegular.Black"
+            />
 
         <TextView
             android:id="@+id/wallet_balance_text_view"
-            style="@style/BodyRegular.Link"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_medium_x"
@@ -53,7 +56,9 @@
             app:layout_constraintEnd_toStartOf="@id/wallet_arrow_right_image_view"
             app:layout_constraintStart_toEndOf="@id/wallet_logo_image_view"
             app:layout_constraintTop_toBottomOf="@id/wallet_name_text_view"
-            tools:text="0.00000000000000000023452342 ETH"/>
+            tools:text="0.00000000000000000023452342 ETH"
+            style="@style/BodyRegular.Link"
+            />
 
         <ImageView
             android:id="@+id/wallet_arrow_right_image_view"
@@ -61,11 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_medium"
             android:contentDescription="@null"
-            android:src="@drawable/ic_chevron_right_grey_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.constraintlayout.ConstraintLayout>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_chevron_right_grey_24dp"
+            />
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -1,12 +1,12 @@
 <resources>
     <!-- Basic styles. -->
     <style name="BaseTextStyle">
-        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="fontFamily">@font/roboto_black</item>
         <item name="android:textColor">@color/bankex_black</item>
     </style>
 
     <style name="DisplayMediumBlack" parent="BaseTextStyle">
-        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="fontFamily">@font/roboto_medium_local</item>
         <item name="android:textSize">@dimen/text_size_display</item>
         <item name="android:textAppearance">@style/DisplayBold</item>
         <item name="android:textColor">@color/black</item>
@@ -29,7 +29,7 @@
 
     <style name="TextLargeRegular" parent="BaseTextStyle">
         <item name="android:textSize">@dimen/text_size_large</item>
-        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="fontFamily">@font/roboto_medium_local</item>
     </style>
 
     <style name="SubHeaderRegular" parent="BaseTextStyle">
@@ -42,7 +42,7 @@
     </style>
 
     <style name="SubHeaderMedium" parent="BaseTextStyle">
-        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="fontFamily">@font/roboto_medium_local</item>
         <item name="android:textSize">@dimen/text_size_subheader</item>
         <item name="android:textAppearance">@style/SubHeaderMedium</item>
     </style>
@@ -50,22 +50,22 @@
     <style name="CaptionBold" parent="BaseTextStyle">
         <item name="android:textSize">@dimen/text_size_caption</item>
         <item name="android:textAppearance">@style/CaptionBold</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/caption</item>
     </style>
 
     <style name="BodyRegular" parent="BaseTextStyle">
-        <item name="android:fontFamily">@font/roboto_regular_local</item>
+        <item name="fontFamily">@font/roboto_regular_local</item>
         <item name="android:textSize">@dimen/text_size_body</item>
         <item name="android:textColor">@color/text_body</item>
-        <item name="android:lineHeight">20dp</item>
+        <item name="lineHeight">20dp</item>
         <item name="android:textAppearance">@style/BodyRegular</item>
     </style>
 
     <style name="BodyMeduim" parent="BaseTextStyle">
-        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="fontFamily">@font/roboto_medium_local</item>
         <item name="android:textSize">@dimen/text_size_body</item>
-        <item name="android:lineHeight">24dp</item>
+        <item name="lineHeight">24dp</item>
     </style>
 
     <!-- Custom styles. -->
@@ -137,7 +137,7 @@
     <!-- Toolbars text -->
     <style name="ToolBarBoldSmall" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
         <item name="android:textSize">10sp</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
     <style name="ToolBarBoldSmall.White">
@@ -146,6 +146,6 @@
 
     <style name="ToolbarMedium" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
         <item name="android:textSize">@dimen/text_size_subheader</item>
-        <item name="android:fontFamily">@font/roboto_medium_local</item>
+        <item name="fontFamily">@font/roboto_medium_local</item>
     </style>
 </resources>

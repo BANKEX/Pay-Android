@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:id="@+id/passphrase_title"
-        style="@style/TitleBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_large_x"
         android:text="@string/import_passphrase"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TitleBold"
+        />
 
     <EditText
         android:id="@+id/passphrase_edit_text"
@@ -26,29 +28,32 @@
         android:hint="@string/import_passphrase_hint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passphrase_title"/>
+        app:layout_constraintTop_toBottomOf="@id/passphrase_title"
+        />
 
     <Button
         android:id="@+id/paste_button"
-        style="@style/ButtonOutlinePrimaryWithWhite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/paste"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passphrase_edit_text"/>
+        app:layout_constraintTop_toBottomOf="@id/passphrase_edit_text"
+        style="@style/ButtonOutlinePrimaryWithWhite"
+        />
 
     <TextView
         android:id="@+id/wallet_name_title_text_view"
-        style="@style/TitleBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_large_x"
         android:text="@string/wallet_name"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paste_button"/>
+        app:layout_constraintTop_toBottomOf="@id/paste_button"
+        style="@style/TitleBold"
+        />
 
     <EditText
         android:id="@+id/wallet_name_edit_text"
@@ -60,11 +65,11 @@
         android:hint="@string/wallet_name_hint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wallet_name_title_text_view"/>
+        app:layout_constraintTop_toBottomOf="@id/wallet_name_title_text_view"
+        />
 
     <Button
         android:id="@+id/import_button"
-        style="@style/ButtonPrimary"
         android:layout_width="@dimen/first_screen_text_top_margin"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_large"
@@ -74,6 +79,8 @@
         android:text="@string/import_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/ButtonPrimary"
+        />
 
-</androidx.constraintlayout.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

@@ -29,7 +29,7 @@ import com.bankex.pay.utils.share.IShareDataUtils;
 import com.bankex.pay.utils.share.ShareDataUtils;
 import javax.inject.Inject;
 
-import static android.app.Activity.RESULT_OK;
+import static android.support.v7.app.AppCompatActivity.RESULT_OK;
 import static com.bankex.pay.presentation.ui.qr.QRActivity.QR_SCANNER_RESULT;
 
 /**

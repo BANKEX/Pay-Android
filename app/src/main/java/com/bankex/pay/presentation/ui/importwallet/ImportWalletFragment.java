@@ -8,10 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.design.widget.TabLayout;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.importwallet.adapter.ImportWalletFragmentPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
 
 /**
  * Экран импорта кошелька
