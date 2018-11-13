@@ -38,7 +38,6 @@ import static com.bankex.pay.presentation.ui.qr.QRActivity.QR_SCANNER_RESULT;
  * @author Gevork Safaryan on 22.09.2018
  */
 public class ImportPrivateKeyFragment extends BaseFragment implements IImportPrivateKeyView {
-
 	private static final int PERMISSION_CAMERA = 123;
 	private static final int QR_SCANNER_REQUEST_CODE = 147;
 

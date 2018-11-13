@@ -106,7 +106,6 @@ dependencies {
   implementation libs.firebaseCloudMessaging
   implementation libs.firebaseAppIndexing
 
-//  implementation androidSupport.support
   implementation androidSupport.appcompatV7
   implementation androidSupport.design
   implementation androidSupport.constraintLayout
@@ -135,7 +134,6 @@ dependencies {
   implementation libs.butterKnife
   annotationProcessor libs.butterKnifeProcessor
 
-
   implementation(libs.fabric) {
     transitive = true
   }
@@ -153,10 +151,11 @@ dependencies {
   androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
   androidTestImplementation androidSupport.espresso
   androidTestImplementation androidSupport.testRunner
+  androidTestImplementation 'junit:junit:4.12'
+
   implementation project(':tn')
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
   annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
-  androidTestImplementation 'junit:junit:4.12'
 }
 
