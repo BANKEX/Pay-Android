@@ -1,7 +1,7 @@
 package com.bankex.pay.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.bankex.pay.domain.interactor.IImportWalletFromPassPhraseInteractor;
+import com.bankex.pay.domain.interactor.IImportWalletByPassPhraseInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.importwallet.passphrase.IImportPassPhraseView;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
@@ -14,17 +14,17 @@ import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 @InjectViewState
 public class ImportPassPhrasePresenter extends BasePresenter<IImportPassPhraseView> {
 
-	private final IImportWalletFromPassPhraseInteractor mImportWalletFromPassPhraseInteractor;
+	private final IImportWalletByPassPhraseInteractor mImportWalletFromPassPhraseInteractor;
 	private final IRxSchedulersUtils mRxSchedulersUtils;
 
-	public ImportPassPhrasePresenter(IImportWalletFromPassPhraseInteractor importWalletFromPassPhraseInteractor,
+	public ImportPassPhrasePresenter(IImportWalletByPassPhraseInteractor importWalletFromPassPhraseInteractor,
 			IRxSchedulersUtils rxSchedulersUtils) {
 		mImportWalletFromPassPhraseInteractor = importWalletFromPassPhraseInteractor;
 		mRxSchedulersUtils = rxSchedulersUtils;
 	}
 
 	public void importWalletFromPassPhrase(String passPhrase, String walletName) {
-		mImportWalletFromPassPhraseInteractor.importWalletFromPassPhrase(passPhrase, walletName)
+		mImportWalletFromPassPhraseInteractor.importWalletByPassPhrase(passPhrase, walletName)
 				.subscribeOn(mRxSchedulersUtils.getIOScheduler())
 				.observeOn(mRxSchedulersUtils.getMainThreadScheduler())
 				.subscribe(payWalletModel -> getViewState().doSomethingGood(),

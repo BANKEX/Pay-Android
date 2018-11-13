@@ -3,6 +3,9 @@ package com.bankex.pay.domain.interactor;
 import com.bankex.pay.domain.model.ContactModel;
 import java.util.List;
 
+/**
+ * Interface for operations with user contacts.
+ */
 public interface IContactsInteractor {
 
 	/**
