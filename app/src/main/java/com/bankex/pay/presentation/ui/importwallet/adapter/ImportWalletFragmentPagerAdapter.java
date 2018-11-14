@@ -10,9 +10,7 @@ import com.bankex.pay.presentation.ui.importwallet.passphrase.ImportPassPhraseFr
 import com.bankex.pay.presentation.ui.importwallet.privatekey.ImportPrivateKeyFragment;
 
 /**
- * Адаптер фрагментов экрана импорта кошелька
- *
- * @author Gevork Safaryan on 22.09.2018
+ * View pager adapter for import screens fragments.
  */
 public class ImportWalletFragmentPagerAdapter extends FragmentPagerAdapter {
 	private static final int PAGE_COUNT = 2;

@@ -5,10 +5,11 @@ import com.bankex.pay.R;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
+import com.bankex.pay.presentation.ui.addcontact.AddContactFragment;
 import com.bankex.pay.presentation.ui.addcontact.IAddContactView;
 
 /**
- * Presenter for screen to add new contact.
+ * Presenter for {@link AddContactFragment}.
  */
 @InjectViewState
 public class AddContactPresenter extends BasePresenter<IAddContactView> {
@@ -29,11 +30,7 @@ public class AddContactPresenter extends BasePresenter<IAddContactView> {
 			getViewState().showTextInputError(R.id.til_address, R.string.add_contact_error_address);
 		}
 		if (!name.isEmpty() && !surname.isEmpty() && !address.isEmpty()) {
-			ContactModel mContactModel = new ContactModel();
-			mContactModel.setName(name);
-			mContactModel.setSurname(surname);
-			mContactModel.setAddress(address);
-			mContactModel.setGroupLetterMarker("");
+			ContactModel mContactModel = new ContactModel(name, surname, address, "");
 			mContactsInteractor.addContact(mContactModel);
 			getViewState().showMessage(R.string.add_contact_added_success);
 			getViewState().popBackStack();

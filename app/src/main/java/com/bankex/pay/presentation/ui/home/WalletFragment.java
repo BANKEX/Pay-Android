@@ -29,12 +29,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Фрагмент экрана кошелька
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * View for wallet screen.
  */
 public class WalletFragment extends BaseFragment implements IWalletView {
-
 	@Inject
 	IWalletRouter mRouter;
 
@@ -49,11 +46,6 @@ public class WalletFragment extends BaseFragment implements IWalletView {
 	private RecyclerView mRecyclerView;
 	private WalletAdapter mWalletAdapter;
 
-	/**
-	 * Возвращаем инстанс фрагмента WalletFragment
-	 *
-	 * @return new WalletFragment
-	 */
 	public static WalletFragment newInstance() {
 		return new WalletFragment();
 	}

@@ -15,12 +15,9 @@ import com.bankex.pay.utils.dialogs.RateUsDialog;
 import javax.inject.Inject;
 
 /**
- * Фрагмент экрана настроек
- *
- * @author Pavel Apanovskiy on 12.09.2018.
+ * View for settings screen.
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
-
 	@Inject
 	ISettingsRouter mSettingsRouter;
 
@@ -32,8 +29,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		SettingsInjector.getSettingsComponent().inject(this);
 		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.settings_fragment);
-
 	}
 
 	@Override public void onCreatePreferences(Bundle bundle, String s) {

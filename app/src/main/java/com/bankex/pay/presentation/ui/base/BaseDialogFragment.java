@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDialogFragment;
 
+/**
+ * Basic application DialogFragemnt for customs dialogs.
+ */
 public abstract class BaseDialogFragment extends AppCompatDialogFragment {
 
 	@Override public void onCreate(@Nullable Bundle savedInstanceState) {

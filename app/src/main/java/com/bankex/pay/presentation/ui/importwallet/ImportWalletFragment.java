@@ -3,20 +3,18 @@ package com.bankex.pay.presentation.ui.importwallet;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.design.widget.TabLayout;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.importwallet.adapter.ImportWalletFragmentPagerAdapter;
 
 /**
- * Экран импорта кошелька
- *
- * @author Gevork Safaryan on 19.09.2018
+ * View for import wallet screen.
  */
 public class ImportWalletFragment extends BaseFragment {
 	private ViewPager mViewPager;

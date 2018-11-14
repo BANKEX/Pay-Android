@@ -6,48 +6,42 @@ import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.mainscreen.IMainScreenView;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
+import io.reactivex.disposables.Disposable;
 
 /**
- * Презентер корневой активити {@link MainScreenActivity}
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Presenter for {@link MainScreenActivity}.
  */
 @InjectViewState
 public class MainScreenPresenter extends BasePresenter<IMainScreenView> {
+	private final IPayWalletInteractor mPayWalletInteractor;
+	private final IRxSchedulersUtils mRxSchedulersUtils;
 
-    private final IPayWalletInteractor mPayWalletInteractor;
-    private final IRxSchedulersUtils mRxSchedulersUtils;
-
-    public MainScreenPresenter(IPayWalletInteractor payWalletInteractor,
-                               IRxSchedulersUtils rxSchedulersUtils) {
+	public MainScreenPresenter(IPayWalletInteractor payWalletInteractor, IRxSchedulersUtils rxSchedulersUtils) {
 		mPayWalletInteractor = payWalletInteractor;
-        mRxSchedulersUtils = rxSchedulersUtils;
-    }
+		mRxSchedulersUtils = rxSchedulersUtils;
+	}
 
-    /**
-     * Проверяем статус - показывали ли онбординг
-     *
-     * @param status cтатус boolean
-     */
-    public void checkOnboardingStatus(boolean status) {
-        if (!status) {
-            getViewState().showOnboarding();
-        } else {
-            // TODO: 13/10/2018 пока фича не готова - гасим
-            //getViewState().showLockScreen();
+	/**
+	 * Method to check if onboarding has shown before.
+	 *
+	 * @param status if has shown
+	 */
+	public void checkOnboardingStatus(boolean status) {
+		if (!status) {
+			getViewState().showOnboarding();
+		} else {
+			// TODO: 13/10/2018 пока фича не готова - гасим
+			//getViewState().showLockScreen();
+			checkPayWallet();
+		}
+	}
 
-            checkPayWallet();
-        }
-    }
+	public void checkPayWallet() {
+		Disposable disposable = mPayWalletInteractor.getWallet()
+				.subscribeOn(mRxSchedulersUtils.getIOScheduler())
+				.observeOn(mRxSchedulersUtils.getMainThreadScheduler())
+				.subscribe(payWalletModel -> {
 
-    public void checkPayWallet() {
-        mPayWalletInteractor.getWallet()
-                .subscribeOn(mRxSchedulersUtils.getIOScheduler())
-                .observeOn(mRxSchedulersUtils.getMainThreadScheduler())
-                .subscribe(payWalletModel -> {
-
-                }, throwable -> {
-                    getViewState().openImportOrCreate();
-                });
-    }
+				}, throwable -> getViewState().openImportOrCreate());
+	}
 }

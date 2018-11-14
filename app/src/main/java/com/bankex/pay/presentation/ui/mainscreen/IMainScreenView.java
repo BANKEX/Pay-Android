@@ -5,25 +5,23 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
- * Интерфейс вьюхи для корневой активити {@link MainScreenActivity}
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Interface for main screen.
  */
 @StateStrategyType(OneExecutionStateStrategy.class)
 public interface IMainScreenView extends BaseView {
 
-    /**
-     * показываем онбординг
-     */
-    void showOnboarding();
+	/**
+	 * Method to show onboarding.
+	 */
+	void showOnboarding();
 
-    /**
-     * показываем локскрин
-     */
-    void showLockScreen();
+	/**
+	 * Method to show lock screen.
+	 */
+	void showLockScreen();
 
-    /**
-     * Открываем экран импорта/создания кошелька
-     */
-    void openImportOrCreate();
+	/**
+	 * Method to open import or create wallet screen.
+	 */
+	void openImportOrCreate();
 }

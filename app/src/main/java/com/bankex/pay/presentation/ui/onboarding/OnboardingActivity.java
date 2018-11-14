@@ -13,18 +13,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Активити онбординга
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * View for onboardinbg activity that holds
+ * onboarding fragments - slides.
  */
 public class OnboardingActivity extends AppIntro {
 
-	/**
-	 * Возвращает интент OnboardingActivity
-	 *
-	 * @param context Context
-	 * @return intent
-	 */
 	public static Intent newIntent(Context context) {
 		return new Intent(context, OnboardingActivity.class);
 	}
@@ -33,13 +26,10 @@ public class OnboardingActivity extends AppIntro {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		OnboardingInjector.getOnboardingComponent().inject(this);
 		super.onCreate(savedInstanceState);
-
 		setOnboardingParameters();
-
-		addSlide(OnboardingWhatIsItFragment.newInstance());
-		addSlide(OnboardingFastAndEasyFragment.newInstance());
-		addSlide(OnboardingTalkToUsFragment.newInstance());
-
+		addSlide(OnboardingCustomNetworkFragment.newInstance());
+		addSlide(OnboardingFavoriteListFragment.newInstance());
+		addSlide(OnboardingERC20StandardFragment.newInstance());
 	}
 
 	@Override
@@ -66,19 +56,6 @@ public class OnboardingActivity extends AppIntro {
 		}
 	}
 
-	@Override
-	public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
-		super.onSlideChanged(oldFragment, newFragment);
-		String oldScreenName = null;
-		String newScreenName = null;
-		if (oldFragment != null) {
-			oldScreenName = oldFragment.getClass().getSimpleName();
-		}
-		if (newFragment != null) {
-			newScreenName = newFragment.getClass().getSimpleName();
-		}
-	}
-
 	private void setOnboardingParameters() {
 		setBarColor(getColor(R.color.white));
 		showSeparator(false);
@@ -86,9 +63,7 @@ public class OnboardingActivity extends AppIntro {
 		int color = getColor(R.color.placeholder_body_text);
 		setColorDoneText(color);
 		setColorSkipButton(color);
-		setIndicatorColor(
-				getColor(R.color.onboarding_selected_indicator),
-				color);
+		setIndicatorColor(getColor(R.color.onboarding_selected_indicator), color);
 		setImageNextButton(getDrawable(R.drawable.ic_chevron_right_grey_24dp));
 		setNextArrowColor(color);
 

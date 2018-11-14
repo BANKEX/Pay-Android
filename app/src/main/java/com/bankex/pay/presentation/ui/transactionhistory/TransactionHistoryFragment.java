@@ -18,12 +18,9 @@ import com.bankex.pay.presentation.navigation.transactionhistory.ITransactionHis
 import javax.inject.Inject;
 
 /**
- * Фрагмент экрана истории транзакций
- *
- * @author Pavel Apanovskiy on 27/09/2018.
+ * View for transaction history screen.
  */
 public class TransactionHistoryFragment extends BaseFragment implements ITransactionHistoryView {
-
     @Inject
     ITransactionHistoryRouter mTransactionHistoryRouter;
 
@@ -62,10 +59,5 @@ public class TransactionHistoryFragment extends BaseFragment implements ITransac
     public void onDestroy() {
         super.onDestroy();
         TransactionHistoryInjector.clearTransactionHistoryComponent();
-    }
-
-    @Override
-    public void showToast() {
-       // Toast.makeText(getActivity(), "TransactionHistory", Toast.LENGTH_SHORT).show();
     }
 }

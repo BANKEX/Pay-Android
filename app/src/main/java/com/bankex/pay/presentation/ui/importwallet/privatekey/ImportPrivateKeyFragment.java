@@ -33,9 +33,7 @@ import static android.support.v7.app.AppCompatActivity.RESULT_OK;
 import static com.bankex.pay.presentation.ui.qr.QRActivity.QR_SCANNER_RESULT;
 
 /**
- * Экран экспорта по ключу
- *
- * @author Gevork Safaryan on 22.09.2018
+ * View for import wallet by private key screen.
  */
 public class ImportPrivateKeyFragment extends BaseFragment implements IImportPrivateKeyView {
 	private static final int PERMISSION_CAMERA = 123;

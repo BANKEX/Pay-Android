@@ -6,39 +6,37 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
- * Интерфейс вью главного экрана
- *
- * @author Gevork Safaryan on 15.10.2018
+ * View interface for wallet main screen.
  */
 @StateStrategyType(AddToEndStrategy.class)
 public interface IWalletView extends BaseView {
 
     /**
-     * Показать загрузку
+     * Method to show loading.
      */
     void showLoading();
 
     /**
-     * Скрыть загрузку
+     * Method to hide loading.
      */
     void hideLoading();
 
     /**
-     * Показать ошибку
+     * Method to show error to user.
      *
-     * @param error
+     * @param error error message String
      */
     void showError(String error);
 
     /**
-     * ПОказать пустую вью
+     * Method to show empty list.
      */
     void showEmptyView();
 
     /**
-     * Отобразить данные по кошельку
+     * Method to init view with data.
      *
-     * @param payWalletModel
+     * @param payWalletModel model with data
      */
     void loadData(PayWalletModel payWalletModel);
 }

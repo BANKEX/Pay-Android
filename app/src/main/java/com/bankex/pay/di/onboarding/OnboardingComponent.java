@@ -1,9 +1,9 @@
 package com.bankex.pay.di.onboarding;
 
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingFastAndEasyFragment;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingTalkToUsFragment;
-import com.bankex.pay.presentation.ui.onboarding.OnboardingWhatIsItFragment;
+import com.bankex.pay.presentation.ui.onboarding.OnboardingCustomNetworkFragment;
+import com.bankex.pay.presentation.ui.onboarding.OnboardingERC20StandardFragment;
+import com.bankex.pay.presentation.ui.onboarding.OnboardingFavoriteListFragment;
 import dagger.Subcomponent;
 
 /**
@@ -21,9 +21,9 @@ public interface OnboardingComponent {
 
 	void inject(OnboardingActivity activity);
 
-	void inject(OnboardingWhatIsItFragment fragment);
+	void inject(OnboardingCustomNetworkFragment fragment);
 
-	void inject(OnboardingFastAndEasyFragment fragment);
+	void inject(OnboardingFavoriteListFragment fragment);
 
-	void inject(OnboardingTalkToUsFragment fragment);
+	void inject(OnboardingERC20StandardFragment fragment);
 }
