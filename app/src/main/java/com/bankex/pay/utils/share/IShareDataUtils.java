@@ -4,34 +4,32 @@ import android.content.Context;
 import android.support.annotation.StringRes;
 
 /**
- * Интерфейс утилитного класса для работы с шарингом данных
- *
- * @author Pavel Apanovskiy on 17.06.2018.
+ * Interface for utility helper class to share data.
  */
 public interface IShareDataUtils {
 
-    /**
-     * Генерим интент в формате строки для шаринга
-     *
-     * @param context context
-     * @param text    текст для шаринга
-     */
-    void shareDataLikeText(Context context, String text);
+	/**
+	 * Method to share data as text.
+	 *
+	 * @param context {@link Context}
+	 * @param text String value that is needed to share
+	 */
+	void shareDataLikeText(Context context, String text);
 
-    /**
-     * Запихиваем текст в буфер обмена
-     *
-     * @param context       context
-     * @param data          текст для копирования
-     * @param stringResInfo StringRes текста для toast
-     */
-    void copyDataToClipboard(Context context, String data, @StringRes int stringResInfo);
+	/**
+	 * Method to put text into clipboard.
+	 *
+	 * @param context {@link Context}
+	 * @param data copied text
+	 * @param stringResInfo @StringRes of message for toast
+	 */
+	void copyDataToClipboard(Context context, String data, @StringRes int stringResInfo);
 
-    /**
-     * Извлекаем CharSequence из буфера обмена
-     *
-     * @param context context
-     * @return CharSequence
-     */
-    CharSequence getCharSequenceFromClipboard(Context context);
+	/**
+	 * Method to get copied text from clipboard.
+	 *
+	 * @param context {@link Context}
+	 * @return saved text as CharSequence value
+	 */
+	CharSequence getCharSequenceFromClipboard(Context context);
 }

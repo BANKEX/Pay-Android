@@ -4,16 +4,13 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.Scheduler;
 
 /**
- * Интерфейс для класса {@link RxSchedulersUtils}
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Interface for RxSchedulers.
  */
-
 public interface IRxSchedulersUtils {
 
-    Scheduler getMainThreadScheduler();
+	Scheduler getMainThreadScheduler();
 
-    Scheduler getIOScheduler();
+	Scheduler getIOScheduler();
 
-    <T> ObservableTransformer<T, T> getIOToMainTransformer();
+	<T> ObservableTransformer<T, T> getItToMainTransformer();
 }

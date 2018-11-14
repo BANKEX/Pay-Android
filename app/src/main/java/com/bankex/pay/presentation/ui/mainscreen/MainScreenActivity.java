@@ -130,7 +130,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 	}
 
 	private void checkOnboardingStatus() {
-		boolean onboardingPreferenceStatus = SharedPreferencesUtils.getOnboardingPreferenceStatus(this);
+		boolean onboardingPreferenceStatus = SharedPreferencesUtils.getOnboardingPreferenceStatus();
 		mMainScreenPresenter.checkOnboardingStatus(onboardingPreferenceStatus);
 	}
 

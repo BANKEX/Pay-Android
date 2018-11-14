@@ -14,9 +14,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 /**
- * Application класс приложения
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Application class for Bankex-Pay application.
  */
 public class BankexPayApplication extends Application {
 	private static BankexPayApplication sInstance;
