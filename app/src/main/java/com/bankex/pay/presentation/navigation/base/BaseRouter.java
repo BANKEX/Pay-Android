@@ -10,13 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.transition.Fade;
 
 /**
- * Базовый роутер для навигации между экранами
+ * Basic navigation router.
  */
-public class BaseRouter {
+public abstract class BaseRouter {
 	private static final long FADE_DEFAULT_TIME = 100;
 
 	/**
-	 * Start an Activity.
+	 * Method to start the Activity.
 	 *
 	 * @param context Context
 	 * @param intent Intent
@@ -26,11 +26,11 @@ public class BaseRouter {
 	}
 
 	/**
-	 * Run the Fragment.
+	 * Method to run the fragment.
 	 *
-	 * @param activity Activity
-	 * @param fragment Fragment, который необходимо запустить
-	 * @param containerViewId Id контейнера
+	 * @param activity activity that holds fragment
+	 * @param fragment fragment that will be run
+	 * @param containerViewId id of container that holds fragment
 	 */
 	void runFragment(FragmentActivity activity, Fragment fragment, @IdRes int containerViewId) {
 		activity.getSupportFragmentManager()
@@ -43,27 +43,33 @@ public class BaseRouter {
 		FragmentManager mFragmentManager = activity.getSupportFragmentManager();
 		Fragment mPreviousFragment = mFragmentManager.findFragmentById(containerViewId);
 
-		if (mPreviousFragment.getId() == baseFragment.getId()) {
-			return;
+		if (mPreviousFragment != null) {
+			if (mPreviousFragment.getId() == baseFragment.getId()) {
+				return;
+			}
+
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+
+			Fade exitFade = new Fade();
+			exitFade.setDuration(FADE_DEFAULT_TIME);
+			mPreviousFragment.setExitTransition(exitFade);
+
+			Fade enterFade = new Fade();
+			enterFade.setDuration(FADE_DEFAULT_TIME);
+			baseFragment.setEnterTransition(enterFade);
+
+			fragmentTransaction
+					.replace(containerViewId, baseFragment)
+					.addToBackStack(null)
+					.commit();
 		}
-
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-
-		// 1. Exit for Previous Fragment
-		Fade exitFade = new Fade();
-		exitFade.setDuration(FADE_DEFAULT_TIME);
-		mPreviousFragment.setExitTransition(exitFade);
-
-		// 2. Enter for New Fragment
-		Fade enterFade = new Fade();
-		enterFade.setDuration(FADE_DEFAULT_TIME);
-		baseFragment.setEnterTransition(enterFade);
-
-		fragmentTransaction.replace(containerViewId, baseFragment)
-				.addToBackStack(null)
-				.commit();
 	}
 
+	/**
+	 * Method to go back in fragment back stack.
+	 *
+	 * @param activity activity that holds fragment
+	 */
 	public void popBackStack(FragmentActivity activity) {
 		activity.getSupportFragmentManager().popBackStack();
 	}

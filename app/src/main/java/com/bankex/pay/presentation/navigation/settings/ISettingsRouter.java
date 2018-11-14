@@ -3,29 +3,29 @@ package com.bankex.pay.presentation.navigation.settings;
 import android.content.Context;
 
 /**
- * Роутер экрана настроек
- *
- * @author Pavel Apanovskiy on 08.09.2018.
+ * Router to navigate from settings tab.
  */
 public interface ISettingsRouter {
-    /**
-     * Пытаемся открыть почтовый клиент с заданным e-mail
-     *
-     * @param context context
-     */
-    void goToEmail(Context context);
 
-    /**
-     * Переходим в twitter по ссылке
-     *
-     * @param context Context
-     */
-    void goToTwitter(Context context);
+	/**
+	 * Method to open email client with set email address.
+	 * If there is not email app on device - message will appear.
+	 *
+	 * @param context {@link Context}
+	 */
+	void goToEmail(Context context);
 
-    /**
-     * Переходим в facebook по ссылке
-     *
-     * @param context Context
-     */
-    void goToFacebook(Context context);
+	/**
+	 * Method to open Twitter page.
+	 *
+	 * @param context {@link Context}
+	 */
+	void goToTwitter(Context context);
+
+	/**
+	 * Method to open Facebook page.
+	 *
+	 * @param context {@link Context}
+	 */
+	void goToFacebook(Context context);
 }
