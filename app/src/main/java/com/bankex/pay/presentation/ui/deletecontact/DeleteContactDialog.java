@@ -24,6 +24,9 @@ import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import javax.inject.Inject;
 
+/**
+ * View for custom deleting dialog.
+ */
 @FragmentWithArgs
 public class DeleteContactDialog extends MvpAppCompatDialogFragment implements IDeleteContactView {
 	@Arg String mContactId;

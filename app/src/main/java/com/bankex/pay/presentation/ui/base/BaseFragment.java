@@ -78,7 +78,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
 	/**
 	 * Method to show message in Fragment with Toast.
 	 *
-	 * @param message - message string.
+	 * @param message message string.
 	 */
 	public void showMessageToast(String message) {
 		Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
@@ -87,8 +87,8 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
 	/**
 	 * Method to get string by its` id.
 	 *
-	 * @param resId - int string id from resources.
-	 * @return - String from resources.
+	 * @param resId int string id from resources.
+	 * @return String from resources.
 	 */
 	public String string(@StringRes int resId) {
 		return getResources().getString(resId);

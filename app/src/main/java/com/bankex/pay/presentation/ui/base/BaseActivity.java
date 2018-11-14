@@ -2,6 +2,7 @@ package com.bankex.pay.presentation.ui.base;
 
 import android.content.Context;
 import android.os.IBinder;
+import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -11,33 +12,32 @@ import com.bankex.pay.presentation.navigation.base.IBankexRouter;
 import javax.inject.Inject;
 
 /**
- * Базовый активити приложения
+ * Basic application Activity.
  */
 public abstract class BaseActivity extends MvpAppCompatActivity {
-
 	@Inject
 	IBankexRouter mRouter;
 
 	/**
-	 * Запускаем фрагмент с анимацией
+	 * Method to run fragment with animation.
 	 *
-	 * @param baseFragment BaseFragment
+	 * @param baseFragment fragment that extends BaseFragment
 	 */
 	public void runFragmentWithAnimation(BaseFragment baseFragment) {
 		mRouter.runFragmentWithAnimation(this, baseFragment, R.id.fragment_container);
 	}
 
 	/**
-	 * Запускаем фрагмент
+	 * Method to run fragment.
 	 *
-	 * @param fragment BaseFragment
+	 * @param fragment fragment that extends BaseFragment
 	 */
 	public void runFragment(BaseFragment fragment) {
 		mRouter.runBankexFragment(this, fragment, R.id.fragment_container);
 	}
 
 	/**
-	 * Пытаемся спрятать клавиатуру
+	 * Method to hide keyboard.
 	 */
 	public void hideKeyboard() {
 		FragmentActivity activity = this;
@@ -58,5 +58,15 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 		} catch (Exception ignored) {
 			//do nothing
 		}
+	}
+
+	/**
+	 * Method to get string by its` id.
+	 *
+	 * @param resId int string id from resources.
+	 * @return String from resources.
+	 */
+	public String string(@StringRes int resId) {
+		return getResources().getString(resId);
 	}
 }

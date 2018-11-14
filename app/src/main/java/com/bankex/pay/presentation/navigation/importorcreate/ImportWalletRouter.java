@@ -6,14 +6,12 @@ import com.bankex.pay.presentation.ui.importwallet.ImportWalletActivity;
 import com.bankex.pay.presentation.ui.mainscreen.MainScreenActivity;
 
 /**
- * Router to navigate into fragments from Import of Create Wallet screen.
+ * Am implementation of {@link IImportWalletRouter}.
  */
 public class ImportWalletRouter implements IImportWalletRouter {
 
 	/**
-	 * Open import wallet screen.
-	 *
-	 * @param context {@link Context}
+	 * {@inheritDoc }
 	 */
 	@Override
 	public void openImportWalletScreen(Context context) {
@@ -21,9 +19,7 @@ public class ImportWalletRouter implements IImportWalletRouter {
 	}
 
 	/**
-	 * Open create wallet screen.
-	 *
-	 * @param context {@link Context}
+	 * {@inheritDoc }
 	 */
 	@Override
 	public void openCreateWalletScreen(Context context) {
@@ -31,9 +27,7 @@ public class ImportWalletRouter implements IImportWalletRouter {
 	}
 
 	/**
-	 * Start MainActivity.
-	 *
-	 * @param context {@link Context}
+	 * {@inheritDoc }
 	 */
 	@Override
 	public void startMainActivityScreen(Context context) {

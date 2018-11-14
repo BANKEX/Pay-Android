@@ -3,7 +3,6 @@ package com.bankex.pay.domain.model;
 import android.support.annotation.Nullable;
 
 public class ServiceErrorException extends Exception {
-
     public static final int UNKNOWN_ERROR = -1;
     public static final int INVALID_DATA = 1;
     public static final int KEY_STORE_ERROR = 1001;

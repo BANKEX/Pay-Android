@@ -3,24 +3,22 @@ package com.bankex.pay.di.lockscreen;
 import com.bankex.pay.di.user.UserComponentInjector;
 
 /**
- * Инжектор для компонента блокировки экрана
- *
- * @author Denis Anisimov.
+ * Injector for {@link LockScreenComponent}.
  */
 public class LockScreenInjector {
-    private static LockScreenComponent sLockScreenComponent;
+	private static LockScreenComponent sLockScreenComponent;
 
-    public static LockScreenComponent getLockScreenComponent() {
-        if (sLockScreenComponent == null) {
-            sLockScreenComponent = UserComponentInjector.getUserComponent()
-                    .plusLockScreenComponentBuilder()
-                    .makeLockScreenModule(new LockScreenModule())
-                    .build();
-        }
-        return sLockScreenComponent;
-    }
+	public static LockScreenComponent getLockScreenComponent() {
+		if (sLockScreenComponent == null) {
+			sLockScreenComponent = UserComponentInjector.getUserComponent()
+					.plusLockScreenComponentBuilder()
+					.makeLockScreenModule(new LockScreenModule())
+					.build();
+		}
+		return sLockScreenComponent;
+	}
 
-    public static void clearLockScreenComponent() {
-        sLockScreenComponent = null;
-    }
+	public static void clearLockScreenComponent() {
+		sLockScreenComponent = null;
+	}
 }

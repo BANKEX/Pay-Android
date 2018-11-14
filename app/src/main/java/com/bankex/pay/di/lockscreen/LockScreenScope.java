@@ -6,8 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Скоуп для лок скрина
- * @author Denis Anisimov.
+ * Scope for lock screen.
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)

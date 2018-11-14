@@ -4,10 +4,11 @@ import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.domain.interactor.IPayWalletInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
 import com.bankex.pay.presentation.ui.home.IWalletView;
+import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 
 /**
- * Presenter for main screen, that shows screen with all users wallets.
+ * Presenter for {@link WalletFragment}.
  */
 @InjectViewState
 public class WalletPresenter extends BasePresenter<IWalletView> {
@@ -30,11 +31,11 @@ public class WalletPresenter extends BasePresenter<IWalletView> {
 	 */
 	private void loadWallet() {
 		getViewState().showLoading();
-		getRxCompositeDisposable()
-				.add(mPayWalletInteractor.getWallet()
-						.subscribeOn(mRxSchedulersUtils.getIOScheduler())
-						.observeOn(mRxSchedulersUtils.getMainThreadScheduler())
-						.subscribe(payWalletModel -> {
+		getRxCompositeDisposable().add(mPayWalletInteractor.getWallet()
+				.subscribeOn(mRxSchedulersUtils.getIOScheduler())
+				.observeOn(mRxSchedulersUtils.getMainThreadScheduler())
+				.subscribe(
+						payWalletModel -> {
 							getViewState().hideLoading();
 							getViewState().loadData(payWalletModel);
 						}, throwable -> getViewState().showError(throwable.getMessage())));

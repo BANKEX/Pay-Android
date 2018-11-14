@@ -4,13 +4,14 @@ import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
+import com.bankex.pay.presentation.ui.contacts.ContactsFragment;
 import com.bankex.pay.presentation.ui.contacts.IContactsView;
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Presenter for Contacts screen.
+ * Presenter for {@link ContactsFragment}.
  */
 @InjectViewState
 public class ContactsPresenter extends BasePresenter<IContactsView> {

@@ -4,9 +4,10 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
 /**
- * Router for whole contact branch.
+ * Router to navigate through contacts tab.
  */
 public interface IContactsRouter {
+
 	/**
 	 * Opens fragment for creating new contact.
 	 */

@@ -1,21 +1,18 @@
-package com.bankex.pay.di.importorcreate;
+package com.bankex.pay.di.importorcreatewallet;
 
 import com.bankex.pay.di.user.UserComponentInjector;
 
 /**
- * Инжектор компонента {@link ImportOrCreateComponent}
- *
- * @author Gevork Safaryan on 19.09.2018.
+ * Injector for {@link ImportOrCreateWalletComponent}.
  */
-public class ImportOrCreateInjector {
+public class ImportOrCreateWalletInjector {
+    private static ImportOrCreateWalletComponent sImportOrCreateComponent;
 
-    private static ImportOrCreateComponent sImportOrCreateComponent;
-
-    public static ImportOrCreateComponent getImportOrCreateComponent() {
+    public static ImportOrCreateWalletComponent getImportOrCreateComponent() {
         if (sImportOrCreateComponent == null) {
             sImportOrCreateComponent = UserComponentInjector.getUserComponent()
                     .plusImportOrCreateComponentBuilder()
-                    .makeImportOrCreateModule(new ImportOrCreateModule())
+                    .makeImportOrCreateModule(new ImportOrCreateWalletModule())
                     .build();
         }
         return sImportOrCreateComponent;

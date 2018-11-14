@@ -1,4 +1,4 @@
-package com.bankex.pay.di.module;
+package com.bankex.pay.di.applicationmodules;
 
 import com.bankex.pay.utils.rx.IRxSchedulersUtils;
 import com.bankex.pay.utils.rx.RxSchedulersUtils;
@@ -9,9 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль для предоставления RxSchedulersUtils
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * RxSchedulersUtils module.
  */
 @Module
 public class RxModule {

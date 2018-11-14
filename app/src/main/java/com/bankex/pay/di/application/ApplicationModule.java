@@ -10,13 +10,10 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Основоной модуль Application
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Application base module.
  */
 @Module
 public class ApplicationModule {
-
     @Provides
     @Singleton
     Context provideContext() {

@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * @author Gevork Safaryan on 11.09.2018.
+ * Scope for onboarding screen.
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)

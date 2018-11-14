@@ -1,24 +1,19 @@
 package com.bankex.pay.presentation.navigation.wallet;
 
 import android.content.Context;
-
-import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 import com.bankex.pay.presentation.navigation.base.BaseRouter;
+import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 
 /**
- * Реализация роутера экрана wallet {@link IWalletRouter}
- *
- * @author Pavel Apanovskiy on 12.09.2018.
+ * An implementation of {@link IWalletRouter}.
  */
 public class WalletRouter extends BaseRouter implements IWalletRouter {
 
-    /**
-     * Метод перехода на экран Импорта Создания
-     *
-     * @param context контекст
-     */
-    @Override
-    public void openImportOrCreate(Context context) {
-        context.startActivity(ImportOrCreateActivity.newIntent(context));
-    }
+	/**
+	 * {@inheritDoc }
+	 */
+	@Override
+	public void openImportOrCreate(Context context) {
+		context.startActivity(ImportOrCreateActivity.newIntent(context));
+	}
 }

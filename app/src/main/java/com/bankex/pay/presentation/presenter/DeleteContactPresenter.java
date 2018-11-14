@@ -4,10 +4,11 @@ import com.arellomobile.mvp.InjectViewState;
 import com.bankex.pay.R;
 import com.bankex.pay.domain.interactor.IContactsInteractor;
 import com.bankex.pay.presentation.presenter.base.BasePresenter;
+import com.bankex.pay.presentation.ui.deletecontact.DeleteContactDialog;
 import com.bankex.pay.presentation.ui.deletecontact.IDeleteContactView;
 
 /**
- * Presenter for custom delete contact dialog fragment.
+ * Presenter for {@link DeleteContactDialog}.
  */
 @InjectViewState
 public class DeleteContactPresenter extends BasePresenter<IDeleteContactView> {

@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
-import com.bankex.pay.di.importorcreate.ImportOrCreateInjector;
+import com.bankex.pay.di.importorcreatewallet.ImportOrCreateWalletInjector;
 import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.qr.QRActivity;
@@ -33,9 +33,7 @@ import static android.support.v7.app.AppCompatActivity.RESULT_OK;
 import static com.bankex.pay.presentation.ui.qr.QRActivity.QR_SCANNER_RESULT;
 
 /**
- * Экран экспорта по ключу
- *
- * @author Gevork Safaryan on 22.09.2018
+ * View for import wallet by private key screen.
  */
 public class ImportPrivateKeyFragment extends BaseFragment implements IImportPrivateKeyView {
 	private static final int PERMISSION_CAMERA = 123;
@@ -62,7 +60,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		ImportOrCreateInjector.getImportOrCreateComponent().inject(this);
+		ImportOrCreateWalletInjector.getImportOrCreateComponent().inject(this);
 		super.onCreate(savedInstanceState);
 	}
 
@@ -81,7 +79,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ImportOrCreateInjector.clearImportOrCreateComponent();
+		ImportOrCreateWalletInjector.clearImportOrCreateComponent();
 	}
 
 	@Override

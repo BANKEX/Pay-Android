@@ -6,10 +6,9 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
- * @author Pavel Apanovskiy on 11/10/2018.
+ * Implementation of {@link IPayWalletInteractor}.
  */
 public class PayWalletInteractor implements IPayWalletInteractor {
-
     private final IPayWalletRepository mSaveWalletRepository;
 
     public PayWalletInteractor(IPayWalletRepository saveWalletRepository) {

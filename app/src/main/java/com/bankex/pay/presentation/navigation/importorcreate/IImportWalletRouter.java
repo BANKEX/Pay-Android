@@ -3,30 +3,28 @@ package com.bankex.pay.presentation.navigation.importorcreate;
 import android.content.Context;
 
 /**
- * Роутер перехода с экрана Импорта или Создания
- *
- * @author Gevork Safaryan on 19.09.2018.
+ * Router to navigate from import or create wallet screen.
  */
 public interface IImportWalletRouter {
 
-    /**
-     * Открыть экран импорта
-     *
-     * @param context {@link Context}
-     */
-    void openImportWalletScreen(Context context);
+	/**
+	 * Method to open wallet screen fragment.
+	 *
+	 * @param context {@link Context}
+	 */
+	void openImportWalletScreen(Context context);
 
-    /**
-     * Открыть экран создания
-     *
-     * @param context {@link Context}
-     */
-    void openCreateWalletScreen(Context context);
+	/**
+	 * Method to open create wallet screen.
+	 *
+	 * @param context {@link Context}
+	 */
+	void openCreateWalletScreen(Context context);
 
-    /**
-     * Открыть главный экран
-     *
-     * @param context {@link Context}
-     */
-    void startMainActivityScreen(Context context);
+	/**
+	 * Method to start MainActivity.
+	 *
+	 * @param context {@link Context}
+	 */
+	void startMainActivityScreen(Context context);
 }

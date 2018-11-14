@@ -42,9 +42,9 @@ import static com.bankex.pay.domain.model.ServiceErrorException.USER_NOT_AUTHENT
 public class KeyStoreLocal {
 	private static final String TAG = "KeyStoreLocal";
 	private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
+	private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS7Padding";
 	private static final String BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC;
 	private static final String PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7;
-	private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS7Padding";
 
 	private synchronized static boolean setData(
 			Context context,
@@ -53,8 +53,7 @@ public class KeyStoreLocal {
 			String aliasFile,
 			String aliasIV) throws ServiceErrorException {
 		if (data == null) {
-			throw new ServiceErrorException(
-					ServiceErrorException.INVALID_DATA, "keystore insert data is null");
+			throw new ServiceErrorException(ServiceErrorException.INVALID_DATA, "keystore insert data is null");
 		}
 		java.security.KeyStore keyStore;
 		try {

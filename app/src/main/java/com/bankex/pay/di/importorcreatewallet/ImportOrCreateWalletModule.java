@@ -1,4 +1,4 @@
-package com.bankex.pay.di.importorcreate;
+package com.bankex.pay.di.importorcreatewallet;
 
 import android.content.Context;
 
@@ -11,10 +11,10 @@ import com.bankex.pay.data.repository.ImportWalletFromKeyStoreRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPassPhraseRepository;
 import com.bankex.pay.data.repository.ImportWalletFromPrivateKeyRepository;
 import com.bankex.pay.data.repository.PasswordStoreRepository;
-import com.bankex.pay.domain.interactor.IImportWalletFromPassPhraseInteractor;
-import com.bankex.pay.domain.interactor.IImportWalletFromPrivateKeyInteractor;
-import com.bankex.pay.domain.interactor.ImportWalletFromPassPhraseInteractor;
-import com.bankex.pay.domain.interactor.ImportWalletFromPrivateKeyInteractor;
+import com.bankex.pay.domain.interactor.IImportWalletByPassPhraseInteractor;
+import com.bankex.pay.domain.interactor.IImportWalletByPrivateKeyInteractor;
+import com.bankex.pay.domain.interactor.ImportWalletByPassPhraseInteractor;
+import com.bankex.pay.domain.interactor.ImportWalletByPrivateKeyInteractor;
 import com.bankex.pay.presentation.presenter.ImportPassPhrasePresenter;
 import com.bankex.pay.presentation.presenter.ImportPrivateKeyPresenter;
 import com.bankex.pay.presentation.navigation.importorcreate.IImportWalletRouter;
@@ -27,72 +27,69 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль экрана Создания/Импорта
- *
- * @author Gevork Safaryan on 19.09.2018.
+ * Module for import or create wallet screen.
  */
 @Module
-public class ImportOrCreateModule {
-
+public class ImportOrCreateWalletModule {
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromKeyStoreRepository provideImportWalletFromKeyStoreRepository(Context context) {
         File file = new File(context.getFilesDir(), "keystore/keystore");
         return new ImportWalletFromKeyStoreRepository(file);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IPasswordStoreRepository providePasswordStoreRepository(Context context) {
         return new PasswordStoreRepository(context);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPrivateKeyRepository provideImportWalletFromPrivateKeyRepository() {
         return new ImportWalletFromPrivateKeyRepository();
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletFromPassPhraseRepository provideImportWalletFromPassPhraseRepository() {
         return new ImportWalletFromPassPhraseRepository();
     }
 
     @Provides
-    @ImportOrCreateScope
-    IImportWalletFromPrivateKeyInteractor provideImportWalletFromPrivateKeyInteractor(IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
+    @ImportOrCreateWalletScope
+    IImportWalletByPrivateKeyInteractor provideImportWalletFromPrivateKeyInteractor(IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
                                                                                       IPasswordStoreRepository passwordStoreRepository,
                                                                                       IPayWalletRepository payWalletRepository) {
-        return new ImportWalletFromPrivateKeyInteractor(importWalletFromPrivateKeyRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
+        return new ImportWalletByPrivateKeyInteractor(importWalletFromPrivateKeyRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
     }
 
     @Provides
-    @ImportOrCreateScope
-    IImportWalletFromPassPhraseInteractor provideImportWalletFromPassPhraseInteractor(IImportWalletFromPassPhraseRepository importWalletFromPassPhraseRepository,
+    @ImportOrCreateWalletScope
+    IImportWalletByPassPhraseInteractor provideImportWalletFromPassPhraseInteractor(IImportWalletFromPassPhraseRepository importWalletFromPassPhraseRepository,
                                                                                       IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
                                                                                       IPasswordStoreRepository passwordStoreRepository,
                                                                                       IPayWalletRepository payWalletRepository) {
-        return new ImportWalletFromPassPhraseInteractor(importWalletFromPassPhraseRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
+        return new ImportWalletByPassPhraseInteractor(importWalletFromPassPhraseRepository, importWalletFromKeyStoreRepository, passwordStoreRepository, payWalletRepository);
     }
 
     @Provides
-    @ImportOrCreateScope
+    @ImportOrCreateWalletScope
     IImportWalletRouter provideImportWalletRouter() {
         return new ImportWalletRouter();
     }
 
     @Provides
-    @ImportOrCreateScope
-    ImportPassPhrasePresenter provideImportPassPhrasePresenter(IImportWalletFromPassPhraseInteractor importWalletFromPassPhraseInteractor,
+    @ImportOrCreateWalletScope
+    ImportPassPhrasePresenter provideImportPassPhrasePresenter(IImportWalletByPassPhraseInteractor importWalletFromPassPhraseInteractor,
                                                                IRxSchedulersUtils rxSchedulersUtils) {
         return new ImportPassPhrasePresenter(importWalletFromPassPhraseInteractor, rxSchedulersUtils);
     }
 
     @Provides
-    @ImportOrCreateScope
-    ImportPrivateKeyPresenter provideImportPrivateKeyPresenter(IImportWalletFromPrivateKeyInteractor importWalletFromPrivateKeyInteractor,
+    @ImportOrCreateWalletScope
+    ImportPrivateKeyPresenter provideImportPrivateKeyPresenter(IImportWalletByPrivateKeyInteractor importWalletFromPrivateKeyInteractor,
                                                                IRxSchedulersUtils rxSchedulersUtils) {
         return new ImportPrivateKeyPresenter(importWalletFromPrivateKeyInteractor, rxSchedulersUtils);
     }

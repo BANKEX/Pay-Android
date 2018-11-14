@@ -34,4 +34,7 @@
     <string name="rate_us_dialog_positive">rate now</string>
     <string name="rate_us_dialog_negative">no, thanks</string>
     <string name="rate_us_dialog_error_no_market_app">unable to find market app</string>
+
+    <!-- Error strings -->
+    <string name="settings_error_no_email_app_message">No apps can perform this action</string>
 </resources>

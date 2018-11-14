@@ -4,23 +4,22 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
- * Интерактор для работы с кошельком в БД
- *
- * @author Pavel Apanovskiy on 11/10/2018.
+ * Interface to work with user wallet saved in database.
  */
 public interface IPayWalletInteractor {
+
 	/**
-	 * Сохраняем кошелек в БД
+	 * Method to save wallet in database.
 	 *
-	 * @param payWalletModel кошелек
-	 * @return Completable
+	 * @param payWalletModel wallet to save
+	 * @return model of saved wallet
 	 */
 	Single<PayWalletModel> saveWallet(PayWalletModel payWalletModel);
 
 	/**
-	 * Пытаемся получить кошелек из БД
+	 * Method to get wallet from database.
 	 *
-	 * @return кошелек
+	 * @return model of saved wallet
 	 */
 	Single<PayWalletModel> getWallet();
 }

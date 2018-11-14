@@ -3,20 +3,18 @@ package com.bankex.pay;
 import android.app.Application;
 import com.bankex.pay.di.application.ApplicationComponent;
 import com.bankex.pay.di.application.DaggerApplicationComponent;
-import com.bankex.pay.di.module.AnalyticsModule;
-import com.bankex.pay.di.module.NavigationModule;
-import com.bankex.pay.di.module.NetworkModule;
-import com.bankex.pay.di.module.RealmModule;
-import com.bankex.pay.di.module.RxModule;
+import com.bankex.pay.di.applicationmodules.AnalyticsModule;
+import com.bankex.pay.di.applicationmodules.NavigationModule;
+import com.bankex.pay.di.applicationmodules.NetworkModule;
+import com.bankex.pay.di.applicationmodules.RealmModule;
+import com.bankex.pay.di.applicationmodules.RxModule;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 /**
- * Application класс приложения
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Application class for Bankex-Pay application.
  */
 public class BankexPayApplication extends Application {
 	private static BankexPayApplication sInstance;

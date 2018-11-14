@@ -9,19 +9,19 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.mainscreen.MainScreenInjector;
+import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.presenter.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
 import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
-import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
 import com.bankex.pay.utils.preferences.SharedPreferencesUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 import javax.inject.Inject;
 
 /**
- * Корневая активити
+ * View for main screen.
  */
 public class MainScreenActivity extends BaseActivity implements IMainScreenView {
 	private static final int ONBOARDING_REQUEST = 0;
@@ -130,7 +130,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 	}
 
 	private void checkOnboardingStatus() {
-		boolean onboardingPreferenceStatus = SharedPreferencesUtils.getOnboardingPreferenceStatus(this);
+		boolean onboardingPreferenceStatus = SharedPreferencesUtils.getOnboardingPreferenceStatus();
 		mMainScreenPresenter.checkOnboardingStatus(onboardingPreferenceStatus);
 	}
 

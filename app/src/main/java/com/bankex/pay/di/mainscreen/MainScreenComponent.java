@@ -13,9 +13,7 @@ import dagger.Subcomponent;
 
 /**
  * TODO fix this mess
- * Временный сабкомпонент для варианта "чтобы быстро и работало"
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Main screen sub component.
  */
 @Subcomponent(modules = { MainScreenModule.class })
 @MainScreenScope

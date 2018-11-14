@@ -5,12 +5,9 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
- * Реализация репозитория {@link IPayWalletRepository}
- *
- * @author Pavel Apanovskiy on 11/10/2018.
+ * {@link IPayWalletRepository} repository implementation.
  */
 public class PayWalletRepository implements IPayWalletRepository {
-
 	private final IRealmService mRealmService;
 
 	public PayWalletRepository(IRealmService realmService) {

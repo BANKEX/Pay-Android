@@ -5,7 +5,7 @@ import com.bankex.pay.domain.model.ContactModel;
 import java.util.List;
 
 /**
- * Class that implements @IContactsInteractor interface.
+ * Implements {@link IContactsInteractor} interface.
  */
 public class ContactInteractor implements IContactsInteractor {
 	private IContactsRepository contactsRepository;

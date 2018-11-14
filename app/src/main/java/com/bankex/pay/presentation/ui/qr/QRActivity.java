@@ -14,12 +14,9 @@ import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
- * Экран с qr сканером
- *
- * @author Pavel Apanovskiy on 28/09/2018.
+ * View for QR-scanner screen.
  */
 public class QRActivity extends BaseActivity implements ZXingScannerView.ResultHandler {
-
     public static final String QR_SCANNER_RESULT = "QR_SCANNER_RESULT";
 
     private ZXingScannerView mScannerView;
@@ -28,7 +25,6 @@ public class QRActivity extends BaseActivity implements ZXingScannerView.ResultH
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr);
-
         setupToolbar();
         initViews();
     }
@@ -49,7 +45,6 @@ public class QRActivity extends BaseActivity implements ZXingScannerView.ResultH
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 finish();
                 return true;

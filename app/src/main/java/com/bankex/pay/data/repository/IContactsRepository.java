@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Repository to work with contacts saved in database.
+ * Interface for repository to work with contacts saved in database.
  */
 public interface IContactsRepository {
 

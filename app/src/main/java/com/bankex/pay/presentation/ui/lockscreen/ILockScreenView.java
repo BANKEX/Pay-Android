@@ -1,28 +1,27 @@
 package com.bankex.pay.presentation.ui.lockscreen;
 
+import android.support.annotation.StringRes;
 import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
- * Интерфейс для вью блокировки экрана
- *
- * @author Denis Anisimov.
+ * Interface for lock screen view.
  */
 public interface ILockScreenView extends BaseView {
 
-    /**
-     * Метод снятия блокировки с экрана
-     */
-    void unlock();
+	/**
+	 * Method to unblock screen.
+	 */
+	void unlock();
 
-    /***
-     * Отображение сообщение об ошибке
-     * @param message
-     */
-    void showMessage(int message);
+	/***
+	 * Method to show error message.
+	 *
+	 * @param message resource id for message string
+	 */
+	void showMessage(@StringRes int message);
 
-    /**
-     * Отображение состояние сенсора
-     * @param messageRes
-     */
-    void setSensorStateMessage(int messageRes);
+	/**
+	 * Method to display sensor state.
+	 */
+	void setSensorStateMessage(int messageRes);
 }

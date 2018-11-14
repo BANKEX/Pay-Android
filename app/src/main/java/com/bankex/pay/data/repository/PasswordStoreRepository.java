@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
+import com.bankex.pay.R;
 import com.bankex.pay.domain.model.PayWalletModel;
 import com.bankex.pay.domain.model.ServiceErrorException;
 import com.bankex.pay.utils.KeyStoreLocal;
@@ -15,18 +16,19 @@ import java.security.SecureRandom;
 import java.util.Map;
 
 /**
- * @author Gevork Safaryan on 04/10/2018
+ * {@link IPasswordStoreRepository} repository implementation.
  */
 public class PasswordStoreRepository implements IPasswordStoreRepository {
-
 	private final Context context;
 
 	public PasswordStoreRepository(Context context) {
 		this.context = context;
-
 		migrate();
 	}
 
+	/**
+	 * Method to save all addresses from {@link SharedPreferences} to {@link KeyStoreLocal}.
+	 */
 	private void migrate() {
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 			return;
@@ -39,16 +41,18 @@ public class PasswordStoreRepository implements IPasswordStoreRepository {
 				try {
 					KeyStoreLocal.put(context, address.toLowerCase(), PasswordManager.getPassword(address, context));
 				} catch (Exception ex) {
-					Toast.makeText(context, "Could not process passwords.", Toast.LENGTH_LONG)
-							.show();
+					Toast.makeText(context, R.string.password_store_rep_migration_error, Toast.LENGTH_LONG).show();
 					ex.printStackTrace();
 				}
 			}
 		}
 	}
 
+	/**
+	 * {@inheritDoc }
+	 */
 	@Override
-	public Single<String> loadPassword(PayWalletModel wallet) {
+	public Single<String> getPassword(PayWalletModel wallet) {
 		return Single.fromCallable(() -> {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 				return new String(KeyStoreLocal.get(context, wallet.address));
@@ -62,6 +66,9 @@ public class PasswordStoreRepository implements IPasswordStoreRepository {
 		});
 	}
 
+	/**
+	 * {@inheritDoc }
+	 */
 	@Override
 	public Completable savePassword(PayWalletModel wallet, String password) {
 		return Completable.fromAction(() -> {
@@ -77,6 +84,9 @@ public class PasswordStoreRepository implements IPasswordStoreRepository {
 		});
 	}
 
+	/**
+	 * {@inheritDoc }
+	 */
 	@Override
 	public Single<String> generatePassword() {
 		return Single.fromCallable(() -> {

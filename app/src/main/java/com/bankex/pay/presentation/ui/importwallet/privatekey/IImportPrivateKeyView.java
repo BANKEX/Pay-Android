@@ -3,13 +3,11 @@ package com.bankex.pay.presentation.ui.importwallet.privatekey;
 import com.bankex.pay.presentation.ui.base.BaseView;
 
 /**
- * Вью для экрана импорта по ключу
- * @author Pavel Apanovskiy on 09/10/2018.
+ * View interface for import wallet by private key screen.
  */
 public interface IImportPrivateKeyView extends BaseView {
+	// TODO: 09/10/2018 методы заглушки, заменить на валидные
+	void doSomethingGood();
 
-    // TODO: 09/10/2018 методы заглушки, заменить на валидные
-    void doSomethingGood();
-
-    void showError(Throwable throwable);
+	void showError(Throwable throwable);
 }

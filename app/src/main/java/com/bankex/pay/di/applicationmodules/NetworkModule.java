@@ -1,4 +1,4 @@
-package com.bankex.pay.di.module;
+package com.bankex.pay.di.applicationmodules;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Модуль предоставления зависимостей для работы с сервером
+ * Network module.
  */
 @Module
 public class NetworkModule {

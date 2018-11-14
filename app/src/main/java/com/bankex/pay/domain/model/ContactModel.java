@@ -38,6 +38,13 @@ public class ContactModel extends RealmObject implements Parcelable {
 	public ContactModel() {
 	}
 
+	public ContactModel(String address, String name, String surname, String groupLetterMarker) {
+		this.address = address;
+		this.name = name;
+		this.surname = surname;
+		this.groupLetterMarker = groupLetterMarker;
+	}
+
 	public String getAddress() {
 		return address;
 	}

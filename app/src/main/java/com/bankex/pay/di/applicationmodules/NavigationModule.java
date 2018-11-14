@@ -1,4 +1,4 @@
-package com.bankex.pay.di.module;
+package com.bankex.pay.di.applicationmodules;
 
 import com.bankex.pay.presentation.navigation.base.BankexRouter;
 import com.bankex.pay.presentation.navigation.base.IBankexRouter;
@@ -6,35 +6,30 @@ import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.navigation.home.MainRouter;
 import com.bankex.pay.presentation.navigation.wallet.IWalletRouter;
 import com.bankex.pay.presentation.navigation.wallet.WalletRouter;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
+import javax.inject.Singleton;
 
 /**
- * Модуль навигации
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Navigation module.
  */
 @Module
 public class NavigationModule {
+	@Provides
+	@Singleton
+	IBankexRouter provideBankexRouter() {
+		return new BankexRouter();
+	}
 
-    @Provides
-    @Singleton
-    IBankexRouter provideBankexRouter() {
-        return new BankexRouter();
-    }
+	@Provides
+	@Singleton
+	IMainRouter provideHomeRouter() {
+		return new MainRouter();
+	}
 
-    @Provides
-    @Singleton
-    IMainRouter provideHomeRouter() {
-        return new MainRouter();
-    }
-
-    @Provides
-    @Singleton
-    IWalletRouter provideWalletRouter() {
-        return new WalletRouter();
-    }
+	@Provides
+	@Singleton
+	IWalletRouter provideWalletRouter() {
+		return new WalletRouter();
+	}
 }

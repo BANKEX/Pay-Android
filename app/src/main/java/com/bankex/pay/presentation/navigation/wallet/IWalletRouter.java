@@ -3,16 +3,14 @@ package com.bankex.pay.presentation.navigation.wallet;
 import android.content.Context;
 
 /**
- * Роутер экрана wallet
- *
- * @author Pavel Apanovskiy on 12.09.2018.
+ * Router to navigate from import or create wallet screen.
  */
 public interface IWalletRouter {
 
-    /**
-     * Открываем экран импорта/создания кошелька
-     *
-     * @param context context
-     */
-    void openImportOrCreate(Context context);
+	/**
+	 * Method to open impoet or create wallet screen.
+	 *
+	 * @param context {@link Context}
+	 */
+	void openImportOrCreate(Context context);
 }

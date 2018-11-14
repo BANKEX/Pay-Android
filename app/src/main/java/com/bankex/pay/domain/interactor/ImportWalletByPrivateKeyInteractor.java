@@ -10,12 +10,9 @@ import dagger.internal.Preconditions;
 import io.reactivex.Single;
 
 /**
- * {@code Interactor} импорта кошелька по приватному ключу
- *
- * @author Gevork Safaryan on 27.09.2018
+ * Implementation for {@link IImportWalletByPrivateKeyInteractor}.
  */
-public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPrivateKeyInteractor {
-
+public class ImportWalletByPrivateKeyInteractor implements IImportWalletByPrivateKeyInteractor {
 	private final IImportWalletFromPrivateKeyRepository mImportWalletFromPrivateKeyRepository;
 	private final IImportWalletFromKeyStoreRepository mImportWalletFromKeyStoreRepository;
 	private final IPasswordStoreRepository mPasswordStoreRepository;
@@ -26,36 +23,32 @@ public class ImportWalletFromPrivateKeyInteractor implements IImportWalletFromPr
 	 * @param importWalletFromKeyStoreRepository {@link IImportWalletFromKeyStoreRepository}
 	 * @param passwordStoreRepository {@link IPasswordStoreRepository}
 	 */
-	public ImportWalletFromPrivateKeyInteractor(@NonNull IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
+	public ImportWalletByPrivateKeyInteractor(
+			@NonNull IImportWalletFromPrivateKeyRepository importWalletFromPrivateKeyRepository,
 			@NonNull IImportWalletFromKeyStoreRepository importWalletFromKeyStoreRepository,
 			@NonNull IPasswordStoreRepository passwordStoreRepository,
 			@NonNull IPayWalletRepository payWalletRepository) {
 		mImportWalletFromPrivateKeyRepository = Preconditions.checkNotNull(
-				importWalletFromPrivateKeyRepository,
-				"IImportWalletFromPrivateKeyRepository must be not null");
+				importWalletFromPrivateKeyRepository, "IImportWalletFromPrivateKeyRepository must be not null");
 		mImportWalletFromKeyStoreRepository = Preconditions.checkNotNull(
-				importWalletFromKeyStoreRepository,
-				"IImportWalletFromKeyStoreRepository must be not null");
+				importWalletFromKeyStoreRepository, "IImportWalletFromKeyStoreRepository must be not null");
 		mPasswordStoreRepository = Preconditions.checkNotNull(
-				passwordStoreRepository,
-				"IPasswordStoreRepository must be not null");
+				passwordStoreRepository, "IPasswordStoreRepository must be not null");
 		mPayWalletRepository = Preconditions.checkNotNull(
-				payWalletRepository,
-				"IPayWalletRepository must be not null");
+				payWalletRepository, "IPayWalletRepository must be not null");
 	}
 
 	/**
-	 * Импортировать кошелек по приватному ключу
-	 *
-	 * @param privateKey - приватный ключ
-	 * @param walletName - имя кошелька
-	 * @return {@link Single} над {@link PayWalletModel}
+	 * {@inheritDoc }
 	 */
 	@Override
-	public Single<PayWalletModel> importStoreByPrivateKey(String privateKey, String walletName) {
+	public Single<PayWalletModel> importWalletByPrivateKey(String privateKey, String walletName) {
 		return mPasswordStoreRepository.generatePassword()
-				.flatMap(password -> mImportWalletFromPrivateKeyRepository.importStoreByPrivateKey(privateKey, password)
-						.flatMap(store -> mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
+				.flatMap(password ->
+						mImportWalletFromPrivateKeyRepository
+								.importStoreByPrivateKey(privateKey, password)
+								.flatMap(store ->
+										mImportWalletFromKeyStoreRepository.importWalletFromKeyStore(store, password, password)))
 				.flatMap(payWalletModel -> Single.fromCallable(() -> payWalletModel.setName(walletName)))
 				.doAfterSuccess(mPayWalletRepository::saveWallet);
 	}

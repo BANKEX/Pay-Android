@@ -13,7 +13,7 @@ import com.bankex.pay.presentation.ui.deletecontact.DeleteContactDialogBuilder;
 import javax.inject.Inject;
 
 /**
- * Am Implementation of {@link IContactsRouter}.
+ * Am implementation of {@link IContactsRouter}.
  */
 public class ContactsRouter extends BaseRouter implements IContactsRouter {
 
@@ -23,6 +23,7 @@ public class ContactsRouter extends BaseRouter implements IContactsRouter {
 	/**
 	 * {@inheritDoc }
 	 */
+	// TODO delete unnecessary Context
 	@Override public void openAddContactFragment(FragmentActivity activity, Context context) {
 		runFragmentWithAnimation(activity, AddContactFragment.newInstance(), R.id.fragment_container);
 	}

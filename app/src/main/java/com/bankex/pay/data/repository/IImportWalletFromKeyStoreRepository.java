@@ -4,19 +4,17 @@ import com.bankex.pay.domain.model.PayWalletModel;
 import io.reactivex.Single;
 
 /**
- * Репозиторий импорта кошелька по ключу
- *
- * @author Gevork Safaryan on 27/09/2018
+ * Interface for repository for wallet import by key.
  */
 public interface IImportWalletFromKeyStoreRepository {
 
 	/**
-	 * Импортировать Кошелек
+	 * Method to import the wallet.
 	 *
-	 * @param store хранилище
-	 * @param password старый пароль
-	 * @param newPassword новый пароль
-	 * @return обвязка {@link Single} над {@link PayWalletModel}
+	 * @param store String representation of imported wallet
+	 * @param password old user password
+	 * @param newPassword new user password
+	 * @return wallet model as {@link Single}
 	 */
 	Single<PayWalletModel> importWalletFromKeyStore(String store, String password, String newPassword);
 }

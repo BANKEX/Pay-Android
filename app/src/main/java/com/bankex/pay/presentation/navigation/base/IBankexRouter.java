@@ -5,26 +5,25 @@ import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
- * Интерфейс роутера для навигации между экранами
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Interface to navigate between screens.
  */
 public interface IBankexRouter {
+
 	/**
-	 * Запускаем фрагмент с анимацией
+	 * Method to open fragment with animation.
 	 *
-	 * @param activity Activity
-	 * @param baseFragment Fragment, который необходимо запустить
-	 * @param containerViewId Id контейнера
+	 * @param activity activity
+	 * @param baseFragment fragment that will be run
+	 * @param containerViewId id of container that holds fragment
 	 */
 	void runFragmentWithAnimation(FragmentActivity activity, BaseFragment baseFragment, @IdRes int containerViewId);
 
 	/**
-	 * Запускаем фрагмент
+	 * Run fragment.
 	 *
-	 * @param activity Activity
-	 * @param fragment Fragment, который необходимо запустить
-	 * @param containerViewId Id контейнера
+	 * @param activity activity
+	 * @param fragment fragment that will be tun
+	 * @param containerViewId id of container that holds fragment
 	 */
 	void runBankexFragment(FragmentActivity activity, BaseFragment fragment, @IdRes int containerViewId);
 }

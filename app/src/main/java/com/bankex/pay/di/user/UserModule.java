@@ -3,9 +3,7 @@ package com.bankex.pay.di.user;
 import dagger.Module;
 
 /**
- * Модуль логинной зоны
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Module for user part of application (after login).
  */
 @Module
 public class UserModule {

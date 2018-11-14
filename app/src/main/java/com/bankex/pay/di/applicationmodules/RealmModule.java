@@ -1,4 +1,4 @@
-package com.bankex.pay.di.module;
+package com.bankex.pay.di.applicationmodules;
 
 import com.bankex.pay.data.realm.DefaultRealmService;
 import com.bankex.pay.data.realm.IRealmService;
@@ -14,9 +14,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Модуль представления зависимостей Realm
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Realm module.
  */
 @Module
 public class RealmModule {

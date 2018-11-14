@@ -11,13 +11,13 @@ import android.transition.TransitionSet;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 
 /**
- * Реализация {@link IBankexRouter}
- *
- * @author Gevork Safaryan on 11.09.2018.
+ * Am implementation of  {@link IBankexRouter}.
  */
 public class BankexRouter extends BaseRouter implements IBankexRouter {
 	private static final long MOVE_DEFAULT_TIME = 100;
 	private static final long FADE_DEFAULT_TIME = 100;
+
+	// TODO edit this method - duplication of runFragmentWithAnimation {@link BaseRouter}
 
 	/**
 	 * {@inheritDoc }
