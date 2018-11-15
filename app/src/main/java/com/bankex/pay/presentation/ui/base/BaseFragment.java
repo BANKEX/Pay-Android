@@ -28,11 +28,8 @@ import com.hannesdorfmann.fragmentargs.FragmentArgs;
  * - show message Toast;
  * - return String bt its` resId.
  */
-public abstract class BaseFragment /*<, P extends Presenter>*/ extends MvpAppCompatFragment {
+public abstract class BaseFragment extends MvpAppCompatFragment {
 	protected Unbinder sBinder;
-
-	//@Inject
-	//protected P mPresenter;
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
