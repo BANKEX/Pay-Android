@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -42,8 +40,6 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 
 	@BindString(R.string.add_contact_title) String title;
 
-	private Unbinder mBinder;
-
 	@ProvidePresenter
 	public AddContactPresenter providePresenter() {
 		return mAddContactPresenter;
@@ -61,19 +57,12 @@ public class AddContactFragment extends BaseFragment implements IAddContactView 
 
 	@Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 			@Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_add_contact, container, false);
-		mBinder = ButterKnife.bind(this, view);
-		return view;
+		return setAndBindContentView(inflater, container, R.layout.fragment_add_contact);
 	}
 
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initToolbar();
-	}
-
-	@Override public void onDestroyView() {
-		super.onDestroyView();
-		mBinder.unbind();
 	}
 
 	@Override public void onDestroy() {

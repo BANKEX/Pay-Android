@@ -1,16 +1,24 @@
 package com.bankex.pay.presentation.ui.base;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.bankex.pay.R;
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
 
 /**
  * Base fragment for application.
@@ -21,6 +29,33 @@ import com.bankex.pay.R;
  * - return String bt its` resId.
  */
 public abstract class BaseFragment extends MvpAppCompatFragment {
+	protected Unbinder sBinder;
+
+	@Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		FragmentArgs.inject(this);
+	}
+
+	@Override public void onDestroyView() {
+		super.onDestroyView();
+		if (this.sBinder != null) {
+			this.sBinder.unbind();
+		}
+	}
+
+	/**
+	 * Method to set content view and create ButterKnife binding.
+	 *
+	 * @param inflater LayoutInflater
+	 * @param container ViewGroup
+	 * @param layoutResId layout resource id to inflate
+	 * @return Inflated view
+	 */
+	protected final View setAndBindContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @LayoutRes int layoutResId) {
+		View view = inflater.inflate(layoutResId, container, false);
+		sBinder = ButterKnife.bind(this, view);
+		return view;
+	}
 
 	/**
 	 * Method to return bottom navigation or null.

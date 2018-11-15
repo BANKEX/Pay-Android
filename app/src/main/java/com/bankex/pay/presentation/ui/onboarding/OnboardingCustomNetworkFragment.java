@@ -15,10 +15,6 @@ import com.bankex.pay.presentation.ui.base.BaseFragment;
  */
 public class OnboardingCustomNetworkFragment extends BaseFragment {
 
-	public static OnboardingCustomNetworkFragment newInstance() {
-		return new OnboardingCustomNetworkFragment();
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		OnboardingInjector.getOnboardingComponent().inject(this);
@@ -29,11 +25,6 @@ public class OnboardingCustomNetworkFragment extends BaseFragment {
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.onboarding_custom_network, container, false);
-	}
-
-	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
 	}
 
 	@Override

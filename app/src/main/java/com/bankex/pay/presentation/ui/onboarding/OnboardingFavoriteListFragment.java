@@ -15,10 +15,6 @@ import com.bankex.pay.presentation.ui.base.BaseFragment;
  */
 public class OnboardingFavoriteListFragment extends BaseFragment {
 
-	public static OnboardingFavoriteListFragment newInstance() {
-		return new OnboardingFavoriteListFragment();
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		OnboardingInjector.getOnboardingComponent().inject(this);

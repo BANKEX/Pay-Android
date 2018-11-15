@@ -2,13 +2,13 @@ package com.bankex.pay.presentation.navigation.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.navigation.base.BaseRouter;
 import com.bankex.pay.presentation.navigation.contacts.IContactsRouter;
-import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.contacts.ContactsFragment;
+import com.bankex.pay.presentation.ui.home.SettingsFragment;
+import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.importorcreatewallet.ImportOrCreateActivity;
 import com.bankex.pay.presentation.ui.transactionhistory.TransactionHistoryFragment;
 
@@ -21,8 +21,8 @@ public class MainRouter extends BaseRouter implements IMainRouter {
 	 * {@inheritDoc }
 	 */
 	@Override
-	public void goToWalletTab(FragmentActivity activity, BaseFragment fragment) {
-		runFragmentWithAnimation(activity, fragment, R.id.fragment_container);
+	public void goToWalletTab(FragmentActivity activity) {
+		runFragmentWithAnimation(activity, new WalletFragment(), R.id.fragment_container);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class MainRouter extends BaseRouter implements IMainRouter {
 	 */
 	@Override
 	public void goToHistoryTab(FragmentActivity activity) {
-		runFragmentWithAnimation(activity, TransactionHistoryFragment.newInstance(), R.id.fragment_container);
+		runFragmentWithAnimation(activity, new TransactionHistoryFragment(), R.id.fragment_container);
 	}
 
 	/**
@@ -38,15 +38,15 @@ public class MainRouter extends BaseRouter implements IMainRouter {
 	 */
 	@Override
 	public void goToContactsTab(FragmentActivity activity) {
-		runFragmentWithAnimation(activity, ContactsFragment.newInstance(), R.id.fragment_container);
+		runFragmentWithAnimation(activity, new ContactsFragment(), R.id.fragment_container);
 	}
 
 	/**
 	 * {@inheritDoc }
 	 */
 	@Override
-	public void goToSettingsTab(FragmentActivity activity, Fragment fragment) {
-		runFragmentWithAnimation(activity, fragment, R.id.fragment_container);
+	public void goToSettingsTab(FragmentActivity activity) {
+		runFragmentWithAnimation(activity, new SettingsFragment(), R.id.fragment_container);
 	}
 
 	/**

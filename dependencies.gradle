@@ -65,7 +65,7 @@ ext {
   //region helpers
   BUTTER_KNIFE_VERSION        = '9.0.0-rc1'
   FRAGMNETARGS_VERSION        = '3.0.2'
-
+  rxbindingVersion            = '1.0.1'
   //end region
 
   androidSupport = [
@@ -158,6 +158,7 @@ ext {
       // helpers region
       butterKnife           : "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION",
       butterKnifeProcessor  : "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION",
+      rxbinding             : "com.jakewharton.rxbinding:rxbinding:$rxbindingVersion",
       //end region
   ]
 }

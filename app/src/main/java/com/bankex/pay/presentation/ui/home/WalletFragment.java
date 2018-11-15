@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.BuildConfig;
@@ -42,13 +44,10 @@ public class WalletFragment extends BaseFragment implements IWalletView {
 	@Inject
 	IAnalyticsManager mAnalyticsManager;
 
-	private Button mImportOrCreateButton;
-	private RecyclerView mRecyclerView;
-	private WalletAdapter mWalletAdapter;
+	@BindView(R.id.create_button) Button mImportOrCreateButton;
+	@BindView(R.id.wallet_recycler_view) RecyclerView mRecyclerView;
 
-	public static WalletFragment newInstance() {
-		return new WalletFragment();
-	}
+	private WalletAdapter mWalletAdapter;
 
 	@ProvidePresenter
 	public WalletPresenter provideWalletPresenter() {
@@ -64,14 +63,14 @@ public class WalletFragment extends BaseFragment implements IWalletView {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_wallet, container, false);
+		return setAndBindContentView(inflater, container, R.layout.fragment_wallet);
 	}
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
-		setAdapterParameters(view);
+		mImportOrCreateButton.setVisibility(BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
+		setAdapterParameters();
 	}
 
 	@Override
@@ -111,21 +110,14 @@ public class WalletFragment extends BaseFragment implements IWalletView {
 		mWalletAdapter.setItems(baseBankexModelList);
 	}
 
-	private void initViews(View view) {
-		mImportOrCreateButton = view.findViewById(R.id.create_button);
-		mRecyclerView = view.findViewById(R.id.wallet_recycler_view);
-
-		mImportOrCreateButton.setVisibility(BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
-		mImportOrCreateButton.setOnClickListener(this::onClick);
+	@OnClick(R.id.create_button)
+	public void onCreateButtonClicked() {
+		mRouter.openImportOrCreate(getContext());
 	}
 
-	private void setAdapterParameters(View view) {
+	private void setAdapterParameters() {
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 		mWalletAdapter = new WalletAdapter(getActivity(), mRouter);
 		mRecyclerView.setAdapter(mWalletAdapter);
-	}
-
-	private void onClick(View view) {
-		mRouter.openImportOrCreate(getContext());
 	}
 }

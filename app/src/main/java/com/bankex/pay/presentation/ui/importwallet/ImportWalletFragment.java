@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.BindView;
 import com.bankex.pay.R;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
 import com.bankex.pay.presentation.ui.importwallet.adapter.ImportWalletFragmentPagerAdapter;
@@ -17,48 +18,30 @@ import com.bankex.pay.presentation.ui.importwallet.adapter.ImportWalletFragmentP
  * View for import wallet screen.
  */
 public class ImportWalletFragment extends BaseFragment {
-	private ViewPager mViewPager;
-	private TabLayout mTabLayout;
-
-	public static ImportWalletFragment newInstance() {
-		return new ImportWalletFragment();
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+	@BindView(R.id.import_wallet_view_pager) ViewPager mViewPager;
+	@BindView(R.id.import_wallet_tab_layout) TabLayout mTabLayout;
+	@BindView(R.id.add_contact_toolbar) Toolbar mToolbar;
 
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_import_wallet, container, false);
+		return setAndBindContentView(inflater, container, R.layout.fragment_import_wallet);
 	}
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
+		initViews();
+		initToolbar();
 	}
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
-
-	private void initViews(View view) {
-		mViewPager = view.findViewById(R.id.import_wallet_view_pager);
-		mTabLayout = view.findViewById(R.id.import_wallet_tab_layout);
-
+	private void initViews() {
 		mViewPager.setAdapter(new ImportWalletFragmentPagerAdapter(getChildFragmentManager(), getContext()));
 		mTabLayout.setupWithViewPager(mViewPager);
-
-		initToolbar(view);
 	}
 
-	private void initToolbar(View view) {
-		Toolbar toolbar = view.findViewById(R.id.add_contact_toolbar);
-		toolbar.setTitle(getContext().getString(R.string.import_wallet));
-		toolbar.setNavigationIcon(getContext().getDrawable(R.drawable.ic_arrow_left_black_24dp));
+	private void initToolbar() {
+		mToolbar.setTitle(string(R.string.import_wallet));
+		mToolbar.setNavigationIcon(R.drawable.ic_arrow_left_black_24dp);
 	}
 }

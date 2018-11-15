@@ -8,9 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -39,11 +40,11 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 	private static final int PERMISSION_CAMERA = 123;
 	private static final int QR_SCANNER_REQUEST_CODE = 147;
 
-	private EditText mPrivateKeyEditText;
-	private EditText mWalletNameEditText;
-	private Button mPasteButton;
-	private Button mImportButton;
-	private View mQrButton;
+	@BindView(R.id.private_key_edit_text) EditText mPrivateKeyEditText;
+	@BindView(R.id.wallet_name_edit_text) EditText mWalletNameEditText;
+	@BindView(R.id.paste_button) Button mPasteButton;
+	@BindView(R.id.qr_button) View mQrButton;
+	@BindView(R.id.import_button) Button mImportButton;
 
 	@Inject
 	@InjectPresenter
@@ -67,13 +68,12 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_import_wallet_private_key, container, false);
+		return setAndBindContentView(inflater, container, R.layout.fragment_import_wallet_private_key);
 	}
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
 	}
 
 	@Override
@@ -102,8 +102,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		switch (requestCode) {
 			case PERMISSION_CAMERA:
-				if (grantResults.length > 0
-						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 					startScanQR();
 				}
 		}
@@ -120,27 +119,39 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 		Toast.makeText(getActivity(), "bad", Toast.LENGTH_SHORT).show();
 	}
 
-	private void initViews(View view) {
-		mPrivateKeyEditText = view.findViewById(R.id.private_key_edit_text);
-		mWalletNameEditText = view.findViewById(R.id.wallet_name_edit_text);
-		mPasteButton = view.findViewById(R.id.paste_button);
-		mQrButton = view.findViewById(R.id.qr_button);
-		mImportButton = view.findViewById(R.id.import_button);
+	@OnTextChanged({ R.id.private_key_edit_text, R.id.wallet_name_edit_text })
+	public void afterTextChanged() {
+		setImportButtonEnable(
+				mPrivateKeyEditText.getText().toString(),
+				mWalletNameEditText.getText().toString());
+	}
 
-		mPrivateKeyEditText.addTextChangedListener(getPrivateKeyTextChangedListener());
-		mWalletNameEditText.addTextChangedListener(getWalletNameTextChangedListener());
-		mPasteButton.setOnClickListener(getPasteButtonClickListener());
-		mQrButton.setOnClickListener(getQrButtonClickListener());
-		mImportButton.setOnClickListener(getImportButtonClickListener());
+	@OnClick(R.id.paste_button)
+	public void onPasteButtonClicked() {
+		if (getActivity() != null) {
+			IShareDataUtils shareDataUtils = new ShareDataUtils();
+			CharSequence sequenceFromClipboard = shareDataUtils.getCharSequenceFromClipboard(getActivity());
+			mPrivateKeyEditText.setText(sequenceFromClipboard);
+		}
+	}
+
+	@OnClick(R.id.import_button)
+	public void onImportButtonClicked() {
+		String privateKey = mPrivateKeyEditText.getText().toString();
+		String walletName = mWalletNameEditText.getText().toString();
+		mImportPrivateKeyPresenter.magic(privateKey, walletName);
+	}
+
+	@OnClick(R.id.qr_button)
+	public void onQRButtonClicked() {
+		checkCameraPermission();
 	}
 
 	private void checkCameraPermission() {
 		FragmentActivity activity = getActivity();
 		if (activity != null) {
-			if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA)
-					!= PackageManager.PERMISSION_GRANTED) {
-				requestPermissions(new String[] { Manifest.permission.CAMERA },
-						PERMISSION_CAMERA);
+			if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+				requestPermissions(new String[] { Manifest.permission.CAMERA }, PERMISSION_CAMERA);
 			} else {
 				startScanQR();
 			}
@@ -152,74 +163,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 		startActivityForResult(intent, QR_SCANNER_REQUEST_CODE);
 	}
 
-	private TextWatcher getPrivateKeyTextChangedListener() {
-		return new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				//do nothing
-			}
-
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				//do nothing
-			}
-
-			@Override
-			public void afterTextChanged(Editable editable) {
-				if (!TextUtils.isEmpty(editable.toString()) &&
-						!TextUtils.isEmpty(mWalletNameEditText.getText().toString())) {
-					mImportButton.setEnabled(true);
-				} else {
-					mImportButton.setEnabled(false);
-				}
-			}
-		};
-	}
-
-	private TextWatcher getWalletNameTextChangedListener() {
-		return new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				//do nothing
-			}
-
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				//do nothing
-			}
-
-			@Override
-			public void afterTextChanged(Editable editable) {
-				if (!TextUtils.isEmpty(editable.toString()) &&
-						!TextUtils.isEmpty(mPrivateKeyEditText.getText().toString())) {
-					mImportButton.setEnabled(true);
-				} else {
-					mImportButton.setEnabled(false);
-				}
-			}
-		};
-	}
-
-	private View.OnClickListener getPasteButtonClickListener() {
-		return view -> {
-			FragmentActivity activity = getActivity();
-			if (activity != null) {
-				IShareDataUtils shareDataUtils = new ShareDataUtils();
-				CharSequence sequenceFromClipboard = shareDataUtils.getCharSequenceFromClipboard(activity);
-				mPrivateKeyEditText.setText(sequenceFromClipboard);
-			}
-		};
-	}
-
-	private View.OnClickListener getQrButtonClickListener() {
-		return view -> checkCameraPermission();
-	}
-
-	private View.OnClickListener getImportButtonClickListener() {
-		return view -> {
-			String privateKey = mPrivateKeyEditText.getText().toString();
-			String walletName = mWalletNameEditText.getText().toString();
-			mImportPrivateKeyPresenter.magic(privateKey, walletName);
-		};
+	private void setImportButtonEnable(String passPhraseText, String walletNameText) {
+		mImportButton.setEnabled((!TextUtils.isEmpty(passPhraseText) && !TextUtils.isEmpty(walletNameText)));
 	}
 }
