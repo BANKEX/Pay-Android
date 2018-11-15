@@ -46,6 +46,14 @@ public abstract class BaseFragment /*<, P extends Presenter>*/ extends MvpAppCom
 		}
 	}
 
+	/**
+	 * Method to set content view and create ButterKnife binding.
+	 *
+	 * @param inflater LayoutInflater
+	 * @param container ViewGroup
+	 * @param layoutResId layout resource id to inflate
+	 * @return Inflated view
+	 */
 	protected final View setAndBindContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @LayoutRes int layoutResId) {
 		View view = inflater.inflate(layoutResId, container, false);
 		sBinder = ButterKnife.bind(this, view);
