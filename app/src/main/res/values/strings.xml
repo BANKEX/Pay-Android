@@ -10,5 +10,5 @@
     <string name="password_store_rep_migration_error">Could not process passwords</string>
 
     <!-- Unsorted strings -->
-    <string name="receive_activity_"
+    <string name="receive_activity_token_address_title">Token address</string>
 </resources>

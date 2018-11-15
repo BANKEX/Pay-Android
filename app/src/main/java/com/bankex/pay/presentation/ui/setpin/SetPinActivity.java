@@ -77,6 +77,5 @@ public class SetPinActivity extends BaseActivity implements ISetPinView {
 
 	@Override
 	public void setSensorStateMessage(@StringRes int messageRes) {
-
 	}
 }

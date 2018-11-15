@@ -30,7 +30,7 @@ public class MainRouter extends BaseRouter implements IMainRouter {
 	 */
 	@Override
 	public void goToHistoryTab(FragmentActivity activity) {
-		runFragmentWithAnimation(activity, TransactionHistoryFragment.newInstance(), R.id.fragment_container);
+		runFragmentWithAnimation(activity, new TransactionHistoryFragment(), R.id.fragment_container);
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class MainRouter extends BaseRouter implements IMainRouter {
 	 */
 	@Override
 	public void goToContactsTab(FragmentActivity activity) {
-		runFragmentWithAnimation(activity, ContactsFragment.newInstance(), R.id.fragment_container);
+		runFragmentWithAnimation(activity, new ContactsFragment(), R.id.fragment_container);
 	}
 
 	/**

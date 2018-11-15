@@ -1,4 +1,4 @@
-package com.bankex.pay.presentation.ui.receive;
+package com.bankex.pay.presentation.ui.receiveaddress;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,13 +19,12 @@ import net.glxn.qrgen.android.QRCode;
 /**
  * View for receive address.
  */
-public class ReceiveActivity extends BaseActivity implements IReceiveView {
+public class ReceiveAddressActivity extends BaseActivity implements IReceiveAddressView {
 	@BindView(R.id.add_contact_toolbar) Toolbar mToolbar;
-	@BindView(R.id.copy_button) Button mCopyButton;
 	@BindView(R.id.qr_image_view) ImageView mQrImageView;
 
 	public static Intent newIntent(Context context) {
-		return new Intent(context, ReceiveActivity.class);
+		return new Intent(context, ReceiveAddressActivity.class);
 	}
 
 	@Override
@@ -43,7 +41,10 @@ public class ReceiveActivity extends BaseActivity implements IReceiveView {
 	public void onCopyButtonClicked() {
 		// TODO: 30/09/2018 Реализовать подстановку валидных данных
 		IShareDataUtils shareDataUtils = new ShareDataUtils();
-		shareDataUtils.copyDataToClipboard(this, "адрес токена", R.string.receive_toast_text);
+		shareDataUtils.copyDataToClipboard(
+				this,
+				string(R.string.receive_activity_token_address_title),
+				R.string.receive_toast_text);
 	}
 
 	private void setToolbarParameters() {
@@ -71,7 +72,7 @@ public class ReceiveActivity extends BaseActivity implements IReceiveView {
 	private void shareActionSelected() {
 		// TODO: 30/09/2018 Реализовать подстановку валидных данных
 		IShareDataUtils shareDataUtils = new ShareDataUtils();
-		shareDataUtils.shareDataLikeText(this, "адрес токена");
+		shareDataUtils.shareDataLikeText(this, string(R.string.receive_activity_token_address_title));
 	}
 
 	private void setQrParameters() {

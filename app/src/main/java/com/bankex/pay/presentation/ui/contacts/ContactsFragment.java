@@ -51,10 +51,6 @@ public class ContactsFragment extends BaseFragment implements IContactsView, Con
 		return mContactsPresenter;
 	}
 
-	public static ContactsFragment newInstance() {
-		return new ContactsFragment();
-	}
-
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		ContactsInjector.getContactsComponent().inject(this);
