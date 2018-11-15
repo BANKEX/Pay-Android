@@ -7,6 +7,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.View;
 import android.widget.Toast;
+import butterknife.Unbinder;
 import com.bankex.pay.BuildConfig;
 import com.bankex.pay.R;
 import com.bankex.pay.di.settings.SettingsInjector;
@@ -21,9 +22,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 	@Inject
 	ISettingsRouter mSettingsRouter;
 
-	public static SettingsFragment newInstance() {
-		return new SettingsFragment();
-	}
+	private Unbinder mBinder;
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {

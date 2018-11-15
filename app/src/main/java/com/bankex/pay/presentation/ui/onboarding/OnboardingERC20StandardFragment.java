@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.bankex.pay.R;
 import com.bankex.pay.di.onboarding.OnboardingInjector;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
@@ -15,11 +14,6 @@ import com.bankex.pay.presentation.ui.base.BaseFragment;
  * Onboarding view.
  */
 public class OnboardingERC20StandardFragment extends BaseFragment {
-	private TextView mText;
-
-	public static OnboardingERC20StandardFragment newInstance() {
-		return new OnboardingERC20StandardFragment();
-	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,18 +28,8 @@ public class OnboardingERC20StandardFragment extends BaseFragment {
 	}
 
 	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
-	}
-
-	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		OnboardingInjector.clearOnboardingComponent();
-	}
-
-	private void initViews(View view) {
-		mText = view.findViewById(R.id.onboarding_talk_to_us_body_text_view);
 	}
 }

@@ -12,7 +12,6 @@ import com.bankex.pay.di.mainscreen.MainScreenInjector;
 import com.bankex.pay.presentation.navigation.home.IMainRouter;
 import com.bankex.pay.presentation.presenter.MainScreenPresenter;
 import com.bankex.pay.presentation.ui.base.BaseActivity;
-import com.bankex.pay.presentation.ui.home.SettingsFragment;
 import com.bankex.pay.presentation.ui.home.WalletFragment;
 import com.bankex.pay.presentation.ui.lockscreen.LockScreenActivity;
 import com.bankex.pay.presentation.ui.onboarding.OnboardingActivity;
@@ -39,7 +38,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 			case R.id.navigation_wallet:
 				hideKeyboard();
 				if (!item.isChecked()) {
-					mRouter.goToWalletTab(this, WalletFragment.newInstance());
+					mRouter.goToWalletTab(this);
 				}
 				return true;
 			case R.id.navigation_history:
@@ -57,7 +56,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 			case R.id.navigation_settings:
 				hideKeyboard();
 				if (!item.isChecked()) {
-					mRouter.goToSettingsTab(this, SettingsFragment.newInstance());
+					mRouter.goToSettingsTab(this);
 				}
 				return true;
 		}
@@ -78,7 +77,7 @@ public class MainScreenActivity extends BaseActivity implements IMainScreenView 
 			Log.d("Firebase", "token " + FirebaseInstanceId.getInstance().getToken());
 		}
 		initViews();
-		runFragment(WalletFragment.newInstance());
+		runFragment(new WalletFragment());
 		checkOnboardingStatus();
 	}
 

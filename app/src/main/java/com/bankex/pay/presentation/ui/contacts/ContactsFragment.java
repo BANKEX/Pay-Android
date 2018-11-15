@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -47,7 +45,6 @@ public class ContactsFragment extends BaseFragment implements IContactsView, Con
 	@BindString(R.string.contacts_screen_title) String title;
 
 	private ContactsAdapter mContactsAdapter;
-	private Unbinder mBinder;
 
 	@ProvidePresenter
 	public ContactsPresenter providePresenter() {
@@ -66,9 +63,7 @@ public class ContactsFragment extends BaseFragment implements IContactsView, Con
 
 	@Nullable @Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_contacts_list, container, false);
-		mBinder = ButterKnife.bind(this, view);
-		return view;
+		return setAndBindContentView(inflater, container, R.layout.fragment_contacts_list);
 	}
 
 	@Override
@@ -76,12 +71,6 @@ public class ContactsFragment extends BaseFragment implements IContactsView, Con
 		super.onViewCreated(view, savedInstanceState);
 		mToolbar.setTitle(title);
 		initRecycler();
-	}
-
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		mBinder.unbind();
 	}
 
 	@Override

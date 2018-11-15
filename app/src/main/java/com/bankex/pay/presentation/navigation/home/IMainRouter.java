@@ -14,9 +14,8 @@ public interface IMainRouter {
 	 * Method to run wallet tab.
 	 *
 	 * @param activity activity that hold fragment
-	 * @param fragment fragment first goes into activity container
 	 */
-	void goToWalletTab(FragmentActivity activity, BaseFragment fragment);
+	void goToWalletTab(FragmentActivity activity);
 
 	/**
 	 * Method to run transactions history tab.
@@ -36,9 +35,8 @@ public interface IMainRouter {
 	 * Method to open settings tab.
 	 *
 	 * @param activity activity that hold fragment
-	 * @param fragment fragment first goes into activity container
 	 */
-	void goToSettingsTab(FragmentActivity activity, Fragment fragment);
+	void goToSettingsTab(FragmentActivity activity);
 
 	/**
 	 * Method to open import or create wallet screen.

@@ -8,4 +8,7 @@
 
     <!-- Strings from utils, navigators etc. -->
     <string name="password_store_rep_migration_error">Could not process passwords</string>
+
+    <!-- Unsorted strings -->
+    <string name="receive_activity_"
 </resources>

@@ -157,5 +157,7 @@ dependencies {
 
   implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
   annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
+
+  implementation 'com.jakewharton.rxbinding:rxbinding:1.0.1'
 }
 

@@ -27,9 +27,9 @@ public class OnboardingActivity extends AppIntro {
 		OnboardingInjector.getOnboardingComponent().inject(this);
 		super.onCreate(savedInstanceState);
 		setOnboardingParameters();
-		addSlide(OnboardingCustomNetworkFragment.newInstance());
-		addSlide(OnboardingFavoriteListFragment.newInstance());
-		addSlide(OnboardingERC20StandardFragment.newInstance());
+		addSlide(new OnboardingCustomNetworkFragment());
+		addSlide(new OnboardingFavoriteListFragment());
+		addSlide(new OnboardingERC20StandardFragment());
 	}
 
 	@Override

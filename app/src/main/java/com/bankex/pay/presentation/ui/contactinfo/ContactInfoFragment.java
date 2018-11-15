@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bankex.pay.R;
@@ -20,7 +18,6 @@ import com.bankex.pay.domain.model.ContactModel;
 import com.bankex.pay.presentation.navigation.contacts.ContactsRouter;
 import com.bankex.pay.presentation.presenter.ContactInfoPresenter;
 import com.bankex.pay.presentation.ui.base.BaseFragment;
-import com.hannesdorfmann.fragmentargs.FragmentArgs;
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import javax.inject.Inject;
@@ -45,8 +42,6 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 	@BindView(R.id.transactions_empty_view) TextView mEmptyTransactions;
 	@BindView(R.id.recycler_transactions_list) RecyclerView mTransactionHistoryList;
 
-	private Unbinder mBinder;
-
 	@ProvidePresenter
 	public ContactInfoPresenter providePresenter() {
 		return mContactInfoPresenter;
@@ -54,16 +49,13 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		ContactInfoInjector.getContactsComponent().inject(this);
-		FragmentArgs.inject(this);
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
 
 	@Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 			@Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_contact_info, container, false);
-		mBinder = ButterKnife.bind(this, view);
-		return view;
+		return setAndBindContentView(inflater, container, R.layout.fragment_contact_info);
 	}
 
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -72,11 +64,6 @@ public class ContactInfoFragment extends BaseFragment implements IContactInfoVie
 		setData(mContactInfoPresenter.setContactInfo(contactId));
 		showContactsList(false);
 		showEmptyView(true);
-	}
-
-	@Override public void onDestroyView() {
-		super.onDestroyView();
-		mBinder.unbind();
 	}
 
 	@Override public void onDestroy() {
