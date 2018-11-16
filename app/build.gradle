@@ -10,8 +10,8 @@ repositories {
 }
 
 android {
-  compileSdkVersion compileSdk
-  buildToolsVersion buildTools
+  compileSdkVersion versions.compileSdk
+  buildToolsVersion versions.buildTools
 
   signingConfigs {
     debug {
@@ -37,8 +37,8 @@ android {
 
   defaultConfig {
     applicationId "com.bankex.pay"
-    minSdkVersion minSdk
-    targetSdkVersion targetSdk
+    minSdkVersion versions.minSdk
+    targetSdkVersion versions.targetSdk
 
     versionCode System.getenv("BUILD_NUMBER") as Integer ?: 0
     versionName computeVersionName(versionCode)
@@ -91,10 +91,10 @@ android {
 }
 
 def computeVersionName(int versionCode) {
-  if (hotfix > 0) {
-    return String.format('%d.%d.%d', major, minor, hotfix)
+  if (versions.hotfix > 0) {
+    return String.format('%d.%d.%d', versions.major, versions.minor, versions.hotfix)
   } else {
-    return String.format('%d.%d', major, minor)
+    return String.format('%d.%d', versions.major, versions.minor)
   }
 }
 
@@ -104,49 +104,55 @@ dependencies {
 
   implementation androidSupport.appcompatV7
   implementation androidSupport.design
-  implementation androidSupport.constraintLayout
   implementation androidSupport.preference
+  implementation androidSupport.constraintLayout
 
-  implementation libs.firebase
-  implementation libs.firebaseDynamicLink
-  implementation libs.firebaseCloudMessaging
-  implementation libs.firebaseAppIndexing
-  implementation libs.dagger
-  annotationProcessor libs.daggerCompiler
-  annotationProcessor libs.daggerProcessor
-  implementation libs.moxy
-  implementation libs.moxyAppCompat
-  annotationProcessor libs.moxyCompiler
-  implementation libs.rxJava2
-  implementation libs.rxAndroid2
-  implementation libs.retrofit
-  implementation libs.retrofitConverter
-  implementation libs.retrofitRxAdapter
-  implementation libs.okHttpInterceptor
-  implementation libs.appintro
-  implementation libs.adapterDelegates
-  implementation libs.guava
-  implementation libs.fingetprint
-  implementation libs.qr
-  implementation libs.qrGenerator
-  implementation libs.butterKnife
-  annotationProcessor libs.butterKnifeProcessor
-  implementation libs.web3j
-  implementation libs.ethereum
-  implementation libs.bip32
-  implementation libs.bip39
-  implementation libs.bip44
-  implementation libs.fragmentArgs
-  annotationProcessor libs.fragmentArgsProcessor
-  implementation(libs.fabric) {
+  implementation firebaseLibs.firebase
+  implementation firebaseLibs.firebaseDynamicLink
+  implementation firebaseLibs.firebaseCloudMessaging
+  implementation firebaseLibs.firebaseAppIndexing
+
+  implementation walletLibs.web3j
+  implementation walletLibs.ethereum
+  implementation walletLibs.bip32
+  implementation walletLibs.bip39
+  implementation walletLibs.bip44
+
+  implementation(helperLibs.fabric) {
     transitive = true
   }
+
+  implementation helperLibs.dagger2
+  annotationProcessor helperLibs.dagger2Compiler
+  annotationProcessor helperLibs.dagger2Processor
+
+  implementation helperLibs.moxy
+  implementation helperLibs.moxyAppCompat
+  annotationProcessor helperLibs.moxyCompiler
+
+  implementation helperLibs.rxJava2
+  implementation helperLibs.rxAndroid2
+  implementation helperLibs.retrofit
+  implementation helperLibs.retrofitConverter
+  implementation helperLibs.retrofitRxAdapter
+  implementation helperLibs.okHttpInterceptor
+
+  implementation helperLibs.appintro
+  implementation helperLibs.adapterDelegates
+  implementation helperLibs.butterKnife
+  annotationProcessor helperLibs.butterKnifeProcessor
+  implementation helperLibs.fragmentArgs
+  annotationProcessor helperLibs.fragmentArgsProcessor
+  implementation helperLibs.fingetprint
+  implementation helperLibs.guava
+  implementation helperLibs.qrCodeScanner
+  implementation helperLibs.qrGenerator
 
   testImplementation testingLibraries.junit
   testImplementation testingLibraries.mockito
   testImplementation testingLibraries.robolectric
   testImplementation testingLibraries.hamcrest
   androidTestImplementation(testingLibraries.mockito) { exclude group: 'net.bytebuddy' }
-  androidTestImplementation testingLibraries.espresso
   androidTestImplementation testingLibraries.testRunner
+  androidTestImplementation testingLibraries.espresso
 }
