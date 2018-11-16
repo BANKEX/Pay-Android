@@ -1,20 +1,18 @@
-// project dependencies
-
 ext {
-  // region android versions
+  androidPluginVersion = '3.2.1'
+  fabricPluginVersion = '1.+'
+  realmPluginVersion = '5.7.0'
+  googleServicesPluginVersion = "4.0.0"
+
   COMPILE_SDK_VERSION   = 28
   TARGET_SDK_VERSION = 28
   MIN_SDK_VERSION = 23
   BUILD_TOOLS_VERSION = '28.0.3'
-  // endregion
 
-  //region version
   VERSION_MAJOR = 1
   VERSION_MINOR = 0
   VERSION_HOTFIX = 0
-  // endregion
 
-  // region main lib versions
   DAGGER_VERSION              = '2.14.1'
   MOXY_VERSION                = '1.5.3'
   SUPPORT_VERSION             = '28.0.0'
@@ -29,44 +27,34 @@ ext {
   GUAVA_VERSION               = '23.4'
   JODA_TIME_ANDROID_VERSION   = '2.9.9.4'
   SEARCH_VIEW_VERSION         = '27.1.1.0.0'
-  LOTTIE_VERSION              = '2.5.4'
   CRASHLYTICS_VERSION         = '2.9.4'
   AMPLITUDE_VERSION           = '2.14.1'
   QR_VERSION                  = '1.9.8'
   QR_GENERATOR_VERSION        = '2.5.0'
   FP_VERSION                  = '0.9.0'
   JT_VERSION                  = '2.10'
-  // endregion
 
-  // region test lib versions
   JUNIT_VERSION               = '4.12'
   HAMCREST_VERSION            = '1.3'
   MOCKITO_VERSION             = '2.13.0'
   ROBOLECTRIC_VERSION         = '3.6.1'
   ESPRESSO_VERSION            = '3.0.1'
   TEST_RUNNER_VERSION         = '1.0.1'
-  // endregion
 
-  // region firebase
   FIREBASE_VERSION            = '16.0.1'
   FIREBASE_DYNAMIC_LINKS      = '16.0.1'
   FIREBASE_CLOUD_MESSANGING   = '17.1.0'
   FIREBASE_APP_INDEXING       = '16.0.1'
-  //endregion
 
-  // region wallet
   WEB3J_VERSION               = '3.3.1-android'
   ETHERUM_GETH_VERSION        = '1.7.3'
   BIP32_VERSION               = '0.0.9'
   BIP39_VERSION               = '0.1.9'
   BIP44_VERSION               = '0.0.3'
-  // end region
 
-  //region helpers
   BUTTER_KNIFE_VERSION        = '9.0.0-rc1'
   FRAGMNETARGS_VERSION        = '3.0.2'
   rxbindingVersion            = '1.0.1'
-  //end region
 
   androidSupport = [
       appcompatV7           : "com.android.support:appcompat-v7:$SUPPORT_VERSION",
@@ -74,91 +62,82 @@ ext {
       constraintLayout      : "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION",
       preference            : "com.android.support:preference-v7:$SUPPORT_VERSION",
 
-
-      // testing
       espresso              : "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION",
       testRunner            : "com.android.support.test:runner:$TEST_RUNNER_VERSION"
   ]
 
+//  gradlePlugins = [
+//      android             : "com.android.tools.build:gradle:${versions.androidGradlePlugin}",
+//      dexCount            : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:${versions.dexCountGradlePlugin}",
+//      playServices        : "com.google.gms:google-services:${versions.googlePlayServicesGradlePlugin}",
+//      gradleVersionsPlugin: "com.github.ben-manes:gradle-versions-plugin:${versions.gradleVersionsPlugin}",
+//      fabric              : "io.fabric.tools:gradle:${versions.fabricGradlePlugin}",
+//      jacoco              : "org.jacoco:org.jacoco.core:${versions.jacocoGradlePlugin}",
+//      heap                : "com.heapanalytics.android:heap-android-gradle:${versions.heapGradlePlugin}",
+//  ]
+
+  gradlePlugins = [
+      android       : "com.android.tools.build:gradle:$androidPluginVersion",
+      fabric        : "io.fabric.tools:gradle:$fabricPluginVersion",
+      realm         : "io.realm:realm-gradle-plugin:$realmPluginVersion",
+      googleServices: "com.google.gms:google-services:$googleServicesPluginVersion",
+  ]
+
   libs = [
-      // dagger
       dagger                : "com.google.dagger:dagger-android-support:$DAGGER_VERSION",
       daggerCompiler        : "com.google.dagger:dagger-compiler:$DAGGER_VERSION",
       daggerProcessor       : "com.google.dagger:dagger-android-processor:$DAGGER_VERSION",
 
-      // rxJava
       rxJava2               : "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION",
       rxAndroid2            : "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION",
 
-      //region "Moxy"
       moxy                  : "com.arello-mobile:moxy:$MOXY_VERSION",
       moxyAppCompat         : "com.arello-mobile:moxy-app-compat:$MOXY_VERSION",
       moxyCompiler          : "com.arello-mobile:moxy-compiler:$MOXY_VERSION",
-      //endregion
 
       retrofit              : "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION",
       retrofitConverter     : "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION",
       retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION",
       okHttpInterceptor     : "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION",
 
-      //Onboarding
       appintro              : "com.github.apl-devs:appintro:v$APPINTRO_VERSION",
 
-      //AdapterDelegates
       adapterDelegates      : "com.hannesdorfmann:adapterdelegates3:$ADAPTER_DELEGATES_VERSION",
 
-      //Guava
       guava                 : "com.google.guava:guava:$GUAVA_VERSION-android",
 
-      //SearchView
       searchView            : "com.lapism:searchview:$SEARCH_VIEW_VERSION",
 
-      //Fabric
       fabric                : "com.crashlytics.sdk.android:crashlytics:$CRASHLYTICS_VERSION@aar",
 
-      //Lottie
-      lottie                : "com.airbnb.android:lottie:$LOTTIE_VERSION",
-
-      //Amplitude
       amplitude             : "com.amplitude:android-sdk:$AMPLITUDE_VERSION",
 
-      //QR
       qr                    : "me.dm7.barcodescanner:zxing:$QR_VERSION",
       qrGenerator           : "com.github.kenglxn.QRGen:android:$QR_GENERATOR_VERSION",
 
-      //Preference
       preference            : "com.android.support:preference-v14:$SUPPORT_VERSION",
 
-      //FingerPrint
       fingetprint           : "com.elegion.littlefinger:littlefinger:$FP_VERSION",
       time                  : "joda-time:joda-time:2.10:$JT_VERSION",
 
-      // region testing
       junit                 : "junit:junit:$JUNIT_VERSION",
       hamcrest              : "org.hamcrest:hamcrest-library:$HAMCREST_VERSION",
       mockito               : "org.mockito:mockito-core:$MOCKITO_VERSION",
       robolectric           : "org.robolectric:robolectric:$ROBOLECTRIC_VERSION",
-      // endregion
 
-      // region firebase
       firebase              : "com.google.firebase:firebase-core:$FIREBASE_VERSION",
       firebaseDynamicLink   : "com.google.firebase:firebase-dynamic-links:$FIREBASE_DYNAMIC_LINKS",
       firebaseCloudMessaging: "com.google.firebase:firebase-messaging:$FIREBASE_CLOUD_MESSANGING",
       firebaseAppIndexing   : "com.google.firebase:firebase-appindexing:$FIREBASE_APP_INDEXING",
-      //endregion
 
-      // region wallet
       web3j                 : "org.web3j:core:$WEB3J_VERSION",
       ethereum              : "org.ethereum:geth:$ETHERUM_GETH_VERSION",
       bip32                 : "io.github.novacrypto:BIP32:$BIP32_VERSION",
       bip39                 : "io.github.novacrypto:BIP39:$BIP39_VERSION",
       bip44                 : "io.github.novacrypto:BIP44:$BIP44_VERSION",
-      // end region
 
-      // helpers region
       butterKnife           : "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION",
       butterKnifeProcessor  : "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION",
       rxbinding             : "com.jakewharton.rxbinding:rxbinding:$rxbindingVersion",
-      //end region
   ]
 }

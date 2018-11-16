@@ -1,17 +1,6 @@
+//apply from: 'dependencies.gradle'
 buildscript {
-  ext {
-    androidPluginVersion = '3.2.1'
-    fabricPluginVersion = '1.+'
-    realmPluginVersion = '5.7.0'
-    googleServicesPluginVersion = "4.0.0"
-
-    pluginLibs = [
-        android       : "com.android.tools.build:gradle:$androidPluginVersion",
-        fabric        : "io.fabric.tools:gradle:$fabricPluginVersion",
-        realm         : "io.realm:realm-gradle-plugin:$realmPluginVersion",
-        googleServices: "com.google.gms:google-services:$googleServicesPluginVersion",
-    ]
-  }
+  apply from: 'dependencies.gradle'
 
   repositories {
     google()
@@ -20,10 +9,10 @@ buildscript {
   }
 
   dependencies {
-    classpath pluginLibs.android
-    classpath pluginLibs.fabric
-    classpath pluginLibs.realm
-    classpath pluginLibs.googleServices
+    classpath gradlePlugins.android
+    classpath gradlePlugins.fabric
+    classpath gradlePlugins.realm
+    classpath gradlePlugins.googleServices
   }
 }
 
