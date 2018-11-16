@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply from: '../dependencies.gradle'
 apply plugin: 'io.fabric'
 apply plugin: 'realm-android'
 apply plugin: 'com.google.gms.google-services'
@@ -9,6 +8,9 @@ repositories {
 }
 
 android {
+  compileSdkVersion versions.compileSdk
+  buildToolsVersion versions.buildTools
+
   signingConfigs {
     debug {
       storeFile file('keystore/debug.jks')
@@ -31,13 +33,10 @@ android {
     abortOnError false
   }
 
-  compileSdkVersion COMPILE_SDK_VERSION
-  buildToolsVersion(BUILD_TOOLS_VERSION)
-
   defaultConfig {
     applicationId "com.bankex.pay"
-    minSdkVersion MIN_SDK_VERSION
-    targetSdkVersion TARGET_SDK_VERSION
+    minSdkVersion versions.minSdk
+    targetSdkVersion versions.targetSdk
 
     versionCode System.getenv("BUILD_NUMBER") as Integer ?: 0
     versionName computeVersionName(versionCode)
@@ -57,10 +56,9 @@ android {
       minifyEnabled false
       debuggable false
       zipAlignEnabled true
+
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
       buildConfigField "boolean", "AUTHORIZATION_ENABLED", "false"
-
       ext.betaDistributionReleaseNotesFilePath = 'release_notes.txt'
     }
 
@@ -68,11 +66,10 @@ android {
       applicationIdSuffix ".dev"
       minifyEnabled false
       debuggable true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
       signingConfig signingConfigs.debug
 
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
       buildConfigField "boolean", "AUTHORIZATION_ENABLED", "true"
-
       ext.betaDistributionReleaseNotesFilePath = 'release_notes.txt'
     }
   }
@@ -92,72 +89,68 @@ android {
 }
 
 def computeVersionName(int versionCode) {
-  if (VERSION_HOTFIX > 0) {
-    return String.format('%d.%d.%d', VERSION_MAJOR, VERSION_MINOR, VERSION_HOTFIX)
+  if (versions.hotfix > 0) {
+    return String.format('%d.%d.%d', versions.major, versions.minor, versions.hotfix)
   } else {
-    return String.format('%d.%d', VERSION_MAJOR, VERSION_MINOR)
+    return String.format('%d.%d', versions.major, versions.minor)
   }
 }
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation libs.firebase
-  implementation libs.firebaseDynamicLink
-  implementation libs.firebaseCloudMessaging
-  implementation libs.firebaseAppIndexing
+  implementation project(':tn')
 
   implementation androidSupport.appcompatV7
   implementation androidSupport.design
-  implementation androidSupport.constraintLayout
   implementation androidSupport.preference
+  implementation androidSupport.constraintLayout
 
-  implementation libs.dagger
-  annotationProcessor libs.daggerCompiler
-  annotationProcessor libs.daggerProcessor
+  implementation firebaseLibs.firebase
+  implementation firebaseLibs.firebaseDynamicLink
+  implementation firebaseLibs.firebaseCloudMessaging
+  implementation firebaseLibs.firebaseAppIndexing
 
-  implementation libs.moxy
-  implementation libs.moxyAppCompat
-  annotationProcessor libs.moxyCompiler
+  implementation walletLibs.web3j
+  implementation walletLibs.ethereum
+  implementation walletLibs.bip32
+  implementation walletLibs.bip39
+  implementation walletLibs.bip44
 
-  implementation libs.rxJava2
-  implementation libs.rxAndroid2
-  implementation libs.retrofit
-  implementation libs.retrofitConverter
-  implementation libs.retrofitRxAdapter
-  implementation libs.okHttpInterceptor
-  implementation libs.appintro
-  implementation libs.adapterDelegates
-  implementation libs.guava
-  implementation libs.fingetprint
-  implementation libs.qr
-  implementation libs.qrGenerator
-  implementation libs.butterKnife
-  annotationProcessor libs.butterKnifeProcessor
-
-  implementation(libs.fabric) {
+  implementation(helperLibs.fabric) {
     transitive = true
   }
-  implementation libs.preference
-  implementation libs.web3j
-  implementation libs.ethereum
-  implementation libs.bip32
-  implementation libs.bip39
-  implementation libs.bip44
 
-  testImplementation libs.junit
-  testImplementation libs.mockito
-  testImplementation libs.robolectric
-  testImplementation libs.hamcrest
-  androidTestImplementation(libs.mockito) { exclude group: 'net.bytebuddy' }
-  androidTestImplementation androidSupport.espresso
-  androidTestImplementation androidSupport.testRunner
-  androidTestImplementation 'junit:junit:4.12'
+  implementation helperLibs.dagger2
+  annotationProcessor helperLibs.dagger2Compiler
+  annotationProcessor helperLibs.dagger2Processor
 
-  implementation project(':tn')
+  implementation helperLibs.moxy
+  implementation helperLibs.moxyAppCompat
+  annotationProcessor helperLibs.moxyCompiler
 
-  implementation "com.hannesdorfmann.fragmentargs:annotation:$FRAGMNETARGS_VERSION"
-  annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$FRAGMNETARGS_VERSION"
+  implementation helperLibs.rxJava2
+  implementation helperLibs.rxAndroid2
+  implementation helperLibs.retrofit
+  implementation helperLibs.retrofitConverter
+  implementation helperLibs.retrofitRxAdapter
+  implementation helperLibs.okHttpInterceptor
 
-  implementation libs.rxbinding
+  implementation helperLibs.appintro
+  implementation helperLibs.adapterDelegates
+  implementation helperLibs.butterKnife
+  annotationProcessor helperLibs.butterKnifeProcessor
+  implementation helperLibs.fragmentArgs
+  annotationProcessor helperLibs.fragmentArgsProcessor
+  implementation helperLibs.fingetprint
+  implementation helperLibs.guava
+  implementation helperLibs.qrCodeScanner
+  implementation helperLibs.qrGenerator
+
+  testImplementation testingLibraries.junit
+  testImplementation testingLibraries.mockito
+  testImplementation testingLibraries.robolectric
+  testImplementation testingLibraries.hamcrest
+  androidTestImplementation(testingLibraries.mockito) { exclude group: 'net.bytebuddy' }
+  androidTestImplementation testingLibraries.testRunner
+  androidTestImplementation testingLibraries.espresso
 }
-
