@@ -1,4 +1,3 @@
-//apply from: 'dependencies.gradle'
 buildscript {
   apply from: 'dependencies.gradle'
 
@@ -12,7 +11,7 @@ buildscript {
     classpath gradlePlugins.android
     classpath gradlePlugins.fabric
     classpath gradlePlugins.realm
-    classpath gradlePlugins.googleServices
+    classpath gradlePlugins.playServices
   }
 }
 
