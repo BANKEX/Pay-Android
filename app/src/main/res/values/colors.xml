@@ -22,4 +22,5 @@
     <color name="ui_red">#F1361D</color>
     <color name="ui_yellow">#EFD00C</color>
     <color name="ui_orange">#FFB900</color>
+    <color name="pale_blue">#142E63C4</color>
 </resources>

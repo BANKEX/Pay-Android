@@ -27,9 +27,9 @@ public class OnboardingActivity extends AppIntro {
 		OnboardingInjector.getOnboardingComponent().inject(this);
 		super.onCreate(savedInstanceState);
 		setOnboardingParameters();
-		addSlide(new OnboardingCustomNetworkFragment());
 		addSlide(new OnboardingFavoriteListFragment());
 		addSlide(new OnboardingERC20StandardFragment());
+		addSlide(new OnboardingCustomNetworkFragment());
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class OnboardingActivity extends AppIntro {
 		int color = getColor(R.color.placeholder_body_text);
 		setColorDoneText(color);
 		setColorSkipButton(color);
-		setIndicatorColor(getColor(R.color.onboarding_selected_indicator), color);
+		setIndicatorColor(getColor(R.color.colorAccent), color);
 		setImageNextButton(getDrawable(R.drawable.ic_chevron_right_grey_24dp));
 		setNextArrowColor(color);
 

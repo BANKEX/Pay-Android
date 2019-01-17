@@ -14,6 +14,7 @@
         android:layout_marginLeft="@dimen/onboarding_left_right_margin"
         android:layout_marginRight="@dimen/onboarding_left_right_margin"
         android:layout_marginTop="@dimen/onboarding_top_margin"
+        android:contentDescription="@string/onboarding_picture_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboarding_favorite_list_view"
-        style="@style/TitleBold"
+        style="@style/Headline2"
         />
 
     <TextView
@@ -45,6 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboarding_fast_and_easy_title_text_view"
-        style="@style/SubHeaderRegular.PlaceHolder"
+        style="@style/Body2.GreyNormal"
         />
 </android.support.constraint.ConstraintLayout>

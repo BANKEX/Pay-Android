@@ -34,12 +34,6 @@ public class ImportOrCreateFragment extends BaseFragment {
 		return setAndBindContentView(inflater, container, R.layout.fragment_import_or_create_wallet);
 	}
 
-	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		mCreateWallet.setEnabled(false);
-	}
-
 	@OnClick(R.id.import_button)
 	public void onImportButtonClicked() {
 		importWalletRouter.openImportWalletScreen(getActivity());
@@ -47,6 +41,7 @@ public class ImportOrCreateFragment extends BaseFragment {
 
 	@OnClick(R.id.create_button)
 	public void onCreateWalletClicked() {
-		importWalletRouter.openCreateWalletScreen(getActivity());
+		//importWalletRouter.openCreateWalletScreen(getActivity());
+		showMessageToast("Work in progress");
 	}
 }

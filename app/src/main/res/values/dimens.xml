@@ -6,7 +6,8 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_medium_x">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
-    <dimen name="margin_large_x">48dp</dimen>
+    <dimen name="margin_large_x">36dp</dimen>
+    <dimen name="margin_large_xx">48dp</dimen>
     <dimen name="margin_big">56dp</dimen>
     <dimen name="margin_big_x">72dp</dimen>
 
@@ -17,7 +18,8 @@
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="padding_medium_x">24dp</dimen>
     <dimen name="padding_large">32dp</dimen>
-    <dimen name="padding_large_x">48dp</dimen>
+    <dimen name="padding_large_x">36dp</dimen>
+    <dimen name="padding_large_xx">48dp</dimen>
     <dimen name="padding_big">56dp</dimen>
     <dimen name="padding_big_x">72dp</dimen>
 

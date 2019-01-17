@@ -2,10 +2,14 @@
 <resources>
     <string name="onboarding_favorite_list_title">Favorite list</string>
     <string name="onboarding_favorite_list_text">Add your contacts in the Favorite list for quick access to them</string>
-    <string name="onboarding_erc20_text">Support for any tokens within the Ether network</string>
+
     <string name="onboarding_erc20_title">ERC20 standard</string>
+    <string name="onboarding_erc20_text">Support for any tokens within the Ether network</string>
+
     <string name="onboarding_custom_network_title">Custom network</string>
     <string name="onboarding_custom_network_text">Add your network and work with tokens right inside wallet</string>
+
     <string name="onboarding_skip_text">skip</string>
     <string name="onboarding_done_text">done</string>
+    <string name="onboarding_picture_description">screen picture</string>
 </resources>

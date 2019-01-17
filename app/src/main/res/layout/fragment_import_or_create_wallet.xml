@@ -20,31 +20,37 @@
         app:srcCompat="@drawable/ic_bankex_pay"
         />
 
-    <Button
-        android:id="@+id/create_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:layout_marginLeft="@dimen/login_button_margin"
-        android:layout_marginRight="@dimen/margin_medium_x"
-        android:text="@string/create_wallet"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/import_button"
-        app:layout_constraintRight_toRightOf="parent"
-        style="@style/ButtonPrimary"
-        />
-
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/import_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:layout_marginLeft="@dimen/margin_medium_x"
-        android:layout_marginRight="@dimen/login_button_margin"
+        android:layout_marginBottom="@dimen/margin_large_xx"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_large_x"
+        android:background="@drawable/button_white"
         android:text="@string/import_wallet"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/create_button"
-        style="@style/ButtonOutlinePrimary"
         />
+    <!-- style="@style/ButtonOutlinePrimary"-->
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/create_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large_xx"
+        android:layout_marginEnd="@dimen/margin_large_x"
+        android:layout_marginStart="@dimen/margin_small"
+        android:text="@string/create_wallet"
+        android:background="@drawable/button_accent"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/import_button"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <!-- style="@style/ButtonAccent" -->
 </android.support.constraint.ConstraintLayout>

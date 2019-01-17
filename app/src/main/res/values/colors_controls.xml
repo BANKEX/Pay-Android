@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Onboarding -->
-    <color name="onboarding_selected_indicator">@color/gray_shuttle</color>
-
     <!-- Placeholders -->
     <color name="placeholder_body_text">@color/gray_shuttle</color>
     <color name="settings_placeholders_background">@color/silver</color>
@@ -19,6 +16,7 @@
     <color name="search_view_activated">@color/input_text_hint</color>
 
     <!-- Buttons -->
+    <color name="accent_button_disabled">@color/pale_blue</color>
     <color name="primary_button_disabled">@color/silver</color>
     <color name="primary_button_stroke_selected">@color/colorPrimaryDark</color>
     <color name="primary_button_bg_selected">@color/colorPrimaryDark</color>

@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/iv_avatar_initials"
-        android:layout_width="@dimen/margin_large_x"
-        android:layout_height="@dimen/margin_large_x"
+        android:layout_width="@dimen/margin_large_xx"
+        android:layout_height="@dimen/margin_large_xx"
         android:background="@drawable/bg_blue_circle"
         android:gravity="center"
         android:layout_gravity="center"
