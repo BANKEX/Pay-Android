@@ -35,20 +35,10 @@
         <item name="colorControlNormal">@color/white</item>
     </style>
 
-
-
-
-
     <style name="AppTheme.Toolbar.White" parent="AppTheme">
         <item name="android:textColorPrimary">@color/black_almost</item>
         <item name="android:textColorSecondary">@color/white</item>
     </style>
-
-
-
-
-
-
 
     <style name="TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="windowActionBarOverlay">true</item>
