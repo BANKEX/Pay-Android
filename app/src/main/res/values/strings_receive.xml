@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="receive_toolbar_title">Receive</string>
-    <string name="receive_toast_text">Address copied to clipboard</string>
-    <string name="receive_button_text">copy</string>
-</resources>
