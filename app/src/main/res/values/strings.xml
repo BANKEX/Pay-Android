@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BANKEX Pay</string>
+
+    <string name="paste">Paste</string>
+    <string name="enter_your_pin">Enter your PIN</string>
+    <string name="unlock_screen_title_android">Unlock screen</string>
+    <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
+
+    <!-- Strings from utils, navigators etc. -->
+    <string name="password_store_rep_migration_error">Could not process passwords</string>
+
+    <!-- Unsorted strings -->
+    <string name="receive_activity_token_address_title">Token address</string>
+</resources>

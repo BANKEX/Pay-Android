@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_test_round_corners"
+    android:orientation="vertical"
+    android:paddingBottom="6dp"
+    android:paddingTop="20dp"
+    tools:ignore="RtlSymmetry"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/delete_contact_title"
+
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_medium_local"
+        android:lineHeight="20sp"
+        android:textSize="23sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/delete_contact_message"
+
+        android:textColor="#8A000000"
+        android:fontFamily="@font/roboto_regular_local"
+        android:lineHeight="24sp"
+        android:textSize="16sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="137dp"
+        >
+
+        <TextView
+            android:id="@+id/btn_cancel_deletion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/btn_confirm_deletion"
+            android:padding="8dp"
+            android:text="@string/delete_contact_cancel"
+            android:textAllCaps="true"
+
+            android:textColor="#0DA9FF"
+            android:fontFamily="@font/roboto_medium_local"
+            android:lineHeight="16sp"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/btn_confirm_deletion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:text="@string/delete_contact_confirm"
+            android:textAllCaps="true"
+
+            android:textColor="#0DA9FF"
+            android:fontFamily="@font/roboto_medium_local"
+            android:lineHeight="16sp"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+</LinearLayout>

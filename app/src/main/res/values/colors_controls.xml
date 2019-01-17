@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding -->
+    <color name="onboarding_selected_indicator">@color/gray_shuttle</color>
+
+    <!-- Placeholders -->
+    <color name="placeholder_body_text">@color/gray_shuttle</color>
+    <color name="settings_placeholders_background">@color/silver</color>
+
+    <!-- FAB -->
+    <color name="contacts_fab_background">@color/colorPrimary</color>
+    <color name="contact_fab_send_tokens">@color/ui_orange</color>
+
+    <!-- Text colors -->
+    <color name="empty_state_text">@color/input_text_hint</color>
+    <color name="text_body">@color/gray</color>
+    <color name="bankex_black">@color/shark</color>
+    <color name="toolbar_text_color">@color/silver</color>
+    <color name="search_view_activated">@color/input_text_hint</color>
+
+    <!-- Buttons -->
+    <color name="primary_button_disabled">@color/silver</color>
+    <color name="primary_button_stroke_selected">@color/colorPrimaryDark</color>
+    <color name="primary_button_bg_selected">@color/colorPrimaryDark</color>
+    <color name="primary_button_selected">@color/colorPrimaryDark</color>
+
+    <!-- Contacts -->
+    <color name="bg_color_avatar">@color/colorPrimary</color>
+
+    <!-- Other -->
+    <color name="actionbar_opacity">@color/gray_light_dark</color>
+    <color name="caption">@color/bali_hai</color>
+    <color name="bankex_background">@color/light_page_background</color>
+    <color name="received_transaction_ic_color">@color/ui_green</color>
+    <color name="sent_transaction_ic_color">@color/ui_orange</color>
+    <color name="ic_launcher_background">@color/white</color>
+</resources>
