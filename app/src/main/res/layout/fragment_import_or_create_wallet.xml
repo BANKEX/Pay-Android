@@ -29,13 +29,12 @@
         android:layout_marginStart="@dimen/margin_large_x"
         android:background="@drawable/button_white"
         android:text="@string/import_wallet"
-        android:textColor="@color/colorAccent"
         android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/create_button"
         />
-    <!-- style="@style/ButtonOutlinePrimary"-->
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/create_button"
@@ -44,13 +43,12 @@
         android:layout_marginBottom="@dimen/margin_large_xx"
         android:layout_marginEnd="@dimen/margin_large_x"
         android:layout_marginStart="@dimen/margin_small"
-        android:text="@string/create_wallet"
         android:background="@drawable/button_accent"
-        android:textColor="@color/white"
+        android:text="@string/create_wallet"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/import_button"
         app:layout_constraintRight_toRightOf="parent"
         />
-    <!-- style="@style/ButtonAccent" -->
 </android.support.constraint.ConstraintLayout>
