@@ -30,6 +30,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Subtitle3" parent="BaseTextStyle"> <!-- 12sp -->
+        <item name="fontFamily">@font/roboto_medium_local</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Body1" parent="BaseTextStyle"> <!-- 16sp -->
         <item name="fontFamily">@font/roboto_regular_local</item>
         <item name="android:textSize">@dimen/text_size_subheader</item>

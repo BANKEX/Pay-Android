@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatImageButton;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,8 +44,8 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 
 	@BindView(R.id.private_key_edit_text) EditText mPrivateKeyEditText;
 	@BindView(R.id.wallet_name_edit_text) EditText mWalletNameEditText;
-	@BindView(R.id.paste_button) Button mPasteButton;
-	@BindView(R.id.qr_button) View mQrButton;
+	@BindView(R.id.paste_button) AppCompatButton mPasteButton;
+	@BindView(R.id.qr_button) AppCompatImageButton mQrButton;
 	@BindView(R.id.import_button) Button mImportButton;
 
 	@Inject
@@ -73,6 +75,7 @@ public class ImportPrivateKeyFragment extends BaseFragment implements IImportPri
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		mQrButton.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_qr));
 		super.onViewCreated(view, savedInstanceState);
 	}
 

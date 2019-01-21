@@ -62,6 +62,7 @@
         <activity
             android:name=".presentation.ui.importwallet.ImportWalletActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
             />
 
         <activity

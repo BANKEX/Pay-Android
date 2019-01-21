@@ -6,7 +6,7 @@
         />
 
     <item
-        android:drawable="@drawable/button_primary_outline_selected"
+        android:drawable="@drawable/button_accent_outline_selected"
         android:state_pressed="true"
         />
 </selector>
